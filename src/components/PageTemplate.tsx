@@ -17,10 +17,10 @@ export default function PageTemplate({ backgroundImage, children }: PageTemplate
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-bold">Montasir Moyen</h1>
         <div className="flex space-x-4">
-        <a href="mailto:rmm05890@su.suffolk.edu" target="#" className="inline-block">
+        <a href="mailto:rmm05890@su.suffolk.edu" className="inline-block">
           <img src="/email.png" alt="Email" className="w-8 h-8" />
         </a>
-        <a href="https://github.com/montasirmoyen" className="inline-block">
+        <a href="https://github.com/montasirmoyen" target="#" className="inline-block">
           <img src="/github.png" alt="GitHub" className="w-8 h-8" />
         </a>
         </div>
