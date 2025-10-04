@@ -5,7 +5,7 @@ export default function Home() {
     <PageTemplate backgroundImage="/background.jpg">
       <p className="text-md mt-5">Hi there!</p>
       <p className="text-md mt-5">
-        I'm Montasir Moyen, a full-stack software developer currently studying Computer Science
+        I am Montasir Moyen, a full-stack software developer currently studying Computer Science
         at Suffolk University in Boston, Massachusetts.
       </p>
       <p className="text-md mt-5">
