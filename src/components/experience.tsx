@@ -19,7 +19,7 @@ export default function Experience() {
                 bullets={[
                     "Developed the iOS app version of their website which will be used by notable D1, D2 & D3 athletes from all over the world and large businesses alike",
                 ]}
-                website="https://www.collegiatex.com"
+                website="https://collegiatex.com/"
             />
 
             <hr
