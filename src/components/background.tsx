@@ -14,7 +14,7 @@ export default function Background({ backgroundImage, children }: BackgroundProp
         backgroundImage: `url(${backgroundImage})`
       }}
     >
-      <div className="bg-black/75 backdrop-blur-sm max-w-5xl w-full flex flex-col px-8 py-8 rounded-lg shadow-lg">
+      <div className="bg-black/80 backdrop-blur-sm max-w-5xl w-full flex flex-col px-8 py-8 rounded-lg shadow-lg">
         <div className="flex items-center justify-between">
           <h1 className="text-3xl font-bold">Montasir Moyen</h1>
           <nav className="flex space-x-6 text-md font-semibold">
