@@ -24,7 +24,7 @@ export default function DetailsCard({
     websiteText = "Visit Website",
 }: DetailsCardProps) {
     return (
-        <div className="bg-gradient-to-br from-black/60 via-black/50 to-black/40 max-w-4xl w-full flex flex-col md:flex-row items-start gap-6 px-6 py-6 mt-4 rounded-lg shadow-lg">
+        <div className="bg-gradient-to-br from-black/60 via-black/50 to-black/40 w-full flex flex-col md:flex-row items-start gap-6 px-6 py-6 mt-4 rounded-lg shadow-lg">
             <div className="flex-shrink-0">
                 <div className="w-24 h-24 md:w-28 md:h-28 rounded-lg overflow-hidden bg-white/5 flex items-center justify-center p-2">
                     <img src={logoSrc} alt={alt} className="w-full h-full object-contain" />

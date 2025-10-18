@@ -8,30 +8,35 @@ type BackgroundProps = {
 export default function Background({ backgroundImage, children }: BackgroundProps) {
   return (
     <main
-      className="min-h-screen bg-black bg-cover bg-center text-white flex items-center justify-center"
+      className="bg-black bg-cover bg-center text-white flex items-center justify-center flex-1"
       style={{
-        backgroundImage: `url(${backgroundImage})`,
+        backgroundImage: `url(${backgroundImage})`
       }}
     >
-      <div className="bg-black/75 backdrop-blur-sm max-w-4xl w-full h-screen flex flex-col px-8 py-8">
+      <div className="bg-black/75 backdrop-blur-sm max-w-5xl w-full flex flex-col px-8 py-8 rounded-lg shadow-lg">
         <div className="flex items-center justify-between">
           <h1 className="text-3xl font-bold">Montasir Moyen</h1>
-          <div className="flex space-x-4">
-            <a href="mailto:rmm05890@su.suffolk.edu" className="inline-block">
-              <img src="/email.png" alt="Email" className="w-8 h-8" />
+          <nav className="flex space-x-6 text-md font-semibold">
+            <a 
+              href="/" 
+              className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
+            >
+              About
             </a>
-            <a href="https://github.com/montasirmoyen" target="#" className="inline-block">
-              <img src="/github.png" alt="GitHub" className="w-8 h-8" />
+            <a 
+              href="/experience" 
+              className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
+            >
+              Experience
             </a>
-            <a href="https://linkedin.com/in/montasirmoyen" target="#" className="inline-block">
-              <img src="/linkedin.png" alt="LinkedIn" className="w-8 h-8" />
+            <a 
+              href="/education" 
+              className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
+            >
+              Education
             </a>
-          </div>
+          </nav>
         </div>
-        <hr
-          className="mt-5"
-          style={{ borderColor: "white", borderWidth: "1px", borderStyle: "solid" }}
-        />
         {children}
       </div>
     </main>
