@@ -10,6 +10,7 @@ export type DetailsCardProps = {
     bullets?: string[];
     website?: string;
     websiteText?: string;
+    buttonText?: string;
 };
 
 export default function DetailsCard({
@@ -22,12 +23,18 @@ export default function DetailsCard({
     bullets = [],
     website,
     websiteText = "Visit Website",
+    buttonText,
 }: DetailsCardProps) {
+
+    if (buttonText) {
+        websiteText = buttonText;
+    }
+
     return (
         <div className="bg-gradient-to-br from-black/60 via-black/50 to-black/40 w-full flex flex-col md:flex-row items-start gap-6 px-6 py-6 mt-4 rounded-lg shadow-lg">
             <div className="flex-shrink-0">
-                <div className="w-24 h-24 md:w-28 md:h-28 rounded-lg overflow-hidden bg-white/5 flex items-center justify-center p-2">
-                    <img src={logoSrc} alt={alt} className="w-full h-full object-contain" />
+                <div className="w-24 h-24 md:w-28 md:h-28 rounded-lg overflow-hidden flex items-center justify-center p-1"> {/* bg-gradient-to-b from-black to-white/10 */}
+                    <img src={logoSrc} alt={alt} className="w-full h-full object-contain rounded-lg shadow-lg" />
                 </div>
             </div>
 
@@ -37,7 +44,7 @@ export default function DetailsCard({
                         <h2 className="text-2xl md:text-3xl font-semibold">{title}</h2>
                         {subtitle && <p className="text-sm text-gray-300 mt-1">{subtitle}</p>}
                     </div>
-                    <div className="mt-3 md:mt-0 text-sm text-gray-400">
+                    <div className="mt-4 md:mt-0 text-sm text-gray-400">
                         {location && <div>{location}</div>}
                         {dateRange && <div className="mt-1">{dateRange}</div>}
                     </div>
@@ -48,7 +55,7 @@ export default function DetailsCard({
                         <ul className="space-y-2 text-sm">
                             {bullets.map((b, i) => (
                                 <li key={i} className="flex items-start gap-3">
-                                    <span className="mt-1 text-indigo-400">•</span>
+                                    <span className="mt-1 text-blue-500">•</span>
                                     <span>{b}</span>
                                 </li>
                             ))}
