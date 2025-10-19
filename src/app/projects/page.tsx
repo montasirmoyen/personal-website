@@ -66,7 +66,8 @@ export default function ProjectPage() {
         dateRange="Oct 2025 — Present"
         location="WIP — Pending Deployment"
         bullets={[
-          "An iOS application built with Swift and Xcode to bring smooth browsing and analysis of 100+ cryptocurrencies.",
+          "Developed an iOS app for smooth browsing and analysis of crypto data, the demo has 100+ cryptocurrencies.",
+          "Supports live statistics for research into 5+ valuable factors such as market cap, total supply and 7d% price change.",
         ]}
         website="https://github.com/montasirmoyen/crypto-app"
         buttonText="View Repository"
