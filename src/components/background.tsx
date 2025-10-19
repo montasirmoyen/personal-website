@@ -36,6 +36,12 @@ export default function Background({ backgroundImage, children }: BackgroundProp
             >
               Education
             </Link>
+            <Link 
+              href="/projects" 
+              className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
+            >
+              Projects
+            </Link>
           </nav>
         </div>
         {children}
