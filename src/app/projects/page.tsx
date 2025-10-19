@@ -17,13 +17,13 @@ export default function ProjectPage() {
         alt="Fragrance Catalog logo"
         title="Fragrance Catalog"
         subtitle="Front-End Web Development"
-        dateRange="August 2025 — Present"
+        dateRange="Sep 2025 — Present"
         location="WIP — Pending Bug Fixes"
         bullets={[
           "Developed a website to browse and filter fragrances by 25+ notes, the most luxurious brands and seasons.",
           "Welcoming community contributions, especially to expand the curated fragrance dataset.",
         ]}
-        website="https://fragrance-catalog-a1yvspj9s-montasirmoyens-projects.vercel.app/"
+        website="https://fragrance-catalog.vercel.app/"
         buttonText="Visit Website"
       />
 
@@ -63,7 +63,7 @@ export default function ProjectPage() {
         alt="Crypto App logo"
         title="Crypto App"
         subtitle="iOS Development"
-        dateRange="October 2025 — Present"
+        dateRange="Oct 2025 — Present"
         location="WIP — Pending Deployment"
         bullets={[
           "An iOS application built with Swift and Xcode to bring smooth browsing and analysis of 100+ cryptocurrencies.",
