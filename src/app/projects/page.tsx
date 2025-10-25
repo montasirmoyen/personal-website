@@ -34,7 +34,7 @@ export default function ProjectPage() {
         subtitle="Game Development"
         dateRange="Aug 2021 — Dec 2023"
         bullets={[
-          "Developed a soccer video game that has achieved over 3,500+ concurrent players and 500,000+ monthly active players.",
+          "Achieved over 3,500+ concurrent players and 500,000+ monthly active players.",
           "Founded the growing parent company, gaining 160,000+ official members and producing more successful spin-offs of the game.",
           "Generated over 6 figures in net revenue while still maintaining a generous passive income thanks to various methods of monetization and social media influencer partner deals.",
         ]}

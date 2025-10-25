@@ -20,7 +20,7 @@ export default function ExperiencePage() {
           location="Boston, MA"
           dateRange="Sep 2025 — Dec 2025"
           bullets={[
-            "Developed the iOS app version of their website which will be used by notable D1, D2 & D3 athletes from all over the United States and large businesses alike",
+            "Developed the mobile app version of their website which will be used by notable D1, D2 & D3 athletes from all over the United States and large businesses alike",
           ]}
           website="https://collegiatex.com/"
         />
