@@ -31,7 +31,7 @@ export default function DetailsCard({
     }
 
     return (
-        <div className="bg-gradient-to-br from-black/60 via-black/50 to-black/40 w-full flex flex-col md:flex-row items-start gap-6 px-6 py-6 mt-4 rounded-lg shadow-lg">
+        <div className="bg-gradient-to-br from-black/50 via-black/40 to-black/30 w-full flex flex-col md:flex-row items-start gap-6 px-6 py-6 mt-4 rounded-lg shadow-lg">
             <div className="flex-shrink-0">
                 <div className="w-24 h-24 md:w-28 md:h-28 rounded-lg overflow-hidden flex items-center justify-center p-1"> {/* bg-gradient-to-b from-black to-white/10 */}
                     <img src={logoSrc} alt={alt} className="w-full h-full object-contain rounded-lg shadow-lg" />
@@ -69,7 +69,7 @@ export default function DetailsCard({
                             href={website}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-block text-sm bg-white/5 hover:bg-white/10 text-white px-3 py-1.5 rounded-md transition"
+                            className="inline-block text-sm bg-black/25 hover:bg-black/50 text-white px-3 py-1.5 rounded-md transition"
                         >
                             {websiteText}
                         </a>
