@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 
 type BackgroundProps = {
   backgroundImage: string;
@@ -14,36 +13,7 @@ export default function Background({ backgroundImage, children }: BackgroundProp
         backgroundImage: `url(${backgroundImage})`
       }}
     >
-      <div className="bg-black/80 backdrop-blur-sm max-w-5xl w-full flex flex-col px-8 py-8 rounded-lg shadow-lg">
-        <div className="flex items-center justify-between">
-          <h1 className="text-3xl font-bold">Montasir Moyen</h1>
-          <nav className="flex space-x-6 text-md font-semibold">
-            <Link 
-              href="/" 
-              className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
-            >
-              About
-            </Link>
-            <Link 
-              href="/experience" 
-              className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
-            >
-              Experience
-            </Link>
-            <Link 
-              href="/education" 
-              className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
-            >
-              Education
-            </Link>
-            <Link 
-              href="/projects" 
-              className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
-            >
-              Projects
-            </Link>
-          </nav>
-        </div>
+      <div className="bg-black/60 backdrop-blur-lg max-w-5xl w-full flex flex-col px-5 py-5 rounded-xl">
         {children}
       </div>
     </main>
