@@ -2,9 +2,9 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="bg-black/50 backdrop-blur-sm border-t border-white/50 mt-auto">
+    <footer className="absolute bottom-0 left-0 right-0 backdrop-blur bg-black/25 backdrop-blur-sm mt-auto">
       <div className="max-w-4xl mx-auto px-8 py-4">
-        <div className="flex items-center justify-center space-x-6">
+        <div className="flex items-center justify-center space-x-5">
           {/* 
             <a 
             href="mailto:rmm05890@su.suffolk.edu" 
@@ -34,7 +34,7 @@ export default function Footer() {
           </a>
         </div>
         <div className="text-center mt-2">
-          <p className="text-sm text-gray-400">© 2025 Montasir Moyen</p>
+          <p className="text-sm text-white">© 2025 Montasir Moyen</p>
         </div>
       </div>
     </footer>
