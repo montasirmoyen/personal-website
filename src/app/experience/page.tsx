@@ -8,8 +8,8 @@ export default function ExperiencePage() {
     <Background backgroundImage="/background.jpg">
       <>
         <div className="flex items-center gap-2">
-          <Briefcase className="w-5 h-5" />
-          <h1 className="text-xl font-bold"> Experience</h1>
+          <Briefcase className="w-4 h-4 sm:w-5 sm:h-5" />
+          <h1 className="text-lg sm:text-xl font-bold"> Experience</h1>
         </div>
         <hr
           className="mt-4"

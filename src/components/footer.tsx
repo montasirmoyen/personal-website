@@ -3,7 +3,7 @@ import React from "react";
 export default function Footer() {
   return (
     <footer className="absolute bottom-0 left-0 right-0 backdrop-blur bg-black/25 backdrop-blur-sm mt-auto">
-      <div className="max-w-4xl mx-auto px-8 py-4">
+      <div className="max-w-4xl mx-auto px-4 md:px-8 py-3 md:py-4">
         <div className="flex items-center justify-center space-x-5">
           {/* 
             <a 
@@ -21,7 +21,7 @@ export default function Footer() {
             className="inline-block transition hover:opacity-70"
             aria-label="GitHub"
           >
-            <img src="/github.png" alt="GitHub" className="w-6 h-6" />
+            <img src="/github.png" alt="GitHub" className="w-5 h-5 sm:w-6 sm:h-6" />
           </a>
           <a
             href="https://linkedin.com/in/montasirmoyen"
@@ -30,11 +30,11 @@ export default function Footer() {
             className="inline-block transition hover:opacity-70"
             aria-label="LinkedIn"
           >
-            <img src="/linkedin.png" alt="LinkedIn" className="w-6 h-6" />
+            <img src="/linkedin.png" alt="LinkedIn" className="w-5 h-5 sm:w-6 sm:h-6" />
           </a>
         </div>
         <div className="text-center mt-2">
-          <p className="text-sm text-white">© 2025 Montasir Moyen</p>
+          <p className="text-xs sm:text-sm text-white">© 2025 Montasir Moyen</p>
         </div>
       </div>
     </footer>
