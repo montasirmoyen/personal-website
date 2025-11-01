@@ -1,15 +1,14 @@
 import React from "react";
 import DetailsCard from "../../components/details-card";
 import Background from "../../components/background";
-
 export default function ProjectPage() {
   return (
     <Background backgroundImage="/background.jpg">
     <>
-      <h1 className="text-xl font-bold mt-4">Projects</h1>
+      <h1 className="text-xl font-bold">Projects</h1>
       <hr
         className="mt-4"
-        style={{ borderColor: "gray", borderWidth: "1px", borderStyle: "solid" }}
+        style={{ borderColor: "white", borderWidth: "1px", borderStyle: "solid" }}
       />
 
       <DetailsCard

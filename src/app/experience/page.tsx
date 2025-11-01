@@ -1,15 +1,19 @@
 import React from "react";
 import DetailsCard from "../../components/details-card";
 import Background from "../../components/background";
+import { Briefcase } from "lucide-react";
 
 export default function ExperiencePage() {
   return (
     <Background backgroundImage="/background.jpg">
       <>
-        <h1 className="text-xl font-bold mt-4">Experience</h1>
+        <div className="flex items-center gap-2">
+          <Briefcase className="w-5 h-5" />
+          <h1 className="text-xl font-bold"> Experience</h1>
+        </div>
         <hr
           className="mt-4"
-          style={{ borderColor: "gray", borderWidth: "1px", borderStyle: "solid" }}
+          style={{ borderColor: "white", borderWidth: "1px", borderStyle: "solid" }}
         />
 
         <DetailsCard

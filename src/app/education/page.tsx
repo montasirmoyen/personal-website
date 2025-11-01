@@ -1,15 +1,17 @@
 import React from "react";
 import DetailsCard from "../../components/details-card";
 import Background from "../../components/background";
-
+import { Book } from "lucide-react";
 export default function EducationPage() {
   return (
     <Background backgroundImage="/background.jpg">
-
-      <h1 className="text-xl font-bold mt-4">Education</h1>
+      <div className="flex items-center gap-2">
+          <Book className="w-5 h-5" />
+          <h1 className="text-xl font-bold"> Education</h1>
+        </div>
       <hr
         className="mt-4"
-        style={{ borderColor: "gray", borderWidth: "1px", borderStyle: "solid" }}
+        style={{ borderColor: "white", borderWidth: "1px", borderStyle: "solid" }}
       />
       <DetailsCard
         logoSrc="/su.png"
