@@ -2,12 +2,18 @@ import React from "react";
 import DetailsCard from "../../components/details-card";
 import Background from "../../components/background";
 import { Book } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Montasir Moyen | Education",
+  description: "Education background of Montasir Moyen.",
+};
 export default function EducationPage() {
   return (
     <Background backgroundImage="/background.jpg">
       <div className="flex items-center gap-2">
           <Book className="w-4 h-4 sm:w-5 sm:h-5" />
-          <h1 className="text-lg sm:text-xl font-bold"> Education</h1>
+          <h1 className="text-lg sm:text-xl font-bold">Education</h1>
         </div>
       <hr
         className="mt-4"
