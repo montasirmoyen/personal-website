@@ -19,17 +19,17 @@ export default function ProjectPage() {
         </div>
 
         <DetailsCard
-          logoSrc="/github.png"
-          alt="GitHub logo"
-          title="Fragrance Catalog"
-          subtitle="Front-End Web Development"
-          dateRange="Sep 2025 — Present"
-          location="Work In Progress"
+          logoSrc="/lx.png"
+          alt="Luxury Transport logo"
+          title="Luxury Transport"
+          subtitle="Full-Stack Web Development"
+          dateRange="Nov 2025 — Present"
           bullets={[
-            "Developed a website to browse and filter fragrances by 25+ notes, the most luxurious brands and seasons.",
-            "Welcoming community contributions, especially to expand the curated fragrance dataset.",
+            "Reserve luxury transportation services within the Greater Boston Area, and modify/cancel reservations with ease.",
+            "Select from a fleet of luxury vehicles from minivans, SUVs, and sedans.",
+            "Supports payment methods including card, PayPal and Venmo.",
           ]}
-          website="https://fragrance-catalog.vercel.app/"
+          website="https://luxury-transport.vercel.app"
           buttonText="Visit Website"
         />
 
@@ -51,53 +51,33 @@ export default function ProjectPage() {
         <DetailsCard
           logoSrc="/github.png"
           alt="GitHub logo"
+          title="Fragrance Catalog"
+          subtitle="Front-End Web Development"
+          dateRange="Sep 2025 — Present"
+          location="Work In Progress"
+          bullets={[
+            "Browse and filter fragrances by 25+ notes, the most luxurious brands and seasons.",
+            "Welcoming community contributions, especially to expand the curated fragrance dataset.",
+          ]}
+          website="https://fragrance-catalog.vercel.app/"
+          buttonText="Visit Website"
+        />
+
+        <DetailsCard
+          logoSrc="/github.png"
+          alt="GitHub logo"
           title="Enhanceme"
           subtitle="Full-Stack Web Development"
           dateRange="Sep 2025 — Present"
           location="Work In Progress"
           bullets={[
-            "Developed a website to enhance resumes, providing tailored suggestions for improvement.",
-            "Fine-tuned an AI model to analyze resume content more effectively.",
-            "Built to comply with Applicant Tracking System (ATS) standards to increase interview chances.",
+            "Enhances and strengthens resumes, providing tailored suggestions for improvement.",
+            "Fine-tuned AI model to act as a resume expert and analyze resume content more effectively.",
+            "Complies with Applicant Tracking System (ATS) standards to increase interview chances.",
           ]}
           website="https://enhanceme.vercel.app/"
           buttonText="Visit Website"
         />
-
-        {/*
-        
-        <DetailsCard
-          logoSrc="/github.png"
-          alt="E-Com logo"
-          title="E-Com"
-          subtitle="Full-Stack Web Development"
-          dateRange="Oct 2025 — Present"
-          location="WIP — Pending Deployment"
-          bullets={[
-            "Built a full-stack e-commerce platform featuring product browsing, cart management, and secure checkout.",
-            "Integrated Stripe for real-time payment processing with fraud prevention and user authentication with Auth0.",
-            "Designed a MongoDB schema to persist user data, orders, and cart items.",
-          ]}
-          website="https://github.com/montasirmoyen/e-com"
-          buttonText="View Repository"
-        />
-
-        <DetailsCard
-          logoSrc="/github.png"
-          alt="Crypto App logo"
-          title="Crypto App"
-          subtitle="iOS Development"
-          dateRange="Oct 2025 — Present"
-          location="WIP — Pending Deployment"
-          bullets={[
-            "Developed an iOS app for smooth browsing and analysis of crypto data, the demo has 100+ cryptocurrencies.",
-            "Supports live statistics for research into 5+ valuable factors such as market cap, total supply and 7d% price change.",
-          ]}
-          website="https://github.com/montasirmoyen/crypto-app"
-          buttonText="View Repository"
-        />
-        
-        */}
       </>
     </Background>
   );
