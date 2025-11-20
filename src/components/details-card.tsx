@@ -55,8 +55,8 @@ export default function DetailsCard({
                         <ul className="space-y-1.5 md:space-y-2 text-xs md:text-sm">
                             {bullets.map((b, i) => (
                                 <li key={i} className="flex items-start gap-2 md:gap-3">
-                                    <span className="mt-1 text-blue-500 flex-shrink-0">•</span>
-                                    <span>{b}</span>
+                                    <span className="self-center flex-shrink-0">•</span>
+                                    <span className="self-center">{b}</span>
                                 </li>
                             ))}
                         </ul>
