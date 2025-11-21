@@ -50,7 +50,7 @@ export default function ProjectPage() {
           buttons={{
             "View Game": "https://www.roblox.com/games/13436905139/MPS-4-a-side",
           }}
-          languages={["Lua", "JavaScript", "RBLX Studio", "TailwindCSS"]}
+          languages={["Lua", "JavaScript", "RBLX Studio", "JSON"]}
         />
 
         <DetailsCard
