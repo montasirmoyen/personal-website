@@ -31,7 +31,9 @@ export default function ExperiencePage() {
           bullets={[
             "Developed the mobile app version of their platform used by notable NCAA D1, D2 & D3 athletes and large enterprises alike",
           ]}
-          website="https://collegiatex.com/"
+          buttons={{
+            "Visit Website": "https://collegiatex.com/",
+          }}
         />
       </>
     </Background>
