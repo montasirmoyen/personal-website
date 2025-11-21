@@ -12,9 +12,9 @@ export default function EducationPage() {
   return (
     <Background backgroundImage="/background.jpg">
       <div className="flex items-center gap-2">
-          <Book className="w-4 h-4 sm:w-5 sm:h-5" />
-          <h1 className="text-lg sm:text-xl font-bold">Education</h1>
-        </div>
+        <Book className="w-4 h-4 sm:w-5 sm:h-5" />
+        <h1 className="text-lg sm:text-xl font-bold">Education</h1>
+      </div>
       <hr
         className="mt-4"
         style={{ borderColor: "white", borderWidth: "1px", borderStyle: "solid" }}
@@ -30,7 +30,9 @@ export default function EducationPage() {
           "Activities and societies: Computer Science Club, Computational Science and Mathematics Club",
           "Relevant Coursework: Data Structures & Algorithms, Object Oriented Programming, Architecture of Computer Systems",
         ]}
-        website="https://www.suffolk.edu"
+        buttons={{
+          "Visit Website": "https://www.suffolk.edu",
+        }}
       />
 
       <DetailsCard
@@ -44,7 +46,9 @@ export default function EducationPage() {
           "Activities and societies: Programming & Web Development, Computer Science Club",
           "Relevant Coursework: AP Computer Science Principles, AP Computer Science A (Java), CMU CS Academy (Python)",
         ]}
-        website="https://mhs-mvths.mps02155.org/"
+        buttons={{
+          "Visit Website": "https://mhs-mvths.mps02155.org/",
+        }}
       />
 
       <br className="mb-5"></br>
