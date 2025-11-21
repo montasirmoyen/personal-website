@@ -29,8 +29,11 @@ export default function ProjectPage() {
             "Select from a fleet of luxury vehicles from minivans, SUVs, and sedans.",
             "Supports payment methods including card, PayPal and Venmo.",
           ]}
-          website="https://luxury-transport.vercel.app"
-          buttonText="Visit Website"
+          buttons={{
+            "Visit Website": "https://luxury-transport.vercel.app",
+            "View Source Code": "https://github.com/montasirmoyen/luxury-transport"
+          }}
+          languages={["React", "TypeScript", "Firebase"]}
         />
 
         <DetailsCard
@@ -44,8 +47,10 @@ export default function ProjectPage() {
             "Founded the growing parent company, gaining 160,000+ official members and producing more successful spin-offs of the game.",
             "Generated over 6 figures in net revenue while still maintaining a generous passive income thanks to various methods of monetization and social media influencer partner deals.",
           ]}
-          website="https://www.roblox.com/games/13436905139/MPS-4-a-side"
-          buttonText="View Game"
+          buttons={{
+            "View Game": "https://www.roblox.com/games/13436905139/MPS-4-a-side",
+          }}
+          languages={["Lua", "JavaScript", "RBLX Studio", "TailwindCSS"]}
         />
 
         <DetailsCard
@@ -59,8 +64,11 @@ export default function ProjectPage() {
             "Browse and filter fragrances by 25+ notes, the most luxurious brands and seasons.",
             "Welcoming community contributions, especially to expand the curated fragrance dataset.",
           ]}
-          website="https://fragrance-catalog.vercel.app/"
-          buttonText="Visit Website"
+          buttons={{
+            "Visit Website": "https://fragrance-catalog.vercel.app/",
+            "View Source Code": "https://github.com/montasirmoyen/fragrance-catalog"
+          }}
+          languages={["React", "TypeScript", "JavaScript"]}
         />
 
         <DetailsCard
@@ -75,8 +83,11 @@ export default function ProjectPage() {
             "Fine-tuned AI model to act as a resume expert and analyze resume content more effectively.",
             "Complies with Applicant Tracking System (ATS) standards to increase interview chances.",
           ]}
-          website="https://enhanceme.vercel.app/"
-          buttonText="Visit Website"
+          buttons={{
+            "Visit Website": "https://enhanceme.vercel.app/",
+            "View Source Code": "https://github.com/montasirmoyen/enhanceme"
+          }}
+          languages={["React", "TypeScript", "Node.js", "MongoDB"]}
         />
       </>
     </Background>
