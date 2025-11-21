@@ -1,4 +1,5 @@
 import React from "react";
+import WeatherWidget from "./weather-widget";
 
 export default function Footer() {
   return (
@@ -32,6 +33,7 @@ export default function Footer() {
           >
             <img src="/linkedin.png" alt="LinkedIn" className="w-5 h-5 sm:w-6 sm:h-6" />
           </a>
+          <WeatherWidget />
         </div>
         <div className="text-center mt-2">
           <p className="text-xs sm:text-sm text-white">© 2025 Montasir Moyen</p>
