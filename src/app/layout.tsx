@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "./globals.css";
-import Footer from "../components/footer";
-import TopBar from "../components/top-bar";
+import NavBar from "../components/NavBar";
 
 const lato = Lato({
   variable: "--font-lato",
@@ -11,7 +10,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Montasir Moyen",
+  title: "Montasir Moyen - Software Developer",
   description: "Personal Website",
 };
 
@@ -25,9 +24,8 @@ export default function RootLayout({
       <head />
       <body className={`${lato.variable} antialiased`}>
         <div className="min-h-screen flex flex-col relative">
-          <TopBar />
+          <NavBar />
           {children}
-          <Footer />
         </div>
       </body>
     </html>
