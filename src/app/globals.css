@@ -17,3 +17,16 @@ body {
   color: var(--foreground);
   font-family: var(--font-lato), sans-serif;
 }
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 3s ease infinite;
+}
