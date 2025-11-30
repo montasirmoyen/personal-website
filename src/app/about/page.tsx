@@ -3,28 +3,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { TextAnimate } from "@/components/ui/text-animate"
+import TopBarBackground from "@/components/TopBarBackground"
 
 export default function About() {
   return (
     <div className="relative pt-48 pb-16 px-4 md:px-6">
-      {/* Background Image with Fade Effect */}
-      <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: 'url("/sea-wave.jpg")',
-            maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%)',
-          }}
-        />
-      </div>
+      <TopBarBackground imageUrl="/sea-wave.jpg" transparency={30} />
       
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Text Content */}
           <div className="space-y-2">
             {/* Small Heading */}
-            <p className="text-sm text-gray-400 uppercase tracking-wider">
+            <p className="text-sm text-white/50 uppercase tracking-wider">
               More About Myself
             </p>
 
@@ -49,7 +40,7 @@ export default function About() {
             </div>
 
             {/* Paragraphs */}
-            <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
+            <div className="space-y-4 text-lg text-white/75 leading-relaxed">
               <p>
                 I also go by Monty. I'm currently studying Computer Science at Suffolk University in Boston, Massachusetts.
               </p>
