@@ -50,12 +50,6 @@ export default function NavBar() {
                             <NavLink href="/about" isActive={isActive("/about")}>
                                 About
                             </NavLink>
-                            <NavLink href="/experience" isActive={isActive("/experience")}>
-                                Experience
-                            </NavLink>
-                            <NavLink href="/education" isActive={isActive("/education")}>
-                                Education
-                            </NavLink>
                             <NavLink href="/projects" isActive={isActive("/projects")}>
                                 Projects
                             </NavLink>
