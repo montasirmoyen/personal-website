@@ -4,18 +4,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/lib/projects";
 import { ExternalLink, Github } from "lucide-react";
+import TopBarBackground from "@/components/TopBarBackground";
 
 export default function ProjectsPage() {
   return (
     <div className="pt-32 pb-24 px-4 md:px-6">
+      <TopBarBackground imageUrl="wall-lights.jpg"/>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-16">
-          <p className="text-sm text-gray-400 uppercase tracking-wider mb-2">
-            Featured Case Studies
+          <p className="text-sm text-white/50 uppercase tracking-wider mb-2">
+            FEATURED PROJECT RESEARCH
           </p>
           <h1 className="text-5xl md:text-6xl font-bold font-hero">
-            Curated <span className="bg-gradient-to-r from-green-500 via-blue-500 to-purple-500 bg-clip-text text-transparent">work</span>
+            Curated <span className="bg-gradient-to-r from-green-500 via-blue-500 to-purple-500 bg-clip-text text-transparent">projects</span>
           </h1>
         </div>
 
@@ -27,8 +29,9 @@ export default function ProjectsPage() {
               className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
             >
               {/* Image - Left Side */}
-              <Link href={`/projects/${project.slug}`} className="group">
-                <div className="relative aspect-video rounded-lg overflow-hidden border border-white/10 hover:border-white/20 transition-all">
+              <Link href={`/projects/${project.slug}`}
+               className="group p-1 bg-white/10 border border-white/50 rounded-lg">
+                <div className="relative aspect-video rounded-lg overflow-hidden transition-all">
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -36,7 +39,6 @@ export default function ProjectsPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     unoptimized
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               </Link>
 
