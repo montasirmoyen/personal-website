@@ -6,6 +6,7 @@ import Link from "next/link";
 import { getProjectBySlug } from "@/lib/projects";
 import { ExternalLink, Github, ChevronDown, ChevronUp } from "lucide-react";
 import { use, useState } from "react";
+import TopBarBackground from "@/components/TopBarBackground"
 
 interface ProjectDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -35,7 +36,9 @@ function ProjectDetailContent({ project }: { project: any }) {
 
   return (
     <div className="pt-32 pb-24 px-4 md:px-6">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-5xl mx-auto">
+        <TopBarBackground imageUrl={project.image} />
+
         {/* Header Section */}
         <div className="mb-12">
           <div className="flex items-start justify-between gap-4 mb-6">
