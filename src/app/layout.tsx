@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Lato } from "next/font/google";
+import { Lato, Forum } from "next/font/google";
 import "./globals.css";
-import Footer from "../components/footer";
-import TopBar from "../components/top-bar";
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 const lato = Lato({
   variable: "--font-lato",
@@ -10,8 +10,14 @@ const lato = Lato({
   weight: ["400", "700"],
 });
 
+const forum = Forum({
+  variable: "--font-forum",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
 export const metadata: Metadata = {
-  title: "Montasir Moyen",
+  title: "Montasir Moyen - Software Developer",
   description: "Personal Website",
 };
 
@@ -21,12 +27,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head />
-      <body className={`${lato.variable} antialiased`}>
-        <div className="min-h-screen flex flex-col relative">
-          <TopBar />
-          {children}
+      <body className={`${lato.variable} ${forum.variable} antialiased bg-black overflow-x-hidden`}>
+        <div className="min-h-screen flex flex-col relative overflow-visible">
+          <NavBar />
+          <main className="flex-1 overflow-visible">{children}</main>
           <Footer />
         </div>
       </body>

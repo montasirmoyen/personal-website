@@ -1,95 +1,170 @@
-import React from "react";
-import DetailsCard from "../../components/details-card";
-import Background from "../../components/background";
-import { Hammer } from "lucide-react";
-import { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Montasir Moyen | Projects",
-  description: "A showcase of projects created by Montasir Moyen.",
-};
+import Image from "next/image";
+import Link from "next/link";
+import { projects, getTechIcon } from "@/lib/projects";
+import { ExternalLink, Github } from "lucide-react";
+import TopBarBackground from "@/components/TopBarBackground";
+import { TextAnimate } from "@/components/ui/text-animate"
+import { BackgroundGradient } from "@/components/ui/background-gradient"
+import AvailableForRoles from "@/components/AvailableForRoles"
 
-export default function ProjectPage() {
+export default function ProjectsPage() {
   return (
-    <Background backgroundImage="/background.jpg">
-      <>
-        <div className="flex items-center gap-2">
-          <Hammer className="w-4 h-4 sm:w-5 sm:h-5" />
-          <h1 className="text-lg sm:text-xl font-bold">Projects</h1>
+    <div className="pt-32 px-4 md:px-6">
+      <TopBarBackground transparency={25} imageUrl="dark-wapper.jpg" />
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="mb-2">
+          <p className="text-sm text-white/50 uppercase mb-2">
+            FEATURED PROJECT RESEARCH
+          </p>
+          <div className="flex flex-col items-start">
+            <TextAnimate
+              animation="blurInUp"
+              by="character"
+              className="text-5xl md:text-6xl font-bold font-hero"
+            >
+              Curated project
+            </TextAnimate>
+
+            <TextAnimate
+              animation="slideLeft"
+              by="character"
+              className="text-5xl md:text-6xl font-bold font-hero 
+               bg-gradient-to-r from-blue-500 to-purple-500 
+               bg-clip-text text-transparent animate-gradient 
+               bg-[length:200%_auto]">
+              showcase.
+            </TextAnimate>
+          </div>
         </div>
 
-        <DetailsCard
-          logoSrc="/lx.png"
-          alt="Luxury Transport logo"
-          title="Luxury Transport"
-          subtitle="Full-Stack Web Development"
-          dateRange="Nov 2025 — Present"
-          bullets={[
-            "Reserve luxury transportation services within the Greater Boston Area, and modify/cancel reservations with ease.",
-            "Select from a fleet of luxury vehicles from minivans, SUVs, and sedans.",
-            "Supports payment methods including card, PayPal and Venmo.",
-          ]}
-          buttons={{
-            "Visit Website": "https://luxury-transport.vercel.app",
-            "View Source Code": "https://github.com/montasirmoyen/luxury-transport"
-          }}
-          languages={["React", "TypeScript", "Firebase"]}
-        />
+        {/* Projects List */}
+        <div className="mt-12 space-y-10 md:space-y-20">
+          {projects.map((project, index) => (
+            <div
+              key={project.slug}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+            >
+              {/* Image - Left Side */}
+              <BackgroundGradient>
+                <Link href={`/projects/${project.slug}`}
+                  className="group">
+                  <div className="aspect-video overflow-hidden transition-all">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="rounded-3xl object-cover"
+                      unoptimized
+                    />
+                  </div>
+                </Link>
+              </BackgroundGradient>
 
-        <DetailsCard
-          logoSrc="/mps.png"
-          alt="MPS logo"
-          title="MPS"
-          subtitle="Game Development"
-          dateRange="Aug 2021 — Dec 2023"
-          bullets={[
-            "Achieved over 3,500+ concurrent players and 500,000+ monthly active players.",
-            "Founded the growing parent company, gaining 160,000+ official members and producing more successful spin-offs of the game.",
-            "Generated over 6 figures in net revenue while still maintaining a generous passive income thanks to various methods of monetization and social media influencer partner deals.",
-          ]}
-          buttons={{
-            "View Game": "https://www.roblox.com/games/13436905139/MPS-4-a-side",
-          }}
-          languages={["Lua", "JavaScript", "RBLX Studio", "JSON"]}
-        />
+              {/* Content - Right Side */}
+              <div className="space-y-4">
+                <div>
+                  <p className="text-sm text-gray-400 uppercase mb-2">
+                    {project.category}
+                  </p>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-3">
+                    {project.title}
+                  </h2>
+                  <p className="text-gray-300">
+                    {project.description}
+                  </p>
+                </div>
 
-        <DetailsCard
-          logoSrc="/github.png"
-          alt="GitHub logo"
-          title="Fragrance Catalog"
-          subtitle="Front-End Web Development"
-          dateRange="Sep 2025 — Present"
-          location="Work In Progress"
-          bullets={[
-            "Browse and filter fragrances by 25+ notes, the most luxurious brands and seasons.",
-            "Welcoming community contributions, especially to expand the curated fragrance dataset.",
-          ]}
-          buttons={{
-            "Visit Website": "https://fragrance-catalog.vercel.app/",
-            "View Source Code": "https://github.com/montasirmoyen/fragrance-catalog"
-          }}
-          languages={["React", "TypeScript", "JavaScript"]}
-        />
+                {/* Bullet Points */}
+                <ul className="space-y-2">
+                  {project.bullets.map((bullet, i) => (
+                    <li key={i} className="flex items-start gap-2 text-gray-300">
+                      <span className="">•</span>
+                      <span className="text-sm">{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
 
-        <DetailsCard
-          logoSrc="/github.png"
-          alt="GitHub logo"
-          title="Enhanceme"
-          subtitle="Full-Stack Web Development"
-          dateRange="Sep 2025 — Present"
-          location="Work In Progress"
-          bullets={[
-            "Enhances and strengthens resumes, providing tailored suggestions for improvement.",
-            "Fine-tuned AI model to act as a resume expert and analyze resume content more effectively.",
-            "Complies with Applicant Tracking System (ATS) standards to increase interview chances.",
-          ]}
-          buttons={{
-            "Visit Website": "https://enhanceme.vercel.app/",
-            "View Source Code": "https://github.com/montasirmoyen/enhanceme"
-          }}
-          languages={["React", "TypeScript", "Node.js", "MongoDB"]}
-        />
-      </>
-    </Background>
+                {/* Technologies */}
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {project.technologies.map((tech) => {
+                    const iconPath = getTechIcon(tech);
+                    return (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
+                      >
+                        {iconPath && (
+                          <Image
+                            src={iconPath}
+                            alt={tech}
+                            width={14}
+                            height={14}
+                            className="object-contain"
+                            unoptimized
+                          />
+                        )}
+                        {tech}
+                      </span>
+                    );
+                  })}
+                </div>
+
+                {/* Links */}
+                <div className="flex items-center gap-4 pt-2">
+                  {project.liveUrl && (
+                    <Link
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
+                    >
+                      <ExternalLink size={16} />
+                      Visit Website
+                    </Link>
+                  )}
+                  {project.gameUrl && (
+                    <Link
+                      href={project.gameUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
+                    >
+                      <ExternalLink size={16} />
+                      View Game
+                    </Link>
+                  )}
+                  {project.githubUrl && (
+                    <Link
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
+                    >
+                      <Github size={16} />
+                      View Source Code
+                    </Link>
+                  )}
+                </div>
+
+                {/* Date */}
+                <p className="text-xs text-gray-500 pt-2">
+                  {project.date}
+                  {project.status === "in-progress" && (
+                    <span className="ml-2 px-2 py-0.5 rounded bg-yellow-500/20 text-yellow-500">
+                      Work In Progress
+                    </span>
+                  )}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <AvailableForRoles/>
+    </div>
   );
 }
