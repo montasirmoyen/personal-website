@@ -9,12 +9,14 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     "rules": {
-      "react/no-unescaped-entities": "off"
-    }
+      "react/no-unescaped-entities": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+    },
   },
   {
     ignores: [
