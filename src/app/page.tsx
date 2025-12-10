@@ -116,7 +116,7 @@ export default function Home() {
             color="#ffffff"
             refresh
           />
-          <Globe className="scale-150 top-50 md:scale-250 md:top-100" />
+          <Globe className="lg:scale-150 lg:top-60 scale-150 top-50 md:scale-250 md:top-100" />
           <div className="pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_200%,rgba(0,0,0,0.2),rgba(255,255,255,0))]" />
         </div>
 
