@@ -24,12 +24,8 @@ const files = [
     body: "A full-stack luxury transportation booking website that handles reservations, cancellation and more.",
   },
   {
-    name: "Enhanceme",
-    body: "Scalable Vector Graphics is an Extensible Markup Language-based vector image format for two-dimensional graphics with support for interactivity and animation.",
-  },
-  {
     name: "Fragrance Catalog",
-    body: "GPG keys are used to encrypt and decrypt email, files, directories, and whole disk partitions and to authenticate messages.",
+    body: "Browse fragrances and sort over 25+ notes. Research about the specifics and find your most suitable scent.",
   }
 ]
 
