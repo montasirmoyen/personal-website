@@ -27,13 +27,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head />
-      <body className={`${lato.variable} ${forum.variable} antialiased bg-black/95`}>
-        <div className="min-h-screen flex flex-col relative">
+      <body className={`${lato.variable} ${forum.variable} antialiased bg-black overflow-x-hidden`}>
+        <div className="min-h-screen flex flex-col relative overflow-visible">
           <NavBar />
-          <main className="flex-1">{children}</main>
-          
+          <main className="flex-1 overflow-visible">{children}</main>
+          <Footer />
         </div>
       </body>
     </html>

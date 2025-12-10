@@ -418,34 +418,34 @@ const TextAnimateBase = ({
       animate={hasEnteredView || !startOnView ? "show" : "hidden"}
       className={cn("whitespace-pre-wrap", className)}
       viewport={{
-        once,
-        margin: "-100px",
-        amount: 0.01,
+      once,
+      margin: "-100px",
+      amount: 0.01,
       }}
-      onAnimationStart={(definition) => {
-        // Track when animation starts to "show" state
-        if (definition === "show" && !hasEnteredView) {
-          setHasEnteredView(true)
-        }
+      onAnimationStart={(definition?: string) => {
+      // Track when animation starts to "show" state
+      if (definition === "show" && !hasEnteredView) {
+        setHasEnteredView(true)
+      }
       }}
       aria-label={accessible ? children : undefined}
-      {...props}
+      {...(props as MotionProps)}
     >
       {accessible && <span className="sr-only">{children}</span>}
-      {segments.map((segment, i) => (
-        <motion.span
-          key={`${by}-${i}-${segment.length}`}
-          variants={finalVariants.item}
-          custom={i * staggerTimings[by]}
-          className={cn(
-            by === "line" ? "block" : "inline-block whitespace-pre",
-            by === "character" && "",
-            segmentClassName
-          )}
-          aria-hidden={accessible ? true : undefined}
-        >
-          {segment}
-        </motion.span>
+      {segments.map((segment: string, i: number) => (
+      <motion.span
+        key={`${by}-${i}-${segment.length}`}
+        variants={finalVariants.item as Variants}
+        custom={i * staggerTimings[by]}
+        className={cn(
+        by === "line" ? "block" : "inline-block whitespace-pre",
+        by === "character" && "",
+        segmentClassName
+        )}
+        aria-hidden={accessible ? true : undefined}
+      >
+        {segment}
+      </motion.span>
       ))}
     </MotionComponent>
   )

@@ -2,32 +2,49 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { Search } from "lucide-react";
-import { useState } from "react";
-import { ShineBorder } from "@/components/ui/shine-border"
+import { usePathname, useRouter } from "next/navigation";
+import { LimelightNav, NavItem } from "@/components/ui/navbar"
 
 export default function NavBar() {
     const pathname = usePathname();
+    const router = useRouter();
 
-    const isActive = (path: string) => {
-        if (path === "/") {
-            return pathname === "/";
-        }
-        return pathname.startsWith(path);
+    const navItems: NavItem[] = [
+        { 
+            id: 'home', 
+            label: 'Home',
+            onClick: () => router.push('/')
+        },
+        { 
+            id: 'about', 
+            label: 'About',
+            onClick: () => router.push('/about')
+        },
+        { 
+            id: 'projects', 
+            label: 'Projects',
+            onClick: () => router.push('/projects')
+        },
+    ];
+
+    const getActiveIndex = () => {
+        if (pathname === "/") return 0;
+        if (pathname.startsWith("/about")) return 1;
+        if (pathname.startsWith("/projects")) return 2;
+        return 0;
     };
 
     return (
         <>
-            <div className="backdrop-blur-sm pointer-events-none fixed left-0 z-40 w-full select-none from-transparent to-black dark:to-[#0a0a0aa4] bg-gradient-to-t" style={{
+            <div className="bg-black/25 backdrop-blur-lg pointer-events-none fixed left-0 z-40 w-full select-none from-transparent to-[#0a0a0aa4] bg-gradient-to-t" style={{
                 top: 0,
                 height: 150,
                 maskImage: 'linear-gradient(to bottom, black 50%, transparent)',
-                WebkitBackdropFilter: 'blur(5px)',
-                backdropFilter: 'blur(5px)',
+                WebkitBackdropFilter: 'blur(2px)',
+                backdropFilter: 'blur(2px)',
             }}></div>
             <nav className="fixed inset-x-0 top-4 z-50 px-4 md:px-6">
-                <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+                <div className="max-w-7xl mx-auto flex items-center justify-center gap-6">
                     {/* Logo */}
                     <Link href="/" className="flex-shrink-0">
                         <Image
@@ -39,27 +56,10 @@ export default function NavBar() {
                         />
                     </Link>
 
-                    {/* Navigation Bar */}
-                    <div className="backdrop-blur-sm flex items-center gap-1 px-1 py-1 rounded-full bg-transparent">
-                        <ShineBorder shineColor={["#ffffffff"]} />
-
-                        <div className="flex items-center gap-5 text-sm text-white">
-                            <NavLink href="/" isActive={isActive("/")}>
-                                Home
-                            </NavLink>
-                            <NavLink href="/about" isActive={isActive("/about")}>
-                                About
-                            </NavLink>
-                            <NavLink href="/projects" isActive={isActive("/projects")}>
-                                Projects
-                            </NavLink>
-                        </div>
-                    </div>
-
-                    {/* Search Icon */}
-                    <button className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-transparent border border-white/10 hover:bg-white/20 transition-colors">
-                        <Search size={18} className="text-white" />
-                    </button>
+                    <LimelightNav
+                        items={navItems}
+                        activeIndex={getActiveIndex()}
+                    />
                 </div>
             </nav>
         </>

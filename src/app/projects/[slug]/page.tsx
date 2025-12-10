@@ -3,10 +3,17 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { getProjectBySlug } from "@/lib/projects";
-import { ExternalLink, Github, ChevronDown, ChevronUp } from "lucide-react";
-import { use, useState } from "react";
+import { getProjectBySlug, getTechIcon } from "@/lib/projects";
+import { ExternalLink, Github } from "lucide-react";
+import { use } from "react";
 import TopBarBackground from "@/components/TopBarBackground"
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from '@/components/animate-ui/components/radix/accordion';
+import AvailableForRoles from "@/components/AvailableForRoles"
 
 interface ProjectDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -24,18 +31,9 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
 }
 
 function ProjectDetailContent({ project }: { project: any }) {
-  const [expandedFeatures, setExpandedFeatures] = useState<number[]>([]);
-
-  const toggleFeature = (index: number) => {
-    setExpandedFeatures((prev) =>
-      prev.includes(index)
-        ? prev.filter((i) => i !== index)
-        : [...prev, index]
-    );
-  };
 
   return (
-    <div className="pt-32 pb-24 px-4 md:px-6">
+    <div className="pt-32 px-4 md:px-6">
       <div className="max-w-5xl mx-auto">
         <TopBarBackground imageUrl={project.image} />
 
@@ -63,14 +61,27 @@ function ProjectDetailContent({ project }: { project: any }) {
 
           {/* Tech Stack Tags */}
           <div className="flex flex-wrap gap-2 mb-4">
-            {project.technologies.map((tech: string) => (
-              <span
-                key={tech}
-                className="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10 text-gray-300"
-              >
-                {tech}
-              </span>
-            ))}
+            {project.technologies.map((tech: string) => {
+              const iconPath = getTechIcon(tech);
+              return (
+                <span
+                  key={tech}
+                  className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
+                >
+                  {iconPath && (
+                    <Image
+                      src={iconPath}
+                      alt={tech}
+                      width={14}
+                      height={14}
+                      className="object-contain"
+                      unoptimized
+                    />
+                  )}
+                  {tech}
+                </span>
+              );
+            })}
           </div>
 
           {/* Date and Links */}
@@ -138,47 +149,54 @@ function ProjectDetailContent({ project }: { project: any }) {
             {/* Key Features */}
             <section id="key-features">
               <h2 className="text-2xl font-bold mb-6">Key Features</h2>
-              <div className="space-y-4">
+              <Accordion type="multiple">
                 {project.keyFeatures.map((feature: any, index: number) => (
-                  <div
+                  <AccordionItem
                     key={index}
-                    className="border border-white/10 rounded-lg overflow-hidden"
+                    value={`feature-${index}`}
+                    className="border-b border-white/10 overflow-hidden"
                   >
-                    <button
-                      onClick={() => toggleFeature(index)}
-                      className="w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors text-left"
-                    >
+                    <AccordionTrigger
+                      className="w-full flex items-center
+                       justify-between p-4 
+                    hover:bg-white/5 transition-colors text-left">
                       <h3 className="font-semibold text-white">{feature.title}</h3>
-                      {expandedFeatures.includes(index) ? (
-                        <ChevronUp size={20} className="text-gray-400" />
-                      ) : (
-                        <ChevronDown size={20} className="text-gray-400" />
-                      )}
-                    </button>
-                    {expandedFeatures.includes(index) && (
-                      <div className="p-4 pt-0 border-t border-white/10">
-                        <p className="text-gray-300 leading-relaxed">
-                          {feature.description}
-                        </p>
-                      </div>
-                    )}
-                  </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="p-4 border-t border-white/10">
+                      <p className="text-gray-300 leading-relaxed">
+                        {feature.description}
+                      </p>
+                    </AccordionContent>
+                  </AccordionItem>
                 ))}
-              </div>
+              </Accordion>
             </section>
 
             {/* Tech Stack */}
             <section id="tech-stack">
               <h2 className="text-2xl font-bold mb-4">Tech Stack</h2>
               <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech: string) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300"
-                  >
-                    {tech}
-                  </span>
-                ))}
+                {project.technologies.map((tech: string) => {
+                  const iconPath = getTechIcon(tech);
+                  return (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
+                    >
+                      {iconPath && (
+                        <Image
+                          src={iconPath}
+                          alt={tech}
+                          width={14}
+                          height={14}
+                          className="object-contain"
+                          unoptimized
+                        />
+                      )}
+                      {tech}
+                    </span>
+                  );
+                })}
               </div>
             </section>
 
@@ -187,7 +205,7 @@ function ProjectDetailContent({ project }: { project: any }) {
               <h2 className="text-2xl font-bold mb-6">Challenges & Learnings</h2>
               <div className="space-y-6">
                 {project.challenges.map((challenge: any, index: number) => (
-                  <div key={index} className="border-l-2 border-green-500 pl-4">
+                  <div key={index} className="border-l-2 border-yellow-500 pl-4">
                     <h3 className="font-semibold text-white mb-2">
                       {challenge.title}
                     </h3>
@@ -248,7 +266,8 @@ function ProjectDetailContent({ project }: { project: any }) {
           </div>
         </div>
       </div>
+
+      <AvailableForRoles />
     </div>
   );
 }
-
