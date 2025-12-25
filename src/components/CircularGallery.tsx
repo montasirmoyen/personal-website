@@ -504,6 +504,10 @@ class App {
         image: `/video-games.jpg`,
         text: 'video games'
       },
+      {
+        image: `/anime.jpg`,
+        text: 'anime'
+      },
     ];
     const galleryItems = items && items.length ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);
