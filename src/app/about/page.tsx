@@ -120,9 +120,9 @@ export default function About() {
           subtitle="Dec 2025 - Present"
           description="Boston, MA, USA - Hybrid - Software Engineering Intern"
           features={[
-            "Consulted internal software improvements to support web traffic from Boston Airport Cab’s 5M+ potential annual riders",
-            "Conducted quality assurance testing to minimize bugs across 50+ daily reservation requests",
-            "Developed practical skills in full-stack development and learning industry practices",
+            "Programmed and assisted in the full-stack development of their new and upcoming website",
+            "Consulted internal software improvements to support web traffic from Boston Airport Cab’s 5M+ annual riders",
+            "Conducted quality assurance testing to minimize bugs across 50+ daily reservation requests"
           ]}
           image="/bac.png"
         />
