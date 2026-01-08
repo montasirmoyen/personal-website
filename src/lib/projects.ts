@@ -134,7 +134,7 @@ export const projects: Project[] = [
     challenges: [
       {
         title: "Fragrance Research",
-        description: "I've only been really into fragrances since around 2023, when the trendiness was just starting to peak. I had decent knowledge on fragrances, but of course you",
+        description: "I've only been really into fragrances since around 2023, when the trendiness was just starting to peak. I had decent knowledge on fragrances, but of course you can never know enough. I had to do extensive research on various fragrance notes to curate a decent dataset for the project.",
       },
       {
         title: "Product Images",
