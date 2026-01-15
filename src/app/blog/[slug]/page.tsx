@@ -35,7 +35,7 @@ function BlogDetailContent({ blog }: { blog: any }) {
   return (
     <div className="pt-32 px-4 md:px-6">
       <div className="max-w-5xl mx-auto">
-        <TopBarBackground imageUrl={blog.image} />
+        <TopBarBackground imageUrl={blog.image} transparency={25} />
 
         {/* Header Section */}
         <div className="mb-12">
@@ -122,19 +122,6 @@ function BlogDetailContent({ blog }: { blog: any }) {
                 View Game
               </Link>
             )}
-          </div>
-        </div>
-
-        {/* Project Image */}
-        <div className="mb-16 rounded-lg overflow-hidden border border-white/10">
-          <div className="relative aspect-video">
-            <Image
-              src={blog.image}
-              alt={blog.title}
-              fill
-              className="object-cover"
-              unoptimized
-            />
           </div>
         </div>
 
