@@ -48,15 +48,17 @@ function ProjectDetailContent({ project }: { project: any }) {
                 {project.description}
               </p>
             </div>
-            <Link
-              href={project.liveUrl || project.gameUrl || "#"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-sm"
-            >
-              Check it out
-              <ExternalLink size={16} />
-            </Link>
+            {(project.liveUrl || project.gameUrl) && (
+              <Link
+                href={project.liveUrl || project.gameUrl || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-sm"
+              >
+                Check it out
+                <ExternalLink size={16} />
+              </Link>
+            )}
           </div>
 
           {/* Tech Stack Tags */}
@@ -136,41 +138,83 @@ function ProjectDetailContent({ project }: { project: any }) {
           </div>
         </div>
 
-        {/* Content Sections */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Main Content */}
-          <div className="lg:col-span-2 space-y-12">
-            {/* Overview */}
-            <section id="overview">
-              <h2 className="text-2xl font-bold mb-4">Overview</h2>
-              <p className="text-gray-300 leading-relaxed">{project.overview}</p>
-            </section>
+         <div className="lg:col-span-2 space-y-12">
+            {/* Overview or Blog Posts */}
+            {project.blogPosts ? (
+              <section id="blog-posts">
+                <h2 className="text-2xl font-bold mb-6">Blog Posts</h2>
+                <div className="space-y-8">
+                  {project.blogPosts.map((post: any, postIndex: number) => (
+                    <article key={postIndex} className="border-l-2 border-blue-500 pl-6">
+                      <div className="mb-4">
+                        <h3 className="text-xl font-semibold text-white mb-2">{post.title}</h3>
+                        <p className="text-sm text-gray-400">{post.date}</p>
+                      </div>
+                      <div className="space-y-0">
+                        {post.content.map((item: any, itemIndex: number) => {
+                          const marginClass = `mb-${item.marginBottom}`;
+                          if (item.type === "paragraph") {
+                            return (
+                              <p
+                                key={itemIndex}
+                                className={`text-gray-300 leading-relaxed ${marginClass}`}
+                              >
+                                {item.content}
+                              </p>
+                            );
+                          } else if (item.type === "bulletpoints") {
+                            return (
+                              <ul
+                                key={itemIndex}
+                                className={`list-disc list-inside space-y-2 text-gray-300 ${marginClass}`}
+                              >
+                                {item.content.map((bullet: string, bulletIndex: number) => (
+                                  <li key={bulletIndex}>{bullet}</li>
+                                ))}
+                              </ul>
+                            );
+                          }
+                          return null;
+                        })}
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ) : (
+              <section id="overview">
+                <h2 className="text-2xl font-bold mb-4">Overview</h2>
+                <p className="text-gray-300 leading-relaxed">{project.overview}</p>
+              </section>
+            )}
 
             {/* Key Features */}
-            <section id="key-features">
-              <h2 className="text-2xl font-bold mb-6">Key Features</h2>
-              <Accordion type="multiple">
-                {project.keyFeatures.map((feature: any, index: number) => (
-                  <AccordionItem
-                    key={index}
-                    value={`feature-${index}`}
-                    className="border-b border-white/10 overflow-hidden"
-                  >
-                    <AccordionTrigger
-                      className="w-full flex items-center
-                       justify-between p-4 
-                    hover:bg-white/5 transition-colors text-left">
-                      <h3 className="font-semibold text-white">{feature.title}</h3>
-                    </AccordionTrigger>
-                    <AccordionContent className="p-4 border-t border-white/10">
-                      <p className="text-gray-300 leading-relaxed">
-                        {feature.description}
-                      </p>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </section>
+            {project.keyFeatures && (
+              <section id="key-features">
+                <h2 className="text-2xl font-bold mb-6">Key Features</h2>
+                <Accordion type="multiple">
+                  {project.keyFeatures.map((feature: any, index: number) => (
+                    <AccordionItem
+                      key={index}
+                      value={`feature-${index}`}
+                      className="border-b border-white/10 overflow-hidden"
+                    >
+                      <AccordionTrigger
+                        className="w-full flex items-center
+                         justify-between p-4 
+                      hover:bg-white/5 transition-colors text-left">
+                        <h3 className="font-semibold text-white">{feature.title}</h3>
+                      </AccordionTrigger>
+                      <AccordionContent className="p-4 border-t border-white/10">
+                        <p className="text-gray-300 leading-relaxed">
+                          {feature.description}
+                        </p>
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </section>
+            )}
 
             {/* Tech Stack */}
             <section id="tech-stack">
@@ -201,70 +245,32 @@ function ProjectDetailContent({ project }: { project: any }) {
             </section>
 
             {/* Challenges & Learnings */}
-            <section id="challenges">
-              <h2 className="text-2xl font-bold mb-6">Challenges & Learnings</h2>
-              <div className="space-y-6">
-                {project.challenges.map((challenge: any, index: number) => (
-                  <div key={index} className="border-l-2 border-yellow-500 pl-4">
-                    <h3 className="font-semibold text-white mb-2">
-                      {challenge.title}
-                    </h3>
-                    <p className="text-gray-300 leading-relaxed">
-                      {challenge.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </section>
+            {project.challenges && (
+              <section id="challenges">
+                <h2 className="text-2xl font-bold mb-6">Challenges & Learnings</h2>
+                <div className="space-y-6">
+                  {project.challenges.map((challenge: any, index: number) => (
+                    <div key={index} className="border-l-2 border-yellow-500 pl-4">
+                      <h3 className="font-semibold text-white mb-2">
+                        {challenge.title}
+                      </h3>
+                      <p className="text-gray-300 leading-relaxed">
+                        {challenge.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
 
             {/* Outcome */}
-            <section id="outcome">
-              <h2 className="text-2xl font-bold mb-4">Outcome</h2>
-              <p className="text-gray-300 leading-relaxed">{project.outcome}</p>
-            </section>
+            {project.outcome && (
+              <section id="outcome">
+                <h2 className="text-2xl font-bold mb-4">Outcome</h2>
+                <p className="text-gray-300 leading-relaxed">{project.outcome}</p>
+              </section>
+            )}
           </div>
-
-          {/* Sidebar - Table of Contents */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-32">
-              <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
-                On this page
-              </h3>
-              <nav className="space-y-2">
-                <a
-                  href="#overview"
-                  className="block text-sm text-gray-300 hover:text-white transition-colors py-1 scroll-smooth"
-                >
-                  Overview
-                </a>
-                <a
-                  href="#key-features"
-                  className="block text-sm text-gray-300 hover:text-white transition-colors py-1 scroll-smooth"
-                >
-                  Key Features
-                </a>
-                <a
-                  href="#tech-stack"
-                  className="block text-sm text-gray-300 hover:text-white transition-colors py-1 scroll-smooth"
-                >
-                  Tech Stack
-                </a>
-                <a
-                  href="#challenges"
-                  className="block text-sm text-gray-300 hover:text-white transition-colors py-1 scroll-smooth"
-                >
-                  Challenges & Learnings
-                </a>
-                <a
-                  href="#outcome"
-                  className="block text-sm text-gray-300 hover:text-white transition-colors py-1 scroll-smooth"
-                >
-                  Outcome
-                </a>
-              </nav>
-            </div>
-          </div>
-        </div>
       </div>
 
       <AvailableForRoles />
