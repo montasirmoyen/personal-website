@@ -11,16 +11,65 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
   gameUrl?: string;
-  overview: string;
-  keyFeatures: {
+  overview?: string;
+  blogPosts?: {
+    date: string;
+    title: string;
+    content: ({
+      type: "paragraph";
+      content: string;
+      marginBottom: number;
+    } | {
+      type: "bulletpoints";
+      content: string[];
+      marginBottom: number;
+    })[]
+  }[];
+  keyFeatures?: {
     title: string;
     description: string;
   }[];
-  challenges: {
+  challenges?: {
     title: string;
     description: string;
   }[];
-  outcome: string;
+  outcome?: string;
+}
+
+export interface Blog {
+  slug: string;
+  title: string;
+  category: string;
+  image: string;
+  date: string;
+  status: "completed" | "in-progress";
+  description: string;
+  technologies: string[];
+  githubUrl?: string;
+  liveUrl?: string;
+  gameUrl?: string;
+  blogPosts: {
+    date: string;
+    title: string;
+    content: ({
+      type: "paragraph";
+      content: string;
+      marginBottom: number;
+    } | {
+      type: "bulletpoints";
+      content: string[];
+      marginBottom: number;
+    })[]
+  }[];
+  keyFeatures?: {
+    title: string;
+    description: string;
+  }[];
+  challenges?: {
+    title: string;
+    description: string;
+  }[];
+  outcome?: string;
 }
 
 export const projects: Project[] = [
@@ -30,7 +79,7 @@ export const projects: Project[] = [
     category: "Full-Stack Web Development",
     image: "/luxtra-home.png",
     date: "Nov 2025 — Present",
-    status: "in-progress",
+    status: "completed",
     description: "Reserve luxury transportation services within the Greater Boston Area, and modify/cancel reservations with ease.",
     bullets: [
       "Reserve luxury transportation services within the Greater Boston Area, and modify/cancel reservations with ease.",
@@ -111,7 +160,7 @@ export const projects: Project[] = [
     category: "Front-End Web Development",
     image: "/fc-home.png",
     date: "Sep 2025 — Present",
-    status: "in-progress",
+    status: "completed",
     description: "Browse and filter fragrances by 25+ notes, the most luxurious brands and seasons.",
     bullets: [
       "Browse and filter fragrances by 25+ notes, the most luxurious brands and seasons.",
@@ -142,56 +191,77 @@ export const projects: Project[] = [
       },
     ],
     outcome: "The website has been deployed and is open source on GitHub. The platform provides an intuitive way to explore and discover fragrances.",
-  },
-  /*
-    {
-    slug: "enhanceme",
-    title: "Enhanceme",
-    category: "Full-Stack Web Development",
-    image: "/enhanceme-home.png",
-    date: "Sep 2025 — Present",
+  }
+];
+
+export const blogs: Blog[] = [
+  {
+    slug: "ramai",
+    title: "ramai",
+    category: "AI & App Development",
+    image: "/ramai-home.png",
+    date: "Jan 2026 — Present",
     status: "in-progress",
-    description: "Enhances and strengthens resumes, providing tailored suggestions for improvement.",
-    bullets: [
-      "Enhances and strengthens resumes, providing tailored suggestions for improvement.",
-      "Fine-tuned AI model to act as a resume expert and analyze resume content more effectively.",
-      "Complies with Applicant Tracking System (ATS) standards to increase interview chances.",
-    ],
-    technologies: ["React", "TypeScript", "Node.js"],
-    githubUrl: "https://github.com/montasirmoyen/enhanceme",
-    liveUrl: "https://enhanceme.vercel.app",
-    overview: "A demo AI resume wizard that can be fed a resume in a PDF/DOCX format and respond with intelligent suggestions to strengthen the resume.",
-    keyFeatures: [
+    description: "An application assisting Suffolk University students by aggregating professor information with an AI chatbot.",
+    technologies: ["TypeScript"],
+    blogPosts: [
       {
-        title: "AI-Powered Analysis",
-        description: "Receive an intelligent analysis from an AI model.",
+        date: "January 15, 2026",
+        title: "The Start",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            Actually, this is the start of the blog for this project.
+            I started planning the actual project a few days ago. 
+            I suppose the reason for starting this app in particular was because I was interested in creating my first AI integrated application.
+            But I also wanted something that Suffolk University students could potentially use in particular.
+            `,
+            marginBottom: 8
+          },
+          {
+            type: "paragraph",
+            content: `
+            Right now, I've already starting building the app, after a day or two of planning the architecure and determining the tech stack.
+            I've always had the bad habit of creating the name and logo of applications early, but wow, that part is really fun.
+            `,
+            marginBottom: 8
+          },
+          {
+            type: "paragraph",
+            content: `
+            But enough of that that, here's what I've done so far:
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "bulletpoints",
+            content: [
+              "Prototype AI chatbot. I've decided to use XiaomiMiMo's model called MiMo-V2-Flash. I like this model, because it's quite fast despite being inexpensive. But also because anything above this is overkill for this project, in my opinion.",
+              "Discover page, along with the search bar feature, which is the main component of the page. You can search for professors by their name, and it also has a filters button with department filters such as Computer Science, Mathematics, and Business.",
+              "Professor profile page, which displays the professor's information such as their name, department, average rating, and recent reviews from students.",
+            ],
+            marginBottom: 8
+          },
+          {
+            type: "paragraph",
+            content: `
+            I'll continue working on this in my free time, and I'll post updates here as I make more progress.
+            `,
+            marginBottom: 2
+          },
+        ],
       },
-      {
-        title: "ATS Compliance",
-        description: "Complies with the Applicant Tracking Systems which helps resumes get passed the job's resume scan."
-      },
-      {
-        title: "Tailored Suggestions",
-        description: "Detailed constructive suggestions based on what your resume lacks.",
-      },
-    ],
-    challenges: [
-      {
-        title: "AI Model Fine-Tuning",
-        description: "The AI model needed to be fine-tuned to the point where it was an expert at resume analyzing.",
-      },
-      {
-        title: "ATS Standards Integration",
-        description: "ATS compliance can sometimes be tricky especially in applications to a project like this.",
-      },
-    ],
-    outcome: "The platform helps users create ATS-compliant resumes with AI-powered insights. Anyone can use the source code and create their own AI resume wizard by plugging in their AI model and key to generate much more accurate and powerful responses.",
+    ]
   },
-    */
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);
+}
+
+export function getBlogBySlug(slug: string): Blog | undefined {
+  return blogs.find((blog) => blog.slug === slug);
 }
 
 export function getTechIcon(tech: string): string | null {
