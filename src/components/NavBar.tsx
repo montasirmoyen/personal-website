@@ -25,12 +25,18 @@ export default function NavBar() {
             label: 'Projects',
             onClick: () => router.push('/projects')
         },
+        { 
+            id: 'blog', 
+            label: 'Blog',
+            onClick: () => router.push('/blog')
+        },
     ];
 
     const getActiveIndex = () => {
         if (pathname === "/") return 0;
         if (pathname.startsWith("/about")) return 1;
         if (pathname.startsWith("/projects")) return 2;
+        if (pathname.startsWith("/blog")) return 3;
         return 0;
     };
 
