@@ -54,7 +54,7 @@ export default function CardFlip({
                         "[backface-visibility:hidden] [transform:rotateY(0deg)]",
                         "overflow-hidden rounded-2xl",
                         "bg-black",
-                        "border border-white/10",
+                        "border border-white/15",
                         "shadow-lg",
                         "transition-all duration-700",
                         "group-hover:shadow-xl",
@@ -133,7 +133,7 @@ export default function CardFlip({
                                 alt={title || "Card image"}
                                 fill
                                 unoptimized
-                                className="opacity-5 object-cover rounded-2xl"  // makes logo fill + transparent
+                                className={`opacity-8 object-cover rounded-2xl`}  // makes logo fill + transparent
                             />
                         </div>
                     )}
