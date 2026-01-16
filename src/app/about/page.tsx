@@ -117,7 +117,7 @@ export default function About() {
       <section className="gap-10 flex flex-col md:flex-row justify-center items-center py-12 px-4">
         <CardFlip
           title="SWE Intern @ Boston Airport Cab"
-          subtitle="Dec 2025 - Present"
+          subtitle="Dec 2025 - Jan 2026"
           description="Boston, MA, USA - Hybrid - Software Engineering Intern"
           features={[
             "Programmed and assisted in the full-stack development of their new and upcoming website",
