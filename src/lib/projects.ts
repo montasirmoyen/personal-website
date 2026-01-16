@@ -15,6 +15,7 @@ export interface Project {
   blogPosts?: {
     date: string;
     title: string;
+    borderColor: string;
     content: ({
       type: "paragraph";
       content: string;
@@ -51,6 +52,7 @@ export interface Blog {
   blogPosts: {
     date: string;
     title: string;
+    borderColor: string;
     content: ({
       type: "paragraph";
       content: string;
@@ -207,7 +209,8 @@ export const blogs: Blog[] = [
     blogPosts: [
       {
         date: "January 15, 2026",
-        title: "The Start",
+        title: "Inception",
+        borderColor: "#1aca75",
         content: [
           {
             type: "paragraph",
@@ -217,7 +220,7 @@ export const blogs: Blog[] = [
             I suppose the reason for starting this app in particular was because I was interested in creating my first AI integrated application.
             But I also wanted something that Suffolk University students could potentially use.
             `,
-            marginBottom: 8
+            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -252,9 +255,59 @@ export const blogs: Blog[] = [
           },
         ],
       },
+      {
+        date: "January 16, 2026",
+        title: "Motive",
+        borderColor: "#553adc",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            One of my friends told me this project didn't make sense to create because Google's AI search results or ChatGPT "does the same thing and better.”
+            I agreed and didn't argue with them, just gave them a shrug. Because I knew that this kind of mentality was a bit narrow and misses the point.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            The existence of similar projects by billion dollar companies shouldn't deter you from working on your own.
+            The goal, or my goal at least, isn't to compete with them.
+            It's to learn, build, and ultimately have fun in my free time because it's been my passion to do so.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            For me, this project was always about growing as a software developer.
+            Designing a system, integrating AI and working with real data, while also creating a general usage for students.
+            And honestly, if even one person uses and benefits from it, that's good enough for me.
+            Every project teaches you something, and for me, that's far more valuable than trying to measure yourself against tech giants.
+            `,
+            marginBottom: 4
+          }
+        ],
+      },
+      /*{
+        date: "January 16, 2026",
+        title: "Mutual Learning",
+        borderColor: "#c1b4ff",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            
+            `,
+            marginBottom: 4
+          }
+        ],
+      },*/
     ]
   },
 ];
+
+
 
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);
