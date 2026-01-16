@@ -132,7 +132,11 @@ function BlogDetailContent({ blog }: { blog: any }) {
               <h2 className="text-2xl font-bold mb-6">Development Journey</h2>
               <div className="space-y-8">
                 {blog.blogPosts.map((post: any, postIndex: number) => (
-                  <article key={postIndex} className="border-l-2 border-blue-500 pl-6">
+                  <article
+                    key={postIndex}
+                    className="border-l-2 pl-6"
+                    style={{ borderColor: post.borderColor?.startsWith("#") ? post.borderColor : `#${post.borderColor}` }}
+                  >
                     <div className="mb-4">
                       <h3 className="text-xl font-semibold text-white mb-2">{post.title}</h3>
                       <p className="text-sm text-gray-400">{post.date}</p>
