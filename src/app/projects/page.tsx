@@ -17,7 +17,7 @@ export default function ProjectsPage() {
         {/* Header */}
         <div className="mb-2">
           <p className="text-sm text-white/50 uppercase mb-2">
-            FEATURED PROJECT RESEARCH
+            FEATURED PROJECTS
           </p>
           <div className="flex flex-col items-start">
             <TextAnimate
@@ -35,7 +35,7 @@ export default function ProjectsPage() {
                bg-gradient-to-r from-blue-500 to-purple-500 
                bg-clip-text text-transparent animate-gradient 
                bg-[length:200%_auto]">
-              showcase.
+              showcases.
             </TextAnimate>
           </div>
         </div>
