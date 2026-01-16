@@ -7,10 +7,12 @@ import { Badge } from "@/components/ui/badge";
 import AvailableForRoles from "@/components/AvailableForRoles";
 import { TextAnimate } from "@/components/ui/text-animate"
 import { projects, getTechIcon } from "@/lib/projects";
+import TopBarBackground from "@/components/TopBarBackground";
 
 export default function BlogPage() {
     return (
         <div className="pt-32 px-4 md:px-6">
+            <TopBarBackground transparency={10} imageUrl="cones.jpeg" />
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="mb-10">
