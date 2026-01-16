@@ -215,14 +215,14 @@ export const blogs: Blog[] = [
             Actually, this is the start of the blog for this project.
             I started planning the actual project a few days ago. 
             I suppose the reason for starting this app in particular was because I was interested in creating my first AI integrated application.
-            But I also wanted something that Suffolk University students could potentially use in particular.
+            But I also wanted something that Suffolk University students could potentially use.
             `,
             marginBottom: 8
           },
           {
             type: "paragraph",
             content: `
-            Right now, I've already starting building the app, after a day or two of planning the architecure and determining the tech stack.
+            Right now, I've already started building the app, after a day or two of planning the architecture and determining the tech stack.
             I've always had the bad habit of creating the name and logo of applications early, but wow, that part is really fun.
             `,
             marginBottom: 8
@@ -230,14 +230,14 @@ export const blogs: Blog[] = [
           {
             type: "paragraph",
             content: `
-            But enough of that that, here's what I've done so far:
+            But enough of that, here's what I've done so far:
             `,
             marginBottom: 2
           },
           {
             type: "bulletpoints",
             content: [
-              "Prototype AI chatbot. I've decided to use XiaomiMiMo's model called MiMo-V2-Flash. I like this model, because it's quite fast despite being inexpensive. But also because anything above this is overkill for this project, in my opinion.",
+              "Prototype AI chatbot. I've decided to use XiaomiMiMo's MiMo-V2-Flash. I like this model because it's quite fast despite being inexpensive. But also because anything above this is overkill for this project.",
               "Discover page, along with the search bar feature, which is the main component of the page. You can search for professors by their name, and it also has a filters button with department filters such as Computer Science, Mathematics, and Business.",
               "Professor profile page, which displays the professor's information such as their name, department, average rating, and recent reviews from students.",
             ],
