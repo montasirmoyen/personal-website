@@ -19,6 +19,7 @@ export interface Project {
     content: ({
       type: "paragraph";
       content: string;
+      link?: string;
       marginBottom: number;
     } | {
       type: "bulletpoints";
@@ -56,6 +57,7 @@ export interface Blog {
     content: ({
       type: "paragraph";
       content: string;
+      link?: string;
       marginBottom: number;
     } | {
       type: "bulletpoints";
@@ -289,20 +291,93 @@ export const blogs: Blog[] = [
           }
         ],
       },
-      /*{
-        date: "January 16, 2026",
-        title: "Mutual Learning",
-        borderColor: "#c1b4ff",
+      {
+        date: "January 17, 2026",
+        title: "Audit",
+        borderColor: "#ff1285",
         content: [
           {
             type: "paragraph",
             content: `
-            
+            I like this border color.
+            Anyways, lately I've been auditing my AI's backend instead of adding new features.
+            I decided to halt feature work because I know that accuracy and trust matter a lot when it comes to RamAI's chatbot.
+            If the AI gives messy information or is unable to respond to certain questions, users will quickly lose trust and stop using it.
             `,
             marginBottom: 4
-          }
-        ],
-      },*/
+          },
+          {
+            type: "paragraph",
+            content: `
+            I have an opinion that you may or may not agree with: an AI that confidently says incorrect stuff is worse than one that says "I don't know".
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            So, I researched and came up with questions that real users would realistically ask the chatbot.
+            Then I asked those questions, recorded the responses, and analyzed them alongside a rating based on how well the AI responded.
+            I wanted to see where the system actually breaks under real questions.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            What surprised me most is how good the AI responded to many of the questions when the intent was clear.
+            It's surreal to witness something you created work in a way like this.
+            You honestly have to experience it if you haven't.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Of course, it wasn't all perfect.
+            There were small bugs, like case sensitivity and prompt boundary issues, that caused some big perception problems.
+            I also noticed I was asking the AI questions that aren't really represented in the data, and I'm still not sure how I want to handle those yet.
+            There were also weird bracket artifacts leaking into responses, along with a JSON/syntax error tied to a specific (or maybe unspecific) intent.
+            One response in particular was amusing to me, where the AI tried to be safe and helpful at the same time, then ended up contradicting itself.
+            You can find that response at the end of this blog post in the promptAccuracy.md file, question 5, where I asked about student reviews on a professor.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Overall, there are strong protections against AI hallucinations in the backend.
+            Department scoping is mostly working as intended.
+            My ranking logic is producing genuinely useful results.
+            Auditing all of this has also made debugging way easier than blindly guessing what to fix.
+            `,
+            marginBottom: 8
+          },
+          {
+            type: "paragraph",
+            content: `
+            If you're looking to build an AI system like this, make sure prompt engineering does half the work, and let backend constraints do the heavy lifting.
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "paragraph",
+            content: `
+            promptAccuracy.md
+            `,
+            link: "https://drive.google.com/file/d/1sVkUzfep1-FFfIDjQXQkW4monR5i5TO3/view?usp=drive_link",
+            marginBottom: 1
+          },
+          {
+            type: "paragraph",
+            content: `
+            promptAccuracyFollowUp.md
+            `,
+            link: "https://drive.google.com/file/d/15gJhxOkPVPc-JQceWjUJw0fEup5Wi218/view?usp=drive_link",
+            marginBottom: 2
+          },
+        ]
+      }
     ]
   },
 ];
