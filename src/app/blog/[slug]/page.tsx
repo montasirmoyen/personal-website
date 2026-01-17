@@ -126,136 +126,91 @@ function BlogDetailContent({ blog }: { blog: any }) {
         </div>
 
         {/* Main Content */}
-          <div className="lg:col-span-2 space-y-12">
-            {/* Blog Posts */}
-            <section id="blog-posts">
-              <h2 className="text-2xl font-bold mb-6">Development Journey</h2>
-              <div className="space-y-8">
-                {blog.blogPosts.map((post: any, postIndex: number) => (
-                  <article
-                    key={postIndex}
-                    className="border-l-2 pl-6"
-                    style={{ borderColor: post.borderColor?.startsWith("#") ? post.borderColor : `#${post.borderColor}` }}
+        <div className="lg:col-span-2 space-y-12">
+          {/* Blog Posts */}
+          <section id="blog-posts">
+            <h2 className="text-2xl font-bold mb-6">Development Blog Posts</h2>
+            <div className="space-y-8">
+              {blog.blogPosts.map((post: any, postIndex: number) => (
+                <article
+                  key={postIndex}
+                  className="border-l-2 pl-6"
+                  style={{ borderColor: post.borderColor?.startsWith("#") ? post.borderColor : `#${post.borderColor}` }}
+                >
+                  <div className="mb-4">
+                    <h3 className="text-xl font-semibold text-white mb-2">{post.title}</h3>
+                    <p className="text-sm text-gray-400">{post.date}</p>
+                  </div>
+                  <div className="space-y-0">
+                    {post.content.map((item: any, itemIndex: number) => {
+                      const marginClass = `mb-${item.marginBottom}`;
+                        const content = (
+                        <>
+                          {item.type === "paragraph" && (
+                          <p className={`${item.link ? 'text-blue-500' : 'text-gray-300'} leading-relaxed ${marginClass}`}>
+                            {item.content}
+                          </p>
+                          )}
+                          {item.type === "bulletpoints" && (
+                          <ul className={`list-disc list-inside space-y-2 ${item.link ? 'text-blue-500' : 'text-gray-300'} ${marginClass}`}>
+                            {item.content.map((bullet: string, bulletIndex: number) => (
+                            <li key={bulletIndex}>{bullet}</li>
+                            ))}
+                          </ul>
+                          )}
+                        </>
+                        );
+
+                      if (item.link) {
+                        return (
+                          <Link
+                            key={itemIndex}
+                            href={item.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-500 underline transition-colors"
+                          >
+                            {content}
+                          </Link>
+                        );
+                      }
+
+                      return <div key={itemIndex}>{content}</div>;
+                    })}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          {/* Tech Stack */}
+          <section id="tech-stack">
+            <h2 className="text-2xl font-bold mb-4">Tech Stack</h2>
+            <div className="flex flex-wrap gap-2">
+              {blog.technologies.map((tech: string) => {
+                const iconPath = getTechIcon(tech);
+                return (
+                  <span
+                    key={tech}
+                    className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
                   >
-                    <div className="mb-4">
-                      <h3 className="text-xl font-semibold text-white mb-2">{post.title}</h3>
-                      <p className="text-sm text-gray-400">{post.date}</p>
-                    </div>
-                    <div className="space-y-0">
-                      {post.content.map((item: any, itemIndex: number) => {
-                        const marginClass = `mb-${item.marginBottom}`;
-                        if (item.type === "paragraph") {
-                          return (
-                            <p 
-                              key={itemIndex} 
-                              className={`text-gray-300 leading-relaxed ${marginClass}`}
-                            >
-                              {item.content}
-                            </p>
-                          );
-                        } else if (item.type === "bulletpoints") {
-                          return (
-                            <ul 
-                              key={itemIndex} 
-                              className={`list-disc list-inside space-y-2 text-gray-300 ${marginClass}`}
-                            >
-                              {item.content.map((bullet: string, bulletIndex: number) => (
-                                <li key={bulletIndex}>{bullet}</li>
-                              ))}
-                            </ul>
-                          );
-                        }
-                        return null;
-                      })}
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </section>
-
-            {/* Key Features */}
-            {blog.keyFeatures && (
-              <section id="key-features">
-                <h2 className="text-2xl font-bold mb-6">Key Features</h2>
-                <Accordion type="multiple">
-                  {blog.keyFeatures.map((feature: any, index: number) => (
-                    <AccordionItem
-                      key={index}
-                      value={`feature-${index}`}
-                      className="border-b border-white/10 overflow-hidden"
-                    >
-                      <AccordionTrigger
-                        className="w-full flex items-center
-                         justify-between p-4 
-                      hover:bg-white/5 transition-colors text-left">
-                        <h3 className="font-semibold text-white">{feature.title}</h3>
-                      </AccordionTrigger>
-                      <AccordionContent className="p-4 border-t border-white/10">
-                        <p className="text-gray-300 leading-relaxed">
-                          {feature.description}
-                        </p>
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </section>
-            )}
-
-            {/* Tech Stack */}
-            <section id="tech-stack">
-              <h2 className="text-2xl font-bold mb-4">Tech Stack</h2>
-              <div className="flex flex-wrap gap-2">
-                {blog.technologies.map((tech: string) => {
-                  const iconPath = getTechIcon(tech);
-                  return (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
-                    >
-                      {iconPath && (
-                        <Image
-                          src={iconPath}
-                          alt={tech}
-                          width={14}
-                          height={14}
-                          className="object-contain"
-                          unoptimized
-                        />
-                      )}
-                      {tech}
-                    </span>
-                  );
-                })}
-              </div>
-            </section>
-
-            {/* Challenges & Learnings */}
-            {blog.challenges && (
-              <section id="challenges">
-                <h2 className="text-2xl font-bold mb-6">Challenges & Learnings</h2>
-                <div className="space-y-6">
-                  {blog.challenges.map((challenge: any, index: number) => (
-                    <div key={index} className="border-l-2 border-yellow-500 pl-4">
-                      <h3 className="font-semibold text-white mb-2">
-                        {challenge.title}
-                      </h3>
-                      <p className="text-gray-300 leading-relaxed">
-                        {challenge.description}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* Outcome */}
-            {blog.outcome && (
-              <section id="outcome">
-                <h2 className="text-2xl font-bold mb-4">Outcome</h2>
-                <p className="text-gray-300 leading-relaxed">{blog.outcome}</p>
-              </section>
-            )}
-          </div>
+                    {iconPath && (
+                      <Image
+                        src={iconPath}
+                        alt={tech}
+                        width={14}
+                        height={14}
+                        className="object-contain"
+                        unoptimized
+                      />
+                    )}
+                    {tech}
+                  </span>
+                );
+              })}
+            </div>
+          </section>
+        </div>
       </div>
 
       <AvailableForRoles />
