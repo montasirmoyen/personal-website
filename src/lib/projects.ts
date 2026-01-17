@@ -356,9 +356,17 @@ export const blogs: Blog[] = [
           {
             type: "paragraph",
             content: `
-            If you're looking to build an AI system like this, make sure prompt engineering does half the work, and let backend constraints do the heavy lifting.
+            If you're looking to build a similiar AI system, let half the work be done by the prompt engineering for the planner and answer.
+            The backend filters and constraints do the rest, based on the intents from the planner.
             `,
-            marginBottom: 2
+            marginBottom: 8
+          },
+          {
+            type: "paragraph",
+            content: `
+            Below are the audit files in markdown which contain stuff like questions asked to the AI, notes and detailed analyses.
+            `,
+            marginBottom: 1
           },
           {
             type: "paragraph",
@@ -377,7 +385,23 @@ export const blogs: Blog[] = [
             marginBottom: 2
           },
         ]
+      },
+      /*
+      {
+        date: "January 18, 2026",
+        title: "-",
+        borderColor: "#ffffff",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            
+            `,
+            marginBottom: 4
+          },
+        ]
       }
+      */
     ]
   },
 ];
