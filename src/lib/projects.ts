@@ -95,6 +95,7 @@ export const projects: Project[] = [
     technologies: ["TypeScript", "React", "AI Integration"],
     githubUrl: "https://github.com/montasirmoyen/ramai-sc",
     blogUrl: "https://montasirmoyen.com/blog/ramai",
+    liveUrl: "https://ramai-zeta.vercel.app/",
     overview: "ramai is an AI-integrated application designed specifically for Suffolk University students. It aggregates professor information and provides an intelligent chatbot interface to help students make informed decisions about their courses and instructors.",
     keyFeatures: [
       {
@@ -120,7 +121,7 @@ export const projects: Project[] = [
         description: "Handling edge cases where users ask questions not well-represented in the dataset required careful consideration of how the AI should respond responsibly.",
       },
     ],
-    outcome: "The application successfully launched with positive feedback from early users who found it genuinely useful. The project provided valuable experience in AI integration, backend filtering, and building user-centric applications."
+    outcome: "The application was used by a few students with positive feedback since they found it genuinely useful. The project provided valuable experience in AI integration, backend filtering, and building user-centric applications. The project will be deployed on the web for the public in the near future.",
   },
   {
     slug: "mps",
@@ -254,6 +255,7 @@ export const blogs: Blog[] = [
     description: "An application assisting Suffolk University students by aggregating professor information with an AI chatbot.",
     technologies: ["TypeScript"],
     projectUrl: "https://montasirmoyen.com/projects/ramai",
+    liveUrl: "https://ramai-zeta.vercel.app/",
     blogPosts: [
       {
         date: "January 15, 2026",
