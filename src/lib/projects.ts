@@ -9,6 +9,7 @@ export interface Project {
   bullets: string[];
   technologies: string[];
   githubUrl?: string;
+  blogUrl?: string;
   liveUrl?: string;
   gameUrl?: string;
   overview?: string;
@@ -50,6 +51,7 @@ export interface Blog {
   githubUrl?: string;
   liveUrl?: string;
   gameUrl?: string;
+  projectUrl?: string;
   blogPosts: {
     date: string;
     title: string;
@@ -92,6 +94,7 @@ export const projects: Project[] = [
     ],
     technologies: ["TypeScript", "React", "AI Integration"],
     githubUrl: "https://github.com/montasirmoyen/ramai-sc",
+    blogUrl: "https://montasirmoyen.com/blog/ramai",
     overview: "ramai is an AI-integrated application designed specifically for Suffolk University students. It aggregates professor information and provides an intelligent chatbot interface to help students make informed decisions about their courses and instructors.",
     keyFeatures: [
       {
@@ -250,6 +253,7 @@ export const blogs: Blog[] = [
     status: "completed",
     description: "An application assisting Suffolk University students by aggregating professor information with an AI chatbot.",
     technologies: ["TypeScript"],
+    projectUrl: "https://montasirmoyen.com/projects/ramai",
     blogPosts: [
       {
         date: "January 15, 2026",
