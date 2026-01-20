@@ -386,22 +386,62 @@ export const blogs: Blog[] = [
           },
         ]
       },
-      /*
       {
-        date: "January 18, 2026",
-        title: "-",
+        date: "January 20, 2026",
+        title: "Reflection",
         borderColor: "#ffffff",
         content: [
           {
             type: "paragraph",
             content: `
-            
+            It's been a few days since my last post.
+            The reason is that I was wrapping the project up, at least for now.
+            Working on this has taught me a lot about building AI-integrated applications, with this project acting as the catalyst.
+            From designing the architecture and UI layout, to backend filtering, auditing, and refining the AI's responses, each step ended up being a meaningful learning experience.
             `,
             marginBottom: 4
           },
+          {
+            type: "paragraph",
+            content: `
+            I also had a few friends try out the app.
+            They liked it and said they genuinely found it useful.
+            That feedback mattered more than I expected, because it helped me see the project from a user's perspective instead of just my own as the builder.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            What stood out to me the most is how much trust and accuracy matter when working with AI. 
+            It's easy to make something that looks smart, but much harder to build something that users can actually rely on. 
+            That shift in mentality is something I'll carry into future projects.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            For now, I'm stepping away from active development. 
+            Not because there's nothing left to improve, but because this feels like a good stopping point. 
+            The system works, I've learned lessons, and I'm happy with what is is right now.`,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            The source code for the project is public if you're interested in looking through it:
+            `,
+            marginBottom: 1
+          },
+          {
+            type: "paragraph",
+            content: `github.com/montasirmoyen/ramai-sc`,
+            link: "https://github.com/montasirmoyen/ramai-sc",
+            marginBottom: 1
+          }
         ]
       }
-      */
     ]
   },
 ];
