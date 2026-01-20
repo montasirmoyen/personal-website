@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { getProjectBySlug, getTechIcon } from "@/lib/projects";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Notebook } from "lucide-react";
 import { use } from "react";
 import TopBarBackground from "@/components/TopBarBackground"
 import {
@@ -98,6 +98,16 @@ function ProjectDetailContent({ project }: { project: any }) {
               >
                 <Github size={16} />
                 Source Code
+              </Link>
+            )}
+            {project.blogUrl && (
+              <Link
+                href={project.blogUrl}
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
+              >
+                <Notebook size={16} />
+                Dev Blog
               </Link>
             )}
             {project.liveUrl && (
