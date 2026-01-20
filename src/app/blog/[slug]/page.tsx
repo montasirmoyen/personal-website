@@ -4,15 +4,9 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { getBlogBySlug, getTechIcon } from "@/lib/projects";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Computer } from "lucide-react";
 import { use } from "react";
 import TopBarBackground from "@/components/TopBarBackground"
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from '@/components/animate-ui/components/radix/accordion';
 import AvailableForRoles from "@/components/AvailableForRoles"
 
 interface BlogDetailPageProps {
@@ -98,6 +92,16 @@ function BlogDetailContent({ blog }: { blog: any }) {
               >
                 <Github size={16} />
                 Source Code
+              </Link>
+            )}
+            {blog.projectUrl && (
+              <Link
+                href={blog.projectUrl}
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
+              >
+                <Computer size={16} />
+                Project Page
               </Link>
             )}
             {blog.liveUrl && (
