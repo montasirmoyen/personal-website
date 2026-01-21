@@ -54,7 +54,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-white/50">
-            <p>© 2025 Montasir Moyen. All rights reserved.</p>
+            <p>© 2026 Montasir Moyen. All rights reserved.</p>
           </div>
 
           <div className="gap-5 flex">
