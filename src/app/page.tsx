@@ -26,6 +26,10 @@ const files = [
   {
     name: "Fragrance Catalog",
     body: "Browse fragrances and sort over 25+ notes. Research about the specifics and find your most suitable scent.",
+  },
+  {
+    name: "RamAI",
+    body: "An AI-powered assistant designed to help Suffolk University students with professor selection and course planning.",
   }
 ]
 
