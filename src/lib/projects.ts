@@ -80,43 +80,47 @@ export interface Blog {
 
 export const projects: Project[] = [
   {
-    slug: "luxury-transport",
-    title: "Luxury Transport",
-    category: "Full-Stack Web Development",
-    image: "/luxtra-home.png",
-    date: "Nov 2025 — Present",
+    slug: "ramai",
+    title: "RamAI",
+    category: "AI, Web & App Development",
+    image: "/ramai-home.png",
+    date: "Jan 15, 2026 — Jan 20, 2026",
     status: "completed",
-    description: "Reserve luxury transportation services within the Greater Boston Area, and modify/cancel reservations with ease.",
+    description: "An application assisting Suffolk University students by providing tools such as an AI chatbot and a library of 1200+ professors.",
     bullets: [
-      "Reserve luxury transportation services within the Greater Boston Area, and modify/cancel reservations with ease.",
-      "Select from a fleet of luxury vehicles from minivans, SUVs, and sedans.",
-      "Supports payment methods including card, PayPal and Venmo.",
+      "AI-powered chatbot using XiaomiMiMo's MiMo-V2-Flash for fast and accurate responses.",
+      "Comprehensive professor discovery page with search and department filtering capabilities.",
+      "Detailed professor profiles displaying ratings, departments, and student reviews.",
     ],
-    technologies: ["React", "TypeScript", "Firebase"],
-    githubUrl: "https://github.com/montasirmoyen/luxury-transport",
-    liveUrl: "https://luxury-transport.vercel.app",
-    overview: "Luxury Transport is a demo reservation website to book transportation services. It's mainly for the Greater Boston Area, but offers long distance services.",
+    technologies: ["TypeScript", "React", "AI Integration"],
+    blogUrl: "https://montasirmoyen.com/blog/ramai",
+    liveUrl: "https://ram-ai.vercel.app/",
+    overview: "RamAI is an AI-integrated application designed specifically for Suffolk University students. It aggregates professor information and provides an intelligent chatbot interface to help students make informed decisions about their courses and instructors.",
     keyFeatures: [
       {
-        title: "Free Fare Estimate",
-        description: "Get a detailed estimate on your reservation at no cost.",
+        title: "AI Chatbot Integration",
+        description: "Utilizes XiaomiMiMo's MiMo-V2-Flash model for fast, accurate, and cost-effective responses to student queries about professors and courses.",
       },
       {
-        title: "Large Fleet of Vehicles",
-        description: "Select from a variety of luxurious vehicles that from sedans to mini-vans.",
+        title: "Advanced Search & Filtering",
+        description: "Comprehensive discovery page with search functionality and department filters including Computer Science, Mathematics, and Business.",
       },
       {
-        title: "Ease of Cancellation",
-        description: "Easily cancel or modify reservations through the website when you create an account.",
+        title: "Detailed Professor Profiles",
+        description: "View professor information including name, department, average ratings, and recent student reviews all in one place.",
       },
     ],
     challenges: [
       {
-        title: "Demand",
-        description: "The demand of template websites like these is not very high. I was inspired by my Dad's friend who owns a similiar company, so I decided to design a website that business owners like him could use for free.",
+        title: "AI Accuracy and Trust",
+        description: "Ensuring the AI chatbot provides accurate information was critical. Extensive auditing and prompt engineering was required to minimize hallucinations and maintain user trust. The backend implements strong filtering and constraints based on planner intents.",
+      },
+      {
+        title: "Data Representation",
+        description: "Handling edge cases where users ask questions not well-represented in the dataset required careful consideration of how the AI should respond responsibly.",
       },
     ],
-    outcome: "The website has been deployed and is open source on GitHub. It can be used as a platform for providing seamless luxury transportation booking services.",
+    outcome: "The application was initially tested by a few students with positive feedback since they found it genuinely useful, now the project is deployed on the web. The project provided valuable experience in AI integration, backend filtering, and building user-centric applications.",
   },
   {
     slug: "mps",
@@ -161,47 +165,43 @@ export const projects: Project[] = [
     outcome: "The game achieved remarkable success with over 500,000 monthly active players and generated significant revenue that helped me pay for necessities like university tuiton.",
   },
   {
-    slug: "ramai",
-    title: "ramai",
-    category: "AI & App Development",
-    image: "/ramai-home.png",
-    date: "Jan 15, 2026 — Jan 20, 2026",
+    slug: "luxury-transport",
+    title: "Luxury Transport",
+    category: "Full-Stack Web Development",
+    image: "/luxtra-home.png",
+    date: "Nov 2025 — Present",
     status: "completed",
-    description: "An application assisting Suffolk University students by aggregating professor information with an AI chatbot.",
+    description: "Reserve luxury transportation services within the Greater Boston Area, and modify/cancel reservations with ease.",
     bullets: [
-      "AI-powered chatbot using XiaomiMiMo's MiMo-V2-Flash for fast and accurate responses.",
-      "Comprehensive professor discovery page with search and department filtering capabilities.",
-      "Detailed professor profiles displaying ratings, departments, and student reviews.",
+      "Reserve luxury transportation services within the Greater Boston Area, and modify/cancel reservations with ease.",
+      "Select from a fleet of luxury vehicles from minivans, SUVs, and sedans.",
+      "Supports payment methods including card, PayPal and Venmo.",
     ],
-    technologies: ["TypeScript", "React", "AI Integration"],
-    githubUrl: "https://github.com/montasirmoyen/ramai-sc",
-    blogUrl: "https://montasirmoyen.com/blog/ramai",
-    overview: "ramai is an AI-integrated application designed specifically for Suffolk University students. It aggregates professor information and provides an intelligent chatbot interface to help students make informed decisions about their courses and instructors.",
+    technologies: ["React", "TypeScript", "Firebase"],
+    githubUrl: "https://github.com/montasirmoyen/luxury-transport",
+    liveUrl: "https://luxury-transport.vercel.app",
+    overview: "Luxury Transport is a demo reservation website to book transportation services. It's mainly for the Greater Boston Area, but offers long distance services.",
     keyFeatures: [
       {
-        title: "AI Chatbot Integration",
-        description: "Utilizes XiaomiMiMo's MiMo-V2-Flash model for fast, accurate, and cost-effective responses to student queries about professors and courses.",
+        title: "Free Fare Estimate",
+        description: "Get a detailed estimate on your reservation at no cost.",
       },
       {
-        title: "Advanced Search & Filtering",
-        description: "Comprehensive discovery page with search functionality and department filters including Computer Science, Mathematics, and Business.",
+        title: "Large Fleet of Vehicles",
+        description: "Select from a variety of luxurious vehicles that from sedans to mini-vans.",
       },
       {
-        title: "Detailed Professor Profiles",
-        description: "View professor information including name, department, average ratings, and recent student reviews all in one place.",
+        title: "Ease of Cancellation",
+        description: "Easily cancel or modify reservations through the website when you create an account.",
       },
     ],
     challenges: [
       {
-        title: "AI Accuracy and Trust",
-        description: "Ensuring the AI chatbot provides accurate information was critical. Extensive auditing and prompt engineering was required to minimize hallucinations and maintain user trust. The backend implements strong filtering and constraints based on planner intents.",
-      },
-      {
-        title: "Data Representation",
-        description: "Handling edge cases where users ask questions not well-represented in the dataset required careful consideration of how the AI should respond responsibly.",
+        title: "Demand",
+        description: "The demand of template websites like these is not very high. I was inspired by my Dad's friend who owns a similiar company, so I decided to design a website that business owners like him could use for free.",
       },
     ],
-    outcome: "The application was used by a few students with positive feedback since they found it genuinely useful. The project provided valuable experience in AI integration, backend filtering, and building user-centric applications. The project will be deployed on the web for the public in the near future.",
+    outcome: "The website has been deployed and is open source on GitHub. It can be used as a platform for providing seamless luxury transportation booking services.",
   },
   {
     slug: "fragrance-catalog",
@@ -246,14 +246,15 @@ export const projects: Project[] = [
 export const blogs: Blog[] = [
   {
     slug: "ramai",
-    title: "ramai",
-    category: "AI & App Development",
-    image: "/ramai-home.png",
+    title: "RamAI",
+    category: "AI, Web & App Development",
+    image: "/ramai-mobile.png",
     date: "Jan 15, 2026 — Jan 20, 2026",
     status: "completed",
-    description: "An application assisting Suffolk University students by aggregating professor information with an AI chatbot.",
-    technologies: ["TypeScript"],
+    description: "An application assisting Suffolk University students by providing tools such as an AI chatbot and a library of 1200+ professors.",
+    technologies: ["TypeScript", "React", "AI Integration"],
     projectUrl: "https://montasirmoyen.com/projects/ramai",
+    liveUrl: "https://ram-ai.vercel.app/",
     blogPosts: [
       {
         date: "January 15, 2026",
@@ -441,9 +442,10 @@ export const blogs: Blog[] = [
             type: "paragraph",
             content: `
             It's been a few days since my last post.
-            The reason is that I was wrapping the project up, at least for now.
+            Reason being is that I was wrapping the project up.
             Working on this has taught me a lot about building AI-integrated applications, with this project acting as the catalyst.
             From designing the architecture and UI layout, to backend filtering, auditing, and refining the AI's responses, each step ended up being a meaningful learning experience.
+            It just made me realize how complex the actual AI apps we use daily are.
             `,
             marginBottom: 4
           },
@@ -460,30 +462,39 @@ export const blogs: Blog[] = [
             type: "paragraph",
             content: `
             What stood out to me the most is how much trust and accuracy matter when working with AI. 
-            It's easy to make something that looks smart, but much harder to build something that users can actually rely on. 
-            That shift in mentality is something I'll carry into future projects.
+            It's easy to make something that looks smart, but much harder to build something that users can actually rely on, which I'm still trying to achieve. 
+            That shift in mentality is something I'll carry forward.
             `,
             marginBottom: 4
           },
           {
             type: "paragraph",
             content: `
-            For now, I'm stepping away from active development. 
-            Not because there's nothing left to improve, but because this feels like a good stopping point. 
+            I'm stepping away from active development of major features for now.
+            I'll focus on maintenance and polishing it here and there instead. 
+            It's not because there's nothing left to improve, but I feel like this is a good stopping point. 
             The system works, I've learned lessons, and I'm happy with what is is right now.`,
             marginBottom: 4
           },
           {
             type: "paragraph",
             content: `
-            The source code for the project is public if you're interested in looking through it:
+            The live demo for the project is public if you're interested in checking it out.
+            The UI is different because I migrated from React Native to a web app, which gave me more flexibility and easier deployment.
             `,
             marginBottom: 1
           },
           {
             type: "paragraph",
-            content: `github.com/montasirmoyen/ramai-sc`,
-            link: "https://github.com/montasirmoyen/ramai-sc",
+            content: `
+            Visit it here:
+            `,
+            marginBottom: 1
+          },
+          {
+            type: "paragraph",
+            content: `ram-ai.vercel.app`,
+            link: "https://ram-ai.vercel.app/",
             marginBottom: 1
           }
         ]
