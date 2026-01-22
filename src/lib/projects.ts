@@ -290,7 +290,7 @@ export const blogs: Blog[] = [
           {
             type: "paragraph",
             content: `
-            Yes, it's called UniWeek for the meanwhile. I'm not sure if I'll keep that name, but my eye itches when my projects don't have names.
+            Yes, it's called UniWeek for now. I'm not sure if I'll keep that name, but my eye itches when my projects don't have names.
             I'm probably going to choose Next.js and React to build this project just for UI flexibility and premium component usage.
             The MVP steps for this project is pretty simple:
             `,
