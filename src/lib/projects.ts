@@ -245,6 +245,79 @@ export const projects: Project[] = [
 
 export const blogs: Blog[] = [
   {
+    slug: "schedule",
+    title: "UniWeek",
+    category: "Full-Stack Web Development",
+    image: "/uniweek-home.webp",
+    date: "Jan 21, 2026 — Present",
+    status: "in-progress",
+    description: "Schedule visualization tool.",
+    technologies: ["Typescript", "React", "Next.js"],
+    blogPosts: [
+      {
+        date: "January 21, 2026 - 8:23PM",
+        title: "Foundation",
+        borderColor: "#d2d2d2",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            I won't make the mistake of starting a project before creating the blog this time..
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            But after a fun time building RamAI, especially visualizing the data, I realized I wanted to work with data more.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            I was trying to think of times at college where I just wished a tool existed.
+            One of those times was when I was trying to create a visual schedule for the semester by looking back and forth at the blue text in Workday.
+            I didn't even realize that Workday had a calendar view until halfway through the semester.
+            Even so, their calendar view was pretty naked and not very user-friendly.
+            Conveniently enough, the Workday developers created a button not far from it to export the .xlsx file of your schedule.
+            I opened the file but it looked the exact same as on the website.
+            Maybe Workday added this feature so us developers could do something with it?
+            If so, challenge accepted.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Yes, it's called UniWeek for the meanwhile. I'm not sure if I'll keep that name, but my eye itches when my projects don't have names.
+            I'm probably going to choose Next.js and React to build this project just for UI flexibility and premium component usage.
+            The MVP steps for this project is pretty simple:
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "bulletpoints",
+            content: [
+              "Let user upload the .xlsx schedule file exported from Workday.",
+              "Parse the .xlsx file and extract the data.",
+              "Create a visual representation of the schedule using the data.",
+              "Use the time I would have spent making my own schedule to do something more productive.",
+            ],
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            That's all I had in mind for today, I have some quizzes to study for and lecture recordings to re-watch, so I'll leave it at that for now.
+            `,
+            marginBottom: 2
+          }
+        ]
+      }
+    ]
+  },
+  {
     slug: "ramai",
     title: "RamAI",
     category: "AI, Web & App Development",
@@ -500,7 +573,7 @@ export const blogs: Blog[] = [
         ]
       }
     ]
-  },
+  }
 ];
 
 
