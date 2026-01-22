@@ -92,7 +92,7 @@ export const projects: Project[] = [
       "Comprehensive professor discovery page with search and department filtering capabilities.",
       "Detailed professor profiles displaying ratings, departments, and student reviews.",
     ],
-    technologies: ["TypeScript", "React", "AI Integration"],
+    technologies: ["TypeScript", "React", "Python", "AI Integration"],
     blogUrl: "https://montasirmoyen.com/blog/ramai",
     liveUrl: "https://ram-ai.vercel.app/",
     overview: "RamAI is an AI-integrated application designed specifically for Suffolk University students. It aggregates professor information and provides an intelligent chatbot interface to help students make informed decisions about their courses and instructors.",
@@ -252,7 +252,7 @@ export const blogs: Blog[] = [
     date: "Jan 15, 2026 — Jan 20, 2026",
     status: "completed",
     description: "An application assisting Suffolk University students by providing tools such as an AI chatbot and a library of 1200+ professors.",
-    technologies: ["TypeScript", "React", "AI Integration"],
+    technologies: ["TypeScript", "React", "Python", "AI Integration"],
     projectUrl: "https://montasirmoyen.com/projects/ramai",
     liveUrl: "https://ram-ai.vercel.app/",
     blogPosts: [
@@ -482,7 +482,7 @@ export const blogs: Blog[] = [
             The live demo for the project is public if you're interested in checking it out.
             The UI is different because I migrated from React Native to a web app, which gave me more flexibility and easier deployment.
             `,
-            marginBottom: 1
+            marginBottom: 4
           },
           {
             type: "paragraph",
