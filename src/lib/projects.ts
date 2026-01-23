@@ -278,7 +278,7 @@ export const blogs: Blog[] = [
             content: `
             I was trying to think of times at college where I just wished a tool existed.
             One of those times was when I was trying to create a visual schedule for the semester by looking back and forth at the blue text in Workday.
-            I didn't even realize that Workday had a calendar view until halfway through the semester.
+            I didn't even realize that Workday had a calendar view until halfway through my college career.
             Even so, their calendar view was pretty naked and not very user-friendly.
             Conveniently enough, the Workday developers created a button not far from it to export the .xlsx file of your schedule.
             I opened the file but it looked the exact same as on the website.
