@@ -1,3 +1,5 @@
+import next from "next";
+
 export interface Project {
   slug: string;
   title: string;
@@ -92,7 +94,7 @@ export const projects: Project[] = [
       "Comprehensive professor discovery page with search and department filtering capabilities.",
       "Detailed professor profiles displaying ratings, departments, and student reviews.",
     ],
-    technologies: ["TypeScript", "React", "Python", "AI Integration"],
+    technologies: ["TypeScript", "React", "Python", "Data Engineering", "AI Integration", "Auditing"],
     blogUrl: "https://montasirmoyen.com/blog/ramai",
     liveUrl: "https://ram-ai.vercel.app/",
     overview: "RamAI is an AI-integrated application designed specifically for Suffolk University students. It aggregates professor information and provides an intelligent chatbot interface to help students make informed decisions about their courses and instructors.",
@@ -135,7 +137,7 @@ export const projects: Project[] = [
       "Founded the growing parent company, gaining 160,000+ official members and producing more successful spin-offs of the game.",
       "Generated over 6 figures in net revenue while still maintaining a generous passive income thanks to various methods of monetization and social media influencer partner deals.",
     ],
-    technologies: ["Lua", "JavaScript", "RBLX Studio", "JSON"],
+    technologies: ["Lua", "JavaScript", "RBLX Studio", "JSON", "Entrepreneurship"],
     gameUrl: "https://www.roblox.com/games/13436905139/MPS-4-a-side",
     overview: "This is a multiplayer soccer game where players compete against each other in two 4 player teams. The game goes on until 90 minutes (around 30 minutes in real life), if the score is tied, it goes onto 120 minutes. If it's still tied, whoever scores next wins the game.",
     keyFeatures: [
@@ -245,14 +247,14 @@ export const projects: Project[] = [
 
 export const blogs: Blog[] = [
   {
-    slug: "schedule",
+    slug: "uniweek",
     title: "UniWeek",
     category: "Full-Stack Web Development",
     image: "/uniweek-home.webp",
     date: "Jan 21, 2026 — Present",
     status: "in-progress",
     description: "Schedule visualization tool.",
-    technologies: ["Typescript", "React", "Next.js"],
+    technologies: ["Typescript", "React", "Next"],
     blogPosts: [
       {
         date: "January 21, 2026 - 8:23PM",
@@ -302,7 +304,7 @@ export const blogs: Blog[] = [
               "Let user upload the .xlsx schedule file exported from Workday.",
               "Parse the .xlsx file and extract the data.",
               "Create a visual representation of the schedule using the data.",
-              "Use the time I would have spent making my own schedule to do something more productive.",
+              "Use the time I would have spent making my own clean schedule to do something more productive.",
             ],
             marginBottom: 4
           },
@@ -313,6 +315,52 @@ export const blogs: Blog[] = [
             `,
             marginBottom: 2
           }
+        ]
+      },
+      {
+        date: "January 24, 2026 - 1:37PM",
+        title: "Ideation",
+        borderColor: "#ffd438",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            If you haven't read my previous post, I started developing a schedule visualization app a few days ago.
+            I wanted to build something that takes an .xlsx file and turns it into a clean layout that shows the class blocks and actually reflects how students could move through their day.
+            After outlining and confirming the general architecture and tech stack for the project, I started working on a small prototype.
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "bulletpoints",
+            content: [
+              "Parses the user's uploaded .xlsx file and extracts the data.",
+              "Creates a nice visual representation of the schedule using the data, laid out on a grid with time and days of the week.",
+              "Each class block opens up the side panel when clicked, showing more details about the class.",
+              "Gaps between class blocks opens up the side panel when clicked, showing where the nearest dining halls, cafes, and common areas are.",
+              "Gaps before the first and after the last class blocks open up the side panel when clicked, showing the nearest MBTA stations and parking garages. These two ideas are adopted so the app is less mundane.",
+              "TailwindCSS use variables in #globals.css of course, so I can support both light and dark mode in the future. This also makes it easier to change the color scheme later on.",
+            ],
+            marginBottom: 6
+          },
+          {
+            type: "paragraph",
+            content: `
+            One important thing to note is that the project has been planned and built with scalability in mind.
+            I've designed the architecture so that adding support for more universities in the future would be straightforward.
+            Right now, the project is able to support Suffolk University, each university would have its own parser module that knows exactly how to extract data from that specific university's schedule format.
+            The only thing that would need to be done for each university is constructing the general dataset needed to render this project's unique approach of showing what the student can do between class block gaps and etc.
+            The rest of the system would remain unchanged, making it easy to expand the project's reach over time if I ever decided to.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            That's all I wanted to share today, I'll continue working on the project when I have free time.
+            `,
+            marginBottom: 4
+          },
         ]
       }
     ]
@@ -325,7 +373,7 @@ export const blogs: Blog[] = [
     date: "Jan 15, 2026 — Jan 20, 2026",
     status: "completed",
     description: "An application assisting Suffolk University students by providing tools such as an AI chatbot and a library of 1200+ professors.",
-    technologies: ["TypeScript", "React", "Python", "AI Integration"],
+    technologies: ["TypeScript", "React", "Python", "Data Engineering", "AI Integration", "Auditing"],
     projectUrl: "https://montasirmoyen.com/projects/ramai",
     liveUrl: "https://ram-ai.vercel.app/",
     blogPosts: [
@@ -576,8 +624,6 @@ export const blogs: Blog[] = [
   }
 ];
 
-
-
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);
 }
@@ -598,9 +644,15 @@ export function getTechIcon(tech: string): string | null {
     "node.js": "/nodejs.png",
     nodejs: "/nodejs.png",
     mongodb: "/mongodb.png",
+    next: "/next.webp",
+    python: "/python.png",
+    "ai integration": "/ai.png",
+    auditing: "/audit.png",
+    entrepreneurship: "/entrepreneurship.png",
+    parsing: "/xlsx.png",
+    "data engineering": "/data.png",
   };
 
   const normalizedTech = tech.toLowerCase().trim();
   return techIcons[normalizedTech] || null;
 }
-
