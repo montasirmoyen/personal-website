@@ -67,25 +67,25 @@ export default function About() {
             {/* Paragraphs */}
             <div className="mt-2 space-y-4 text-base md:text-lg text-white/75 px-4 md:px-8">
               <p>
-              I'm a Computer Science student at Suffolk University in Boston, MA.
+              I'm a computer science student at Suffolk University in Boston, MA.
               I enjoy building innovative software solutions.
               I've developed a strong foundation in full-stack development, working with TypeScript, JavaScript, Python, Java, C++, and C.
               </p>
               <p>
               My journey into tech started in middle school with my first computer, and I've been hooked ever since.
               In my free time, I channel my passion into creating websites, mobile apps, games, and macOS tools, since each project fuels my curiosity about the technologies behind them.
-              I never get tired or bored of coding, the constant challenges and problem solving required keep me engaged.
+              I never get tired or bored of coding; the constant challenges and problem solving required keep me engaged.
               </p>
               <p>
               Currently studying Operating Systems, Software Engineering, and Discrete Math II this semester, while exploring AI integration and data-driven solutions after classes.
-              I'm comfortable with MacOS, Windows, and Linux environments since I'm experienced and flexible with these development setups.
+              I'm comfortable with macOS, Windows, and Linux environments since I'm experienced and flexible with these development setups.
               </p>
               <p>
               Beyond coding, you'll find me playing fútbol, listening to music, or catching up on anime.
-              I strive to learn & grow as a developer and open to collaborations and new challenges.
+              I strive to learn & grow as a developer and am open to collaborations and new challenges.
               </p>
               <p>
-              Thanks for reading, there is much more I have to share on here, so feel free to explore!
+              Thanks for reading; there is much more I have to share on here, so feel free to explore!
               </p>
               <p className="text-sm text-white/50">
               Let's connect:
