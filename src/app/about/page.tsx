@@ -40,11 +40,11 @@ export default function About() {
 
           {/* Text Content */}
           <div className="mx-auto">
-            <p className="text-sm text-white/50 uppercase md:px-8">
+            <p className="text-sm text-white/50 uppercase md:px-8 sm:px-4">
               WHO AM I?
             </p>
 
-            <div className="mt-2 flex flex-col items-start md:px-8">
+            <div className="mt-2 flex flex-col items-start md:px-8 sm:px-4">
               <TextAnimate
                 animation="blurInUp"
                 by="character"
@@ -67,20 +67,32 @@ export default function About() {
             {/* Paragraphs */}
             <div className="mt-2 space-y-4 text-base md:text-lg text-white/75 px-4 md:px-8">
               <p>
-                I also go by Monty. I'm currently studying Computer Science at Suffolk University in Boston, Massachusetts.
+              I'm a Computer Science student at Suffolk University in Boston, MA.
+              I enjoy building innovative software solutions.
+              I've developed a strong foundation in full-stack development, working with TypeScript, JavaScript, Python, Java, C++, and C.
               </p>
               <p>
-                My fascination with technology began in middle school, when I got my very first computer from my parents.
+              My journey into tech started in middle school with my first computer, and I've been hooked ever since.
+              In my free time, I channel my passion into creating websites, mobile apps, games, and macOS tools, since each project fuels my curiosity about the technologies behind them.
+              I never get tired or bored of coding, the constant challenges and problem solving required keep me engaged.
               </p>
               <p>
-                Nowadays, I spend a lot of time learning and building things like websites, video games, macOS tools, and mobile apps. Most of my projects are inspired by personal interests and a curiosity to dive deeper into the technologies behind them.
+              Currently studying Operating Systems, Software Engineering, and Discrete Math II this semester, while exploring AI integration and data-driven solutions after classes.
+              I'm comfortable with MacOS, Windows, and Linux environments since I'm experienced and flexible with these development setups.
               </p>
               <p>
-                Above all, I'm always looking for ways to learn, grow, and improve my skills further. Feel free to explore my site and learn more about myself!
+              Beyond coding, you'll find me playing fútbol, listening to music, or catching up on anime.
+              I strive to learn & grow as a developer and open to collaborations and new challenges.
+              </p>
+              <p>
+              Thanks for reading, there is much more I have to share on here, so feel free to explore!
+              </p>
+              <p className="text-sm text-white/50">
+              Let's connect:
               </p>
             </div>
 
-            <div className="mt-4 gap-5 flex justify-left items-left md:px-8">
+            <div className="mt-4 gap-5 flex justify-left items-left md:px-8 sm:px-4">
               <Link
                 href={"https://www.linkedin.com/in/montasirmoyen/"}
                 target="_blank">

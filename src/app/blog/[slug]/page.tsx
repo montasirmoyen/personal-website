@@ -148,22 +148,22 @@ function BlogDetailContent({ blog }: { blog: any }) {
                   <div className="space-y-0">
                     {post.content.map((item: any, itemIndex: number) => {
                       const marginClass = `mb-${item.marginBottom}`;
-                        const content = (
+                      const content = (
                         <>
                           {item.type === "paragraph" && (
-                          <p className={`${item.link ? 'text-blue-500' : 'text-gray-300'} leading-relaxed ${marginClass}`}>
-                            {item.content}
-                          </p>
+                            <p className={`${item.link ? 'text-blue-500' : 'text-gray-300'} leading-relaxed ${marginClass}`}>
+                              {item.content}
+                            </p>
                           )}
                           {item.type === "bulletpoints" && (
-                          <ul className={`list-disc list-inside space-y-2 ${item.link ? 'text-blue-500' : 'text-gray-300'} ${marginClass}`}>
-                            {item.content.map((bullet: string, bulletIndex: number) => (
-                            <li key={bulletIndex}>{bullet}</li>
-                            ))}
-                          </ul>
+                            <ul className={`list-disc list-inside space-y-2 ${item.link ? 'text-blue-500' : 'text-gray-300'} ${marginClass}`}>
+                              {item.content.map((bullet: string, bulletIndex: number) => (
+                                <li key={bulletIndex}>{bullet}</li>
+                              ))}
+                            </ul>
                           )}
                         </>
-                        );
+                      );
 
                       if (item.link) {
                         return (
@@ -182,9 +182,14 @@ function BlogDetailContent({ blog }: { blog: any }) {
                       return <div key={itemIndex}>{content}</div>;
                     })}
                   </div>
+                  <p className="mt-2 text-sm text-white/50 italic">
+                    — Montasir
+                  </p>
                 </article>
               ))}
+
             </div>
+
           </section>
 
           {/* Tech Stack */}
