@@ -19,7 +19,7 @@ export default function AvailableForRoles({
   backgroundImage = "/flower-wallpaper.jpg",
   logo = {
     src: "/mm-logo.png",
-    alt: "MM Logo",
+    alt: "Montasir Moyen Logo",
     width: 60,
     height: 60,
   },
