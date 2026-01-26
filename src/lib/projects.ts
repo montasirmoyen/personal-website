@@ -362,6 +362,128 @@ export const blogs: Blog[] = [
             marginBottom: 4
           },
         ]
+      },
+      {
+        date: "January 25, 2026 - 11:14PM",
+        title: "Live",
+        borderColor: "#3cc0f0",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            In the middle of a snow storm here in Boston, but I'm cozy enough to continue working on this..
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            I've been coming up with ideas while working on some features for the app, and one of them is to add a live component to the schedule.
+            What I mean by that is that the app will have a status, telling you whether you're currently in class or not, on a break, or if your next class is starting soon.
+            Of course, it's better to be aware yourself of your schedule, but I think having this feature would be a nice touch.
+            Below, I'll outline how I did it.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            First, I built a LiveStatus component that updates every single second using setInterval.
+            The component calculates the current time in minutes since midnight and compares it against all classes scheduled for today.
+            It filters the schedule to only show classes for the current day, then sorts them chronologically to find what's happening right now.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            The logic was a bit intricate.
+            The component needs to detect six different states:
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "bulletpoints",
+            content: [
+              "You're currently in class",
+              "Your next class starts in 5 minutes",
+              "You're on a break between classes",
+              "All your classes are done for the day",
+              "You have no classes today",
+            ],
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Each state displays a different message.
+            But what makes it feel alive is the dynamic color system.
+            The status text changes color based on urgency, for example, yellow when you're in class, orange when your next class is within 5 minutes, and green when your day is done. 
+            The component also displays a pulsing red dot labeled "Live" to emphasize that it's actively tracking your schedule in real time.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            I also had to make sure the component handles re-renders properly.
+            The setInterval updates the currentTime state every second which:
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "bulletpoints",
+            content: [
+              "Handles all the calculations",
+              "Finds today's classes",
+              "Detects the current class",
+              "Calculates minutes until the next one",
+              "Determines remaining classes",
+            ],
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            The secondary info line is context aware too. It shows "Today you have X classes, Y left" during the day, but switches to showing a countdown like "Next class in 45 minutes" when you're between classes.
+            If the next class is over an hour away, it formats it as "Next class in 2h 15m" for readability. 
+            Small details like pluralization ("1 class" vs "2 classes") and  12 hour time formatting keep the UI polished.
+            I try to do these small UI touches before I actually try hard to make the UI look good, which will come later.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            The hardest part was making sure everything recalculates on every render without causing performance issues.
+            I initially had bugs where the status wouldn't update until I re-uploaded the schedule.
+            The fix was making sure all derived values like statusColor, statusData, and secondaryInfo are computed inline during render rather than cached in useEffect or useMemo.
+            This way, when currentTime updates every second, React automatically recalculates everything.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Overall, this makes the website feel at least a little more responsive and alive, exactly what I was trying to do.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Congratulations if you made it this far. I know this was one of my longer posts.. but I really wanted to share the process thoroughly.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            That's all for now though, stay warm and safe if you're in the snow storm like me!
+            `,
+            marginBottom: 4
+          }
+        ]
       }
     ]
   },
