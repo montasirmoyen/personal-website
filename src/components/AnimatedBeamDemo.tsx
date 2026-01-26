@@ -44,16 +44,16 @@ export function AnimatedBeamDemo() {
         <div className="flex flex-row items-center justify-between">
           <Circle ref={div1Ref} className="bg-transparent size-12 overflow-hidden rounded-full relative">
             <Image
-              src="/ai-pfp-1.jpg"
-              alt="Montasir Moyen"
+              src="/user-icon.png"
+              alt="User Icon"
               fill
               className="object-cover"
             />
           </Circle>
           <Circle ref={div5Ref} className="bg-transparent size-12 overflow-hidden rounded-full relative">
             <Image
-              src="/ai-pfp-2.jpg"
-              alt="Montasir Moyen"
+              src="/user-icon.png"
+              alt="User Icon"
               fill
               className="object-cover"
             />
@@ -62,8 +62,8 @@ export function AnimatedBeamDemo() {
         <div className="flex flex-row items-center justify-between">
           <Circle ref={div2Ref} className="bg-transparent size-14 overflow-hidden rounded-full relative">
             <Image
-              src="/ai-pfp-3.jpg"
-              alt="Montasir Moyen"
+              src="/user-icon.png"
+              alt="User Icon"
               fill
               className="object-cover"
             />
@@ -71,15 +71,15 @@ export function AnimatedBeamDemo() {
           <Circle ref={div4Ref} className="bg-transparent size-16 overflow-hidden rounded-full relative">
             <Image
               src="/montasirmoyen.png"
-              alt="Montasir Moyen"
+              alt="User Icon"
               fill
               className="object-cover"
             />
           </Circle>
           <Circle ref={div6Ref} className="bg-transparent size-14 overflow-hidden rounded-full relative">
             <Image
-              src="/ai-pfp-4.jpg"
-              alt="Montasir Moyen"
+              src="/user-icon.png"
+              alt="User Icon"
               fill
               className="object-cover"
             />
@@ -88,16 +88,16 @@ export function AnimatedBeamDemo() {
         <div className="flex flex-row items-center justify-between">
           <Circle ref={div3Ref} className="bg-transparent size-12 overflow-hidden rounded-full relative">
             <Image
-              src="/ai-pfp-5.jpg"
-              alt="Montasir Moyen"
+              src="/user-icon.png"
+              alt="User Icon"
               fill
               className="object-cover"
             />
           </Circle>
           <Circle ref={div7Ref} className="bg-transparent size-12 overflow-hidden rounded-full relative">
             <Image
-              src="/ai-pfp-6.jpg"
-              alt="Montasir Moyen"
+              src="/user-icon.png"
+              alt="User Icon"
               fill
               className="object-cover"
             />
