@@ -20,7 +20,7 @@ export default function About() {
           <div className="mx-auto">
             <TiltedCard
               imageSrc="/montasirmoyen.png"
-              altText="Montasir"
+              altText="Author"
               containerHeight="300px"
               containerWidth="300px"
               imageHeight="300px"
