@@ -53,6 +53,12 @@ export const metadata: Metadata = {
         height: 1080,
         alt: "Montasir Moyen Portfolio Preview",
       },
+      {
+        url: "https://www.montasirmoyen.com/mm-logo.png",
+        width: 512,
+        height: 512,
+        alt: "Montasir Moyen Logo",
+      },
     ],
   },
 };
