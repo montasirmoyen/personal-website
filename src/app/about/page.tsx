@@ -8,6 +8,7 @@ import CircularGallery from '@/components/CircularGallery'
 import CardFlip from "@/components/ui/card-flip"
 import { Linkedin, Github } from "lucide-react";
 import AvailableForRoles from "@/components/AvailableForRoles"
+import SOTM from "@/components/SOTM";
 
 export default function About() {
   return (
@@ -117,6 +118,10 @@ export default function About() {
 
       <section className="overflow-visible w-full h-64 md:h-80 lg:h-96">
         <CircularGallery bend={2} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02} />
+      </section>
+
+      <section className="my-16 flex justify-center items-center">
+        <SOTM />
       </section>
 
       <p className="mt-10 text-center text-sm text-white/50 uppercase">
