@@ -67,6 +67,10 @@ export interface Blog {
       type: "bulletpoints";
       content: string[];
       marginBottom: number;
+    } | {
+      type: "image";
+      content: string[];
+      marginBottom: number;
     })[]
   }[];
   keyFeatures?: {
@@ -314,7 +318,12 @@ export const blogs: Blog[] = [
             That's all I had in mind for today, I have some quizzes to study for and lecture recordings to re-watch, so I'll leave it at that for now.
             `,
             marginBottom: 2
-          }
+          },
+          {
+            type: "image",
+            content: ["/tutorial.png"],
+            marginBottom: 2
+          },
         ]
       },
       {
@@ -482,7 +491,47 @@ export const blogs: Blog[] = [
             That's all for now though, stay warm and safe if you're in the snow storm like me!
             `,
             marginBottom: 4
-          }
+          },
+          {
+            type: "image",
+            content: ["/uniweek-live.png", "/uniweek-professor-stats.png"],
+            marginBottom: 4
+          },
+        ]
+      },
+      {
+        date: "January 27, 2026 - 3:58PM",
+        title: "Live II",
+        borderColor: "#b4ebff",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            Continuing from my last post about adding live features to UniWeek... 
+            I've implemented real-time emergency alerts from Suffolk University's website.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            A Python script scrapes the university homepage for the #globalAlert element, parsing the date and message using HTMLParser.
+            A Next.js API route spawns the script and returns JSON to the frontend, which displays alerts above the schedule when active.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            It was a simple and quick implementation, but adds real value for students who many rely on UniWeek for their schedules.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "image",
+            content: ["/uniweek-alert.png"],
+            marginBottom: 4
+          },
         ]
       }
     ]
