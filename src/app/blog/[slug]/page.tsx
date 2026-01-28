@@ -162,6 +162,21 @@ function BlogDetailContent({ blog }: { blog: any }) {
                               ))}
                             </ul>
                           )}
+                          {item.type === "image" && (
+                            <div className={`space-y-2 ${item.link ? 'text-blue-500' : 'text-gray-300'} ${marginClass}`}>
+                              {item.content.map((imageSrc: string, imageIndex: number) => (
+                                <Image
+                                  key={imageIndex}
+                                  src={imageSrc}
+                                  alt={`Image ${imageIndex + 1}`}
+                                  width={1920}
+                                  height={1080}
+                                  className="rounded"
+                                  unoptimized
+                                />
+                              ))}
+                            </div>
+                          )}
                         </>
                       );
 
@@ -187,7 +202,6 @@ function BlogDetailContent({ blog }: { blog: any }) {
                   </p>
                 </article>
               ))}
-
             </div>
 
           </section>
