@@ -171,6 +171,49 @@ export const projects: Project[] = [
     outcome: "The game achieved remarkable success with over 500,000 monthly active players and generated significant revenue that helped me pay for necessities like university tuiton.",
   },
   {
+    slug: "uniweek",
+    title: "UniWeek",
+    category: "Full-Stack Web Development",
+    image: "/uniweek-home.png",
+    date: "Jan 21, 2026 — Jan 28, 2026",
+    status: "completed",
+    description: "An application that visualizes university schedules from .xlsx files into clean, interactive layouts with live status updates.",
+    bullets: [
+      "AI-powered chatbot using XiaomiMiMo's MiMo-V2-Flash for fast and accurate responses.",
+      "Comprehensive professor discovery page with search and department filtering capabilities.",
+      "Detailed professor profiles displaying ratings, departments, and student reviews.",
+    ],
+    technologies: ["Typescript", "React", "Next", "Python", "Parsing"],
+    blogUrl: "https://montasirmoyen.com/blog/uniweek",
+    liveUrl: "https://uni-week.vercel.app/",
+    overview: "UniWeek is a small application that allows students to upload their university schedule in .xlsx format and visualizes it into a clean, interactive layout. The app also provides live status updates about the user's current class status.",
+    keyFeatures: [
+      {
+        title: "Gap Analysis",
+        description: "Intelligently identifies gaps in the university schedule to help students optimize their time. Provides suggestions for nearby dining halls, cafes, and common areas during breaks.",
+      },
+      {
+        title: "Live Status Updates",
+        description: "Provides real-time updates on the user's current class status throughout the day. Indicates whether the user is in class, on a break, or has upcoming classes soon. Also integrates emergency alerts from the university website.",
+      },
+      {
+        title: "Detailed Professor Profiles",
+        description: "If they exist in the data base, curated information on the professor would appear on the side panel including RateMyProfessors rating stars and difficulty. Links to their RamAI profile for more information and if they wanted to ask questions about the professor.",
+      },
+    ],
+    challenges: [
+      {
+        title: "University Support",
+        description: "The app only supports Suffolk University right now due to the unique format of their .xlsx schedule files. Expanding support to other universities would require creating additional parsers for each institution's specific format, as well as constructing a general dataset for the gap analysis.",
+      },
+      {
+        title: "Grid Layout",
+        description: "Creating the UI for the schedule grid layout was challenging, especially ensuring that class blocks were accurately positioned based on their start and end times. I had to calculate the correct row spans and placements dynamically to reflect the actual schedule.",
+      },
+    ],
+    outcome: "The application has been deployed on the web.",
+  },
+  {
     slug: "luxury-transport",
     title: "Luxury Transport",
     category: "Full-Stack Web Development",
@@ -254,11 +297,12 @@ export const blogs: Blog[] = [
     slug: "uniweek",
     title: "UniWeek",
     category: "Full-Stack Web Development",
-    image: "/uniweek-home.webp",
-    date: "Jan 21, 2026 — Present",
-    status: "in-progress",
-    description: "Schedule visualization tool.",
-    technologies: ["Typescript", "React", "Next"],
+    image: "/uniweek-home.png",
+    date: "Jan 21, 2026 — Jan 28, 2026",
+    status: "completed",
+    liveUrl: "https://uni-week.vercel.app/",
+    description: "An application that visualizes university schedules from .xlsx files into clean, interactive layouts with live status updates.",
+    technologies: ["Typescript", "React", "Next", "Python", "Parsing"],
     blogPosts: [
       {
         date: "January 21, 2026 - 8:23PM",
@@ -532,6 +576,50 @@ export const blogs: Blog[] = [
             content: ["/uniweek-alert.png"],
             marginBottom: 4
           },
+        ]
+      },
+      {
+        date: "January 28, 2026 - 10:13PM",
+        title: "Conclusion",
+        borderColor: "#ffb662",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            I had a lot of fun building UniWeek over the past week, but I think I'll be pausing active development for now.
+            It's reached a solid MVP state where users can upload their schedule and get a clean visual representation with live status updates and emergency alerts.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            It does seem like I'm burning through projects quickly lately, but I think that's okay as long as I'm learning and enjoying the process.
+            I've learned a lot about parsing .xlsx files and using Python for real time data scraping, which are skills I can apply to future projects.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Honestly, I'm not even kidding when I say I'll actually use this app for the first few days whenever a new semester starts.
+            Even if it's just a few days of using it every semester, it's really helpful to know what my day would look like at a glance.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            With that all wrapped up, I deployed the website and it's live at:
+            `,
+            marginBottom: 0
+          },
+          {
+            type: "paragraph",
+            content: `uni-week.vercel.app`,
+            link: "https://uni-week.vercel.app/",
+            marginBottom: 1
+          }
         ]
       }
     ]
