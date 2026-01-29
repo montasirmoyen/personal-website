@@ -225,7 +225,7 @@ export const projects: Project[] = [
       "Sort and filter fragrances by various attributes such as seasons, gender, and more.",
       "View detailed fragrance profiles including ideal wear times and scent notes.",
     ],
-    technologies: ["React", "TypeScript", "JavaScript", "JSON", "Data Engineering"],
+    technologies: ["React", "TypeScript", "Node.js", "JSON"],
     liveUrl: "https://scentdex.vercel.app",
     overview: "A catalog of various different fragrances. Each fragrance has information on the ideal time to wear them, and there are various sorts and filters to find your favorite fragrance.",
     keyFeatures: [
