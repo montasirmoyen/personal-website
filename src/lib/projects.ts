@@ -214,6 +214,39 @@ export const projects: Project[] = [
     outcome: "The application has been deployed on the web.",
   },
   {
+    slug: "scentdex",
+    title: "ScentDex",
+    category: "Front-End Web Development",
+    image: "/scentdex-home.png",
+    date: "Sep 2025 — Present",
+    status: "completed",
+    description: "Browse, study and filter the most popular fragrances from the most luxurious brands.",
+    bullets: [
+      "Sort and filter fragrances by various attributes such as seasons, gender, and more.",
+      "View detailed fragrance profiles including ideal wear times and scent notes.",
+    ],
+    technologies: ["React", "TypeScript", "JavaScript", "JSON", "Data Engineering"],
+    liveUrl: "https://scentdex.vercel.app",
+    overview: "A catalog of various different fragrances. Each fragrance has information on the ideal time to wear them, and there are various sorts and filters to find your favorite fragrance.",
+    keyFeatures: [
+      {
+        title: "Advanced Filtering System",
+        description: "Features remarkable filters based on distinct features such as seasons, gender and much more.",
+      },
+      {
+        title: "Detailed Fragrance Profiles",
+        description: "Provides in-depth information on each fragrance, including ideal wear times and scent notes.",
+      },
+    ],
+    challenges: [
+      {
+        title: "Fragrance Research",
+        description: "I've only been really into fragrances since around 2023, when the trendiness was just starting to peak. I had decent knowledge on fragrances, but of course you can never know enough. I had to do extensive research on various fragrance notes to curate a decent dataset for the project.",
+      }
+    ],
+    outcome: "The website has been deployed and provides an intuitive way to explore and discover fragrances.",
+  },
+  {
     slug: "luxury-transport",
     title: "Luxury Transport",
     category: "Full-Stack Web Development",
@@ -251,44 +284,6 @@ export const projects: Project[] = [
       },
     ],
     outcome: "The website has been deployed and is open source on GitHub. It can be used as a platform for providing seamless luxury transportation booking services.",
-  },
-  {
-    slug: "fragrance-catalog",
-    title: "Fragrance Catalog",
-    category: "Front-End Web Development",
-    image: "/fc-home.png",
-    date: "Sep 2025 — Present",
-    status: "completed",
-    description: "Browse and filter fragrances by 25+ notes, the most luxurious brands and seasons.",
-    bullets: [
-      "Browse and filter fragrances by 25+ notes, the most luxurious brands and seasons.",
-      "Welcoming community contributions, especially to expand the curated fragrance dataset.",
-    ],
-    technologies: ["React", "TypeScript", "JavaScript"],
-    githubUrl: "https://github.com/montasirmoyen/fragrance-catalog",
-    liveUrl: "https://fragrance-catalog.vercel.app",
-    overview: "A catalog of various different fragrances. Each fragrance has information on the ideal time to wear them, and there are various sorts and filters to find your favorite fragrance.",
-    keyFeatures: [
-      {
-        title: "Advanced Filtering System",
-        description: "Features remarkable filters based on distinct features such as seasons, gender and much more.",
-      },
-      {
-        title: "Community Contributions",
-        description: "The project encourages open-source contribution especially in the area of the fragrance data. Requiring no APIs, the JSON data can be expanded by anyone with knowledge in fragrances.",
-      },
-    ],
-    challenges: [
-      {
-        title: "Fragrance Research",
-        description: "I've only been really into fragrances since around 2023, when the trendiness was just starting to peak. I had decent knowledge on fragrances, but of course you can never know enough. I had to do extensive research on various fragrance notes to curate a decent dataset for the project.",
-      },
-      {
-        title: "Product Images",
-        description: "Many of the images were from Fragantica.com, a more advanced fragrance library that offers a wide range of images for non-commercial usage.",
-      },
-    ],
-    outcome: "The website has been deployed and is open source on GitHub. The platform provides an intuitive way to explore and discover fragrances.",
   }
 ];
 
