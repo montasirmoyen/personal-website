@@ -289,6 +289,70 @@ export const projects: Project[] = [
 
 export const blogs: Blog[] = [
   {
+    slug: "resumexp",
+    title: "ResumeXP",
+    category: "AI & Full-Stack Web Development",
+    image: "/resumexp-home.webp",
+    date: "Jan 29, 2026 — Present",
+    status: "in-progress",
+    description: "An AI-powered application to help users maximize their resume potential in seconds.",
+    technologies: ["TypeScript", "React", "AI Integration"],
+    blogPosts: [
+      {
+        date: "January 29, 2026",
+        title: "Curiosity",
+        borderColor: "#7cdad5",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            I realized I have an AI API key lying around and I've been thinking about applications that could leverage AI to provide real value to users.
+            There are a few resume analyzer applications out there that I have used, but I'm really interested in how it actually works.
+            I suspect it's simpler than it sounds, so I want to have a go at it.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Right off the bat, I already see how the architecture of this project would look like:
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "bulletpoints",
+            content: [
+              "User uploads their resume, clicks a button to analyze it",
+              "The file is sent to the file parsing API",
+              "The API extracts the text from the resume and sends it to the AI analysis API",
+              "Using careful prompt engineering, the AI analyzes the resume and provides suggestions for improvement",
+              "The suggestions are sent back to the frontend and displayed to the user",
+            ],
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Looking ahead, I presume the main challenge would be making sure the resume passes the Applicant Tracking System (ATS).
+            From what I've read, many companies use ATS to filter resumes before a human even sees them.
+            So making sure the resume is optimized for ATS would be crucial.
+            I'll have to do some research on how ATS systems work and what they look for in resumes.
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "paragraph",
+            content: `
+            That's all I had in mind for today, I'll continue working on this in my free time.
+            Also, it felt like January flew by really quickly.. just me?
+            `,
+            marginBottom: 2
+          },
+        ],
+      }
+    ]
+  },
+  {
     slug: "uniweek",
     title: "UniWeek",
     category: "Full-Stack Web Development",
