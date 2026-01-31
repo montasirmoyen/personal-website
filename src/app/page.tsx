@@ -74,7 +74,7 @@ export default function Home() {
             <Link href="/about"
               className="text-xl"
             >
-              <LiquidButton className="scale-75 font-bold text-lg">
+              <LiquidButton className="scale-75 font-bold text-xl">
                 Learn More
               </LiquidButton>
             </Link>

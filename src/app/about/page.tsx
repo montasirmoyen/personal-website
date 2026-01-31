@@ -9,6 +9,7 @@ import CardFlip from "@/components/ui/card-flip"
 import { Linkedin, Github } from "lucide-react";
 import AvailableForRoles from "@/components/AvailableForRoles"
 import SOTM from "@/components/SOTM";
+import { LiquidButton } from "@/components/ui/liquid-button";
 
 export default function About() {
   return (
@@ -41,11 +42,11 @@ export default function About() {
 
           {/* Text Content */}
           <div className="mx-auto">
-            <p className="text-sm text-white/50 uppercase md:px-8 sm:px-4">
+            <p className="text-sm text-white/50 uppercase md:px-8 sm:px-4 px-4">
               WHO AM I?
             </p>
 
-            <div className="mt-2 flex flex-col items-start md:px-8 sm:px-4">
+            <div className="mt-2 flex flex-col items-start md:px-8 sm:px-4 px-4">
               <TextAnimate
                 animation="blurInUp"
                 by="character"
@@ -68,32 +69,32 @@ export default function About() {
             {/* Paragraphs */}
             <div className="mt-2 space-y-4 text-base md:text-lg text-white/75 px-4 md:px-8">
               <p>
-              I'm a computer science student at Suffolk University in Boston, MA.
-              I enjoy building innovative software solutions.
-              I've developed a strong foundation in full-stack development, working with TypeScript, JavaScript, Python, Java, C++, and C.
+                I'm a computer science student at Suffolk University in Boston, MA.
+                I enjoy building innovative software solutions.
+                I've developed a strong foundation in full-stack development, working with TypeScript, JavaScript, Python, Java, C++, and C.
               </p>
               <p>
-              My journey into tech started in middle school with my first computer, and I've been hooked ever since.
-              In my free time, I channel my passion into creating websites, mobile apps, games, and macOS tools, since each project fuels my curiosity about the technologies behind them.
-              I never get tired or bored of coding; the constant challenges and problem solving required keep me engaged.
+                My journey into tech started in middle school with my first computer, and I've been hooked ever since.
+                In my free time, I channel my passion into creating websites, mobile apps, games, and macOS tools, since each project fuels my curiosity about the technologies behind them.
+                I never get tired or bored of coding; the constant challenges and problem solving required keep me engaged.
               </p>
               <p>
-              Currently studying Operating Systems, Software Engineering, and Discrete Math II this semester, while exploring AI integration and data-driven solutions after classes.
-              I'm comfortable with macOS, Windows, and Linux environments since I'm experienced and flexible with these development setups.
+                Currently studying Operating Systems, Software Engineering, and Discrete Math II this semester, while exploring AI integration and data-driven solutions after classes.
+                I'm comfortable with macOS, Windows, and Linux environments since I'm experienced and flexible with these development setups.
               </p>
               <p>
-              Beyond coding, you'll find me playing fútbol, listening to music, or catching up on anime.
-              I strive to learn & grow as a developer and am open to collaborations and new challenges.
+                Beyond coding, you'll find me playing fútbol, listening to music, or catching up on anime.
+                I strive to learn & grow as a developer and am open to collaborations and new challenges.
               </p>
               <p>
-              Thanks for reading; there is much more I have to share on here, so feel free to explore!
+                Thanks for reading; there is much more I have to share on here, so feel free to explore!
               </p>
               <p className="text-sm text-white/50">
-              Let's connect:
+                Let's connect:
               </p>
             </div>
 
-            <div className="mt-4 gap-5 flex justify-left items-left md:px-8 sm:px-4">
+            <div className="mt-4 mb-2 gap-5 flex justify-left items-left px-4 md:px-8 sm:px-4">
               <Link
                 href={"https://www.linkedin.com/in/montasirmoyen/"}
                 target="_blank">
@@ -105,6 +106,14 @@ export default function About() {
                 <Github className="hover:text-white/50 transition" height={24} width={24} />
               </Link>
             </div>
+
+            <Link href="/blog"
+              className="text-xl"
+            >
+              <LiquidButton className="scale-75 font-bold text-xl">
+                Read my blogs
+              </LiquidButton>
+            </Link>
           </div>
         </div>
       </div>
