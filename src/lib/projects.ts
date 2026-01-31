@@ -299,7 +299,7 @@ export const blogs: Blog[] = [
     technologies: ["TypeScript", "React", "AI Integration"],
     blogPosts: [
       {
-        date: "January 29, 2026",
+        date: "January 29, 2026 - 7:12PM",
         title: "Curiosity",
         borderColor: "#7cdad5",
         content: [
@@ -345,6 +345,103 @@ export const blogs: Blog[] = [
             content: `
             That's all I had in mind for today, I'll continue working on this in my free time.
             Also, it felt like January flew by really quickly.. just me?
+            `,
+            marginBottom: 2
+          },
+        ],
+      },
+      {
+        date: "January 31, 2026 - 1:57AM",
+        title: "Pipeline",
+        borderColor: "#d24d8b",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            I spent a day finishing the MVP for ResumeXP.
+            I finally have the full flow working from uploading a resume, to parsing the text, to sending it through the AI pipeline and then visualizing the results in a clean UI.
+            Once I started working on it, I could not stop until it was done. It felt exhilarating to see everything come together.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            The upload and parsing flow was pretty straightforward.
+            Users can drop in a PDF, DOCX or TXT file and the analysis service would handle it.
+            What I used for each file type:
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "bulletpoints",
+            content: [
+              "'react-pdftotext' package for PDF files, which takes the file object directly and returns the extracted text",
+              "'mammoth' package for DOCX files, by converting the file into to an ArrayBuffer, pass it to Mammoth itself, and grab the value field from the result",
+              "TXT files or other plain texts, you can just call file.text() which is convenient",
+            ],
+            marginBottom: 10
+          },
+          {
+            type: "image",
+            content: ["/rxp-uploading.png"],
+            marginBottom: 10
+          },
+          {
+            type: "paragraph",
+            content: `
+            Once the text is ready, it moves into the spooky AI pipeline.
+            This part was actually really fun to work on and I had some experience from RamAI that helped a lot.
+            I built a dedicated API route that handles the entire process of:
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "bulletpoints",
+            content: [
+              "Validating the input",
+              "Constructing a strict system prompt",
+              "Sending the request to the AI model",
+              "Cleaning up the AI's response"
+            ],
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Now I did build the pipeline in a way that the AI is forced to respond in a specific JSON format.
+            This makes it easier to parse the response and display it in the frontend.
+            I added a JSON extraction step, so the AI model cannot break this format.
+            If the AI model decides to feel extra and tries to add extra text, the parser strips it out, keeping only the JSON.
+            Of course, to wrap this all up, I added error handling for cases like missing fields, ensuring that the frontend doesn't get half baked data.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Speaking of the frontend, it now has to use the data and visualize it.
+            Since the AI model returns a full analysis with ratings, strengths, weaknesses, and suggestions, I designed a clean UI to display this information.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            And with all that, the MVP is complete, but not perfect, since I need to tighten the formatting and ATS compliance checks.
+            But I can now focus on that, refining the model prompts, improving the UI and making the overall experience smoother.
+            `,
+            marginBottom: 10
+          },
+          {
+            type: "image",
+            content: ["/rxp-analysis.png"],
+            marginBottom: 8
+          },
+          {
+            type: "paragraph",
+            content: `
+            7.8 out of 10? Guess I know what I'm fixing next.. :p
             `,
             marginBottom: 2
           },
