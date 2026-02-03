@@ -1,8 +1,7 @@
-import next from "next";
-
 export interface Project {
   slug: string;
   title: string;
+  colors?: [string, string];
   category: string;
   image: string;
   date: string;
@@ -88,6 +87,7 @@ export const projects: Project[] = [
   {
     slug: "ramai",
     title: "RamAI",
+    colors: ["#452efa", "#790cff"],
     category: "AI, Web & App Development",
     image: "/ramai-home.png",
     date: "Jan 15, 2026 — Jan 20, 2026",
@@ -131,6 +131,7 @@ export const projects: Project[] = [
   {
     slug: "mps",
     title: "MPS",
+    colors: ["#2e3ffa", "#d70028"],
     category: "Game Development",
     image: "/mps.png",
     date: "Aug 2021 — Dec 2023",
@@ -171,8 +172,49 @@ export const projects: Project[] = [
     outcome: "The game achieved remarkable success with over 500,000 monthly active players and generated significant revenue that helped me pay for necessities like university tuiton.",
   },
   {
+    slug: "resumexp",
+    title: "ResumeXP",
+    colors: ["#00ff8c", "#0ccaff"],
+    category: "AI & Web Development",
+    image: "/rxp-home.png",
+    date: "Jan 29, 2026 — Feb 3, 2026",
+    status: "completed",
+    description: "An AI-powered application to help users maximize their resume potential in seconds.",
+    technologies: ["TypeScript", "React", "Next", "AI Integration"],
+    bullets: [
+      "Provides honest feedback on resumes to help users improve and stand out to potential employers.",
+      "Offers a job match score feature that aligns resumes with job descriptions and suggests improvements.",
+      "Generates personalized cover letters based on the user's resume for quick and efficient applications.",
+    ],
+    blogUrl: "https://montasirmoyen.com/blog/resumexp",
+    liveUrl: "https://resumexp.vercel.app/",
+    overview: "ResumeXP is an AI-powered application that helps users maximize their resume potential in seconds.",
+    keyFeatures: [
+      {
+        title: "Honest Feedback",
+        description: "Provides users with honest and constructive feedback on their resumes, helping them improve and stand out to potential employers.",
+      },
+      {
+        title: "Job Match Score",
+        description: "Lets users input a job description and receive a match score indicating how well their resume aligns with the job requirements, along with suggestions for improvement.",
+      },
+      {
+        title: "Cover Letter Generation",
+        description: "Generates personalized cover letters based on the user's resume, helping users create compelling applications quickly and efficiently.",
+      },
+    ],
+    challenges: [
+      {
+        title: "ATS Compliance",
+        description: "Knowing how Applicant Tracking Systems (ATS) work and ensuring the AI provides suggestions that help resumes pass these systems was a significant challenge. Research and prompt engineering were required to achieve this.",
+      },
+    ],
+    outcome: "The application has been deployed on the web.",
+  },
+  {
     slug: "uniweek",
     title: "UniWeek",
+    colors: ["#b3fbff", "#23d3ff"],
     category: "Full-Stack Web Development",
     image: "/uniweek-home.png",
     date: "Jan 21, 2026 — Jan 28, 2026",
@@ -216,6 +258,7 @@ export const projects: Project[] = [
   {
     slug: "scentdex",
     title: "ScentDex",
+    colors: ["#ff34b1", "#ff851b"],
     category: "Front-End Web Development",
     image: "/scentdex-home.png",
     date: "Sep 2025 — Present",
@@ -249,6 +292,7 @@ export const projects: Project[] = [
   {
     slug: "luxury-transport",
     title: "Luxury Transport",
+    colors: ["#5512ff", "#3fffa9"],
     category: "Full-Stack Web Development",
     image: "/luxtra-home.png",
     date: "Nov 2025 — Present",
@@ -291,10 +335,12 @@ export const blogs: Blog[] = [
   {
     slug: "resumexp",
     title: "ResumeXP",
-    category: "AI & Full-Stack Web Development",
-    image: "/resumexp-home.webp",
-    date: "Jan 29, 2026 — Present",
-    status: "in-progress",
+    category: "AI & Web Development",
+    image: "/rxp-analysis-2.png",
+    date: "Jan 29, 2026 — Feb 3, 2026",
+    status: "completed",
+    projectUrl: "https://montasirmoyen.com/projects/resumexp",
+    liveUrl: "https://resumexp.vercel.app/",
     description: "An AI-powered application to help users maximize their resume potential in seconds.",
     technologies: ["TypeScript", "React", "AI Integration"],
     blogPosts: [
@@ -444,6 +490,63 @@ export const blogs: Blog[] = [
             7.8 out of 10? Guess I know what I'm fixing next.. :p
             `,
             marginBottom: 2
+          },
+        ],
+      },
+      {
+        date: "February, 3, 2026 - 12:08PM",
+        title: "Flow",
+        borderColor: "#1d4eff",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            I've been working on wrapping ResumeXP for the past couple of days.
+            The few components I've been finishing up are:
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "bulletpoints",
+            content: [
+              "Job matching based on the user's job description input",
+              "Past analysis history for authenticated users",
+              "Cover letter generation",
+            ],
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            There are definitely more features I could add, but I want to keep the app light for now.
+            I try to keep these projects small and organized so I can actually finish them and so they're easier to revisit in the future.
+            That's the same approach I took with RamAI and UniWeek.
+            I can always expand them later if I feel the need.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Beyond the technical work, I'm also practicing my flow: ideation, planning, building the MVP, then refining and polishing it.
+            Each project teaches me something new about how to approach the next one, and that's been the most valuable part of this whole process.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Visit the site here:
+            `,
+            marginBottom: 0
+          },
+          {
+            type: "paragraph",
+            content: `
+            https://resumexp.vercel.app
+            `,
+            link: "https://resumexp.vercel.app",
+            marginBottom: 4
           },
         ],
       }
