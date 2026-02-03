@@ -48,7 +48,7 @@ export default function ProjectsPage() {
               className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
             >
               {/* Image - Left Side */}
-              <BackgroundGradient>
+              <BackgroundGradient colors={project.colors}>
                 <Link href={`/projects/${project.slug}`}
                   className="group">
                   <div className="aspect-video overflow-hidden transition-all">

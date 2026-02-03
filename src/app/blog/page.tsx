@@ -48,7 +48,7 @@ export default function BlogPage() {
                             href={`/blog/${blog.slug}`}
                             className="group block"
                         >
-                            <div className="bg-black border border-white/10 rounded-lg overflow-hidden transition-all duration-250 hover:scale-105 h-full">
+                            <div className="bg-black border border-white/10 rounded-lg overflow-hidden transition-all duration-250 shadow-lg hover:scale-105 hover:border-white/35 h-full">
                                 <div className="relative aspect-video overflow-hidden">
                                     <Image
                                         src={blog.image}
@@ -78,7 +78,7 @@ export default function BlogPage() {
                                         </span>
                                     </div>
 
-                                    <h2 className="text-xl font-bold mb-3 group-hover:text-purple-400 transition-colors">
+                                    <h2 className={`text-xl font-bold mb-3 transition-colors`}>
                                         {blog.title}
                                     </h2>
 
