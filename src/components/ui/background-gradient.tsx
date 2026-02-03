@@ -8,12 +8,15 @@ export const BackgroundGradient = ({
   className,
   containerClassName,
   animate = true,
+  colors = ["#00ccb1", "#7b61ff"],
 }: {
   children?: React.ReactNode;
   className?: string;
   containerClassName?: string;
   animate?: boolean;
+  colors?: [string, string];
 }) => {
+  const gradientStyle = `radial-gradient(circle farthest-side at 0 100%, ${colors[0]}, transparent), radial-gradient(circle farthest-side at 100% 0, ${colors[1]}, transparent), radial-gradient(circle farthest-side at 100% 100%, ${colors[0]}, transparent), radial-gradient(circle farthest-side at 0 0, ${colors[1]}, #141316)`;
   const variants = {
     initial: {
       backgroundPosition: "0 50%",
@@ -23,7 +26,7 @@ export const BackgroundGradient = ({
     },
   };
   return (
-    <div className={cn("relative p-[4px] group", containerClassName)}>
+    <div className={cn("relative p-1 group", containerClassName)}>
       <motion.div
         variants={animate ? variants : undefined}
         initial={animate ? "initial" : undefined}
@@ -39,10 +42,10 @@ export const BackgroundGradient = ({
         }
         style={{
           backgroundSize: animate ? "400% 400%" : undefined,
+          background: gradientStyle,
         }}
         className={cn(
-          "absolute inset-0 rounded-3xl z-[1] opacity-60 group-hover:opacity-100 blur-xl  transition duration-500 will-change-transform",
-          " bg-[radial-gradient(circle_farthest-side_at_0_100%,#00ccb1,transparent),radial-gradient(circle_farthest-side_at_100%_0,#7b61ff,transparent),radial-gradient(circle_farthest-side_at_100%_100%,#ffc414,transparent),radial-gradient(circle_farthest-side_at_0_0,#1ca0fb,#141316)]"
+          "absolute inset-0 rounded-3xl z-[1] opacity-60 group-hover:opacity-100 blur-xl  transition duration-500 will-change-transform"
         )}
       />
       <motion.div
@@ -60,10 +63,10 @@ export const BackgroundGradient = ({
         }
         style={{
           backgroundSize: animate ? "400% 400%" : undefined,
+          background: gradientStyle,
         }}
         className={cn(
-          "absolute inset-0 rounded-3xl z-[1] will-change-transform",
-          "bg-[radial-gradient(circle_farthest-side_at_0_100%,#00ccb1,transparent),radial-gradient(circle_farthest-side_at_100%_0,#7b61ff,transparent),radial-gradient(circle_farthest-side_at_100%_100%,#ffc414,transparent),radial-gradient(circle_farthest-side_at_0_0,#1ca0fb,#141316)]"
+          "absolute inset-0 rounded-3xl z-[1] will-change-transform"
         )}
       />
 
