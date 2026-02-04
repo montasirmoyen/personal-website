@@ -69,7 +69,7 @@ export default function About() {
             {/* Paragraphs */}
             <div className="mt-2 space-y-4 text-base md:text-lg text-white/75 px-4 md:px-8">
               <p>
-                I'm a computer science student at Suffolk University in Boston, MA.
+                You may also know me as Monty, I'm a computer science student at Suffolk University in Boston, MA.
                 I enjoy building innovative software solutions.
                 I've developed a strong foundation in full-stack development, working with TypeScript, JavaScript, Python, Java, C++, and C.
               </p>
