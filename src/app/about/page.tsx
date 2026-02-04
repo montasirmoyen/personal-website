@@ -80,7 +80,7 @@ export default function About() {
               </p>
               <p>
                 Currently studying Operating Systems, Software Engineering, and Discrete Math II this semester, while exploring AI integration and data-driven solutions after classes.
-                I'm comfortable with macOS, Windows, and Linux environments since I'm experienced and flexible with these development setups.
+                I've used macOS, Windows, and Linux environments, growing comfortable across these platforms.
               </p>
               <p>
                 Beyond coding, you'll find me playing fútbol, listening to music, or catching up on anime.
