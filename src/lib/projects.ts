@@ -422,8 +422,8 @@ export const blogs: Blog[] = [
           {
             type: "bulletpoints",
             content: [
-              "'react-pdftotext' package for PDF files, which takes the file object directly and returns the extracted text",
-              "'mammoth' package for DOCX files, by converting the file into to an ArrayBuffer, pass it to Mammoth itself, and grab the value field from the result",
+              "'react-pdftotext' library for PDF files, which takes the file object directly and returns the extracted text",
+              "'mammoth' library for DOCX files, by converting the file into to an ArrayBuffer, pass it to Mammoth itself, and grab the value field from the result",
               "TXT files or other plain texts, you can just call file.text() which is convenient",
             ],
             marginBottom: 10
@@ -436,8 +436,18 @@ export const blogs: Blog[] = [
           {
             type: "paragraph",
             content: `
-            Once the text is ready, it moves into the spooky AI pipeline.
-            This part was actually really fun to work on and I had some experience from RamAI that helped a lot.
+            Why did I parse the files on the client instead of the server?
+            I chose client side parsing because the text extraction requirements were straightforward and supported by lightweight browser libraries like above.
+            Parsing on the client reduced backend complexity and made the upload experience feel more responsive.
+            If the parsing logic became more complex or needed stricter validation, the server is always there.
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "paragraph",
+            content: `
+            Once the text is parsed and ready, it's sent to the AI pipeline.
+            This part was straightforward, and having some experience from RamAI doing something similiar helped a lot.
             I built a dedicated API route that handles the entire process of:
             `,
             marginBottom: 2
@@ -455,27 +465,26 @@ export const blogs: Blog[] = [
           {
             type: "paragraph",
             content: `
-            Now I did build the pipeline in a way that the AI is forced to respond in a specific JSON format.
-            This makes it easier to parse the response and display it in the frontend.
-            I added a JSON extraction step, so the AI model cannot break this format.
-            If the AI model decides to feel extra and tries to add extra text, the parser strips it out, keeping only the JSON.
-            Of course, to wrap this all up, I added error handling for cases like missing fields, ensuring that the frontend doesn't get half baked data.
+            I designed the analysis pipeline so the AI is constrained to return a strictly defined JSON structure.
+            Returning unstructured text would make it difficult to reliably render results on the frontend, so a structured response was necessary.
+            By enforcing a schema, the frontend can confidently parse and visualize sections like ratings, strengths, weaknesses, and suggestions without hesitation.
             `,
             marginBottom: 4
           },
           {
             type: "paragraph",
             content: `
-            Speaking of the frontend, it now has to use the data and visualize it.
-            Since the AI model returns a full analysis with ratings, strengths, weaknesses, and suggestions, I designed a clean UI to display this information.
+            To make this robust, I added a JSON extraction and validation step.
+            If the model includes extra text outside the expected structure, the parser strips it out and keeps only the valid JSON.
+            I also added defensive error handling for missing or malformed fields, ensuring the UI never renders partial or inconsistent data.
             `,
             marginBottom: 4
           },
           {
             type: "paragraph",
             content: `
-            And with all that, the MVP is complete, but not perfect, since I need to tighten the formatting and ATS compliance checks.
-            But I can now focus on that, refining the model prompts, improving the UI and making the overall experience smoother.
+            On the frontend, this structured output made it straightforward to design a clean, readable interface that visualizes the analysis clearly.
+            With the MVP complete, the focus now shifts to refining prompt quality, tightening formatting, and improving ATS checks to make the overall experience more polished.
             `,
             marginBottom: 10
           },
