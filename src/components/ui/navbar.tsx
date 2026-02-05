@@ -95,7 +95,7 @@ export const LimelightNav = ({
           {icon ? (
             cloneElement(icon as React.ReactElement<any>, {
               className: cn(
-                'w-6 h-6 transition-opacity duration-100 ease-in-out',
+                'w-6 h-6 transition-opacity',
                 activeIndex === index ? 'opacity-100 font-bold' : 'opacity-50 font-medium',
                 (icon.props as any)?.className || '',
                 iconClassName || ''
@@ -104,7 +104,7 @@ export const LimelightNav = ({
           ) : (
             <span className={cn(
               'text-sm transition-opacity duration-100 ease-in-out',
-              activeIndex === index ? 'opacity-100 font-bold' : 'opacity-50 font-medium',
+              activeIndex === index ? 'opacity-100 font-bold scale-110' : 'opacity-50 font-medium hover:opacity-75 hover:scale-110',
               iconClassName || ''
             )}>
               {label}
