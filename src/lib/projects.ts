@@ -90,7 +90,7 @@ export const projects: Project[] = [
     colors: ["#452efa", "#790cff"],
     category: "AI, Web & App Development",
     image: "/ramai-home.png",
-    date: "Jan 15, 2026 — Jan 20, 2026",
+    date: "Jan 15, 2026 — Present",
     status: "completed",
     description: "An application assisting Suffolk University students by providing tools such as an AI chatbot and a library of 1200+ professors.",
     bullets: [
@@ -177,7 +177,7 @@ export const projects: Project[] = [
     colors: ["#00ff8c", "#0ccaff"],
     category: "AI & Web Development",
     image: "/rxp-home.png",
-    date: "Jan 29, 2026 — Feb 3, 2026",
+    date: "Jan 29, 2026 — Present",
     status: "completed",
     description: "An AI-powered application to help users maximize their resume potential in seconds.",
     technologies: ["TypeScript", "React", "Next", "AI Integration"],
@@ -217,7 +217,7 @@ export const projects: Project[] = [
     colors: ["#b3fbff", "#23d3ff"],
     category: "Full-Stack Web Development",
     image: "/uniweek-home.png",
-    date: "Jan 21, 2026 — Jan 28, 2026",
+    date: "Jan 21, 2026 — Present",
     status: "completed",
     description: "An application that visualizes university schedules from .xlsx files into clean, interactive layouts with live status updates.",
     bullets: [
@@ -225,7 +225,7 @@ export const projects: Project[] = [
       "Comprehensive professor discovery page with search and department filtering capabilities.",
       "Detailed professor profiles displaying ratings, departments, and student reviews.",
     ],
-    technologies: ["Typescript", "React", "Next", "Python", "Parsing"],
+    technologies: ["Typescript", "React", "Next", "Python", "Firebase"],
     blogUrl: "https://montasirmoyen.com/blog/uniweek",
     liveUrl: "https://uni-week.vercel.app/",
     overview: "UniWeek is a small application that allows students to upload their university schedule in .xlsx format and visualizes it into a clean, interactive layout. The app also provides live status updates about the user's current class status.",
@@ -268,7 +268,7 @@ export const projects: Project[] = [
       "Sort and filter fragrances by various attributes such as seasons, gender, and more.",
       "View detailed fragrance profiles including ideal wear times and scent notes.",
     ],
-    technologies: ["React", "TypeScript", "Node.js", "JSON"],
+    technologies: ["React", "TypeScript", "JavaScript", "Node.js", "JSON"],
     liveUrl: "https://scentdex.vercel.app",
     overview: "A catalog of various different fragrances. Each fragrance has information on the ideal time to wear them, and there are various sorts and filters to find your favorite fragrance.",
     keyFeatures: [
@@ -543,6 +543,13 @@ export const blogs: Blog[] = [
             marginBottom: 4
           },
           {
+            type: "image",
+            content: [
+            "/rxp-upload-page.png",
+            ],
+            marginBottom: 4
+          },
+          {
             type: "paragraph",
             content: `
             Visit the site here:
@@ -570,7 +577,7 @@ export const blogs: Blog[] = [
     status: "completed",
     liveUrl: "https://uni-week.vercel.app/",
     description: "An application that visualizes university schedules from .xlsx files into clean, interactive layouts with live status updates.",
-    technologies: ["Typescript", "React", "Next", "Python", "Parsing"],
+    technologies: ["Typescript", "React", "Next", "Python", "Firebase"],
     blogPosts: [
       {
         date: "January 21, 2026 - 8:23PM",
@@ -597,11 +604,11 @@ export const blogs: Blog[] = [
             I was trying to think of times at college where I just wished a tool existed.
             One of those times was when I was trying to create a visual schedule for the semester by looking back and forth at the blue text in Workday.
             I didn't even realize that Workday had a calendar view until halfway through my college career.
-            Even so, their calendar view was pretty naked and not very user-friendly.
+            Even so, their calendar view was not really user-friendly.
             Conveniently enough, the Workday developers created a button not far from it to export the .xlsx file of your schedule.
             I opened the file but it looked the exact same as on the website.
             Maybe Workday added this feature so us developers could do something with it?
-            If so, challenge accepted.
+            If so, I'm interested..
             `,
             marginBottom: 4
           },
@@ -977,7 +984,7 @@ export const blogs: Blog[] = [
           {
             type: "paragraph",
             content: `
-            For me, this project was always about growing as a software developer.
+            For me, this project was always about growing as a software developer & engineer.
             Designing a system, integrating AI and working with real data, while also creating a general usage for students.
             And honestly, if even one person uses and benefits from it, that's good enough for me.
             Every project teaches you something, and for me, that's far more valuable than trying to measure yourself against tech giants.
