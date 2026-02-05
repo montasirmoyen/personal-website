@@ -64,7 +64,7 @@ export default function Home() {
             by="character"
             className="mt-4 text-base md:text-xl px-4"
           >
-            Hi, I'm Montasir Moyen, a software developer & engineer.
+            Hi, I'm Montasir Moyen, a software developer & engineer
           </TextAnimate>
 
           <AnimatedContent
@@ -91,7 +91,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="flex flex-col md:flex-row items-center justify-center mb-25 gap-4 md:gap-15 px-4 md:px-0">
+      <section className="flex flex-col md:flex-row items-center justify-center mb-25 gap-4 md:gap-5 sm:gap-5 px-4 md:px-0">
         <div className="bg-gradient-to-b from-card to-black border-2 border-lg border-card-foreground
          relative flex size-full max-w-lg w-full items-center
          justify-center overflow-hidden rounded-lg">

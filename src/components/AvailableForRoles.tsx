@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { CopyButton } from "@/components/ui/copy";
+import ShinyText from '@/components/ShinyText';
 
 interface AvailableForRolesProps {
   email?: string;
@@ -48,9 +49,19 @@ export default function AvailableForRoles({
           className="mx-auto mb-2"
         />
 
-        <p className="text-2xl md:text-4xl font-semibold px-4">
-          I'm available for roles, contact me
-        </p>
+        <ShinyText
+          text="I'm available for roles, contact me"
+          speed={1}
+          delay={.5}
+          color="#b3b0ff"
+          shineColor="#5852ff"
+          spread={500}
+          direction="left"
+          yoyo={false}
+          pauseOnHover={false}
+          disabled={false}
+          className="text-3xl font-hero md:text-4xl font-semibold px-4"
+        />
 
         <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-2 px-4">
           <span className="text-base md:text-lg font-bold break-all">
