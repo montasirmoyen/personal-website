@@ -71,20 +71,3 @@ export default function NavBar() {
         </>
     );
 }
-
-function NavLink({
-    href,
-    isActive,
-    children
-}: {
-    href: string;
-    isActive: boolean;
-    children: React.ReactNode;
-}) {
-    return (
-        <Link href={href} className={`relative px-3 py-1 rounded-full transition-all 
-        ${isActive ? "bg-white text-black font-bold" : "opacity-80 hover:bg-white/5 hover:opacity-100 text-white"}`}>
-            {children}
-        </Link>
-    );
-}
