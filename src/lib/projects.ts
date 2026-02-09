@@ -87,14 +87,14 @@ export const projects: Project[] = [
   {
     slug: "ramai",
     title: "RamAI",
-    colors: ["#452efa", "#790cff"],
+    colors: ["#2e3ffa", "#1d46fd"],
     category: "AI, Web & App Development",
     image: "/ramai-home.png",
     date: "Jan 15, 2026 — Present",
     status: "completed",
     description: "An application assisting Suffolk University students by providing tools such as an AI chatbot and a library of 1200+ professors.",
     bullets: [
-      "AI-powered chatbot using XiaomiMiMo's MiMo-V2-Flash for fast and accurate responses.",
+      "AI-powered chatbot using models like XiaomiMiMo's MiMo-V2-Flash for fast and accurate responses.",
       "Comprehensive professor discovery page with search and department filtering capabilities.",
       "Detailed professor profiles displaying ratings, departments, and student reviews.",
     ],
@@ -105,7 +105,7 @@ export const projects: Project[] = [
     keyFeatures: [
       {
         title: "AI Chatbot Integration",
-        description: "Utilizes XiaomiMiMo's MiMo-V2-Flash model for fast, accurate, and cost-effective responses to student queries about professors and courses.",
+        description: "Utilizes various models such as XiaomiMiMo's MiMo-V2-Flash model for fast, accurate, and cost-effective responses to student queries about professors and courses.",
       },
       {
         title: "Advanced Search & Filtering",
@@ -126,7 +126,10 @@ export const projects: Project[] = [
         description: "Handling edge cases where users ask questions not well-represented in the dataset required careful consideration of how the AI should respond responsibly.",
       },
     ],
-    outcome: "The application was initially tested by a few students with positive feedback since they found it genuinely useful, now the project is deployed on the web. The project provided valuable experience in AI integration, backend filtering, and building user-centric applications.",
+    outcome: `
+    The application has been deployed and was tested and used by students with positive feedback since they found it useful.
+    The project provided valuable experience in AI integration, backend engineering, data engineering, and building user-centric applications.
+    `,
   },
   {
     slug: "mps",
@@ -142,7 +145,7 @@ export const projects: Project[] = [
       "Founded the growing parent company, gaining 160,000+ official members and producing more successful spin-offs of the game.",
       "Generated over 6 figures in net revenue while still maintaining a generous passive income thanks to various methods of monetization and social media influencer partner deals.",
     ],
-    technologies: ["Lua", "JavaScript", "RBLX Studio", "JSON", "Entrepreneurship"],
+    technologies: ["Lua", "JavaScript", "JSON", "Entrepreneurship", "RBLX Studio"],
     gameUrl: "https://www.roblox.com/games/13436905139/MPS-4-a-side",
     overview: "This is a multiplayer soccer game where players compete against each other in two 4 player teams. The game goes on until 90 minutes (around 30 minutes in real life), if the score is tied, it goes onto 120 minutes. If it's still tied, whoever scores next wins the game.",
     keyFeatures: [
@@ -169,7 +172,14 @@ export const projects: Project[] = [
         description: "There was a need to grow the administration team when the player count grew and moderations for reports by users were needed. Initially, close friends accompanied me to help deal with moderations, but I eventually built it into a stable work enviornment.",
       },
     ],
-    outcome: "The game achieved remarkable success with over 500,000 monthly active players and generated significant revenue that helped me pay for necessities like university tuiton.",
+    outcome: `
+    MPS has reached great heights, at times hitting around 500,000 monthly players and a few thousand concurrent users at peak hours.
+    The revenue from it ended up paying for my university tuition, which is something I'm still grateful for.
+    What mattered just as much was the community that formed around it.
+    MPS became a starting point for a lot of the soccer titles that came after on Roblox, and seeing other developers build on the genre of soccer games was honestly one of the coolest parts of the whole experience.
+    Working on the game taught me a lot, everything from gameplay design and scaling servers to handling feedback and managing a large player base.
+    It was my first real exposure to building and maintaining a product that people around the world actually used, and it shaped a lot of how I approach projects today.
+    `,
   },
   {
     slug: "resumexp",
@@ -188,6 +198,7 @@ export const projects: Project[] = [
     ],
     blogUrl: "https://montasirmoyen.com/blog/resumexp",
     liveUrl: "https://resumexp.vercel.app/",
+    githubUrl: "https://github.com/montasirmoyen/resumexp",
     overview: "ResumeXP is an AI-powered application that helps users maximize their resume potential in seconds.",
     keyFeatures: [
       {
@@ -209,7 +220,11 @@ export const projects: Project[] = [
         description: "Knowing how Applicant Tracking Systems (ATS) work and ensuring the AI provides suggestions that help resumes pass these systems was a significant challenge. Research and prompt engineering were required to achieve this.",
       },
     ],
-    outcome: "The application has been deployed on the web.",
+    outcome: `
+    The application was deployed and has been used by friends in my university to give insights on their resumes, and the feedback has been positive so far.
+    The project gave valuable experience in AI integration, data analysis, and building user-centric applications.
+    The source code is available on GitHub for anyone interested in exploring or contributing to the project.
+    `,
   },
   {
     slug: "uniweek",
@@ -221,13 +236,14 @@ export const projects: Project[] = [
     status: "completed",
     description: "An application that visualizes university schedules from .xlsx files into clean, interactive layouts with live status updates.",
     bullets: [
-      "AI-powered chatbot using XiaomiMiMo's MiMo-V2-Flash for fast and accurate responses.",
-      "Comprehensive professor discovery page with search and department filtering capabilities.",
-      "Detailed professor profiles displaying ratings, departments, and student reviews.",
+      "Intelligently identifies gaps in university schedules to help students optimize their time, providing suggestions for nearby dining halls, cafes, and common areas during breaks.",
+      "Provides real-time updates on the user's current class status throughout the day, indicating whether they are in class, on a break, or have upcoming classes soon.",
+      "Provides info on professors if they exist in the database, including RateMyProfessors rating stars and difficulty, and links to their RamAI profile for more information.",
     ],
     technologies: ["Typescript", "React", "Next", "Python", "Firebase"],
     blogUrl: "https://montasirmoyen.com/blog/uniweek",
     liveUrl: "https://uni-week.vercel.app/",
+    githubUrl: "https://github.com/montasirmoyen/uniweek",
     overview: "UniWeek is a small application that allows students to upload their university schedule in .xlsx format and visualizes it into a clean, interactive layout. The app also provides live status updates about the user's current class status.",
     keyFeatures: [
       {
@@ -253,7 +269,11 @@ export const projects: Project[] = [
         description: "Creating the UI for the schedule grid layout was challenging, especially ensuring that class blocks were accurately positioned based on their start and end times. I had to calculate the correct row spans and placements dynamically to reflect the actual schedule.",
       },
     ],
-    outcome: "The application has been deployed on the web.",
+    outcome: `
+    The application has been deployed and was tested by friends.
+    The project provided valuable experience in file parsing, data visualization, and building user-centric applications.
+    The source code is available on GitHub for anyone interested in exploring or contributing to the project.
+    `,
   },
   {
     slug: "scentdex",
@@ -287,7 +307,10 @@ export const projects: Project[] = [
         description: "I've only been really into fragrances since around 2023, when the trendiness was just starting to peak. I had decent knowledge on fragrances, but of course you can never know enough. I had to do extensive research on various fragrance notes to curate a decent dataset for the project.",
       }
     ],
-    outcome: "The website has been deployed and provides an intuitive way to explore and discover fragrances.",
+    outcome: `
+    The application has been deployed and provides an intuitive way to explore and discover fragrances.
+    The project provided valuable experience in front-end development, handling large datasets, and building user-friendly interfaces.
+    `,
   },
   {
     slug: "luxury-transport",
@@ -327,11 +350,68 @@ export const projects: Project[] = [
         description: "The demand of template websites like these is not very high. I was inspired by my Dad's friend who owns a similiar company, so I decided to design a website that business owners like him could use for free.",
       },
     ],
-    outcome: "The website has been deployed and is open source on GitHub. It can be used as a platform for providing seamless luxury transportation booking services.",
+    outcome: `
+    The website has been deployed and is open source on GitHub.
+    It can be used as a platform for providing seamless luxury transportation booking services.
+    The project provided valuable experience in building user-friendly reservation systems.
+    `,
   }
 ];
 
 export const blogs: Blog[] = [
+  {
+    slug: "infinitecode",
+    title: "InfiniteCode",
+    category: "AI & Web Development",
+    image: "/ifc-home.webp",
+    date: "Feb 8, 2026 — Present",
+    status: "in-progress",
+    description: "Practice coding through LeetCode style problems, while also solving through AI generated problems.",
+    technologies: ["TypeScript", "Python", "PostgreSQL", "Supabase", "AI Integration"],
+    blogPosts: [
+      {
+        date: "February 8, 2026 - 6:16PM",
+        title: "Infinite",
+        borderColor: "#eb0f13",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            I'm starting a new project called InfiniteCode, a coding practice platform built around maximizing problem-solving skills.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Practicing questions that appear in technical interviews is valuable. 
+            Platforms like LeetCode are great, I use it to learn common patterns, strengthen data structures and algorithms, and get comfortable with interview style problems. 
+            But interviews don't always give you something you've seen before.
+            They test how you think, not how many problems you've solved and memorized.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            InfiniteCode is built around that idea.
+            Alongside classic challenges, the platform will generate new problems using AI so you're constantly solving things you haven't seen before.
+            The goal is to build adaptability and confidence when facing unfamiliar questions, not just recognition of known ones.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            I hope to take longer on this project, since it is more ambitious than my previous projects. 
+            I'll be documenting the architecture, decisions, and progress as it comes together.
+            `,
+            marginBottom: 4
+          }
+        ],
+      },
+    ]
+  },
   {
     slug: "resumexp",
     title: "ResumeXP",
@@ -341,8 +421,9 @@ export const blogs: Blog[] = [
     status: "completed",
     projectUrl: "https://montasirmoyen.com/projects/resumexp",
     liveUrl: "https://resumexp.vercel.app/",
+    githubUrl: "https://github.com/montasirmoyen/resumexp",
     description: "An AI-powered application to help users maximize their resume potential in seconds.",
-    technologies: ["TypeScript", "React", "AI Integration"],
+    technologies: ["TypeScript", "React", "Next", "Firebase", "AI Integration"],
     blogPosts: [
       {
         date: "January 29, 2026 - 7:12PM",
@@ -545,7 +626,7 @@ export const blogs: Blog[] = [
           {
             type: "image",
             content: [
-            "/rxp-upload-page.png",
+              "/rxp-upload-page.png",
             ],
             marginBottom: 4
           },
@@ -564,6 +645,21 @@ export const blogs: Blog[] = [
             link: "https://resumexp.vercel.app",
             marginBottom: 4
           },
+          {
+            type: "paragraph",
+            content: `
+            View the source code here:
+            `,
+            marginBottom: 0
+          },
+          {
+            type: "paragraph",
+            content: `
+            https://github.com/montasirmoyen/resumexp
+            `,
+            link: "https://github.com/montasirmoyen/resumexp",
+            marginBottom: 4
+          },
         ],
       }
     ]
@@ -575,7 +671,9 @@ export const blogs: Blog[] = [
     image: "/uniweek-home.png",
     date: "Jan 21, 2026 — Jan 28, 2026",
     status: "completed",
+    projectUrl: "https://montasirmoyen.com/projects/uniweek",
     liveUrl: "https://uni-week.vercel.app/",
+    githubUrl: "https://github.com/montasirmoyen/uniweek",
     description: "An application that visualizes university schedules from .xlsx files into clean, interactive layouts with live status updates.",
     technologies: ["Typescript", "React", "Next", "Python", "Firebase"],
     blogPosts: [
@@ -885,15 +983,28 @@ export const blogs: Blog[] = [
           {
             type: "paragraph",
             content: `
-            With that all wrapped up, I deployed the website and it's live at:
+            View the site at:
             `,
             marginBottom: 0
           },
           {
             type: "paragraph",
-            content: `uni-week.vercel.app`,
+            content: `https://uni-week.vercel.app/`,
             link: "https://uni-week.vercel.app/",
-            marginBottom: 1
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            View the source code on GitHub:
+            `,
+            marginBottom: 0
+          },
+          {
+            type: "paragraph",
+            content: `https://github.com/montasirmoyen/uniweek`,
+            link: "https://github.com/montasirmoyen/uniweek",
+            marginBottom: 4
           }
         ]
       }
@@ -1185,6 +1296,8 @@ export function getTechIcon(tech: string): string | null {
     entrepreneurship: "/entrepreneurship.png",
     parsing: "/xlsx.png",
     "data engineering": "/data.png",
+    "supabase": "/supabase.png",
+    "postgresql": "/postgresql.svg",
   };
 
   const normalizedTech = tech.toLowerCase().trim();
