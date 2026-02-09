@@ -55,31 +55,6 @@ function BlogDetailContent({ blog }: { blog: any }) {
             )}
           </div>
 
-          {/* Tech Stack Tags */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {blog.technologies.map((tech: string) => {
-              const iconPath = getTechIcon(tech);
-              return (
-                <span
-                  key={tech}
-                  className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
-                >
-                  {iconPath && (
-                    <Image
-                      src={iconPath}
-                      alt={tech}
-                      width={14}
-                      height={14}
-                      className="object-contain"
-                      unoptimized
-                    />
-                  )}
-                  {tech}
-                </span>
-              );
-            })}
-          </div>
-
           {/* Date and Links */}
           <div className="flex items-center gap-4 flex-wrap">
             <p className="text-sm text-gray-500">{blog.date}</p>
@@ -130,109 +105,130 @@ function BlogDetailContent({ blog }: { blog: any }) {
         </div>
 
         {/* Main Content */}
-        <div className="lg:col-span-2 space-y-12">
-          {/* Blog Posts */}
-          <section id="blog-posts">
-            <h2 className="text-2xl font-bold mb-6">Development Blog Posts</h2>
-            <div className="space-y-8">
-              {blog.blogPosts.map((post: any, postIndex: number) => (
-                <article
-                  key={postIndex}
-                  className="border-l-2 pl-6"
-                  style={{ borderColor: post.borderColor?.startsWith("#") ? post.borderColor : `#${post.borderColor}` }}
-                >
-                  <div className="mb-4">
-                    <h3 className="text-xl font-semibold text-white mb-2">{post.title}</h3>
-                    <p className="text-sm text-gray-400">{post.date}</p>
-                  </div>
-                  <div className="space-y-0">
-                    {post.content.map((item: any, itemIndex: number) => {
-                      const marginClass = `mb-${item.marginBottom}`;
-                      const content = (
-                        <>
-                          {item.type === "paragraph" && (
-                            <p className={`${item.link ? 'text-blue-500' : 'text-gray-300'} leading-relaxed ${marginClass}`}>
-                              {item.content}
-                            </p>
-                          )}
-                          {item.type === "bulletpoints" && (
-                            <ul className={`list-disc list-inside space-y-2 ${item.link ? 'text-blue-500' : 'text-gray-300'} ${marginClass}`}>
-                              {item.content.map((bullet: string, bulletIndex: number) => (
-                                <li key={bulletIndex}>{bullet}</li>
-                              ))}
-                            </ul>
-                          )}
-                          {item.type === "image" && (
-                            <div className={`space-y-2 ${item.link ? 'text-blue-500' : 'text-gray-300'} ${marginClass}`}>
-                              {item.content.map((imageSrc: string, imageIndex: number) => (
-                                <Image
-                                  key={imageIndex}
-                                  src={imageSrc}
-                                  alt={`Image ${imageIndex + 1}`}
-                                  width={1920}
-                                  height={1080}
-                                  className="rounded"
-                                  unoptimized
-                                />
-                              ))}
-                            </div>
-                          )}
-                        </>
-                      );
+        <div className="flex gap-8 relative">
+          {/* Main Content Area */}
+          <div className="flex-1 space-y-12 min-w-0">
+            {/* Tech Stack */}
+            <section id="tech-stack">
+              <h2 className="text-2xl font-bold mb-4">Tech Stack</h2>
+              <div className="flex flex-wrap gap-2">
+                {blog.technologies.map((tech: string) => {
+                  const iconPath = getTechIcon(tech);
+                  return (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
+                    >
+                      {iconPath && (
+                        <Image
+                          src={iconPath}
+                          alt={tech}
+                          width={14}
+                          height={14}
+                          className="object-contain"
+                          unoptimized
+                        />
+                      )}
+                      {tech}
+                    </span>
+                  );
+                })}
+              </div>
+            </section>
 
-                      if (item.link) {
-                        return (
-                          <Link
-                            key={itemIndex}
-                            href={item.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-500 underline transition-colors"
-                          >
-                            {content}
-                          </Link>
-                        );
-                      }
-
-                      return <div key={itemIndex}>{content}</div>;
-                    })}
-                  </div>
-                  <p className="mt-2 text-sm text-white/50 italic">
-                    — Montasir
-                  </p>
-                </article>
-              ))}
-            </div>
-
-          </section>
-
-          {/* Tech Stack */}
-          <section id="tech-stack">
-            <h2 className="text-2xl font-bold mb-4">Tech Stack</h2>
-            <div className="flex flex-wrap gap-2">
-              {blog.technologies.map((tech: string) => {
-                const iconPath = getTechIcon(tech);
-                return (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
+            {/* Blog Posts */}
+            <section id="blog-posts">
+              <h2 className="text-2xl font-bold mb-6">Development Blog Posts</h2>
+              <div className="space-y-8">
+                {blog.blogPosts.map((post: any, postIndex: number) => (
+                  <article
+                    key={postIndex}
+                    id={`post-${postIndex}`}
+                    className="border-l-2 pl-6 scroll-mt-32"
+                    style={{ borderColor: post.borderColor?.startsWith("#") ? post.borderColor : `#${post.borderColor}` }}
                   >
-                    {iconPath && (
-                      <Image
-                        src={iconPath}
-                        alt={tech}
-                        width={14}
-                        height={14}
-                        className="object-contain"
-                        unoptimized
-                      />
-                    )}
-                    {tech}
-                  </span>
-                );
-              })}
+                    <div className="mb-4">
+                      <h3 className="text-xl font-semibold text-white mb-2">{post.title}</h3>
+                      <p className="text-sm text-gray-400">{post.date}</p>
+                    </div>
+                    <div className="space-y-0">
+                      {post.content.map((item: any, itemIndex: number) => {
+                        const marginClass = `mb-${item.marginBottom}`;
+                        const content = (
+                          <>
+                            {item.type === "paragraph" && (
+                              <p className={`${item.link ? 'text-blue-500' : 'text-gray-300'} leading-relaxed ${marginClass}`}>
+                                {item.content}
+                              </p>
+                            )}
+                            {item.type === "bulletpoints" && (
+                              <ul className={`list-disc list-inside space-y-2 ${item.link ? 'text-blue-500' : 'text-gray-300'} ${marginClass}`}>
+                                {item.content.map((bullet: string, bulletIndex: number) => (
+                                  <li key={bulletIndex}>{bullet}</li>
+                                ))}
+                              </ul>
+                            )}
+                            {item.type === "image" && (
+                              <div className={`space-y-2 ${item.link ? 'text-blue-500' : 'text-gray-300'} ${marginClass}`}>
+                                {item.content.map((imageSrc: string, imageIndex: number) => (
+                                  <Image
+                                    key={imageIndex}
+                                    src={imageSrc}
+                                    alt={`Image ${imageIndex + 1}`}
+                                    width={1920}
+                                    height={1080}
+                                    className="rounded"
+                                    unoptimized
+                                  />
+                                ))}
+                              </div>
+                            )}
+                          </>
+                        );
+
+                        if (item.link) {
+                          return (
+                            <Link
+                              key={itemIndex}
+                              href={item.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-500 underline transition-colors"
+                            >
+                              {content}
+                            </Link>
+                          );
+                        }
+
+                        return <div key={itemIndex}>{content}</div>;
+                      })}
+                    </div>
+                    <p className="mt-2 text-sm text-white/50 italic">
+                      — Montasir
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          </div>
+
+          {/* Table of Contents */}
+          <aside className="hidden lg:block w-64 shrink-0">
+            <div className="sticky top-32">
+              <h3 className="text-sm font-semibold text-gray-400 uppercase mb-4">On this blog</h3>
+              <nav className="space-y-2">
+                {blog.blogPosts.map((post: any, postIndex: number) => (
+                  <a
+                    key={postIndex}
+                    href={`#post-${postIndex}`}
+                    className="block text-sm text-gray-400 hover:text-white transition-colors py-1"
+                  >
+                    {post.title}
+                  </a>
+                ))}
+              </nav>
             </div>
-          </section>
+          </aside>
         </div>
       </div>
 
