@@ -1079,9 +1079,9 @@ export const blogs: Blog[] = [
             type: "paragraph",
             content: `
             One of my friends told me this project didn't make sense to create because Google's AI search results or ChatGPT "does the same thing and better.”
-            I agreed and didn't argue with them, just gave them a shrug. Because I knew that this kind of mentality was a bit narrow and misses the point.
+            I agreed, they had a point, but I also had one:
             `,
-            marginBottom: 4
+            marginBottom: 2
           },
           {
             type: "paragraph",
@@ -1112,8 +1112,8 @@ export const blogs: Blog[] = [
           {
             type: "paragraph",
             content: `
-            I like this border color.
-            Anyways, lately I've been auditing my AI's backend instead of adding new features.
+            This border color is nice..
+            anyways, lately I've been auditing my AI's backend instead of adding new features.
             I decided to halt feature work because I know that accuracy and trust matter a lot when it comes to RamAI's chatbot.
             If the AI gives messy information or is unable to respond to certain questions, users will quickly lose trust and stop using it.
             `,
