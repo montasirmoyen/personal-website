@@ -281,6 +281,7 @@ export const projects: Project[] = [
     colors: ["#ff34b1", "#ff851b"],
     category: "Front-End Web Development",
     image: "/scentdex-home.png",
+    githubUrl: "https://github.com/montasirmoyen/scentdex/",
     date: "Sep 2025 — Present",
     status: "completed",
     description: "Browse, study and filter the most popular fragrances from the most luxurious brands.",
@@ -308,7 +309,7 @@ export const projects: Project[] = [
       }
     ],
     outcome: `
-    The application has been deployed and provides an intuitive way to explore and discover fragrances.
+    The website has been deployed and is open source on GitHub.
     The project provided valuable experience in front-end development, handling large datasets, and building user-friendly interfaces.
     `,
   },
