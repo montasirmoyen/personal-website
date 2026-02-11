@@ -411,6 +411,76 @@ export const blogs: Blog[] = [
           }
         ],
       },
+      {
+        date: "February 10, 2026 - 11:53PM",
+        title: "Architecture",
+        borderColor: "#ffb12b",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            The mission is quite simple.
+            InfiniteCode needs a clean editor, clear problems, and fast feedback.
+            I'm keeping the architecture minimal on purpose for now so I can move efficiently and iterate without over-engineering.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            The core UI should use a split layout like LeetCode, NeetCode, etc.
+            Question on the left, code editor and output on the right.
+            Of course, the well known splitter component should be used to resize panels.
+            It's a familiar layout that would reduce the learning curve for users.
+            I am choosing Monaco for the editor because it feels like Visual Studio Code and looks to already support syntax highlighting and language tooling.
+            It's heavier than a basic textarea and less customizable, but worth it for user experience.
+            Besides, I don't think most users would want a highly customized editor for a coding practice platform, so the tradeoff is reasonable.
+            Check out Monaco here:
+            `,
+            marginBottom: 0
+          },
+          {
+            type: "paragraph",
+            content: "https://www.npmjs.com/package/@monaco-editor/react",
+            link: "https://www.npmjs.com/package/@monaco-editor/react",
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            I'll use OpenRouter SDK, still haven't decided on the AI model.
+            The AI pipeline will have to handle problem generation and solution grading.
+            Python retrieves classic problems from some public websites, but there's no way to really grade these problems without an AI.
+            You'd need a lot of test cases for each problem to reliably grade them, and even then, there are edge cases that could slip through.
+            I may not need an AI to grade solutions, but I haven't found a way to reliably test and grade code without it yet.
+            But grading should be lightweight to avoid overwhelming users while still giving reasonable feedback.
+            A simple prompt would suffice to check if the user's solution to the problem is correct, and maybe provide some hints if it's not.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Planning wise, I'm prioritizing a stable experience before adding more complexity like user accounts or rankings.
+            Yes, social features will have to wait, it will help me nail the core loop first, which is: read -> solve -> test -> learn.
+            I think this is the most important part to get right, and I can always build around it later.
+            Overview:
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "bulletpoints",
+            content: [
+              "Stack: Next.js + React, Typescript, Monaco editor, OpenRouter, Python for classic problem retrieval",
+              "Future Stack: PostgreSQL & Supabase for user data and storage, I want to explore Supabase for this project since I haven't used it before and it seems interesting",
+              "UI: Split view (question on left, editor + console on right)",
+              "Considerations: Limited functionality for Monaco but better user experience, AI used to grade solutions",
+              "Focus: Core loop first, extras (accounts, leaderboards) later"
+            ],
+            marginBottom: 4
+          }
+        ]
+      }
     ]
   },
   {
