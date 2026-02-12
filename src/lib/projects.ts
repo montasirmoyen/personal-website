@@ -388,16 +388,16 @@ export const blogs: Blog[] = [
             Practicing questions that appear in technical interviews is valuable. 
             Platforms like LeetCode are great, I use it to learn common patterns, strengthen data structures and algorithms, and get comfortable with interview style problems. 
             But interviews don't always give you something you've seen before.
-            They test how you think, not how many problems you've solved and memorized.
+            They test how you think, meaning they might not hand you a problem you've solved or memorized before.
             `,
             marginBottom: 4
           },
           {
             type: "paragraph",
             content: `
-            InfiniteCode is built around that idea.
+            InfiniteCode is built around the idea of adaptability.
             Alongside classic challenges, the platform will generate new problems using AI so you're constantly solving things you haven't seen before.
-            The goal is to build adaptability and confidence when facing unfamiliar questions, not just recognition of known ones.
+            The goal is to build this adaptability and confidence when facing unfamiliar questions, not just recognition of known ones.
             `,
             marginBottom: 4
           },
@@ -419,8 +419,8 @@ export const blogs: Blog[] = [
           {
             type: "paragraph",
             content: `
-            The mission is quite simple.
-            InfiniteCode needs a clean editor, clear problems, and fast feedback.
+            The mission is quite simple: prepare users for the unexpected in coding interviews.
+            But for that, InfiniteCode needs a clean editor, clear problems, and fast feedback.
             I'm keeping the architecture minimal on purpose for now so I can move efficiently and iterate without over-engineering.
             `,
             marginBottom: 4
