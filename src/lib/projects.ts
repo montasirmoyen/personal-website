@@ -473,12 +473,76 @@ export const blogs: Blog[] = [
             content: [
               "Stack: Next.js + React, Typescript, Monaco editor, OpenRouter, Python for classic problem retrieval",
               "Future Stack: PostgreSQL & Supabase for user data and storage, I want to explore Supabase for this project since I haven't used it before and it seems interesting",
-              "UI: Split view (question on left, editor + console on right)",
+              "UI: shadcn, mvp: split view (question on left, editor + console on right)",
               "Considerations: Limited functionality for Monaco but better user experience, AI used to grade solutions",
               "Focus: Core loop first, extras (accounts, leaderboards) later"
             ],
             marginBottom: 4
           }
+        ]
+      },
+      {
+        date: "February 12, 2026 - 11:01PM",
+        title: "Assessment",
+        borderColor: "#0fdc8a",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            While working on the grading pipeline for InfiniteCode, I've realized how powerful using AI to grade can be.
+            I initially thought I could get away with just running the user's code against a set of test cases, but that approach has some major limitations.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            The sheer size of the database of coding problems and their edge cases makes it impractical to maintain exhaustive test cases for every problem, especially as the database grows.
+            Even if I did, there are always edge cases that could slip through, and users would be left wondering why their solution was marked wrong.
+            With AI grading layered on top of deterministic test execution, there's more flexibility.
+            For example, I made it so that the AI helps evaluate the solution and also provides some cases where the solution fails or succeeds, based on the results from actual test runs.
+            One to three cases, just to give users a better understanding of where their solution stands and how it can be improved.          
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Using AI also allows for more refined feedback.
+            Instead of just marking a solution as right or wrong, the AI can provide hints, suggest optimizations, or even point out specific lines of code that could be improved.
+            Some platforms are beginning to explore AI-assisted feedback, but I think concrete example cases alongside that feedback could really enhance the learning experience for users.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Of course, there are drawbacks to using AI for grading.
+            AI models can hallucinate, and this isn't new information.
+            Just relying on AI for grading could lead to inaccurate feedback if the model isn't properly constrained or if it encounters a problem it doesn't understand well.
+            To mitigate this, I will have to implement strong filtering and constraints in the backend, such as structured prompts, validation against real test results, and output filtering to ensure the AI's responses are as accurate and helpful as possible.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            All in all, while using AI for grading introduces some complexity and potential downsides, I believe the benefits in terms of flexibility, refined feedback, and scalability outweigh the drawbacks when implemented thoughtfully.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "image",
+            content: ["/ic-grading.png"],
+            marginBottom: 2
+          },
+          {
+            type: "paragraph",
+            content: `
+            Green checks give me dopamine..
+            `,
+            marginBottom: 4
+          },
         ]
       }
     ]
