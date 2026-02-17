@@ -12,7 +12,7 @@ import AvailableForRoles from "@/components/AvailableForRoles"
 export default function ProjectsPage() {
   return (
     <div className="pt-32 px-4 md:px-6">
-      <TopBarBackground transparency={25} imageUrl="dark-wapper.jpg" />
+      <TopBarBackground transparency={50} imageUrl="dark-wapper.jpg" />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-2">

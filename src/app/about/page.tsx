@@ -14,19 +14,19 @@ import { LiquidButton } from "@/components/ui/liquid-button";
 export default function About() {
   return (
     <div className="relative pt-48 overflow-visible">
-      <TopBarBackground imageUrl="/sea-wave.jpg" transparency={30} />
+      <TopBarBackground imageUrl="/sea-wave.jpg" transparency={50} />
 
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-6 items-center">
           {/* Headshot */}
           <div className="mx-auto">
             <TiltedCard
               imageSrc="/montasirmoyen.png"
               altText="Author"
-              containerHeight="300px"
-              containerWidth="300px"
-              imageHeight="300px"
-              imageWidth="300px"
+              containerHeight="250px"
+              containerWidth="250px"
+              imageHeight="250px"
+              imageWidth="250px"
               rotateAmplitude={10}
               scaleOnHover={1.2}
               showMobileWarning={false}

@@ -6,7 +6,7 @@ import { blogs } from "@/lib/projects";
 import { Badge } from "@/components/ui/badge";
 import AvailableForRoles from "@/components/AvailableForRoles";
 import { TextAnimate } from "@/components/ui/text-animate"
-import { projects, getTechIcon } from "@/lib/projects";
+import { getTechIcon } from "@/lib/projects";
 import TopBarBackground from "@/components/TopBarBackground";
 
 export default function BlogPage() {
