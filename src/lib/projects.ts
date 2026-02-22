@@ -367,7 +367,7 @@ export const blogs: Blog[] = [
     image: "/ifc-home.webp",
     date: "Feb 8, 2026 — Present",
     status: "in-progress",
-    description: "Practice coding through LeetCode style problems, while also solving through AI generated problems.",
+    description: "Endless coding practice powered by curated challenges and unprecedented AI-generated problems.",
     technologies: ["TypeScript", "Python", "PostgreSQL", "Supabase", "AI Integration"],
     blogPosts: [
       {
@@ -540,6 +540,59 @@ export const blogs: Blog[] = [
             type: "paragraph",
             content: `
             Green checks give me dopamine..
+            `,
+            marginBottom: 4
+          },
+        ]
+      },
+      {
+        date: "February 22, 2026 - 1:01AM",
+        title: "Versatility",
+        borderColor: "#124dff",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            It's been a while.
+            I've been busy with University and career development, but I've been making progress on InfiniteCode in my free time.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            So looking back, it looks like I left off talking about the grading aspect of the app, choosing AI for grading after weighing the tradeoffs.
+            But I'm still realizing how powerful AI can be used in this platform.
+            It has allowed me to add more versatility to the platform, which has opened up more use cases beyond just practicing interview questions.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            For example, I've worked on adding a feature where users can grade their coding assignments.
+            This is a common use case for students who want to get feedback on their code before submitting it officially.
+            A student would just input their code into the built in code editor, and what that code is supposed to do, and the AI would handle it from there.
+            It's especially good if the student feels they missed some test cases, or if they just want some feedback on how to optimize their code.
+            An AI should tell you where your code is failing and give you some hints on how to fix it, which would be really useful for learning and improving coding skills.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "image",
+            content: ["/ic-ai-grade.png"],
+            marginBottom: 4
+          },
+          {
+            type: "image",
+            content: ["/ic-ai-gen.png"],
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Finished up the AI question generation feature as well.
+            Solving those questions is a fun experience, and it's interesting to see the variety of questions it can come up with.
             `,
             marginBottom: 4
           },
@@ -1224,6 +1277,7 @@ export const blogs: Blog[] = [
             The existence of similar projects by billion dollar companies shouldn't deter you from working on your own.
             The goal, or my goal at least, isn't to compete with them.
             It's to learn, build, and ultimately have fun in my free time because it's been my passion to do so.
+            It's the kind of mentality that I have when planning and building all of my projects, and it's what has allowed me to actually enjoy working on them and not get demotivated by the fact that there are similar projects out there.
             `,
             marginBottom: 4
           },
@@ -1247,8 +1301,7 @@ export const blogs: Blog[] = [
           {
             type: "paragraph",
             content: `
-            This border color is nice..
-            anyways, lately I've been auditing my AI's backend instead of adding new features.
+            This border color is nice.. anyways, lately I've been auditing my AI's backend instead of adding new features.
             I decided to halt feature work because I know that accuracy and trust matter a lot when it comes to RamAI's chatbot.
             If the AI gives messy information or is unable to respond to certain questions, users will quickly lose trust and stop using it.
             `,
