@@ -26,8 +26,8 @@ export default function AvailableForRoles({
   },
 }: AvailableForRolesProps) {
   return (
-    <section className="relative min-h-[450px] flex items-center justify-center text-white mt-20 mb-20 px-4 py-12">
-      {/* Background */}
+    <>
+    {/* <section className="relative min-h-[450px] flex items-center justify-center text-white mt-20 mb-20 px-4 py-12">
       <div className="absolute inset-0 z-[-1] pointer-events-none overflow-hidden">
         <div
           className="absolute opacity-25 inset-0 bg-cover bg-center bg-no-repeat"
@@ -39,7 +39,6 @@ export default function AvailableForRoles({
         />
       </div>
 
-      {/* Centered Content */}
       <div className="text-center z-10 max-w-2xl mx-auto">
         <Image
           src={logo.src}
@@ -70,7 +69,8 @@ export default function AvailableForRoles({
           <CopyButton content={email} />
         </div>
       </div>
-    </section>
+    </section> */}
+    </>
   );
 }
 
