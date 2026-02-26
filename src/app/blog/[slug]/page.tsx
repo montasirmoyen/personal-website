@@ -28,7 +28,7 @@ function BlogDetailContent({ blog }: { blog: any }) {
 
   return (
     <div className="pt-32 px-4 md:px-6">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-5xl mx-auto mb-24">
         <TopBarBackground imageUrl={blog.image} transparency={25} />
 
         {/* Header Section */}

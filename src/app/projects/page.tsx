@@ -13,7 +13,7 @@ export default function ProjectsPage() {
   return (
     <div className="pt-32 px-4 md:px-6">
       <TopBarBackground transparency={50} imageUrl="dark-wapper.jpg" />
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto mb-24">
         {/* Header */}
         <div className="mb-2">
           <p className="text-sm text-white/50 uppercase mb-2">
