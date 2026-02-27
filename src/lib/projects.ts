@@ -601,6 +601,206 @@ export const blogs: Blog[] = [
     ]
   },
   {
+    slug: "urb",
+    title: "Universal Room Booker",
+    category: "Backend Development",
+    image: "/urb-home.jpg",
+    date: "[Challenge] Feb 26, 2026",
+    status: "completed",
+    githubUrl: "https://github.com/montasirmoyen/urb",
+    description: "A scalable backend system for managing reservable rooms with safe and concurrent booking logic.",
+    technologies: ["Java", "Spring Boot", "PostgreSQL", "Maven", "Docker"],
+    blogPosts: [
+      {
+        date: "February 26, 2026 - Part 1",
+        title: "Endeavor",
+        borderColor: "#ff453b",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            While I'm taking a break from InfiniteCode, I thought of starting a challenge to build a backend system in one day.
+            It could be for any use case, but I would need to build it from zero, including setting up the database, designing the API, and implementing the core logic.
+            I also would need to learn how to use Spring Boot, which is a popular Java framework for building backend applications.
+            I want to do this to grow my backend development skills and see how much I would accomplish in a limited time frame.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            I'm settling on building a room booking system, which is a common use case for backend applications and is something that interests me.
+            I'm always booking library rooms at my university, and I was curious about how the backend systems for those work, and if I could build something similar.
+            This project is open source on GitHub, and anyone can use it as they please, but it also serves as proof that I built this project in a day.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            I'll break this challenge into sections: architecture and design decisions, implementation details, testing, and reflections on the process and what I learned.
+            The goal is to have the project ready on GitHub by the end of the day and document it here.
+            I'll refine the blog posts after the challenge for readability and accuracy.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            I've always loved a challenge, so let's see how this goes.
+            `,
+            marginBottom: 4
+          },
+        ],
+      },
+      {
+        date: "February 26, 2026 - Part 2",
+        title: "Architecture",
+        borderColor: "#dabf7c",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            For the tech stack, I chose Java and Spring Boot to sharpen my Java skills and learn Spring Boot, which are widely used in the industry for building scalable backend systems.
+            PostgreSQL handles the database for its reliability and support for complex queries and transactions, which are crucial for a booking system.
+            Maven manages dependencies and project structure, which is standard in Java projects.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            The core functionality allows users to create rooms with capacity limits and book them while preventing overlapping reservations.
+            The main challenge is ensuring the booking logic is safe and handles concurrent requests without allowing double bookings.
+            This requires proper database-level constraints and graceful API error handling.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            The API has two main endpoints: one for creating and listing rooms, and another for creating bookings.
+            The booking endpoint checks for overlapping reservations in the same room and rejects conflicting requests.
+            The database schema uses JPA entities with proper validation and relationships to efficiently manage rooms and bookings.
+            `,
+            marginBottom: 4
+          },
+        ],
+      },
+      {
+        date: "February 26, 2026 - Part 3",
+        title: "Implementation",
+        borderColor: "#39ffff",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            The implementation involved setting up a Spring Boot project with Maven, configuring PostgreSQL as the database, and building the REST API.
+            I created JPA entities for Room and Booking, repositories for database operations, and service layer logic for handling bookings.
+            Controllers handle HTTP requests and return appropriate responses using Data Transfer Objects.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            The booking service checks for overlapping bookings by querying the database for any existing reservations that conflict with the requested time frame.
+            I used Spring Data JPA custom queries to efficiently find conflicts before creating new bookings.
+            Global exception handling ensures consistent error responses across all endpoints.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Input validation uses Jakarta Validation annotations on DTOs to reject invalid requests early.
+            Lombok reduces boilerplate code for getters, setters, and constructors.
+            The project follows standard Spring Boot conventions with a clear separation of concerns across controllers, services, repositories, and entities.
+            `,
+            marginBottom: 4
+          }
+        ],
+      },
+      {
+        date: "February 26, 2026 - Part 4",
+        title: "Testing",
+        borderColor: "#30b0c0",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            Testing the room booking system required setting up an integration test environment with PostgreSQL.
+            I used Spring Boot Test with JUnit 5 to create comprehensive tests that verify the API behavior end-to-end.
+            The tests run against a real PostgreSQL instance to ensure the booking logic works correctly with the database.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            I implemented Docker support to standardize the development environment and eliminate manual PostgreSQL setup.
+            A Dockerfile packages the Spring Boot application, and a Docker Compose file orchestrates both the app and PostgreSQL in a single command.
+            This makes it trivial for others to get the project running without installing Java, Maven, or PostgreSQL locally.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Test cases cover creating rooms, listing rooms, creating valid bookings, and rejecting overlapping bookings.
+            The integration tests verify that the API correctly handles edge cases like back-to-back bookings and exact time overlaps.
+            The test suite ensures data persists correctly in PostgreSQL and that the booking validation logic works as intended.
+            `,
+            marginBottom: 4
+          }
+        ],
+      },
+      {
+        date: "February 26, 2026 - Part 5",
+        title: "Reflection",
+        borderColor: "#a2845e",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            Building this project in a day taught me that Spring Boot significantly accelerates backend development.
+            The framework handles so much boilerplate code that I could focus on business logic rather than infrastructure.
+            JPA and Spring Data made database interactions straightforward, and the built-in dependency injection system kept the code organized and testable.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            What I enjoyed most was the clean architecture that Spring Boot encourages.
+            The separation between controllers, services, and repositories made the code easy to understand and modify.
+            Lombok saved considerable time by eliminating repetitive getter and setter code.
+            Working with PostgreSQL proved reliable, and the simple SQL queries needed for this project were easy to construct through JPA custom methods.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            The most challenging part was handling concurrent booking attempts and ensuring the database prevents conflicts.
+            I had to think carefully about the proper way to query for overlapping bookings to catch all edge cases.
+            Balancing fast development with proper testing was also tricky within the time constraint.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            With Docker support already in place, future improvements could include implementing user authentication, adding pagination for listing bookings, and including more detailed error messages.
+            This one-day challenge proved that with the right tools and framework, you can build a functional backend system quickly while maintaining clean, readable code.
+            `,
+            marginBottom: 4
+          }
+        ],
+      }
+    ]
+  },
+  {
     slug: "resumexp",
     title: "ResumeXP",
     category: "AI & Web Development",
@@ -1467,6 +1667,10 @@ export function getBlogBySlug(slug: string): Blog | undefined {
 
 export function getTechIcon(tech: string): string | null {
   const techIcons: Record<string, string> = {
+    java: "/java.webp",
+    maven: "/maven.png",
+    docker: "/docker.png",
+    ["spring boot"]: "/spring-boot.webp",
     react: "/react.png",
     typescript: "/typescript.png",
     javascript: "/javascript.png",
