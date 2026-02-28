@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { projects, getTechIcon } from "@/lib/projects";
+import { projects, getTechIcon, getTechDoc } from "@/lib/projects";
 import { ExternalLink, Github } from "lucide-react";
 import TopBarBackground from "@/components/TopBarBackground";
 import { TextAnimate } from "@/components/ui/text-animate"
@@ -89,26 +89,52 @@ export default function ProjectsPage() {
 
                 {/* Technologies */}
                 <div className="flex flex-wrap gap-2 pt-2">
-                  {project.technologies.map((tech) => {
+                  {project.technologies.map((tech: string) => {
                     const iconPath = getTechIcon(tech);
-                    return (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
-                      >
-                        {iconPath && (
-                          <Image
-                            src={iconPath}
-                            alt={tech}
-                            width={14}
-                            height={14}
-                            className="object-contain"
-                            unoptimized
-                          />
-                        )}
-                        {tech}
-                      </span>
-                    );
+                    const docUrl = getTechDoc(tech);
+                    if (docUrl) {
+                      return (
+                        <Link
+                          href={docUrl || "#"}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          key={tech}
+                          className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5 hover:bg-white/10 transition-colors"
+                        >
+                          {iconPath && (
+                            <Image
+                              src={iconPath}
+                              alt={tech}
+                              width={14}
+                              height={14}
+                              className="object-contain"
+                              unoptimized
+                            />
+                          )}
+                          {tech}
+                        </Link>
+                      );
+                    } else {
+                      return (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
+                        >
+                          {iconPath && (
+                            <Image
+                              src={iconPath}
+                              alt={tech}
+                              width={14}
+                              height={14}
+                              className="object-contain"
+                              unoptimized
+                            />
+                          )}
+                          {tech}
+                        </span>
+                      );
+                    }
+
                   })}
                 </div>
 
@@ -164,7 +190,7 @@ export default function ProjectsPage() {
         </div>
       </div>
 
-      <AvailableForRoles/>
+      <AvailableForRoles />
     </div>
   );
 }

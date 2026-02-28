@@ -3,7 +3,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { getProjectBySlug, getTechIcon } from "@/lib/projects";
+import { getProjectBySlug, getTechDoc, getTechIcon } from "@/lib/projects";
 import { ExternalLink, Github, Notebook } from "lucide-react";
 import { use } from "react";
 import TopBarBackground from "@/components/TopBarBackground"
@@ -65,24 +65,50 @@ function ProjectDetailContent({ project }: { project: any }) {
           <div className="flex flex-wrap gap-2 mb-4">
             {project.technologies.map((tech: string) => {
               const iconPath = getTechIcon(tech);
-              return (
-                <span
-                  key={tech}
-                  className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
-                >
-                  {iconPath && (
-                    <Image
-                      src={iconPath}
-                      alt={tech}
-                      width={14}
-                      height={14}
-                      className="object-contain"
-                      unoptimized
-                    />
-                  )}
-                  {tech}
-                </span>
-              );
+              const docUrl = getTechDoc(tech);
+              if (docUrl) {
+                return (
+                  <Link
+                    href={docUrl || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    key={tech}
+                    className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5 hover:bg-white/10 transition-colors"
+                  >
+                    {iconPath && (
+                      <Image
+                        src={iconPath}
+                        alt={tech}
+                        width={14}
+                        height={14}
+                        className="object-contain"
+                        unoptimized
+                      />
+                    )}
+                    {tech}
+                  </Link>
+                );
+              } else {
+                return (
+                  <span
+                    key={tech}
+                    className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
+                  >
+                    {iconPath && (
+                      <Image
+                        src={iconPath}
+                        alt={tech}
+                        width={14}
+                        height={14}
+                        className="object-contain"
+                        unoptimized
+                      />
+                    )}
+                    {tech}
+                  </span>
+                );
+              }
+
             })}
           </div>
 
