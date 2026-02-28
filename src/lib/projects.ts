@@ -1,3 +1,30 @@
+export const techStack: Record<string, { src: string; doc?: string }> = {
+    python: { src: "/python.png", doc: "https://docs.python.org/3/" },
+    java: { src: "/java.webp", doc: "https://docs.oracle.com/en/java/" },
+    javascript: { src: "/javascript.png", doc: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+    typescript: { src: "/typescript.png", doc: "https://www.typescriptlang.org/docs/" },
+    lua: { src: "/lua.png", doc: "https://www.lua.org/docs.html" },
+    json: { src: "/json.png", doc: "https://www.json.org/json-en.html" },
+    "postgresql": { src: "/postgresql.svg", doc: "https://www.postgresql.org/docs/" },
+
+    maven: { src: "/maven.png", doc: "https://maven.apache.org/index.html" },
+    docker: { src: "/docker.png", doc: "https://docs.docker.com/" },
+    ["spring boot"]: { src: "/spring-boot.webp", doc: "https://spring.io/projects/spring-boot" },
+    react: { src: "/react.png", doc: "https://react.dev/learn" },
+    firebase: { src: "/firebase.png", doc: "https://firebase.google.com/docs" },
+    "rblx studio": { src: "/rblxstudio.png", doc: "https://create.roblox.com/docs/creation" },
+    "node.js": { src: "/nodejs.png", doc: "https://nodejs.org/en/docs/" },
+    mongodb: { src: "/mongodb.png", doc: "https://www.mongodb.com/docs/" },
+    next: { src: "/next.webp", doc: "https://nextjs.org/docs" },
+    "supabase": { src: "/supabase.png", doc: "https://supabase.com/docs" },
+
+    "ai integration": { src: "/ai.png" },
+    auditing: { src: "/audit.png" },
+    entrepreneurship: { src: "/entrepreneurship.png" },
+    parsing: { src: "/xlsx.png" },
+    "data engineering": { src: "/data.png" },
+  };
+
 export interface Project {
   slug: string;
   title: string;
@@ -1666,32 +1693,11 @@ export function getBlogBySlug(slug: string): Blog | undefined {
 }
 
 export function getTechIcon(tech: string): string | null {
-  const techIcons: Record<string, string> = {
-    java: "/java.webp",
-    maven: "/maven.png",
-    docker: "/docker.png",
-    ["spring boot"]: "/spring-boot.webp",
-    react: "/react.png",
-    typescript: "/typescript.png",
-    javascript: "/javascript.png",
-    firebase: "/firebase.png",
-    lua: "/lua.png",
-    "rblx studio": "/rblxstudio.png",
-    json: "/json.png",
-    "node.js": "/nodejs.png",
-    nodejs: "/nodejs.png",
-    mongodb: "/mongodb.png",
-    next: "/next.webp",
-    python: "/python.png",
-    "ai integration": "/ai.png",
-    auditing: "/audit.png",
-    entrepreneurship: "/entrepreneurship.png",
-    parsing: "/xlsx.png",
-    "data engineering": "/data.png",
-    "supabase": "/supabase.png",
-    "postgresql": "/postgresql.svg",
-  };
-
   const normalizedTech = tech.toLowerCase().trim();
-  return techIcons[normalizedTech] || null;
+  return techStack[normalizedTech]?.src || null;
+}
+
+export function getTechDoc(tech: string): string | null {
+  const normalizedTech = tech.toLowerCase().trim();
+  return techStack[normalizedTech]?.doc || null;
 }
