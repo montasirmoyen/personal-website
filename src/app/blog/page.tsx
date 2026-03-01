@@ -59,6 +59,14 @@ export default function BlogPage() {
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                                     <div className="absolute bottom-4 left-4">
+                                        {blog.challenge && (
+                                            <Badge
+                                                variant="outline"
+                                                className="border-orange-500 bg-orange-500/20 backdrop-blur-sm ml-2"
+                                            >
+                                                Challenge
+                                            </Badge>
+                                        )}
                                         <Badge
                                             variant="outline"
                                             className="border-white/20 bg-black/40 text-white backdrop-blur-sm"
@@ -72,9 +80,6 @@ export default function BlogPage() {
                                     <div className="flex items-center justify-between mb-3">
                                         <span className="text-sm text-gray-400 font-medium">
                                             {blog.category}
-                                        </span>
-                                        <span className="text-sm text-gray-400">
-                                            {blog.date}
                                         </span>
                                     </div>
 
@@ -110,6 +115,10 @@ export default function BlogPage() {
                                             );
                                         })}
                                     </div>
+
+                                    <p className="mt-5 text-sm text-gray-400">
+                                        {blog.date}
+                                    </p>
                                 </div>
                             </div>
                         </Link>
