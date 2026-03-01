@@ -1,29 +1,34 @@
 export const techStack: Record<string, { src: string; doc?: string }> = {
-    python: { src: "/python.png", doc: "https://docs.python.org/3/" },
-    java: { src: "/java.webp", doc: "https://docs.oracle.com/en/java/" },
-    javascript: { src: "/javascript.png", doc: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
-    typescript: { src: "/typescript.png", doc: "https://www.typescriptlang.org/docs/" },
-    lua: { src: "/lua.png", doc: "https://www.lua.org/docs.html" },
-    json: { src: "/json.png", doc: "https://www.json.org/json-en.html" },
-    "postgresql": { src: "/postgresql.svg", doc: "https://www.postgresql.org/docs/" },
+  python: { src: "/python.png", doc: "https://docs.python.org/3/" },
+  java: { src: "/java.webp", doc: "https://docs.oracle.com/en/java/" },
+  javascript: { src: "/javascript.png", doc: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+  typescript: { src: "/typescript.png", doc: "https://www.typescriptlang.org/docs/" },
+  lua: { src: "/lua.png", doc: "https://www.lua.org/docs.html" },
+  json: { src: "/json.png", doc: "https://www.json.org/json-en.html" },
+  "postgresql": { src: "/postgresql.svg", doc: "https://www.postgresql.org/docs/" },
 
-    maven: { src: "/maven.png", doc: "https://maven.apache.org/index.html" },
-    docker: { src: "/docker.png", doc: "https://docs.docker.com/" },
-    ["spring boot"]: { src: "/spring-boot.webp", doc: "https://spring.io/projects/spring-boot" },
-    react: { src: "/react.png", doc: "https://react.dev/learn" },
-    firebase: { src: "/firebase.png", doc: "https://firebase.google.com/docs" },
-    "rblx studio": { src: "/rblxstudio.png", doc: "https://create.roblox.com/docs/creation" },
-    "node.js": { src: "/nodejs.png", doc: "https://nodejs.org/en/docs/" },
-    mongodb: { src: "/mongodb.png", doc: "https://www.mongodb.com/docs/" },
-    next: { src: "/next.webp", doc: "https://nextjs.org/docs" },
-    "supabase": { src: "/supabase.png", doc: "https://supabase.com/docs" },
+  aws: { src: "/aws.png", doc: "https://aws.amazon.com/documentation/" },
+  lambda: { src: "/lambda.png", doc: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html" },
+  s3: { src: "/s3.png", doc: "https://docs.aws.amazon.com/s3/index.html" },
+  angular: { src: "/angular.png", doc: "https://angular.io/docs" },
+  dynamodb: { src: "/dynamodb.png", doc: "https://docs.aws.amazon.com/dynamodb/index.html" },
+  maven: { src: "/maven.png", doc: "https://maven.apache.org/index.html" },
+  docker: { src: "/docker.png", doc: "https://docs.docker.com/" },
+  ["spring boot"]: { src: "/spring-boot.webp", doc: "https://spring.io/projects/spring-boot" },
+  react: { src: "/react.png", doc: "https://react.dev/learn" },
+  firebase: { src: "/firebase.png", doc: "https://firebase.google.com/docs" },
+  "rblx studio": { src: "/rblxstudio.png", doc: "https://create.roblox.com/docs/creation" },
+  "node.js": { src: "/nodejs.png", doc: "https://nodejs.org/en/docs/" },
+  mongodb: { src: "/mongodb.png", doc: "https://www.mongodb.com/docs/" },
+  next: { src: "/next.webp", doc: "https://nextjs.org/docs" },
+  "supabase": { src: "/supabase.png", doc: "https://supabase.com/docs" },
 
-    "ai integration": { src: "/ai.png" },
-    auditing: { src: "/audit.png" },
-    entrepreneurship: { src: "/entrepreneurship.png" },
-    parsing: { src: "/xlsx.png" },
-    "data engineering": { src: "/data.png" },
-  };
+  "ai integration": { src: "/ai.png" },
+  auditing: { src: "/audit.png" },
+  entrepreneurship: { src: "/entrepreneurship.png" },
+  parsing: { src: "/xlsx.png" },
+  "data engineering": { src: "/data.png" },
+};
 
 export interface Project {
   slug: string;
@@ -70,6 +75,7 @@ export interface Project {
 export interface Blog {
   slug: string;
   title: string;
+  challenge?: boolean;
   category: string;
   image: string;
   date: string;
@@ -115,7 +121,7 @@ export const projects: Project[] = [
     slug: "ramai",
     title: "RamAI",
     colors: ["#2e3ffa", "#1d46fd"],
-    category: "AI, Web & App Development",
+    category: "AI & Full-Stack Development",
     image: "/ramai-home.png",
     date: "Jan 15, 2026 — Present",
     status: "completed",
@@ -212,7 +218,7 @@ export const projects: Project[] = [
     slug: "resumexp",
     title: "ResumeXP",
     colors: ["#00ff8c", "#0ccaff"],
-    category: "AI & Web Development",
+    category: "AI & Full-Stack Development",
     image: "/rxp-home.png",
     date: "Jan 29, 2026 — Present",
     status: "completed",
@@ -257,7 +263,7 @@ export const projects: Project[] = [
     slug: "uniweek",
     title: "UniWeek",
     colors: ["#b3fbff", "#23d3ff"],
-    category: "Full-Stack Web Development",
+    category: "Full-Stack Development",
     image: "/uniweek-home.png",
     date: "Jan 21, 2026 — Present",
     status: "completed",
@@ -306,7 +312,7 @@ export const projects: Project[] = [
     slug: "scentdex",
     title: "ScentDex",
     colors: ["#ff34b1", "#ff851b"],
-    category: "Front-End Web Development",
+    category: "Front-End Development",
     image: "/scentdex-home.png",
     githubUrl: "https://github.com/montasirmoyen/scentdex/",
     date: "Sep 2025 — Present",
@@ -344,7 +350,7 @@ export const projects: Project[] = [
     slug: "luxury-transport",
     title: "Luxury Transport",
     colors: ["#5512ff", "#3fffa9"],
-    category: "Full-Stack Web Development",
+    category: "Full-Stack Development",
     image: "/luxtra-home.png",
     date: "Nov 2025 — Present",
     status: "completed",
@@ -390,7 +396,7 @@ export const blogs: Blog[] = [
   {
     slug: "infinitecode",
     title: "InfiniteCode",
-    category: "AI & Web Development",
+    category: "AI & Full-Stack Development",
     image: "/ifc-home.webp",
     date: "Feb 8, 2026 — Present",
     status: "in-progress",
@@ -629,14 +635,15 @@ export const blogs: Blog[] = [
   },
   {
     slug: "urb",
-    title: "Universal Room Booker",
+    title: "URB",
     category: "Backend Development",
     image: "/urb-home.jpg",
-    date: "[Challenge] Feb 26, 2026",
+    date: "Feb 26, 2026",
     status: "completed",
     githubUrl: "https://github.com/montasirmoyen/urb",
-    description: "A scalable backend system for managing reservable rooms with safe and concurrent booking logic.",
+    description: "Universal Room Booker: a scalable backend system for managing reservable rooms with safe and concurrent booking logic.",
     technologies: ["Java", "Spring Boot", "PostgreSQL", "Maven", "Docker"],
+    challenge: true,
     blogPosts: [
       {
         date: "February 26, 2026 - Part 1",
@@ -830,7 +837,7 @@ export const blogs: Blog[] = [
   {
     slug: "resumexp",
     title: "ResumeXP",
-    category: "AI & Web Development",
+    category: "AI & Full-Stack Development",
     image: "/rxp-analysis-2.png",
     date: "Jan 29, 2026 — Feb 3, 2026",
     status: "completed",
@@ -1082,7 +1089,7 @@ export const blogs: Blog[] = [
   {
     slug: "uniweek",
     title: "UniWeek",
-    category: "Full-Stack Web Development",
+    category: "Full-Stack Development",
     image: "/uniweek-home.png",
     date: "Jan 21, 2026 — Jan 28, 2026",
     status: "completed",
@@ -1428,7 +1435,7 @@ export const blogs: Blog[] = [
   {
     slug: "ramai",
     title: "RamAI",
-    category: "AI, Web & App Development",
+    category: "AI & Full-Stack Development",
     image: "/ramai-mobile.png",
     date: "Jan 15, 2026 — Jan 20, 2026",
     status: "completed",
