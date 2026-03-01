@@ -15,17 +15,17 @@ import { Particles } from "@/components/ui/particles";
 import { Linkedin, Github } from "lucide-react"
 import AvailableForRoles from "@/components/AvailableForRoles"
 
-const files = [
+const projects = [
   {
     name: "MPS",
-    body: "A fast-paced soccer game created using Lua that has acheived many feats.",
+    body: "A fast-paced soccer game created using Lua that has achieved many feats.",
   },
   {
     name: "Luxury Transport",
     body: "A full-stack luxury transportation booking website that handles reservations, cancellation and more.",
   },
   {
-    name: "Fragrance Catalog",
+    name: "ScentDex",
     body: "Browse fragrances and sort over 25+ notes. Research about the specifics and find your most suitable scent.",
   },
   {
@@ -145,7 +145,7 @@ export default function Home() {
             pauseOnHover
             className="absolute bottom-0 [mask-image:linear-gradient(to_top,transparent_20%,#000_100%)] [--duration:20s]"
           >
-            {files.map((f, idx) => (
+            {projects.map((f, idx) => (
               <Link href={"/projects"} key={idx}>
                 <figure
                   className={cn(
