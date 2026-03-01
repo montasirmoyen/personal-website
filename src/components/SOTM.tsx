@@ -1,10 +1,10 @@
 const songOfTheMonth = {
-    title: "VIVID VICE",
-    artist: "Who-ya Extended",
-    year: 2021,
-    albumCover: "https://upload.wikimedia.org/wikipedia/en/7/7f/Vivid_Vice_-_cover.png",
+    title: "AIZO",
+    artist: "King Gnu",
+    year: 2026,
+    albumCover: "https://i.ytimg.com/vi/wQiz17AKhjM/maxresdefault.jpg",
     spotifyLink:
-        "https://open.spotify.com/track/4R6yPy83vDEZtwJsBavUfo?si=1e22c07324e64552",
+        "https://open.spotify.com/track/65X2koe1LhDgQmRkNdJFv9?si=58c8c153d7ae4d48",
 };
 
 const spotifyImage = "https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png";
@@ -18,7 +18,7 @@ export default function SOTM() {
             rel="noopener noreferrer"
             className="group block"
         >
-            <div className="relative h-[320px] w-full max-w-[720px] overflow-hidden rounded-2xl bg-black shadow-xl">
+            <div className="relative h-[320px] w-full max-w-[720px] overflow-hidden rounded-2xl bg-black shadow-xl border border-white/25">
                 {/* Background */}
                 <div
                     className="absolute inset-0 opacity-85 bg-cover bg-center blur-lg transition-all"
