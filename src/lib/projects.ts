@@ -178,7 +178,7 @@ export const projects: Project[] = [
       "Founded the growing parent company, gaining 160,000+ official members and producing more successful spin-offs of the game.",
       "Generated over 6 figures in net revenue while still maintaining a generous passive income thanks to various methods of monetization and social media influencer partner deals.",
     ],
-    technologies: ["Lua", "JavaScript", "JSON", "Entrepreneurship", "RBLX Studio"],
+    technologies: ["Lua", "JavaScript", "JSON", "RBLX Studio", "Entrepreneurship"],
     gameUrl: "https://www.roblox.com/games/13436905139/MPS-4-a-side",
     overview: "This is a multiplayer soccer game where players compete against each other in two 4 player teams. The game goes on until 90 minutes (around 30 minutes in real life), if the score is tied, it goes onto 120 minutes. If it's still tied, whoever scores next wins the game.",
     keyFeatures: [
@@ -346,7 +346,9 @@ export const projects: Project[] = [
     The project provided valuable experience in front-end development, handling large datasets, and building user-friendly interfaces.
     `,
   },
-  {
+];
+
+  {/* {
     slug: "luxury-transport",
     title: "Luxury Transport",
     colors: ["#5512ff", "#3fffa9"],
@@ -389,8 +391,7 @@ export const projects: Project[] = [
     It can be used as a platform for providing seamless luxury transportation booking services.
     The project provided valuable experience in building user-friendly reservation systems.
     `,
-  }
-];
+  } */}
 
 export const blogs: Blog[] = [
   {
