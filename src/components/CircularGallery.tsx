@@ -490,7 +490,7 @@ class App {
       },
       {
         image: `/futbol.jpg`,
-        text: 'futbol'
+        text: 'fútbol'
       },
       {
         image: `/music.jpg`,
@@ -507,6 +507,14 @@ class App {
       {
         image: `/anime.jpg`,
         text: 'anime'
+      },
+      {
+        image: `/celtics.webp`,
+        text: 'basketball'
+      },
+      {
+        image: `/chess.jpg`,
+        text: 'chess'
       },
     ];
     const galleryItems = items && items.length ? items : defaultItems;
