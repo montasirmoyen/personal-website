@@ -348,51 +348,6 @@ export const projects: Project[] = [
   },
 ];
 
-  {/* {
-    slug: "luxury-transport",
-    title: "Luxury Transport",
-    colors: ["#5512ff", "#3fffa9"],
-    category: "Full-Stack Development",
-    image: "/luxtra-home.png",
-    date: "Nov 2025 — Present",
-    status: "completed",
-    description: "Reserve luxury transportation services within the Greater Boston Area, and modify/cancel reservations with ease.",
-    bullets: [
-      "Reserve luxury transportation services within the Greater Boston Area, and modify/cancel reservations with ease.",
-      "Select from a fleet of luxury vehicles from minivans, SUVs, and sedans.",
-      "Supports payment methods including card, PayPal and Venmo.",
-    ],
-    technologies: ["React", "TypeScript", "Firebase"],
-    githubUrl: "https://github.com/montasirmoyen/luxury-transport",
-    liveUrl: "https://luxury-transport.vercel.app",
-    overview: "Luxury Transport is a demo reservation website to book transportation services. It's mainly for the Greater Boston Area, but offers long distance services.",
-    keyFeatures: [
-      {
-        title: "Free Fare Estimate",
-        description: "Get a detailed estimate on your reservation at no cost.",
-      },
-      {
-        title: "Large Fleet of Vehicles",
-        description: "Select from a variety of luxurious vehicles that from sedans to mini-vans.",
-      },
-      {
-        title: "Ease of Cancellation",
-        description: "Easily cancel or modify reservations through the website when you create an account.",
-      },
-    ],
-    challenges: [
-      {
-        title: "Demand",
-        description: "The demand of template websites like these is not very high. I was inspired by my Dad's friend who owns a similiar company, so I decided to design a website that business owners like him could use for free.",
-      },
-    ],
-    outcome: `
-    The website has been deployed and is open source on GitHub.
-    It can be used as a platform for providing seamless luxury transportation booking services.
-    The project provided valuable experience in building user-friendly reservation systems.
-    `,
-  } */}
-
 export const blogs: Blog[] = [
   {
     slug: "infinitecode",
@@ -628,6 +583,67 @@ export const blogs: Blog[] = [
             Finished up the AI question generation feature as well.
             Solving those questions is a fun experience, and it's interesting to see the variety of questions it can come up with.
             `,
+            marginBottom: 4
+          },
+        ]
+      },
+      {
+        date: "March 8, 2026 - 1:19AM",
+        title: "Persistence",
+        borderColor: "#0079cf",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            I've been looking forward to this part of the development, which involves moving from in-memory state to real persistence.
+            Until now, features functioned correctly in the UI, but data wasn't persisted when the page was closed.
+            Supabase changed that, tt gave me storage, auth, and a PostgreSQL backend in one place, so I could focus more on product behavior and less on wiring up infrastructure from scratch.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            I had a bit of prior experience with PostgreSQL, but Supabase was new for me.
+            The learning curve was honestly smooth.
+            The dashboard made it easy to inspect tables, test queries, and verify data while building.
+            For this project, relational structure matters.
+            Users, generated questions, and saved question records all map naturally to Postgres tables, and that made the data model feel clean and predictable.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Authentication was the next step.
+            Once auth was in place, features became user-specific in a meaningful way.
+            A signed-in user can save generated questions and come back later to load them, while anonymous users still get the core experience but without persistence.
+            That line between “try it” and “personal workspace” is small in code, but huge in UX.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            One detail I cared about was data safety in the UI flow.
+            If a user is about to load another saved question or click “New Question” while their current generated question hasn't been saved, the app now warns them first.
+            It sounds simple, but these guardrails matter.
+            They prevent accidental data loss and make the app feel reliable instead of fragile.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Overall, this stage made the app feel real.
+            Persistence, authentication, and a structured database turned temporary interactions into durable user progress.
+            There's still plenty to build, but this foundation is solid.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "image",
+            content: ["/ic-db.png"],
             marginBottom: 4
           },
         ]
