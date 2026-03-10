@@ -83,7 +83,7 @@ export default function BlogPage() {
                                         </span>
                                     </div>
 
-                                    <h2 className={`text-xl font-bold mb-3 transition-colors`}>
+                                    <h2 className={`text-2xl font-hero font-bold mb-3 transition-colors`}>
                                         {blog.title}
                                     </h2>
 
