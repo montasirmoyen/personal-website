@@ -67,7 +67,7 @@ export default function About() {
             </div>
 
             {/* Paragraphs */}
-            <div className="mt-2 space-y-4 text-base md:text-lg text-white/75 px-4 md:px-8">
+            <div className="mt-2 space-y-4 text-base md:text-lg text-gray px-4 md:px-8 leading-relaxed">
               <p>
                 You may also know me as Monty, I'm a computer science student at Suffolk University in Boston, MA.
                 I enjoy building innovative software solutions.
@@ -89,7 +89,7 @@ export default function About() {
               <p>
                 Thanks for reading; there is much more I have to share on here, so feel free to explore!
               </p>
-              <p className="text-sm text-white/50">
+              <p className="text-sm text-white/75">
                 Let's connect:
               </p>
             </div>
