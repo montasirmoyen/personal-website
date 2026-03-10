@@ -589,7 +589,7 @@ export const blogs: Blog[] = [
       },
       {
         date: "March 8, 2026 - 1:19AM",
-        title: "Persistence",
+        title: "Persistence I",
         borderColor: "#0079cf",
         content: [
           {
@@ -644,6 +644,76 @@ export const blogs: Blog[] = [
           {
             type: "image",
             content: ["/ic-db.png"],
+            marginBottom: 4
+          },
+        ]
+      },
+      {
+        date: "March 10, 2026 - 2:04AM",
+        title: "Persistence II",
+        borderColor: "#0079cf",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            On the last blog post, I focused on saving AI generated questions with Supabase and PostgreSQL.
+            Storing the problem itself solved one half of the problem.
+            But while using the app, I noticed the bigger pain point was actually user progress.
+            People switch tabs, refresh, change language, or come back later.
+            If their code disappears, trust disappears too.
+            So recently I focused on saving editor code drafts and tracking completed questions in a way that feels fast for users but still clean and affordable on the backend.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            My first decision was local draft saving.
+            I added autosave to localStorage with a debounce, keyed by user + question + language + variant.
+            That means a Python draft for Question A does not overwrite a Java draft for Question A, and neither affects Question B.
+            Local save is instant and free, so it gives a great UX baseline.
+            Then I layered cloud persistence with Supabase for authenticated users.
+            I only sync remotely when it matters (manual save, run/submit/grade, periodic dirty sync), not every keystroke.
+            This reduces write volume and avoids turning autosave into a cost problem.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            I had to make tradeoffs around consistency vs cost.
+            Full real-time sync on every edit sounds nice, but it is expensive and noisy.
+            So I used hash based checks to skip unchanged saves and added cooldown/rate limiting on manual draft saves.
+            I also introduced conflict resolution between local and remote drafts using updated timestamps, choosing the newer draft as source of truth on load.
+            For a single user coding workflow, this is simple, reliable, and easy.
+            In short, I optimize for practical durability, not theoretical perfection.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            The second feature was completion tracking after successful submit.
+            I created a completed questions table and marked questions as completed only after a valid submission event, not on run/simulate.
+            This avoids false positives and keeps progress meaningful.
+            For generated AI questions, I used stable question keys (content based hashing fallback) so progress and drafts still map correctly even when IDs are temporary.
+            The result is a smoother loop: solve -> submit -> completion recorded -> progress reflected in UI.
+            This also sets up future features like streaks and personalized recommendations.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            All in all, I was working less on adding flashy features and more on product reliability.
+            My core principle was “save often locally, sync smartly remotely”.
+            That gave me a strong UX, lower backend cost, and cleaner data semantics for progress tracking.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "image",
+            content: ["/ic-ql.png"],
             marginBottom: 4
           },
         ]
