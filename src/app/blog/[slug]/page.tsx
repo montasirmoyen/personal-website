@@ -8,6 +8,7 @@ import { ExternalLink, Github, Computer } from "lucide-react";
 import { use } from "react";
 import TopBarBackground from "@/components/TopBarBackground"
 import AvailableForRoles from "@/components/AvailableForRoles"
+import { Separator } from "@/components/ui/separator";
 
 interface BlogDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -165,74 +166,82 @@ function BlogDetailContent({ blog }: { blog: any }) {
             {/* Blog Posts */}
             <section id="blog-posts">
               <h2 className="text-2xl font-bold mb-6">Development Blog Posts</h2>
-              <div className="space-y-8">
+              <div className="space-y-12">
                 {blog.blogPosts.map((post: any, postIndex: number) => (
-                  <article
-                    key={postIndex}
-                    id={`post-${postIndex}`}
-                    className="border-l-2 pl-6 scroll-mt-32"
-                    style={{ borderColor: post.borderColor?.startsWith("#") ? post.borderColor : `#${post.borderColor}` }}
-                  >
-                    <div className="mb-4">
-                      <h3 className="text-xl font-semibold text-white mb-2">{post.title}</h3>
-                      <p className="text-sm text-gray-400">{post.date}</p>
-                    </div>
-                    <div className="space-y-0">
-                      {post.content.map((item: any, itemIndex: number) => {
-                        const marginClass = `mb-${item.marginBottom}`;
-                        const content = (
-                          <>
-                            {item.type === "paragraph" && (
-                              <p className={`${item.link ? 'text-blue-500' : 'text-gray-300'} leading-relaxed ${marginClass}`}>
-                                {item.content}
-                              </p>
-                            )}
-                            {item.type === "bulletpoints" && (
-                              <ul className={`list-disc list-inside space-y-2 ${item.link ? 'text-blue-500' : 'text-gray-300'} ${marginClass}`}>
-                                {item.content.map((bullet: string, bulletIndex: number) => (
-                                  <li key={bulletIndex}>{bullet}</li>
-                                ))}
-                              </ul>
-                            )}
-                            {item.type === "image" && (
-                              <div className={`space-y-2 ${item.link ? 'text-blue-500' : 'text-gray-300'} ${marginClass}`}>
-                                {item.content.map((imageSrc: string, imageIndex: number) => (
-                                  <Image
-                                    key={imageIndex}
-                                    src={imageSrc}
-                                    alt={`Image ${imageIndex + 1}`}
-                                    width={1920}
-                                    height={1080}
-                                    className="rounded"
-                                    unoptimized
-                                  />
-                                ))}
-                              </div>
-                            )}
-                          </>
-                        );
-
-                        if (item.link) {
-                          return (
-                            <Link
-                              key={itemIndex}
-                              href={item.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-blue-500 underline transition-colors"
-                            >
-                              {content}
-                            </Link>
+                  <div key={postIndex}>
+                    <article
+                      id={`post-${postIndex}`}
+                      className="border-l-2 pl-6 scroll-mt-32"
+                      style={{ borderColor: post.borderColor?.startsWith("#") ? post.borderColor : `#${post.borderColor}` }}
+                    >
+                      <div className="mb-8">
+                        <h3 className="text-xl font-semibold text-white mb-2">{post.title}</h3>
+                        <p className="text-sm text-gray-400">{post.date}</p>
+                      </div>
+                      <div className="space-y-0 leading-relaxed tracking-wide text-balance">
+                        {post.content.map((item: any, itemIndex: number) => {
+                          const marginClass = `mb-${item.marginBottom}`;
+                          const content = (
+                            <>
+                              {item.type === "paragraph" && (
+                                <p className={`${item.link ? 'text-blue-500' : 'text-gray'} ${marginClass}`}>
+                                  {item.content}
+                                </p>
+                              )}
+                              {item.type === "bulletpoints" && (
+                                <ul className={`space-y-2 ${item.link ? 'text-blue-500' : 'text-gray'} ${marginClass}`}>
+                                  {item.content.map((bullet: string, bulletIndex: number) => (
+                                    <li key={bulletIndex} className="flex items-start gap-3">
+                                      <span
+                                        style={{ color: post.borderColor?.startsWith("#") ? post.borderColor : `#${post.borderColor}` }}
+                                        className="font-bold">❖</span>
+                                      <span>{bullet}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                              {item.type === "image" && (
+                                <div className={`space-y-2 ${item.link ? 'text-blue-500' : 'text-gray'} ${marginClass}`}>
+                                  {item.content.map((imageSrc: string, imageIndex: number) => (
+                                    <Image
+                                      key={imageIndex}
+                                      src={imageSrc}
+                                      alt={`Image ${imageIndex + 1}`}
+                                      width={1920}
+                                      height={1080}
+                                      className="rounded"
+                                      unoptimized
+                                    />
+                                  ))}
+                                </div>
+                              )}
+                            </>
                           );
-                        }
 
-                        return <div key={itemIndex}>{content}</div>;
-                      })}
-                    </div>
-                    <p className="mt-2 text-sm text-white/50 italic">
-                      — Montasir
-                    </p>
-                  </article>
+                          if (item.link) {
+                            return (
+                              <Link
+                                key={itemIndex}
+                                href={item.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-500 underline transition-colors"
+                              >
+                                {content}
+                              </Link>
+                            );
+                          }
+
+                          return <div key={itemIndex}>{content}</div>;
+                        })}
+                      </div>
+                      <p className="mt-2 text-sm text-white/50 italic">
+                        — Montasir
+                      </p>
+                    </article>
+
+                    <Separator className="mt-12 bg-white/25" />
+                  </div>
                 ))}
               </div>
             </section>
