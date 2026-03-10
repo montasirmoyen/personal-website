@@ -79,7 +79,7 @@ export default function ProjectsPage() {
                   </p>
                 </div>
 
-                {/* Bullet Points */}
+                {/* Bullet Points 
                 <ul className="space-y-2">
                   {project.bullets.map((bullet, i) => (
                     <li key={i} className="flex items-start gap-3 text-gray-300">
@@ -89,7 +89,7 @@ export default function ProjectsPage() {
                       <span className="text-sm">{bullet}</span>
                     </li>
                   ))}
-                </ul>
+                </ul>*/}
 
                 {/* Technologies */}
                 <div className="flex flex-wrap gap-2 pt-2">
