@@ -8,6 +8,7 @@ import TopBarBackground from "@/components/TopBarBackground";
 import { TextAnimate } from "@/components/ui/text-animate"
 import { BackgroundGradient } from "@/components/ui/background-gradient"
 import AvailableForRoles from "@/components/AvailableForRoles"
+import { Separator } from "@/components/ui/separator";
 
 export default function ProjectsPage() {
   return (
@@ -64,14 +65,15 @@ export default function ProjectsPage() {
               </BackgroundGradient>
 
               {/* Content - Right Side */}
-              <div className="space-y-4">
+              <div className="space-y-4 leading-loose">
                 <div>
                   <p className="text-sm text-gray-400 uppercase mb-2">
                     {project.category}
                   </p>
-                  <h2 className="text-3xl md:text-4xl font-bold mb-3">
+                  <h2 className="text-4xl md:text-5xl font-hero font-bold">
                     {project.title}
                   </h2>
+                  <Separator className="my-4 bg-white/20" />
                   <p className="text-gray-300">
                     {project.description}
                   </p>
@@ -80,8 +82,10 @@ export default function ProjectsPage() {
                 {/* Bullet Points */}
                 <ul className="space-y-2">
                   {project.bullets.map((bullet, i) => (
-                    <li key={i} className="flex items-start gap-2 text-gray-300">
-                      <span className="">•</span>
+                    <li key={i} className="flex items-start gap-3 text-gray-300">
+                      <span
+                        style={{ color: project.colors ? project.colors[1] : "#fff" }}
+                        className="font-bold">❖</span>
                       <span className="text-sm">{bullet}</span>
                     </li>
                   ))}
