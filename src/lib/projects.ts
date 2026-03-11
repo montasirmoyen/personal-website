@@ -313,7 +313,7 @@ export const projects: Project[] = [
     title: "ScentDex",
     colors: ["#ff34b1", "#ff851b"],
     category: "Front-End Development",
-    image: "/scentdex-home.png",
+    image: "/sd-home.png",
     githubUrl: "https://github.com/montasirmoyen/scentdex/",
     date: "Sep 2025 — Present",
     status: "completed",
