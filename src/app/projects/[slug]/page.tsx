@@ -307,7 +307,7 @@ function ProjectDetailContent({ project }: { project: any }) {
             </section>
           )}
 
-          <p className="text-sm text-white/50 italic">
+          <p className="text-sm text-white/50 italic mb-24">
             — Montasir
           </p>
         </div>
