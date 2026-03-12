@@ -312,7 +312,7 @@ export const projects: Project[] = [
     slug: "scentdex",
     title: "ScentDex",
     colors: ["#ff34b1", "#ff851b"],
-    category: "Front-End Development",
+    category: "AI & Full-Stack Development",
     image: "/sd-home.png",
     githubUrl: "https://github.com/montasirmoyen/scentdex/",
     date: "Sep 2025 — Present",
@@ -322,7 +322,7 @@ export const projects: Project[] = [
       "Sort and filter fragrances by various attributes such as seasons, gender, and more.",
       "View detailed fragrance profiles including ideal wear times and scent notes.",
     ],
-    technologies: ["React", "TypeScript", "JavaScript", "Node.js", "JSON"],
+    technologies: ["TypeScript", "React", "Next", "Node.js", "JSON", "AI Integration"],
     liveUrl: "https://scentdex.vercel.app",
     overview: "A catalog of various different fragrances. Each fragrance has information on the ideal time to wear them, and there are various sorts and filters to find your favorite fragrance.",
     keyFeatures: [
@@ -333,6 +333,10 @@ export const projects: Project[] = [
       {
         title: "Detailed Fragrance Profiles",
         description: "Provides in-depth information on each fragrance, including ideal wear times and scent notes.",
+      },
+      {
+        title: "Artificial Intelligence Integration",
+        description: "Integrates AI to provide personalized fragrance recommendations and insights based on user preferences.",
       },
     ],
     challenges: [
