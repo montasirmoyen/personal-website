@@ -264,7 +264,7 @@ export const projects: Project[] = [
     title: "UniWeek",
     colors: ["#b3fbff", "#23d3ff"],
     category: "Full-Stack Development",
-    image: "/uniweek-home.png",
+    image: "/uw-home.png",
     date: "Jan 21, 2026 — Present",
     status: "completed",
     description: "An application that visualizes university schedules from .xlsx files into clean, interactive layouts with live status updates.",
