@@ -262,6 +262,48 @@ export const projects: Project[] = [
     `,
   },
   {
+    slug: "scentdex",
+    title: "ScentDex",
+    colors: ["#ff34b1", "#ff851b"],
+    category: "AI & Full-Stack Development",
+    image: "/sd-home.png",
+    githubUrl: "https://github.com/montasirmoyen/scentdex/",
+    date: "Sep 2025 — Present",
+    status: "completed",
+    description: "Browse, study and filter the most popular fragrances from the most luxurious brands.",
+    bullets: [
+      "Sort and filter fragrances by various attributes such as seasons, gender, and more.",
+      "View detailed fragrance profiles including ideal wear times and scent notes.",
+    ],
+    technologies: ["TypeScript", "React", "Next", "Node.js", "JSON", "AI Integration"],
+    liveUrl: "https://scentdex.vercel.app",
+    overview: "A catalog of various different fragrances. Each fragrance has information on the ideal time to wear them, and there are various sorts and filters to find your favorite fragrance.",
+    keyFeatures: [
+      {
+        title: "Advanced Filtering System",
+        description: "Features remarkable filters based on distinct features such as seasons, gender and much more.",
+      },
+      {
+        title: "Detailed Fragrance Profiles",
+        description: "Provides in-depth information on each fragrance, including ideal wear times and scent notes.",
+      },
+      {
+        title: "Artificial Intelligence Integration",
+        description: "Integrates AI to provide personalized fragrance recommendations and insights based on user preferences.",
+      },
+    ],
+    challenges: [
+      {
+        title: "Fragrance Research",
+        description: "I've only been really into fragrances since around 2023, when the trendiness was just starting to peak. I had decent knowledge on fragrances, but of course you can never know enough. I had to do extensive research on various fragrance notes to curate a decent dataset for the project.",
+      }
+    ],
+    outcome: `
+    The website has been deployed and is open source on GitHub.
+    The project provided valuable experience in front-end development, handling large datasets, and building user-friendly interfaces.
+    `,
+  },
+  {
     slug: "uniweek",
     title: "UniWeek",
     colors: ["#b3fbff", "#23d3ff"],
@@ -308,48 +350,6 @@ export const projects: Project[] = [
     The application has been deployed and was tested by friends.
     The project provided valuable experience in file parsing, data visualization, and building user-centric applications.
     The source code is available on GitHub for anyone interested in exploring or contributing to the project.
-    `,
-  },
-  {
-    slug: "scentdex",
-    title: "ScentDex",
-    colors: ["#ff34b1", "#ff851b"],
-    category: "AI & Full-Stack Development",
-    image: "/sd-home.png",
-    githubUrl: "https://github.com/montasirmoyen/scentdex/",
-    date: "Sep 2025 — Present",
-    status: "completed",
-    description: "Browse, study and filter the most popular fragrances from the most luxurious brands.",
-    bullets: [
-      "Sort and filter fragrances by various attributes such as seasons, gender, and more.",
-      "View detailed fragrance profiles including ideal wear times and scent notes.",
-    ],
-    technologies: ["TypeScript", "React", "Next", "Node.js", "JSON", "AI Integration"],
-    liveUrl: "https://scentdex.vercel.app",
-    overview: "A catalog of various different fragrances. Each fragrance has information on the ideal time to wear them, and there are various sorts and filters to find your favorite fragrance.",
-    keyFeatures: [
-      {
-        title: "Advanced Filtering System",
-        description: "Features remarkable filters based on distinct features such as seasons, gender and much more.",
-      },
-      {
-        title: "Detailed Fragrance Profiles",
-        description: "Provides in-depth information on each fragrance, including ideal wear times and scent notes.",
-      },
-      {
-        title: "Artificial Intelligence Integration",
-        description: "Integrates AI to provide personalized fragrance recommendations and insights based on user preferences.",
-      },
-    ],
-    challenges: [
-      {
-        title: "Fragrance Research",
-        description: "I've only been really into fragrances since around 2023, when the trendiness was just starting to peak. I had decent knowledge on fragrances, but of course you can never know enough. I had to do extensive research on various fragrance notes to curate a decent dataset for the project.",
-      }
-    ],
-    outcome: `
-    The website has been deployed and is open source on GitHub.
-    The project provided valuable experience in front-end development, handling large datasets, and building user-friendly interfaces.
     `,
   },
 ];
