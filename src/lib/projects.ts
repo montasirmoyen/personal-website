@@ -125,7 +125,7 @@ export const projects: Project[] = [
     colors: ["#2e3ffa", "#1d46fd"],
     category: "AI & Full-Stack Development",
     image: "/ramai-home.png",
-    date: "Jan 15, 2026 — Present",
+    date: "January 15, 2026 — Present",
     status: "completed",
     description: "An application assisting Suffolk University students by providing tools such as an AI chatbot and a library of 1200+ professors.",
     bullets: [
@@ -222,7 +222,7 @@ export const projects: Project[] = [
     colors: ["#00ff8c", "#0ccaff"],
     category: "AI & Full-Stack Development",
     image: "/rxp-home.png",
-    date: "Jan 29, 2026 — Present",
+    date: "January 29, 2026 — Present",
     status: "completed",
     description: "An AI-powered application to help users maximize their resume potential in seconds.",
     technologies: ["TypeScript", "React", "Next", "AI Integration"],
@@ -267,7 +267,7 @@ export const projects: Project[] = [
     colors: ["#b3fbff", "#23d3ff"],
     category: "Full-Stack Development",
     image: "/uw-home.png",
-    date: "Jan 21, 2026 — Present",
+    date: "January 21, 2026 — Present",
     status: "completed",
     description: "An application that visualizes university schedules from .xlsx files into clean, interactive layouts with live status updates.",
     bullets: [
@@ -360,7 +360,7 @@ export const blogs: Blog[] = [
     title: "InfiniteCode",
     category: "AI & Full-Stack Development",
     image: "/ifc-home.webp",
-    date: "Feb 8, 2026 — Present",
+    date: "February 8, 2026 — Present",
     status: "in-progress",
     description: "Endless coding practice powered by curated challenges and unprecedented AI-generated problems.",
     technologies: ["TypeScript", "Python", "PostgreSQL", "Supabase", "AI Integration"],
@@ -727,11 +727,206 @@ export const blogs: Blog[] = [
     ]
   },
   {
+    slug: "crawler",
+    title: "Crawler",
+    category: "Systems Development",
+    image: "/crawler-home.jpg",
+    date: "March 13, 2026",
+    status: "completed",
+    githubUrl: "https://github.com/montasirmoyen/crawler",
+    description: "A high-performance application designed to recursively traverse the web by leveraging a multi-threaded architecture and robust synchronization primitives for concurrency and resource management.",
+    technologies: ["C++", "CMake"],
+    challenge: true,
+    blogPosts: [
+      {
+        date: "March 13, 2026 - Part 1",
+        title: "Beyond",
+        borderColor: "#00e1ff",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            I'm currently taking an Operating Systems course this semester.
+            Professor DZ has made it interactive and interesting so far, and it's given me a much deeper understanding of how computers work under the hood.
+            Threads, scheduling, synchronization, memory management.. they're only seen as exam topics if you look at them from a surface level, but when you really dive into them, you see how they shape the way we build software and systems.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            We've been given a semester long project by the Prof called "psirver".
+            It is essentially a user-space C++ server on a POSIX system that executes and monitors Python scripts over HTTP.
+            It has forced me to think about process control, signal handling, and fault isolation in a way that most assignments never did.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            I enjoyed building psirver, but I wanted a second project where I could make my own architectural tradeoffs from day one.
+            So I thought of this simple web crawler.
+            It's small enough to finish quickly, but deep enough to explore concurrency and resource management.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            I gave myself a 24 hour time constraint to keep momentum high and decisions practical.
+            The challenge and goal is not to build the biggest crawler on day one, but to design something correct, measurable, and easy to extend without rewriting everything later.
+            `,
+            marginBottom: 4
+          }
+        ],
+      },
+      {
+        date: "March 13, 2026 - Part 2",
+        title: "Architecture",
+        borderColor: "#fabd5a",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            I chose C++ because I want explicit control over memory, threading, and performance behavior, just like psirver.
+            The stack is intentionally more minimal than other projects I've worked on.
+            CMake for builds, libcurl for HTTP fetches, and STL synchronization primitives for safe shared-state coordination.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            At a high level, the crawler runs on a producer consumer model.
+            A thread-safe URL queue feeds worker threads, each worker fetches a page, extracts candidate links, normalizes and deduplicates them, and pushes new URLs back into the queue until limits are reached.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Key constraints are politeness and control.
+            I cap crawl depth, guard against duplicate visits, and plan rate limiting per domain.
+            Fast code is good, but predictable behavior under load is the real engineering target.
+            `,
+            marginBottom: 4
+          },
+        ],
+      },
+      {
+        date: "March 13, 2026 - Part 3",
+        title: "Implementation",
+        borderColor: "#28ff85",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            I started the implementation by keeping things extremely small. 
+            Instead of worrying about threads or link extraction immediately, I just wanted the crawler to fetch a single page and print something useful.
+            The first working version simply accepted a seed URL, fetched the HTML using libcurl, and logged that the request completed successfully.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Once that worked, I added the basic pipeline: a queue of URLs to visit and a set that tracks which URLs have already been crawled.
+            Even though the crawler is simple right now, separating those responsibilities early made the code easier to reason about.
+            The queue handles scheduling, while the visited set prevents the crawler from getting stuck revisiting the same pages.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            After the basic flow worked, I began wiring in link extraction so the crawler could actually discover new pages.
+            At this stage I wasn't aiming for perfect HTML parsing yet.
+            The actual goal was just to prove that the crawler could fetch a page, extract links, and continue crawling.
+            Once that feedback loop worked, the rest of the architecture started to make more sense.
+            `,
+            marginBottom: 4
+          }
+        ],
+      },
+      {
+        date: "March 13, 2026 - Part 4",
+        title: "Testing",
+        borderColor: "#de679c",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            Testing this project was mostly about observing behavior rather than writing formal unit tests.
+            Since the crawler interacts with the real web, the easiest way to verify things was to run it on small, predictable sites and watch what happened.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            I started by crawling very small sites with low page limits to confirm that URLs were being discovered and scheduled correctly.
+            Logging helped a lot here, printing each crawled URL made it obvious when the crawler was revisiting pages or failing to extract links properly.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            I also tried testing edge cases like invalid URLs and pages that returned errors.
+            In those cases the crawler shouldn't crash or stall it should simply skip the page and continue working through the queue.
+            That kind of resilience is important for crawlers because the web is messy and unpredictable.
+            `,
+            marginBottom: 4
+          }
+        ],
+      },
+      {
+        date: "March 13, 2026 - Part 5",
+        title: "Reflection",
+        borderColor: "#ffffff",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            One thing I liked about this project is that it connects directly to concepts I'm learning in my os class.
+            Queues, synchronization, worker threads.. you start seeing why these topics are on OS exams when you build something like this.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Giving myself a 24 hour constraint also changed how I approached the design.
+            Instead of trying to make everything perfect, I focused on building something that worked first and could be improved later and that mindset made progress much faster.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            The crawler is still pretty small, but it already feels like a solid base to experiment with.
+            There are a lot of directions it could go next like better HTML parsing, smarter scheduling, or even distributed crawling.
+            For now though, I'm happy that the core loop works and that I got to apply some systems concepts in a practical way.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            This was a great way to wrap up Spring Break, I'll definitely be revisiting this project later to add more features and optimizations, but it was a fun challenge to build something like this in a short time and see how far I could get with it.
+            `,
+            marginBottom: 4
+          }
+        ],
+      }
+    ]
+  },
+  {
     slug: "urb",
     title: "URB",
     category: "Backend Development",
     image: "/urb-home.jpg",
-    date: "Feb 26, 2026",
+    date: "February 26, 2026",
     status: "completed",
     githubUrl: "https://github.com/montasirmoyen/urb",
     description: "Universal Room Booker: a scalable backend system for managing reservable rooms with safe and concurrent booking logic.",
@@ -932,7 +1127,7 @@ export const blogs: Blog[] = [
     title: "ResumeXP",
     category: "AI & Full-Stack Development",
     image: "/rxp-analysis-2.png",
-    date: "Jan 29, 2026 — Feb 3, 2026",
+    date: "January 29, 2026 — February 3, 2026",
     status: "completed",
     projectUrl: "https://montasirmoyen.com/projects/resumexp",
     liveUrl: "https://resumexp.vercel.app/",
@@ -1184,7 +1379,7 @@ export const blogs: Blog[] = [
     title: "UniWeek",
     category: "Full-Stack Development",
     image: "/uniweek-home.png",
-    date: "Jan 21, 2026 — Jan 28, 2026",
+    date: "January 21, 2026 — January 28, 2026",
     status: "completed",
     projectUrl: "https://montasirmoyen.com/projects/uniweek",
     liveUrl: "https://uni-week.vercel.app/",
@@ -1530,7 +1725,7 @@ export const blogs: Blog[] = [
     title: "RamAI",
     category: "AI & Full-Stack Development",
     image: "/ramai-mobile.png",
-    date: "Jan 15, 2026 — Jan 20, 2026",
+    date: "January 15, 2026 — January 20, 2026",
     status: "completed",
     description: "An application assisting Suffolk University students by providing tools such as an AI chatbot and a library of 1200+ professors.",
     technologies: ["TypeScript", "React", "Python", "Data Engineering", "AI Integration", "Auditing"],
