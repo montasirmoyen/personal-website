@@ -1,4 +1,6 @@
 export const techStack: Record<string, { src: string; doc?: string }> = {
+  ["c++"]: { src: "/cpp.png", doc: "https://en.cppreference.com/w/" },
+  cmake: { src: "/cmake.png", doc: "https://cmake.org/documentation/" },
   python: { src: "/python.png", doc: "https://docs.python.org/3/" },
   java: { src: "/java.webp", doc: "https://docs.oracle.com/en/java/" },
   javascript: { src: "/javascript.png", doc: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
