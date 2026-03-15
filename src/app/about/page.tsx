@@ -58,11 +58,12 @@ export default function About() {
               <TextAnimate
                 animation="slideLeft"
                 by="character"
+                once
                 className="text-3xl md:text-5xl lg:text-6xl font-bold font-hero 
                bg-gradient-to-r from-blue-500 to-purple-500 
                bg-clip-text text-transparent animate-gradient 
                bg-[length:200%_auto]">
-                software developer.
+                software developer
               </TextAnimate>
             </div>
 

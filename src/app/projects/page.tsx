@@ -31,12 +31,13 @@ export default function ProjectsPage() {
 
             <TextAnimate
               animation="slideLeft"
+              once
               by="character"
               className="text-5xl md:text-6xl font-bold font-hero 
                bg-gradient-to-r from-blue-500 to-purple-500 
                bg-clip-text text-transparent animate-gradient 
                bg-[length:200%_auto]">
-              showcases.
+              showcases
             </TextAnimate>
           </div>
         </div>
