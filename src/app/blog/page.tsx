@@ -67,6 +67,14 @@ export default function BlogPage() {
                                                 Challenge
                                             </Badge>
                                         )}
+                                        {blog.collab && (
+                                            <Badge
+                                                variant="outline"
+                                                className="border-blue-500 bg-blue-500/20 backdrop-blur-sm ml-2"
+                                            >
+                                                Collaboration
+                                            </Badge>
+                                        )}
                                         <Badge
                                             variant="outline"
                                             className="border-white/20 bg-black/40 text-white backdrop-blur-sm"
