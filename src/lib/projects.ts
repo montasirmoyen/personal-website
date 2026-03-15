@@ -9,6 +9,8 @@ export const techStack: Record<string, { src: string; doc?: string }> = {
   json: { src: "/json.png", doc: "https://www.json.org/json-en.html" },
   "postgresql": { src: "/postgresql.svg", doc: "https://www.postgresql.org/docs/" },
 
+  opencv: { src: "/opencv.webp", doc: "https://docs.opencv.org/4.x/" },
+  mediapipe: { src: "/mediapipe.png", doc: "https://github.com/google-ai-edge/mediapipe" },
   aws: { src: "/aws.png", doc: "https://aws.amazon.com/documentation/" },
   lambda: { src: "/lambda.png", doc: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html" },
   s3: { src: "/s3.png", doc: "https://docs.aws.amazon.com/s3/index.html" },
@@ -48,21 +50,6 @@ export interface Project {
   liveUrl?: string;
   gameUrl?: string;
   overview?: string;
-  blogPosts?: {
-    date: string;
-    title: string;
-    borderColor: string;
-    content: ({
-      type: "paragraph";
-      content: string;
-      link?: string;
-      marginBottom: number;
-    } | {
-      type: "bulletpoints";
-      content: string[];
-      marginBottom: number;
-    })[]
-  }[];
   keyFeatures?: {
     title: string;
     description: string;
@@ -78,6 +65,7 @@ export interface Blog {
   slug: string;
   title: string;
   challenge?: boolean;
+  collab?: boolean;
   category: string;
   image: string;
   date: string;
@@ -96,15 +84,16 @@ export interface Blog {
       type: "paragraph";
       content: string;
       link?: string;
-      marginBottom: number;
+      marginBottom?: number;
     } | {
       type: "bulletpoints";
       content: string[];
-      marginBottom: number;
+      marginBottom?: number;
     } | {
       type: "image";
       content: string[];
-      marginBottom: number;
+      scale?: number;
+      marginBottom?: number;
     })[]
   }[];
   keyFeatures?: {
@@ -375,7 +364,6 @@ export const blogs: Blog[] = [
             content: `
             I'm starting a new project called InfiniteCode, a coding practice platform built around maximizing problem-solving skills.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -385,7 +373,6 @@ export const blogs: Blog[] = [
             But interviews don't always give you something you've seen before.
             They test how you think, meaning they might not hand you a problem you've solved or memorized before.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -394,7 +381,6 @@ export const blogs: Blog[] = [
             Alongside classic challenges, the platform will generate new problems using AI so you're constantly solving things you haven't seen before.
             The goal is to build this adaptability and confidence when facing unfamiliar questions, not just recognition of known ones.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -402,7 +388,6 @@ export const blogs: Blog[] = [
             I hope to take longer on this project, since it is more ambitious than my previous projects. 
             I'll be documenting the architecture, decisions, and progress as it comes together.
             `,
-            marginBottom: 4
           }
         ],
       },
@@ -418,7 +403,6 @@ export const blogs: Blog[] = [
             But for that, InfiniteCode needs a clean editor, clear problems, and fast feedback.
             I'm keeping the architecture minimal on purpose for now so I can move efficiently and iterate without over-engineering.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -438,7 +422,6 @@ export const blogs: Blog[] = [
             type: "paragraph",
             content: "https://www.npmjs.com/package/@monaco-editor/react",
             link: "https://www.npmjs.com/package/@monaco-editor/react",
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -451,7 +434,6 @@ export const blogs: Blog[] = [
             But grading should be lightweight to avoid overwhelming users while still giving reasonable feedback.
             A simple prompt would suffice to check if the user's solution to the problem is correct, and maybe provide some hints if it's not.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -472,7 +454,6 @@ export const blogs: Blog[] = [
               "Considerations: Limited functionality for Monaco but better user experience, AI used to grade solutions",
               "Focus: Core loop first, extras (accounts, leaderboards) later"
             ],
-            marginBottom: 4
           }
         ]
       },
@@ -487,7 +468,6 @@ export const blogs: Blog[] = [
             While working on the grading pipeline for InfiniteCode, I've realized how powerful using AI to grade can be.
             I initially thought I could get away with just running the user's code against a set of test cases, but that approach has some major limitations.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -498,7 +478,6 @@ export const blogs: Blog[] = [
             For example, I made it so that the AI helps evaluate the solution and also provides some cases where the solution fails or succeeds, based on the results from actual test runs.
             One to three cases, just to give users a better understanding of where their solution stands and how it can be improved.          
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -507,7 +486,6 @@ export const blogs: Blog[] = [
             Instead of just marking a solution as right or wrong, the AI can provide hints, suggest optimizations, or even point out specific lines of code that could be improved.
             Some platforms are beginning to explore AI-assisted feedback, but I think concrete example cases alongside that feedback could really enhance the learning experience for users.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -517,14 +495,12 @@ export const blogs: Blog[] = [
             Just relying on AI for grading could lead to inaccurate feedback if the model isn't properly constrained or if it encounters a problem it doesn't understand well.
             To mitigate this, I will have to implement strong filtering and constraints in the backend, such as structured prompts, validation against real test results, and output filtering to ensure the AI's responses are as accurate and helpful as possible.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
             content: `
             All in all, while using AI for grading introduces some complexity and potential downsides, I believe the benefits in terms of flexibility, refined feedback, and scalability outweigh the drawbacks when implemented thoughtfully.
             `,
-            marginBottom: 4
           },
           {
             type: "image",
@@ -536,7 +512,6 @@ export const blogs: Blog[] = [
             content: `
             Green checks give me dopamine..
             `,
-            marginBottom: 4
           },
         ]
       },
@@ -551,7 +526,6 @@ export const blogs: Blog[] = [
             It's been a while.
             I've been busy with University and career development, but I've been making progress on InfiniteCode in my free time.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -560,7 +534,6 @@ export const blogs: Blog[] = [
             But I'm still realizing how powerful AI can be used in this platform.
             It has allowed me to add more versatility to the platform, which has opened up more use cases beyond just practicing interview questions.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -571,17 +544,14 @@ export const blogs: Blog[] = [
             It's especially good if the student feels they missed some test cases, or if they just want some feedback on how to optimize their code.
             An AI should tell you where your code is failing and give you some hints on how to fix it, which would be really useful for learning and improving coding skills.
             `,
-            marginBottom: 4
           },
           {
             type: "image",
             content: ["/ic-ai-grade.png"],
-            marginBottom: 4
           },
           {
             type: "image",
             content: ["/ic-ai-gen.png"],
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -589,7 +559,6 @@ export const blogs: Blog[] = [
             Finished up the AI question generation feature as well.
             Solving those questions is a fun experience, and it's interesting to see the variety of questions it can come up with.
             `,
-            marginBottom: 4
           },
         ]
       },
@@ -605,7 +574,6 @@ export const blogs: Blog[] = [
             Until now, features functioned correctly in the UI, but data wasn't persisted when the page was closed.
             Supabase changed that, tt gave me storage, auth, and a PostgreSQL backend in one place, so I could focus more on product behavior and less on wiring up infrastructure from scratch.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -616,7 +584,6 @@ export const blogs: Blog[] = [
             For this project, relational structure matters.
             Users, generated questions, and saved question records all map naturally to Postgres tables, and that made the data model feel clean and predictable.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -626,7 +593,6 @@ export const blogs: Blog[] = [
             A signed-in user can save generated questions and come back later to load them, while anonymous users still get the core experience but without persistence.
             That line between “try it” and “personal workspace” is small in code, but huge in UX.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -636,7 +602,6 @@ export const blogs: Blog[] = [
             It sounds simple, but these guardrails matter.
             They prevent accidental data loss and make the app feel reliable instead of fragile.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -645,12 +610,10 @@ export const blogs: Blog[] = [
             Persistence, authentication, and a structured database turned temporary interactions into durable user progress.
             There's still plenty to build, but this foundation is solid.
             `,
-            marginBottom: 4
           },
           {
             type: "image",
             content: ["/ic-db.png"],
-            marginBottom: 4
           },
         ]
       },
@@ -669,7 +632,6 @@ export const blogs: Blog[] = [
             If their code disappears, trust disappears too.
             So recently I focused on saving editor code drafts and tracking completed questions in a way that feels fast for users but still clean and affordable on the backend.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -682,7 +644,6 @@ export const blogs: Blog[] = [
             I only sync remotely when it matters (manual save, run/submit/grade, periodic dirty sync), not every keystroke.
             This reduces write volume and avoids turning autosave into a cost problem.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -694,7 +655,6 @@ export const blogs: Blog[] = [
             For a single user coding workflow, this is simple, reliable, and easy.
             In short, I optimize for practical durability, not theoretical perfection.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -706,7 +666,6 @@ export const blogs: Blog[] = [
             The result is a smoother loop: solve -> submit -> completion recorded -> progress reflected in UI.
             This also sets up future features like streaks and personalized recommendations.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -715,14 +674,124 @@ export const blogs: Blog[] = [
             My core principle was “save often locally, sync smartly remotely”.
             That gave me a strong UX, lower backend cost, and cleaner data semantics for progress tracking.
             `,
-            marginBottom: 4
           },
           {
             type: "image",
             content: ["/ic-ql.png"],
-            marginBottom: 4
           },
         ]
+      }
+    ]
+  },
+  {
+    slug: "domain-expansion",
+    title: "Domain Expansion",
+    category: "Computer Vision/ML Development",
+    image: "/de-home.webp",
+    date: "March 15, 2026 — Present",
+    status: "in-progress",
+    githubUrl: "https://github.com/montasirmoyen/domain-expansion",
+    description: "A real-time computer vision application using hand tracking to identify Jujutsu Kaisen \"Domain Expansion\" gestures via webcam and trigger on-screen overlays.",
+    technologies: ["Python", "OpenCV", "MediaPipe"],
+    collab: true,
+    blogPosts: [
+      {
+        date: "March 14, 2026",
+        title: "Alliance",
+        borderColor: "#00e1ff",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            I've been watching the season 3 of Jujutsu Kaisen during the break. 
+            One of the coolest concepts in the show is the idea of a "Domain Expansion".
+            It's essentially a powerful technique where the user creates a pocket dimension that guarantees their attacks will hit.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            In the show, the users iconically perform a specific hand gesture to activate their Domain Expansion.
+            I thought it would be fun to build a computer vision application that could recognize those hand gestures in real time using a webcam, and trigger some kind of on-screen overlay or effect when the gesture is detected.
+            It would be a fun way to combine my curiosity in computer vision with my enjoyment of the show.
+            I told my younger brother about it and he also found the project interesting, so I decided to invite him to collaborate.
+            `,
+          },
+        ],
+      },
+      {
+        date: "March 15, 2026",
+        title: "Architecture",
+        borderColor: "#e4e724",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            The overall stack of this project is as simple as the concept itself.
+            Python for the main application, OpenCV for video processing, and MediaPipe for hand tracking and gesture recognition.
+            MediaPipe's hand tracking provides a lot of useful data points, like the positions of each finger and the angles between them.
+            The main challenge is going to be accurately recognizing the specific hand gestures associated with the Domain Expansion technique.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            The project should also be easy to demo and share, so I'm keeping that in mind as I build it out.
+            `,
+          }
+        ],
+      },
+      {
+        date: "March 15, 2026",
+        title: "Hindrance",
+        borderColor: "#e72431",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            Implementing Satoru Gojo's Domain Expansion, "Unlimited Void", was quite simple because the gesture itself is simple.
+            Only one hand needed and your middle finger to be wrapped behind your pointer.
+            It was easy to set up a MediaPipe pipeline to recognize that gesture, and I ended up finishing it quickly while my brother was sleeping.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            Then I went onto implementing Sukuna's Domain Expansion, "Malevolent Shrine", which was a lot more challenging.
+            The gesture is more complex, requiring both hands and a specific way to position your fingers.
+            MediaPipe's hand tracking can struggle with accurately recognizing that gesture, since theres 10 fingers trying to be tracked simultaneously.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            At first, I was stumped, I had been playing around with different approaches to try to get it working, but nothing seemed to be accurate enough.
+            I then set it aside, leaving it for the next day.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            So today, I sat down with my brother and we brainstormed some solutions together.
+            We noticed that the main issue was that MediaPipe was struggling to track all 10 fingers accurately, which made it hard to reliably detect the specific configuration needed for Sukuna's Domain Expansion.
+            But what if we didn't need to track all 10 fingers?
+            We could just focus on the pinky, ring and middle fingers, since those are the ones that are most critical for the gesture.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            So we did, we set up a new MediaPipe pipeline that only tracked those three fingers, and we focused our gesture recognition logic on the positions of those fingers relative to each other.
+            We made sure that we took into account more factors like fingertip distances and trying to find a triangle formed by the gesture.
+            Soon enough, that pull request was merged, and we had a working implementation of Sukuna's Domain Expansion as well.
+            `,
+          },
+          {
+            type: "image",
+            content: ["/de-sukuna.webp"],
+            scale: 0.25,
+          }
+        ],
       }
     ]
   },
@@ -750,7 +819,6 @@ export const blogs: Blog[] = [
             Professor DZ has made it interactive and interesting so far, and it's given me a much deeper understanding of how computers work under the hood.
             Threads, scheduling, synchronization, memory management.. they're only seen as exam topics if you look at them from a surface level, but when you really dive into them, you see how they shape the way we build software and systems.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -759,7 +827,6 @@ export const blogs: Blog[] = [
             It is essentially a user-space C++ server on a POSIX system that executes and monitors Python scripts over HTTP.
             It has forced me to think about process control, signal handling, and fault isolation in a way that most assignments never did.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -768,7 +835,6 @@ export const blogs: Blog[] = [
             So I thought of this simple web crawler.
             It's small enough to finish quickly, but deep enough to explore concurrency and resource management.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -776,7 +842,6 @@ export const blogs: Blog[] = [
             I gave myself a 24 hour time constraint to keep momentum high and decisions practical.
             The challenge and goal is not to build the biggest crawler on day one, but to design something correct, measurable, and easy to extend without rewriting everything later.
             `,
-            marginBottom: 4
           }
         ],
       },
@@ -792,7 +857,6 @@ export const blogs: Blog[] = [
             The stack is intentionally more minimal than other projects I've worked on.
             CMake for builds, libcurl for HTTP fetches, and STL synchronization primitives for safe shared-state coordination.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -800,7 +864,6 @@ export const blogs: Blog[] = [
             At a high level, the crawler runs on a producer consumer model.
             A thread-safe URL queue feeds worker threads, each worker fetches a page, extracts candidate links, normalizes and deduplicates them, and pushes new URLs back into the queue until limits are reached.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -809,7 +872,6 @@ export const blogs: Blog[] = [
             I cap crawl depth, guard against duplicate visits, and plan rate limiting per domain.
             Fast code is good, but predictable behavior under load is the real engineering target.
             `,
-            marginBottom: 4
           },
         ],
       },
@@ -825,7 +887,6 @@ export const blogs: Blog[] = [
             Instead of worrying about threads or link extraction immediately, I just wanted the crawler to fetch a single page and print something useful.
             The first working version simply accepted a seed URL, fetched the HTML using libcurl, and logged that the request completed successfully.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -834,7 +895,6 @@ export const blogs: Blog[] = [
             Even though the crawler is simple right now, separating those responsibilities early made the code easier to reason about.
             The queue handles scheduling, while the visited set prevents the crawler from getting stuck revisiting the same pages.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -844,7 +904,6 @@ export const blogs: Blog[] = [
             The actual goal was just to prove that the crawler could fetch a page, extract links, and continue crawling.
             Once that feedback loop worked, the rest of the architecture started to make more sense.
             `,
-            marginBottom: 4
           }
         ],
       },
@@ -859,7 +918,6 @@ export const blogs: Blog[] = [
             Testing this project was mostly about observing behavior rather than writing formal unit tests.
             Since the crawler interacts with the real web, the easiest way to verify things was to run it on small, predictable sites and watch what happened.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -867,7 +925,6 @@ export const blogs: Blog[] = [
             I started by crawling very small sites with low page limits to confirm that URLs were being discovered and scheduled correctly.
             Logging helped a lot here, printing each crawled URL made it obvious when the crawler was revisiting pages or failing to extract links properly.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -876,7 +933,6 @@ export const blogs: Blog[] = [
             In those cases the crawler shouldn't crash or stall it should simply skip the page and continue working through the queue.
             That kind of resilience is important for crawlers because the web is messy and unpredictable.
             `,
-            marginBottom: 4
           }
         ],
       },
@@ -891,7 +947,6 @@ export const blogs: Blog[] = [
             One thing I liked about this project is that it connects directly to concepts I'm learning in my os class.
             Queues, synchronization, worker threads.. you start seeing why these topics are on OS exams when you build something like this.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -899,7 +954,6 @@ export const blogs: Blog[] = [
             Giving myself a 24 hour constraint also changed how I approached the design.
             Instead of trying to make everything perfect, I focused on building something that worked first and could be improved later and that mindset made progress much faster.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -908,14 +962,12 @@ export const blogs: Blog[] = [
             There are a lot of directions it could go next like better HTML parsing, smarter scheduling, or even distributed crawling.
             For now though, I'm happy that the core loop works and that I got to apply some systems concepts in a practical way.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
             content: `
             This was a great way to wrap up Spring Break, I'll definitely be revisiting this project later to add more features and optimizations, but it was a fun challenge to build something like this in a short time and see how far I could get with it.
             `,
-            marginBottom: 4
           }
         ],
       }
@@ -946,7 +998,6 @@ export const blogs: Blog[] = [
             I also would need to learn how to use Spring Boot, which is a popular Java framework for building backend applications.
             I want to do this to grow my backend development skills and see how much I would accomplish in a limited time frame.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -955,7 +1006,6 @@ export const blogs: Blog[] = [
             I'm always booking library rooms at my university, and I was curious about how the backend systems for those work, and if I could build something similar.
             This project is open source on GitHub, and anyone can use it as they please, but it also serves as proof that I built this project in a day.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -964,14 +1014,12 @@ export const blogs: Blog[] = [
             The goal is to have the project ready on GitHub by the end of the day and document it here.
             I'll refine the blog posts after the challenge for readability and accuracy.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
             content: `
             I've always loved a challenge, so let's see how this goes.
             `,
-            marginBottom: 4
           },
         ],
       },
@@ -987,7 +1035,6 @@ export const blogs: Blog[] = [
             PostgreSQL handles the database for its reliability and support for complex queries and transactions, which are crucial for a booking system.
             Maven manages dependencies and project structure, which is standard in Java projects.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -996,7 +1043,6 @@ export const blogs: Blog[] = [
             The main challenge is ensuring the booking logic is safe and handles concurrent requests without allowing double bookings.
             This requires proper database-level constraints and graceful API error handling.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1005,7 +1051,6 @@ export const blogs: Blog[] = [
             The booking endpoint checks for overlapping reservations in the same room and rejects conflicting requests.
             The database schema uses JPA entities with proper validation and relationships to efficiently manage rooms and bookings.
             `,
-            marginBottom: 4
           },
         ],
       },
@@ -1021,7 +1066,6 @@ export const blogs: Blog[] = [
             I created JPA entities for Room and Booking, repositories for database operations, and service layer logic for handling bookings.
             Controllers handle HTTP requests and return appropriate responses using Data Transfer Objects.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1030,7 +1074,6 @@ export const blogs: Blog[] = [
             I used Spring Data JPA custom queries to efficiently find conflicts before creating new bookings.
             Global exception handling ensures consistent error responses across all endpoints.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1039,7 +1082,6 @@ export const blogs: Blog[] = [
             Lombok reduces boilerplate code for getters, setters, and constructors.
             The project follows standard Spring Boot conventions with a clear separation of concerns across controllers, services, repositories, and entities.
             `,
-            marginBottom: 4
           }
         ],
       },
@@ -1055,7 +1097,6 @@ export const blogs: Blog[] = [
             I used Spring Boot Test with JUnit 5 to create comprehensive tests that verify the API behavior end-to-end.
             The tests run against a real PostgreSQL instance to ensure the booking logic works correctly with the database.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1064,7 +1105,6 @@ export const blogs: Blog[] = [
             A Dockerfile packages the Spring Boot application, and a Docker Compose file orchestrates both the app and PostgreSQL in a single command.
             This makes it trivial for others to get the project running without installing Java, Maven, or PostgreSQL locally.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1073,7 +1113,6 @@ export const blogs: Blog[] = [
             The integration tests verify that the API correctly handles edge cases like back-to-back bookings and exact time overlaps.
             The test suite ensures data persists correctly in PostgreSQL and that the booking validation logic works as intended.
             `,
-            marginBottom: 4
           }
         ],
       },
@@ -1089,7 +1128,6 @@ export const blogs: Blog[] = [
             The framework handles so much boilerplate code that I could focus on business logic rather than infrastructure.
             JPA and Spring Data made database interactions straightforward, and the built-in dependency injection system kept the code organized and testable.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1099,7 +1137,6 @@ export const blogs: Blog[] = [
             Lombok saved considerable time by eliminating repetitive getter and setter code.
             Working with PostgreSQL proved reliable, and the simple SQL queries needed for this project were easy to construct through JPA custom methods.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1108,7 +1145,6 @@ export const blogs: Blog[] = [
             I had to think carefully about the proper way to query for overlapping bookings to catch all edge cases.
             Balancing fast development with proper testing was also tricky within the time constraint.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1116,7 +1152,6 @@ export const blogs: Blog[] = [
             With Docker support already in place, future improvements could include implementing user authentication, adding pagination for listing bookings, and including more detailed error messages.
             This one-day challenge proved that with the right tools and framework, you can build a functional backend system quickly while maintaining clean, readable code.
             `,
-            marginBottom: 4
           }
         ],
       }
@@ -1147,7 +1182,6 @@ export const blogs: Blog[] = [
             There are a few resume analyzer applications out there that I have used, but I'm really interested in how it actually works.
             I suspect it's simpler than it sounds, so I want to have a go at it.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1165,7 +1199,6 @@ export const blogs: Blog[] = [
               "Using careful prompt engineering, the AI analyzes the resume and provides suggestions for improvement",
               "The suggestions are sent back to the frontend and displayed to the user",
             ],
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1199,7 +1232,6 @@ export const blogs: Blog[] = [
             I finally have the full flow working from uploading a resume, to parsing the text, to sending it through the AI pipeline and then visualizing the results in a clean UI.
             Once I started working on it, I could not stop until it was done. It felt exhilarating to see everything come together.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1251,7 +1283,6 @@ export const blogs: Blog[] = [
               "Sending the request to the AI model",
               "Cleaning up the AI's response"
             ],
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1260,7 +1291,6 @@ export const blogs: Blog[] = [
             Returning unstructured text would make it difficult to reliably render results on the frontend, so a structured response was necessary.
             By enforcing a schema, the frontend can confidently parse and visualize sections like ratings, strengths, weaknesses, and suggestions without hesitation.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1269,7 +1299,6 @@ export const blogs: Blog[] = [
             If the model includes extra text outside the expected structure, the parser strips it out and keeps only the valid JSON.
             I also added defensive error handling for missing or malformed fields, ensuring the UI never renders partial or inconsistent data.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1304,7 +1333,6 @@ export const blogs: Blog[] = [
             I've been working on wrapping ResumeXP for the past couple of days.
             The few components I've been finishing up are:
             `,
-            marginBottom: 4
           },
           {
             type: "bulletpoints",
@@ -1313,7 +1341,6 @@ export const blogs: Blog[] = [
               "Past analysis history for authenticated users",
               "Cover letter generation",
             ],
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1323,7 +1350,6 @@ export const blogs: Blog[] = [
             That's the same approach I took with RamAI and UniWeek.
             I can always expand them later if I feel the need.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1331,14 +1357,12 @@ export const blogs: Blog[] = [
             Beyond the technical work, I'm also practicing my flow: ideation, planning, building the MVP, then refining and polishing it.
             Each project teaches me something new about how to approach the next one, and that's been the most valuable part of this whole process.
             `,
-            marginBottom: 4
           },
           {
             type: "image",
             content: [
               "/rxp-upload-page.png",
             ],
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1353,7 +1377,6 @@ export const blogs: Blog[] = [
             https://resumexp.vercel.app
             `,
             link: "https://resumexp.vercel.app",
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1368,7 +1391,6 @@ export const blogs: Blog[] = [
             https://github.com/montasirmoyen/resumexp
             `,
             link: "https://github.com/montasirmoyen/resumexp",
-            marginBottom: 4
           },
         ],
       }
@@ -1397,14 +1419,12 @@ export const blogs: Blog[] = [
             content: `
             I won't make the mistake of starting a project before creating the blog this time..
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
             content: `
             But after a fun time building RamAI, especially visualizing the data, I realized I wanted to work with data more.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1418,7 +1438,6 @@ export const blogs: Blog[] = [
             Maybe Workday added this feature so us developers could do something with it?
             If so, I'm interested..
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1437,7 +1456,6 @@ export const blogs: Blog[] = [
               "Create a visual representation of the schedule using the data.",
               "Use the time I would have spent making my own clean schedule to do something more productive.",
             ],
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1488,14 +1506,12 @@ export const blogs: Blog[] = [
             The only thing that would need to be done for each university is constructing the general dataset needed to render this project's unique approach of showing what the student can do between class block gaps and etc.
             The rest of the system would remain unchanged, making it easy to expand the project's reach over time if I ever decided to.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
             content: `
             That's all I wanted to share today, I'll continue working on the project when I have free time.
             `,
-            marginBottom: 4
           },
         ]
       },
@@ -1509,7 +1525,6 @@ export const blogs: Blog[] = [
             content: `
             In the middle of a snow storm here in Boston, but I'm cozy enough to continue working on this..
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1519,7 +1534,6 @@ export const blogs: Blog[] = [
             Of course, it's better to be aware yourself of your schedule, but I think having this feature would be a nice touch.
             Below, I'll outline how I did it.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1528,7 +1542,6 @@ export const blogs: Blog[] = [
             The component calculates the current time in minutes since midnight and compares it against all classes scheduled for today.
             It filters the schedule to only show classes for the current day, then sorts them chronologically to find what's happening right now.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1547,7 +1560,6 @@ export const blogs: Blog[] = [
               "All your classes are done for the day",
               "You have no classes today",
             ],
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1557,7 +1569,6 @@ export const blogs: Blog[] = [
             The status text changes color based on urgency, for example, yellow when you're in class, orange when your next class is within 5 minutes, and green when your day is done. 
             The component also displays a pulsing red dot labeled "Live" to emphasize that it's actively tracking your schedule in real time.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1576,7 +1587,6 @@ export const blogs: Blog[] = [
               "Calculates minutes until the next one",
               "Determines remaining classes",
             ],
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1586,7 +1596,6 @@ export const blogs: Blog[] = [
             Small details like pluralization ("1 class" vs "2 classes") and  12 hour time formatting keep the UI polished.
             I try to do these small UI touches before I actually try hard to make the UI look good, which will come later.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1596,33 +1605,28 @@ export const blogs: Blog[] = [
             The fix was making sure all derived values like statusColor, statusData, and secondaryInfo are computed inline during render rather than cached in useEffect or useMemo.
             This way, when currentTime updates every second, React automatically recalculates everything.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
             content: `
             Overall, this makes the website feel at least a little more responsive and alive, exactly what I was trying to do.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
             content: `
             Congratulations if you made it this far. I know this was one of my longer posts.. but I really wanted to share the process thoroughly.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
             content: `
             That's all for now though, stay warm and safe if you're in the snow storm like me!
             `,
-            marginBottom: 4
           },
           {
             type: "image",
             content: ["/uniweek-live.png", "/uniweek-professor-stats.png"],
-            marginBottom: 4
           },
         ]
       },
@@ -1637,7 +1641,6 @@ export const blogs: Blog[] = [
             Continuing from my last post about adding live features to UniWeek... 
             I've implemented real-time emergency alerts from Suffolk University's website.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1645,19 +1648,16 @@ export const blogs: Blog[] = [
             A Python script scrapes the university homepage for the #globalAlert element, parsing the date and message using HTMLParser.
             A Next.js API route spawns the script and returns JSON to the frontend, which displays alerts above the schedule when active.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
             content: `
             It was a simple and quick implementation, but adds real value for students who many rely on UniWeek for their schedules.
             `,
-            marginBottom: 4
           },
           {
             type: "image",
             content: ["/uniweek-alert.png"],
-            marginBottom: 4
           },
         ]
       },
@@ -1672,7 +1672,6 @@ export const blogs: Blog[] = [
             I had a lot of fun building UniWeek over the past week, but I think I'll be pausing active development for now.
             It's reached a solid MVP state where users can upload their schedule and get a clean visual representation with live status updates and emergency alerts.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1680,7 +1679,6 @@ export const blogs: Blog[] = [
             It does seem like I'm burning through projects quickly lately, but I think that's okay as long as I'm learning and enjoying the process.
             I've learned a lot about parsing .xlsx files and using Python for real time data scraping, which are skills I can apply to future projects.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1688,7 +1686,6 @@ export const blogs: Blog[] = [
             Honestly, I'm not even kidding when I say I'll actually use this app for the first few days whenever a new semester starts.
             Even if it's just a few days of using it every semester, it's really helpful to know what my day would look like at a glance.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1701,7 +1698,6 @@ export const blogs: Blog[] = [
             type: "paragraph",
             content: `https://uni-week.vercel.app/`,
             link: "https://uni-week.vercel.app/",
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1714,7 +1710,6 @@ export const blogs: Blog[] = [
             type: "paragraph",
             content: `https://github.com/montasirmoyen/uniweek`,
             link: "https://github.com/montasirmoyen/uniweek",
-            marginBottom: 4
           }
         ]
       }
@@ -1745,7 +1740,6 @@ export const blogs: Blog[] = [
             I suppose the reason for starting this app in particular was because I was interested in creating my first AI integrated application.
             But I also wanted something that Suffolk University students could potentially use.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1801,7 +1795,6 @@ export const blogs: Blog[] = [
             It's to learn, build, and ultimately have fun in my free time because it's been my passion to do so.
             It's the kind of mentality that I have when planning and building all of my projects, and it's what has allowed me to actually enjoy working on them and not get demotivated by the fact that there are similar projects out there.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1811,7 +1804,6 @@ export const blogs: Blog[] = [
             And honestly, if even one person uses and benefits from it, that's good enough for me.
             Every project teaches you something, and for me, that's far more valuable than trying to measure yourself against tech giants.
             `,
-            marginBottom: 4
           }
         ],
       },
@@ -1827,14 +1819,12 @@ export const blogs: Blog[] = [
             I decided to halt feature work because I know that accuracy and trust matter a lot when it comes to RamAI's chatbot.
             If the AI gives messy information or is unable to respond to certain questions, users will quickly lose trust and stop using it.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
             content: `
             I have an opinion that you may or may not agree with: an AI that confidently says incorrect stuff is worse than one that says "I don't know".
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1843,7 +1833,6 @@ export const blogs: Blog[] = [
             Then I asked those questions, recorded the responses, and analyzed them alongside a rating based on how well the AI responded.
             I wanted to see where the system actually breaks under real questions.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1852,7 +1841,6 @@ export const blogs: Blog[] = [
             It's surreal to witness something you created work in a way like this.
             You honestly have to experience it if you haven't.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1864,7 +1852,6 @@ export const blogs: Blog[] = [
             One response in particular was amusing to me, where the AI tried to be safe and helpful at the same time, then ended up contradicting itself.
             You can find that response at the end of this blog post in the promptAccuracy.md file, question 5, where I asked about student reviews on a professor.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1923,7 +1910,6 @@ export const blogs: Blog[] = [
             From designing the architecture and UI layout, to backend filtering, auditing, and refining the AI's responses, each step ended up being a meaningful learning experience.
             It just made me realize how complex the actual AI apps we use daily are.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1932,7 +1918,6 @@ export const blogs: Blog[] = [
             They liked it and said they genuinely found it useful.
             That feedback mattered more than I expected, because it helped me see the project from a user's perspective instead of just my own as the builder.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1941,7 +1926,6 @@ export const blogs: Blog[] = [
             It's easy to make something that looks smart, but much harder to build something that users can actually rely on, which I'm still trying to achieve. 
             That shift in mentality is something I'll carry forward.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1950,7 +1934,6 @@ export const blogs: Blog[] = [
             I'll focus on maintenance and polishing it here and there instead. 
             It's not because there's nothing left to improve, but I feel like this is a good stopping point. 
             The system works, I've learned lessons, and I'm happy with what is is right now.`,
-            marginBottom: 4
           },
           {
             type: "paragraph",
@@ -1958,7 +1941,6 @@ export const blogs: Blog[] = [
             The live demo for the project is public if you're interested in checking it out.
             The UI is different because I migrated from React Native to a web app, which gave me more flexibility and easier deployment.
             `,
-            marginBottom: 4
           },
           {
             type: "paragraph",
