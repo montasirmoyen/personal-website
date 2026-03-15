@@ -174,13 +174,15 @@ function BlogDetailContent({ blog }: { blog: any }) {
                       className="border-l-2 pl-6 scroll-mt-32"
                       style={{ borderColor: post.borderColor?.startsWith("#") ? post.borderColor : `#${post.borderColor}` }}
                     >
-                      <div className="mb-8">
+                      <div className="mb-2">
                         <h3 className="text-xl font-semibold text-white mb-2">{post.title}</h3>
                         <p className="text-sm text-gray-400">{post.date}</p>
                       </div>
                       <div className="space-y-0 leading-relaxed tracking-wide text-balance">
                         {post.content.map((item: any, itemIndex: number) => {
-                          const marginClass = `mb-${item.marginBottom}`;
+                          const marginBottom = item.marginBottom || 4;
+                          const imageScale = item.scale || 1;
+                          const marginClass = `mb-${marginBottom}`;
                           const content = (
                             <>
                               {item.type === "paragraph" && (
@@ -207,8 +209,8 @@ function BlogDetailContent({ blog }: { blog: any }) {
                                       key={imageIndex}
                                       src={imageSrc}
                                       alt={`Image ${imageIndex + 1}`}
-                                      width={1920}
-                                      height={1080}
+                                      width={1920 * imageScale}
+                                      height={1080 * imageScale}
                                       className="rounded"
                                       unoptimized
                                     />
