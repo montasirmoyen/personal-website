@@ -12,6 +12,7 @@ export const techStack: Record<string, { src: string; doc?: string }> = {
   opencv: { src: "/opencv.webp", doc: "https://docs.opencv.org/4.x/" },
   mediapipe: { src: "/mediapipe.png", doc: "https://github.com/google-ai-edge/mediapipe" },
   aws: { src: "/aws.png", doc: "https://aws.amazon.com/documentation/" },
+  amplify: { src: "/amplify.png", doc: "https://docs.amplify.aws/" },
   lambda: { src: "/lambda.png", doc: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html" },
   s3: { src: "/s3.png", doc: "https://docs.aws.amazon.com/s3/index.html" },
   angular: { src: "/angular.png", doc: "https://angular.io/docs" },
@@ -791,6 +792,197 @@ export const blogs: Blog[] = [
             content: ["/de-sukuna.webp"],
             scale: 0.25,
           }
+        ],
+      }
+    ]
+  },
+  {
+    slug: "aiflash",
+    title: "AIFlash",
+    category: "Full-Stack Cloud Development",
+    image: "/aif-flashcards.png",
+    date: "Mar 18, 2026",
+    status: "completed",
+    githubUrl: "https://github.com/montasirmoyen/aiflash",
+    liveUrl: "https://staging.d1gk5r8nqlxue7.amplifyapp.com/",
+    description: "Serverless app utilizing generative AI to transform raw study notes into interactive flashcards. Built with an Angular frontend and a scalable AWS backend, it features 3D card animations and real time AI processing via OpenRouter.",
+    technologies: ["Angular", "AWS", "Amplify", "Lambda", "Node.js", "S3", "AI Integration"],
+    challenge: true,
+    blogPosts: [
+      {
+        date: "March 18, 2026 - Part 1",
+        title: "Continuity",
+        borderColor: "#ff628e",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            I really enjoyed building the Crawler and Universal Room Booker (URB) projects recently, the thrill of building projects from scratch in a day was an amazing experience.
+            So much so, that I wanted to do it again, but this time with a different focus.
+            I've never used AWS, and the idea of building something without worrying about servers or infrastructure is really appealing to me.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            To give more context behind my growing curiosity around serverless architecture, 
+            I recently had a technical interview where the interviewer (really nice guy) was telling me how his software engineering team works. 
+            He described how he and his team transitioned core backend systems to an event driven, serverless model on AWS because it reduced operational overhead and allowed them to focus purely on business logic.
+            That stuck with me because up until that point, most of my projects had been focusing on features.
+            But hearing someone frame architecture as a strategic advantage, something that directly impacts scalability, maintainability, and team velocity, made me realize there was a deeper layer of engineering I hadn't fully explored yet.
+            `,
+            marginBottom: 4
+          }
+        ],
+      },
+      {
+        date: "March 18, 2026 - Part 2",
+        title: "Architecture",
+        borderColor: "#8eedbc",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            I've decided on the idea of an AI powered flashcard generator for students.
+            The core concept is simple: users input their raw study notes, and the app uses generative AI to transform those notes into interactive flashcards.
+            The stack will simply be Angular and, of course, AWS.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            But, I feel like this project should be more for me to get comfortable with AWS and exploring the interface and services, rather than building a super polished product.
+            Again, I've never used AWS, so stuff like Lambda, API gateways and S3 are all new to me.
+            I want to make sure I understand how they work and how to use them effectively.
+            `,
+            marginBottom: 4
+          }
+        ],
+      },
+      {
+        date: "March 18, 2026 - Part 3",
+        title: "Implementation",
+        borderColor: "#7cf93d",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            The implementation started with the "brain" of the app: an AWS Lambda function.
+            I chose Node.js for the runtime since it's lightweight and works well with the async nature of AI API calls.
+            Getting the OpenAI library to actually run in the AWS environment was the first real issue.
+            I had to learn about Lambda Layers to package my [node_modules] properly so the function could actually import the dependencies it needed to talk to OpenRouter.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Next, I had to bridge the gap between my Angular frontend and the backend.
+            I set up an HTTP API via AWS API Gateway.
+            This acted as the front door, taking the notes from my UI and triggering the Lambda.
+            A huge chunk of time went into configuring the CORS.
+            It's one of those things that works fine on localhost but becomes a brick wall in the cloud if you forget to explicitly tell AWS to trust your specific frontend origin.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            I used S3 for static website hosting, but eventually used AWS Amplify because it handled the SSL certificates and deployment pipelines much more smoothly.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Seeing the data flow from a textarea in Angular, through an API gateway, and processed by an LLM in a Lambda was pretty satisfying.
+            It felt less like writing code and more like assembling a high performance machine.
+            `,
+            marginBottom: 4
+          }
+        ],
+      },
+      {
+        date: "March 18, 2026 - Part 4",
+        title: "Testing",
+        borderColor: "#9760ff",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            Testing was a lesson in cloud latency.
+            Initially, I was getting "Unknown Errors" in the console.
+            After looking through CloudWatch logs, I realized my Lambda was timing out.
+            The default 3 second limit wasn't enough for an AI model to think and respond.
+            To improve SSL handshake performance, I increased the memory allocation and extended the timeout to 30 seconds to provide the function with more CPU capacity. 
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            I also ran into issues with the AI response format.
+            LLMs like to talk, but my frontend needed strict JSON.
+            I had to refine my system prompt to ensure the AI returned only the raw array.
+            I tested this by feeding it messy, unstructured lecture notes.. like my OS notes on Logical Address Spaces and verified the cards came back correctly categorized with consistent IDs.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            Once the backend was stable, I tested the end to end flow from the live Amplify URL.
+            Seeing the 3D flip animations work with real data pulled from the cloud confirmed everything was finally solid.
+            `,
+            marginBottom: 4
+          }
+        ],
+      },
+      {
+        date: "March 18, 2026 - Part 5",
+        title: "Reflection",
+        borderColor: "#115bcb",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            Looking back, the biggest takeaway wasn't just learning AWS, it was learning how to think in terms of managed services.
+            In my previous projects, I was responsible for everything.
+            Here I learned to delegate, I let S3 handle the files and Lambda handle the logic.
+            It's a shift in mindset from building a server to building a system.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            I also think that Full Stack in 2026 could really mean "Full-Stack Cloud".
+            Understanding how to configure a VPC, manage IAM roles, and debug a distributed trace in CloudWatch is just as important as knowing how to center a div in CSS.
+            The complexity moved from the code itself to the connections between the services.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "paragraph",
+            content: `
+            AIFlash started as a way to get comfortable with the AWS console, but it turned into a blueprint for how I want to build software going forward; fast, decoupled, and infinitely scalable.
+            `,
+            marginBottom: 4
+          },
+          {
+            type: "image",
+            content: ["/aif-flashcards.png"],
+            marginBottom: 2
+          },
+          {
+            type: "paragraph",
+            content: `
+            Time to study..
+            `,
+            marginBottom: 4
+          },
         ],
       }
     ]
