@@ -10,10 +10,11 @@ import { Marquee } from "@/components/ui/marquee"
 import { cn } from "@/lib/utils";
 import { LiquidButton } from "@/components/ui/liquid-button"
 import AnimatedContent from '@/components/AnimatedContent'
-import { Linkedin, Github } from "lucide-react"
 import AvailableForRoles from "@/components/AvailableForRoles"
 import OrbitImages from '@/components/OrbitImages'
 import BorderGlow from '@/components/BorderGlow';
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 
 const images = [
   "/s3.png",
@@ -127,12 +128,12 @@ export default function Home() {
               <Link
                 href={"https://www.linkedin.com/in/montasirmoyen/"}
                 target="_blank">
-                <Linkedin className="hover:text-white/50 transition" height={24} width={24} />
+                <FaLinkedin className="hover:scale-120 transition" size={24} />
               </Link>
               <Link
                 href={"https://www.github.com/montasirmoyen/"}
                 target="_blank">
-                <Github className="hover:text-white/50 transition" height={24} width={24} />
+                <FaGithub className="hover:scale-120 transition" size={24} />
               </Link>
             </div>
           </div>
