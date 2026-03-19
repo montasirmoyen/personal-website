@@ -69,7 +69,7 @@ const BORDER_GLOW_PROPS = {
 
 export default function Home() {
   return (
-    <div className="relative overflow-hidden">
+    <main className="relative overflow-hidden">
       <section id="hero" className="relative h-screen w-full overflow-hidde">
         <div className="absolute inset-0 z-0">
           <DarkVeil />
@@ -220,6 +220,6 @@ export default function Home() {
       </section>
 
       <AvailableForRoles />
-    </div>
+    </main>
   );
 }
