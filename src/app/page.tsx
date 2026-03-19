@@ -5,15 +5,29 @@ import DarkVeil from "@/components/DarkVeil"
 import { Globe } from "@/components/ui/globe"
 import { AnimatedBeamDemo } from '@/components/AnimatedBeamDemo'
 import Link from "next/link";
-import Image from "next/image";
 import { AuroraText } from "@/components/ui/aurora-text"
 import { Marquee } from "@/components/ui/marquee"
 import { cn } from "@/lib/utils";
 import { LiquidButton } from "@/components/ui/liquid-button"
 import AnimatedContent from '@/components/AnimatedContent'
-import { Particles } from "@/components/ui/particles";
 import { Linkedin, Github } from "lucide-react"
 import AvailableForRoles from "@/components/AvailableForRoles"
+import OrbitImages from '@/components/OrbitImages'
+import BorderGlow from '@/components/BorderGlow';
+
+const images = [
+  "/s3.png",
+  "/python.png",
+  "/cpp.png",
+  "/java.webp",
+  "/postgresql.svg",
+  "/angular.png",
+  "/react.png",
+  "/nodejs.png",
+  "/typescript.png",
+  "/javascript.png",
+  "/lambda.png",
+];
 
 const projects = [
   {
@@ -41,6 +55,17 @@ const projects = [
     body: "An AI-powered resume analyzer that provides honest feedback, job match scores, and personalized cover letters.",
   }
 ]
+
+const BORDER_GLOW_PROPS = {
+  edgeSensitivity: 0,
+  glowColor: "40 80 80",
+  backgroundColor: "#000000",
+  borderRadius: 28,
+  glowRadius: 50,
+  glowIntensity: 1,
+  coneSpread: 25,
+  colors: ['#5c16ff', '#1990ff', '#d82aff'],
+};
 
 export default function Home() {
   return (
@@ -91,11 +116,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="flex flex-col md:flex-row items-center justify-center mb-25 gap-4 md:gap-5 sm:gap-5 px-4 md:px-0">
-        <div className="bg-gradient-to-b from-card to-black border-2 border-lg border-card-foreground
-         relative flex size-full max-w-lg w-full items-center
-         justify-center overflow-hidden rounded-lg">
-          <div className="absolute top-5 text-center z-1">
+      <section className="flex flex-col md:flex-row items-center justify-center mb-50 gap-4 px-12">
+        <BorderGlow
+          {...BORDER_GLOW_PROPS}
+          className="size-full overflow-hidden max-h-130 min-h-130">
+          <div className="text-center mt-10 w-full">
             <p className="text-3xl font-bold">Let's connect</p>
             <AuroraText className="text-xl font-bold mt-1">Visit my socials</AuroraText>
             <div className="mt-3 gap-5 flex justify-center items-center">
@@ -112,45 +137,69 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="w-full mt-20 mb-5 z-0">
+          <div className="w-full mb-18">
             <AnimatedBeamDemo />
           </div>
-        </div>
+        </BorderGlow>
 
-        <div className="bg-gradient-to-b from-card to-black border-2 border-lg border-card-foreground relative flex size-full max-w-lg w-full items-center justify-center overflow-hidden rounded-lg pb-125">
-          <div className="text-center mt-10 pointer-events-none">
+        <BorderGlow
+          {...BORDER_GLOW_PROPS}
+          className="overflow-hidden size-full max-h-130 min-h-130">
+          <div className="text-center mt-10 w-full">
             <p className="text-3xl font-bold">I'm currently in...</p>
             <AuroraText className="text-xl font-bold">Boston, Massachusetts, USA</AuroraText>
           </div>
-          <Particles
-            className="absolute inset-0"
-            quantity={100}
-            ease={25}
-            color="#ffffff"
-            refresh
-          />
-          <Globe className="lg:scale-150 lg:top-60 scale-150 top-50 md:scale-250 md:top-100" />
-          <div className="pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_200%,rgba(0,0,0,0.2),rgba(255,255,255,0))]" />
-        </div>
+          <Globe className="relative scale-150 w-full top-30" />
+        </BorderGlow>
 
-        <div className="bg-gradient-to-b from-card to-black border-2 border-lg border-card-foreground
-         relative flex size-full max-w-lg w-full items-center justify-center 
-         overflow-hidden rounded-lg pb-75">
+        <BorderGlow
+          {...BORDER_GLOW_PROPS}
+          className="size-full overflow-hidden max-h-130 min-h-130"
+        >
+          <div className="relative z-10 text-center mt-10">
+            <p className="text-3xl font-bold">View my</p>
+            <AuroraText className="text-xl font-bold">Blogs</AuroraText>
+          </div>
+
+          <div className="relative flex min-h-80 w-full flex-1 items-center justify-center overflow-hidden">
+            <OrbitImages
+              images={images}
+              shape="ellipse"
+              radiusX={500}
+              radiusY={300}
+              rotation={-8}
+              duration={25}
+              itemSize={125}
+              responsive={true}
+              radius={160}
+              direction="normal"
+              fill
+              showPath
+              imageOnClick={"/blog"}
+              paused={false}
+            />
+          </div>
+        </BorderGlow>
+
+        <BorderGlow
+          {...BORDER_GLOW_PROPS}
+          className="size-full overflow-hidden max-h-130 min-h-130"
+        >
           <div className="text-center mt-10 pointer-events-none">
-            <p className="text-3xl font-bold">Visit my</p>
-            <AuroraText className="text-xl font-bold">Curated Projects</AuroraText>
+            <p className="text-3xl font-bold">View my</p>
+            <AuroraText className="text-xl font-bold">Projects</AuroraText>
           </div>
 
           <Marquee
             pauseOnHover
-            className="absolute bottom-0 [mask-image:linear-gradient(to_top,transparent_20%,#000_100%)] [--duration:20s]"
+            className="relative py-25.5 mask-[linear-gradient(to_top,transparent_20%,#000_100%)] [--duration:20s]"
           >
             {projects.map((f, idx) => (
               <Link href={"/projects"} key={idx}>
                 <figure
                   className={cn(
                     "relative w-32 cursor-pointer overflow-hidden rounded-xl border p-4",
-                    "border-card-foreground/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+                    "hover:bg-gray-950/[.05]",
                     "border-card-foreground bg-card/[.10] hover:bg-card",
                     "transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none"
                   )}
@@ -167,7 +216,7 @@ export default function Home() {
               </Link>
             ))}
           </Marquee>
-        </div>
+        </BorderGlow>
       </section>
 
       <AvailableForRoles />
