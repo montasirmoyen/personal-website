@@ -13,7 +13,7 @@ import { LiquidButton } from "@/components/ui/liquid-button";
 
 export default function About() {
   return (
-    <div className="relative pt-48 overflow-visible">
+    <main className="relative pt-48 overflow-visible">
       <TopBarBackground imageUrl="/sea-wave.jpg" transparency={50} />
 
       <div className="max-w-7xl mx-auto">
@@ -215,7 +215,7 @@ export default function About() {
       </section>
 
       <AvailableForRoles />
-    </div>
+    </main>
   );
 }
 
