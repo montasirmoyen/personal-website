@@ -1,5 +1,6 @@
 import { useMemo, useEffect, useRef, useState, ReactNode } from 'react';
 import { motion, useMotionValue, useTransform, animate, MotionValue } from 'motion/react';
+import Link from 'next/link';
 
 type OrbitShape =
   | 'ellipse'
@@ -39,6 +40,7 @@ interface OrbitImagesProps {
   paused?: boolean;
   centerContent?: ReactNode;
   responsive?: boolean;
+  imageOnClick?: string; // New prop for click URL
 }
 
 interface OrbitItemProps {
@@ -169,6 +171,7 @@ export default function OrbitImages({
   paused = false,
   centerContent,
   responsive = false,
+  imageOnClick,
 }: OrbitImagesProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
@@ -280,8 +283,8 @@ export default function OrbitImages({
           )}
 
           {items.map((item, index) => (
+            <Link key={index} href={imageOnClick || "#"}>
             <OrbitItem
-              key={index}
               item={item}
               index={index}
               totalItems={items.length}
@@ -291,6 +294,7 @@ export default function OrbitImages({
               progress={progress}
               fill={fill}
             />
+            </Link>
           ))}
         </div>
       </div>
