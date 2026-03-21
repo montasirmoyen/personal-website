@@ -29,7 +29,7 @@ export default function Footer() {
           </div>
 
           {/* Right Side - General Links */}
-          <div className="space-y-4 md:text-right">
+          <div className="space-y-4 md:text-right mt-4">
             <h3 className="text-white/50 text-sm uppercase tracking-wider font-semibold">
               QUICK ROUTE
             </h3>
