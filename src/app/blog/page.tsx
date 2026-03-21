@@ -20,10 +20,10 @@ const sectionLabels: Record<BlogSectionKey, string> = {
 };
 
 const sectionDesc: Record<BlogSectionKey, string> = {
-    classic: "More long term projects that are meant to be ",
+    classic: "More long term projects that are meant to be polished and comprehensive",
     challenge: "Done as part of a challenge, usually with a time constraint",
     collaboration: "Developed in collaboration with others",
-    mini: "",
+    mini: "Smaller projects that are more experimental",
 };
 
 const sectionOrder: BlogSectionKey[] = ["classic", "challenge", "collaboration", "mini"];
