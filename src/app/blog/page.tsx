@@ -8,8 +8,141 @@ import AvailableForRoles from "@/components/AvailableForRoles";
 import { TextAnimate } from "@/components/ui/text-animate"
 import { getTechIcon } from "@/lib/projects";
 import TopBarBackground from "@/components/TopBarBackground";
+import { Separator } from "@/components/ui/separator";
+
+type BlogSectionKey = "classic" | "challenge" | "collaboration" | "mini";
+
+const sectionLabels: Record<BlogSectionKey, string> = {
+    classic: "Classic",
+    challenge: "Challenge",
+    collaboration: "Collaboration",
+    mini: "Mini",
+};
+
+const sectionDesc: Record<BlogSectionKey, string> = {
+    classic: "More long term projects that are meant to be ",
+    challenge: "Done as part of a challenge, usually with a time constraint",
+    collaboration: "Developed in collaboration with others",
+    mini: "",
+};
+
+const sectionOrder: BlogSectionKey[] = ["classic", "challenge", "collaboration", "mini"];
+
+function getBlogSection(blog: (typeof blogs)[number]): BlogSectionKey {
+    if (blog.mini) return "mini";
+    if (blog.challenge) return "challenge";
+    if (blog.collab) return "collaboration";
+    return "classic";
+}
+
+function BlogCard({ blog }: { blog: (typeof blogs)[number] }) {
+    return (
+        <Link
+            key={blog.slug}
+            href={`/blog/${blog.slug}`}
+            className="group block"
+        >
+            <div className="bg-black border border-white/10 rounded-lg overflow-hidden transition-all duration-250 shadow-lg hover:scale-105 hover:border-white/35 h-full">
+                <div className="relative aspect-video overflow-hidden">
+                    <Image
+                        src={blog.image}
+                        alt={blog.title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-300"
+                        unoptimized
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-4 left-4">
+                        {blog.challenge && (
+                            <Badge
+                                variant="outline"
+                                className="border-orange-500 bg-orange-500/20 backdrop-blur-sm ml-2"
+                            >
+                                Challenge
+                            </Badge>
+                        )}
+                        {blog.collab && (
+                            <Badge
+                                variant="outline"
+                                className="border-blue-500 bg-blue-500/20 backdrop-blur-sm ml-2"
+                            >
+                                Collaboration
+                            </Badge>
+                        )}
+                        {blog.mini && (
+                            <Badge
+                                variant="outline"
+                                className="border-emerald-500 bg-emerald-500/20 backdrop-blur-sm ml-2"
+                            >
+                                Mini
+                            </Badge>
+                        )}
+                        <Badge
+                            variant="outline"
+                            className="border-white/20 bg-black/40 text-white backdrop-blur-sm"
+                        >
+                            {blog.status === "in-progress" ? "In Progress" : "Completed"}
+                        </Badge>
+                    </div>
+                </div>
+
+                <div className="p-6">
+                    <div className="flex items-center justify-between mb-3">
+                        <span className="text-sm text-gray-400 font-medium">
+                            {blog.category}
+                        </span>
+                    </div>
+
+                    <h2 className={`text-2xl font-hero font-bold mb-3 transition-colors`}>
+                        {blog.title}
+                    </h2>
+
+                    <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                        {blog.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 pt-2">
+                        {blog.technologies.map((tech) => {
+                            const iconPath = getTechIcon(tech);
+                            return (
+                                <span
+                                    key={tech}
+                                    className="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
+                                >
+                                    {iconPath && (
+                                        <Image
+                                            src={iconPath}
+                                            alt={tech}
+                                            width={14}
+                                            height={14}
+                                            className="object-contain"
+                                            unoptimized
+                                        />
+                                    )}
+                                    {tech}
+                                </span>
+                            );
+                        })}
+                    </div>
+
+                    <p className="mt-5 text-sm text-gray-400">
+                        {blog.date}
+                    </p>
+                </div>
+            </div>
+        </Link>
+    );
+}
 
 export default function BlogPage() {
+    const groupedBlogs = blogs.reduce<Record<BlogSectionKey, (typeof blogs)[number][]>>(
+        (acc, blog) => {
+            acc[getBlogSection(blog)].push(blog);
+            return acc;
+        },
+        { classic: [], collaboration: [], challenge: [], mini: [] }
+    );
+
     return (
         <div className="pt-32 px-4 md:px-6">
             <TopBarBackground transparency={10} imageUrl="cones.jpeg" />
@@ -41,98 +174,44 @@ export default function BlogPage() {
                     </div>
                 </div>
 
-                {/* Blog Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                    {blogs.map((blog) => (
-                        <Link
-                            key={blog.slug}
-                            href={`/blog/${blog.slug}`}
-                            className="group block"
-                        >
-                            <div className="bg-black border border-white/10 rounded-lg overflow-hidden transition-all duration-250 shadow-lg hover:scale-105 hover:border-white/35 h-full">
-                                <div className="relative aspect-video overflow-hidden">
-                                    <Image
-                                        src={blog.image}
-                                        alt={blog.title}
-                                        fill
-                                        className="object-cover group-hover:scale-110 transition-transform duration-300"
-                                        unoptimized
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                                    <div className="absolute bottom-4 left-4">
-                                        {blog.challenge && (
-                                            <Badge
-                                                variant="outline"
-                                                className="border-orange-500 bg-orange-500/20 backdrop-blur-sm ml-2"
-                                            >
-                                                Challenge
-                                            </Badge>
-                                        )}
-                                        {blog.collab && (
-                                            <Badge
-                                                variant="outline"
-                                                className="border-blue-500 bg-blue-500/20 backdrop-blur-sm ml-2"
-                                            >
-                                                Collaboration
-                                            </Badge>
-                                        )}
-                                        <Badge
-                                            variant="outline"
-                                            className="border-white/20 bg-black/40 text-white backdrop-blur-sm"
-                                        >
-                                            {blog.status === "in-progress" ? "In Progress" : "Completed"}
-                                        </Badge>
-                                    </div>
-                                </div>
+                {sectionOrder.map((sectionKey) => {
+                    const sectionBlogs = groupedBlogs[sectionKey];
 
-                                <div className="p-6">
-                                    <div className="flex items-center justify-between mb-3">
-                                        <span className="text-sm text-gray-400 font-medium">
-                                            {blog.category}
-                                        </span>
-                                    </div>
-
-                                    <h2 className={`text-2xl font-hero font-bold mb-3 transition-colors`}>
-                                        {blog.title}
+                    return (
+                        <section key={sectionKey} className="mb-16">
+                            <div className="flex flex-col gap-2">
+                                <div className="flex items-center gap-2">
+                                    <h2 className="text-2xl md:text-3xl font-hero font-bold text-white">
+                                        {sectionLabels[sectionKey]}
                                     </h2>
-
-                                    <p className="text-gray-300 text-sm leading-relaxed mb-4">
-                                        {blog.description}
-                                    </p>
-
-                                    {/* Technologies */}
-                                    <div className="flex flex-wrap gap-2 pt-2">
-                                        {blog.technologies.map((tech) => {
-                                            const iconPath = getTechIcon(tech);
-                                            return (
-                                                <span
-                                                    key={tech}
-                                                    className="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
-                                                >
-                                                    {iconPath && (
-                                                        <Image
-                                                            src={iconPath}
-                                                            alt={tech}
-                                                            width={14}
-                                                            height={14}
-                                                            className="object-contain"
-                                                            unoptimized
-                                                        />
-                                                    )}
-                                                    {tech}
-                                                </span>
-                                            );
-                                        })}
-                                    </div>
-
-                                    <p className="mt-5 text-sm text-gray-400">
-                                        {blog.date}
-                                    </p>
+                                    <Badge
+                                        variant="outline"
+                                        className="border-white/20 bg-black/40 text-white"
+                                    >
+                                        {sectionBlogs.length}
+                                    </Badge>
                                 </div>
                             </div>
-                        </Link>
-                    ))}
-                </div>
+                            <p className="text-sm text-gray-400">
+                                {sectionDesc[sectionKey]}
+                            </p>
+
+                            <Separator className="mt-6 mb-8" />
+
+                            {sectionBlogs.length > 0 ? (
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                    {sectionBlogs.map((blog) => (
+                                        <BlogCard key={blog.slug} blog={blog} />
+                                    ))}
+                                </div>
+                            ) : (
+                                <p className="text-sm text-white/55">
+                                    No posts in this section yet.
+                                </p>
+                            )}
+                        </section>
+                    );
+                })}
             </div>
 
             <AvailableForRoles />
