@@ -24,6 +24,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import TechStack from "@/components/TechStack";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
 interface ProjectDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -324,61 +325,101 @@ function ProjectDetailContent({
           — Montasir
         </p>
 
-        {(previousProject || nextProject) && (
-          <div className="py-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-            {previousProject ? (
-              <Link
-                href={`/projects/${previousProject.slug}`}
-                className="group rounded-xl border border-white/15 bg-linear-to-br from-white/8 to-white/3 p-4 hover:border-white/35 hover:from-white/12 hover:to-white/6 transition-all"
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <span className="mt-1 rounded-full border border-white/20 p-1.5 text-gray-200 group-hover:text-white group-hover:border-white/40 transition-colors">
-                    <ArrowLeft size={16} />
-                  </span>
-                  <div className="text-right">
-                    <p className="text-xs uppercase tracking-[0.2em] text-yellow-300/90 mb-1">Previous</p>
-                    <p className="text-base font-semibold text-white leading-tight">{previousProject.title}</p>
-                    <p className="text-sm text-gray-400 mt-1">{previousProject.date}</p>
-                  </div>
-                </div>
-              </Link>
-            ) : (
-              <div className="rounded-xl border border-dashed border-white/10 p-4 text-sm text-gray-500">
-                <div className="text-right">
-                  <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-1">End</p>
-                  <p className="text-base font-semibold text-white leading-tight">Latest</p>
-                  <p className="text-sm text-gray-400 mt-1">You are on the latest project</p>
-                </div>
-              </div>
-            )}
+        <section id="more">
+                {(previousProject || nextProject) && (
+                  <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {previousProject ? (
+                      <HoverCard openDelay={10} closeDelay={100}>
+                        <HoverCardTrigger asChild>
+                          <Link
+                            href={`/projects/${previousProject.slug}`}
+                            className="group rounded-xl border border-white/15 bg-linear-to-br from-white/8 to-white/3 p-4 hover:border-white/35 hover:from-white/12 hover:to-white/6 transition-all"
+                          >
+                            <div className="flex items-start justify-between gap-3">
+                              <span className="mt-1 rounded-full border border-white/20 p-1.5 text-gray-200 group-hover:text-white group-hover:border-white/40 transition-colors">
+                                <ArrowLeft size={16} />
+                              </span>
+                              <div className="text-right">
+                                <p className="text-xs uppercase tracking-[0.2em] text-yellow-300/90 mb-1">Previous</p>
+                                <p className="text-base font-semibold text-white leading-tight">{previousProject.title}</p>
+                                <p className="text-sm text-gray-400 mt-1">{previousProject.date}</p>
+                              </div>
+                            </div>
+                          </Link>
+                        </HoverCardTrigger>
+                        <HoverCardContent side="left" sideOffset={30} className="flex w-64 flex-col gap-0.5">
+                          {previousProject.image && (
+                            <Image
+                              src={previousProject.image}
+                              alt={previousProject.title}
+                              width={256}
+                              height={144}
+                              className="rounded-md mb-2 w-full object-cover"
+                              unoptimized
+                            />
+                          )}
+                          <div className="font-semibold text-white">{previousProject.title}</div>
+                          <div className="text-sm text-gray-300">{previousProject.description}</div>
+                          <div className="text-xs text-gray-400 mt-2">{previousProject.date}</div>
+                        </HoverCardContent>
+                      </HoverCard>
+                    ) : (
+                      <div className="rounded-xl border border-dashed border-white/10 p-4 text-sm text-gray-500">
+                        <div className="text-right">
+                          <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-1">End</p>
+                          <p className="text-base font-semibold text-white leading-tight">Latest</p>
+                          <p className="text-sm text-gray-400 mt-1">You are on the latest project</p>
+                        </div>
+                      </div>
+                    )}
 
-            {nextProject ? (
-              <Link
-                href={`/projects/${nextProject.slug}`}
-                className="group rounded-xl border border-white/15 bg-linear-to-br from-white/8 to-white/3 p-4 hover:border-white/35 hover:from-white/12 hover:to-white/6 transition-all"
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.2em] text-emerald-300/90 mb-1">Next</p>
-                    <p className="text-base font-semibold text-white leading-tight">{nextProject.title}</p>
-                    <p className="text-sm text-gray-400 mt-1">{nextProject.date}</p>
+                    {nextProject ? (
+                      <HoverCard openDelay={10} closeDelay={100}>
+                        <HoverCardTrigger asChild>
+                          <Link
+                            href={`/projects/${nextProject.slug}`}
+                            className="group rounded-xl border border-white/15 bg-linear-to-br from-white/8 to-white/3 p-4 hover:border-white/35 hover:from-white/12 hover:to-white/6 transition-all"
+                          >
+                            <div className="flex items-start justify-between gap-3">
+                              <div>
+                                <p className="text-xs uppercase tracking-[0.2em] text-emerald-300/90 mb-1">Next</p>
+                                <p className="text-base font-semibold text-white leading-tight">{nextProject.title}</p>
+                                <p className="text-sm text-gray-400 mt-1">{nextProject.date}</p>
+                              </div>
+                              <span className="mt-1 rounded-full border border-white/20 p-1.5 text-gray-200 group-hover:text-white group-hover:border-white/40 transition-colors">
+                                <ArrowRight size={16} />
+                              </span>
+                            </div>
+                          </Link>
+                        </HoverCardTrigger>
+                        <HoverCardContent side="right" sideOffset={30} className="flex w-64 flex-col gap-0.5">
+                          {nextProject.image && (
+                            <Image
+                              src={nextProject.image}
+                              alt={nextProject.title}
+                              width={256}
+                              height={144}
+                              className="rounded-md mb-2 w-full object-cover"
+                              unoptimized
+                            />
+                          )}
+                          <div className="font-semibold text-white">{nextProject.title}</div>
+                          <div className="text-sm text-gray-300">{nextProject.description}</div>
+                          <div className="text-xs text-gray-400 mt-2">{nextProject.date}</div>
+                        </HoverCardContent>
+                      </HoverCard>
+                    ) : (
+                      <div className="rounded-xl border border-dashed border-white/10 p-4 text-sm text-gray-500">
+                        <div className="text-right">
+                          <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-1">End</p>
+                          <p className="text-base font-semibold text-white leading-tight">Oldest</p>
+                          <p className="text-sm text-gray-400 mt-1">You are on the oldest project</p>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                  <span className="mt-1 rounded-full border border-white/20 p-1.5 text-gray-200 group-hover:text-white group-hover:border-white/40 transition-colors">
-                    <ArrowRight size={16} />
-                  </span>
-                </div>
-              </Link>
-            ) : (
-              <div className="rounded-xl border border-dashed border-white/10 p-4 text-sm text-gray-500">
-                <div className="text-right">
-                  <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-1">End</p>
-                  <p className="text-base font-semibold text-white leading-tight">Oldest</p>
-                  <p className="text-sm text-gray-400 mt-1">You are on the oldest project</p>
-                </div>
-              </div>
-            )}
-          </div>
-        )}
+                )}
+              </section>
       </div>
 
       <AvailableForRoles />
