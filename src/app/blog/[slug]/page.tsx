@@ -9,6 +9,11 @@ import { use } from "react";
 import TopBarBackground from "@/components/TopBarBackground"
 import AvailableForRoles from "@/components/AvailableForRoles"
 import { Separator } from "@/components/ui/separator";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 interface BlogDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -50,7 +55,7 @@ function BlogDetailContent({ blog }: { blog: any }) {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-sm"
               >
-                Check it out
+                Visit {blog.liveUrl ? "Live Demo" : "Game"}
                 <ExternalLink size={16} />
               </Link>
             )}
@@ -118,25 +123,32 @@ function BlogDetailContent({ blog }: { blog: any }) {
                   const docUrl = getTechDoc(tech);
                   if (docUrl) {
                     return (
-                      <Link
-                        href={docUrl || "#"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        key={tech}
-                        className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5 hover:bg-white/10 transition-colors"
-                      >
-                        {iconPath && (
-                          <Image
-                            src={iconPath}
-                            alt={tech}
-                            width={14}
-                            height={14}
-                            className="object-contain"
-                            unoptimized
-                          />
-                        )}
-                        {tech}
-                      </Link>
+                      <Tooltip key={tech}>
+                        <TooltipTrigger>
+                          <Link
+                            href={docUrl || "#"}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            key={tech}
+                            className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5 hover:bg-white/10 transition-colors"
+                          >
+                            {iconPath && (
+                              <Image
+                                src={iconPath}
+                                alt={tech}
+                                width={14}
+                                height={14}
+                                className="object-contain"
+                                unoptimized
+                              />
+                            )}
+                            {tech}
+                          </Link>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          View {tech} Documentation
+                        </TooltipContent>
+                      </Tooltip>
                     );
                   } else {
                     return (
