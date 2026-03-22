@@ -48,10 +48,6 @@ const projects = [
     body: "An AI-powered assistant designed to help Suffolk University students with professor selection and course planning.",
   },
   {
-    name: "UniWeek",
-    body: "A schedule visualizer for university students to manage their weekly classes.",
-  },
-  {
     name: "ResumeXP",
     body: "An AI-powered resume analyzer that provides honest feedback, job match scores, and personalized cover letters.",
   }
