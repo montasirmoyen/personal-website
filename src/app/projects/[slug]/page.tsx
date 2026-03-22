@@ -3,7 +3,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { getProjectBySlug, projects } from "@/lib/projects";
+import { getProjectBySlug, projects, getBlogBySlug } from "@/lib/projects";
 import { ArrowLeft, ArrowRight, ExternalLink, Github, Notebook } from "lucide-react";
 import { use } from "react";
 import TopBarBackground from "@/components/TopBarBackground"
@@ -59,6 +59,13 @@ function ProjectDetailContent({
   previousProject: any | null;
   nextProject: any | null;
 }) {
+  const blogSlug = project.blogUrl?.split('/').pop();
+  const relatedBlog = blogSlug ? getBlogBySlug(blogSlug) : undefined;
+  const firstPost = relatedBlog?.blogPosts?.[0];
+
+  const getBlogPath = (url: string): string => {
+    try { return new URL(url).pathname; } catch { return url; }
+  };
 
   return (
     <div className="pt-32 px-4 md:px-6">
@@ -270,6 +277,45 @@ function ProjectDetailContent({
             <section id="outcome">
               <h2 className="text-2xl font-bold mb-4">Outcome</h2>
               <p className="text-gray-300 leading-relaxed">{project.outcome}</p>
+            </section>
+          )}
+
+          {/* Dev Blog Preview */}
+          {firstPost && (
+            <section id="dev-blog-preview">
+              <h2 className="text-2xl font-bold mb-4">Dev Blog</h2>
+              <div className="rounded-xl border border-white/10 bg-white/2 overflow-hidden">
+                <div
+                  className="border-l-2 px-6 pt-6 pb-0"
+                  style={{ borderLeftColor: firstPost.borderColor }}
+                >
+                  <p className="text-xs text-gray-500 mb-1">{firstPost.date}</p>
+                  <h3 className="text-lg font-semibold text-white mb-4">{firstPost.title}</h3>
+                  <div className="relative max-h-44 overflow-hidden">
+                    <div className="space-y-3">
+                      {firstPost.content
+                        .filter((c: any) => c.type === 'paragraph')
+                        .map((c: any, i: number) => (
+                          <p key={i} className="text-gray-300 leading-relaxed text-sm">
+                            {c.content.trim()}
+                          </p>
+                        ))
+                      }
+                    </div>
+                    <div className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-black to-transparent pointer-events-none" />
+                  </div>
+                </div>
+                <div className="px-6 py-5">
+                  <Link
+                    href={getBlogPath(project.blogUrl)}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-sm text-gray-200 hover:text-white hover:border-white/40 hover:bg-white/10 transition-colors"
+                  >
+                    <Notebook size={16} />
+                    Read Dev Blog
+                    <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </div>
             </section>
           )}
         </div>
