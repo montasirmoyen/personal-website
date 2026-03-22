@@ -9,6 +9,8 @@ import { TextAnimate } from "@/components/ui/text-animate"
 import { getTechIcon } from "@/lib/projects";
 import TopBarBackground from "@/components/TopBarBackground";
 import { Separator } from "@/components/ui/separator";
+import { Bot, Zap, Handshake, Leaf } from "lucide-react";
+import { JSX } from "react";
 
 type BlogSectionKey = "classic" | "challenge" | "collaboration" | "mini";
 
@@ -24,6 +26,13 @@ const sectionDesc: Record<BlogSectionKey, string> = {
     challenge: "Done as part of a challenge, usually with a time constraint",
     collaboration: "Developed in collaboration with others",
     mini: "Smaller projects that are more experimental",
+};
+
+const sectionIcon: Record<BlogSectionKey, JSX.Element> = {
+    classic: <Bot />,
+    challenge: <Zap />,
+    collaboration: <Handshake />,
+    mini: <Leaf />,
 };
 
 const sectionOrder: BlogSectionKey[] = ["classic", "challenge", "collaboration", "mini"];
@@ -181,6 +190,7 @@ export default function BlogPage() {
                         <section key={sectionKey} className="mb-16">
                             <div className="flex flex-col gap-2">
                                 <div className="flex items-center gap-2">
+                                    {sectionIcon[sectionKey]}
                                     <h2 className="text-2xl md:text-3xl font-hero font-bold text-white">
                                         {sectionLabels[sectionKey]}
                                     </h2>

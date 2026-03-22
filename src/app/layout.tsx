@@ -3,6 +3,8 @@ import { Lato, Forum } from "next/font/google";
 import "./globals.css";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import { TooltipProvider } from "@/components/ui/tooltip"
+import { Toaster } from "@/components/ui/sonner"
 
 const lato = Lato({
   variable: "--font-lato",
@@ -115,11 +117,14 @@ export default function RootLayout({
         <JsonLd />
       </head>
       <body className={`${lato.variable} ${forum.variable} antialiased bg-black overflow-x-hidden`}>
-        <div className="min-h-screen flex flex-col relative overflow-visible">
-          <NavBar />
-          <main className="flex-1 overflow-visible">{children}</main>
-          <Footer />
-        </div>
+        <TooltipProvider>
+          <div className="min-h-screen flex flex-col relative overflow-visible">
+            <NavBar />
+            <main className="flex-1 overflow-visible">{children}</main>
+            <Footer />
+          </div>
+        </TooltipProvider>
+        <Toaster />
       </body>
     </html>
   );

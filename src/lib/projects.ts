@@ -799,6 +799,54 @@ export const blogs: Blog[] = [
     ]
   },
   {
+    slug: "ask-cli",
+    title: "Ask CLI",
+    category: "CLI Development",
+    image: "/ask-home.png",
+    date: "March 21, 2026",
+    status: "in-progress",
+    githubUrl: "https://github.com/montasirmoyen/ask-cli",
+    description: "A CLI tool that lets you ask questions about your code directly from the terminal.",
+    technologies: ["Rust"],
+    mini: true,
+    blogPosts: [
+      {
+        date: "March 13, 2026 - 4:17PM",
+        title: "Rationale",
+        borderColor: "#f48734",
+        content: [
+          {
+            type: "paragraph",
+            content: `Before you read, learn what a "CLI" is, if you don't already know.`,
+            link: "https://aws.amazon.com/what-is/cli/"
+          },
+          {
+            type: "paragraph",
+            content: `
+            I've been using the terminal a lot more recently, and I've been thinking about how powerful it would be to have a tool that could answer questions about my code directly from the command line.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            With advancements in AI, it's becoming increasingly common to have a local language model that can understand and analyze code.
+            So why not build a CLI tool that leverages a AI or a local language model to answer questions about your codebase?
+            You could have a simple command and the tool would analyze the relevant code and provide an answer right in the terminal.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            Rust is perfect for this project because it's great for building fast and efficient CLI tools, and it has a growing ecosystem of libraries.
+            I've already created the base, you can view it in the source code.
+            I've been wanting to add more features and polish it up, so I thought it would be a fun mini project to work on in my free time.
+            `,
+          }
+        ],
+      }
+    ]
+  },
+  {
     slug: "aiflash",
     title: "AIFlash",
     category: "Full-Stack Cloud Development",
@@ -1161,54 +1209,6 @@ export const blogs: Blog[] = [
             type: "paragraph",
             content: `
             This was a great way to wrap up Spring Break, I'll definitely be revisiting this project later to add more features and optimizations, but it was a fun challenge to build something like this in a short time and see how far I could get with it.
-            `,
-          }
-        ],
-      }
-    ]
-  },
-  {
-    slug: "ask-cli",
-    title: "Ask CLI",
-    category: "CLI Development",
-    image: "/ask-home.png",
-    date: "March 21, 2026",
-    status: "in-progress",
-    githubUrl: "https://github.com/montasirmoyen/ask-cli",
-    description: "A CLI tool that lets you ask questions about your code directly from the terminal.",
-    technologies: ["Rust"],
-    mini: true,
-    blogPosts: [
-      {
-        date: "March 13, 2026 - 4:17PM",
-        title: "Rationale",
-        borderColor: "#f48734",
-        content: [
-          {
-            type: "paragraph",
-            content: `Before you read, learn what a "CLI" is, if you don't already know.`,
-            link: "https://aws.amazon.com/what-is/cli/"
-          },
-          {
-            type: "paragraph",
-            content: `
-            I've been using the terminal a lot more recently, and I've been thinking about how powerful it would be to have a tool that could answer questions about my code directly from the command line.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            With advancements in AI, it's becoming increasingly common to have a local language model that can understand and analyze code.
-            So why not build a CLI tool that leverages a AI or a local language model to answer questions about your codebase?
-            You could have a simple command and the tool would analyze the relevant code and provide an answer right in the terminal.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            Rust is perfect for this project because it's great for building fast and efficient CLI tools, and it has a growing ecosystem of libraries.
-            I've already created the base, you can view it in the source code.
-            I've been wanting to add more features and polish it up, so I thought it would be a fun mini project to work on in my free time.
             `,
           }
         ],

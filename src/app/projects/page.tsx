@@ -9,6 +9,11 @@ import { TextAnimate } from "@/components/ui/text-animate"
 import { BackgroundGradient } from "@/components/ui/background-gradient"
 import AvailableForRoles from "@/components/AvailableForRoles"
 import { Separator } from "@/components/ui/separator";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 export default function ProjectsPage() {
   return (
@@ -99,25 +104,32 @@ export default function ProjectsPage() {
                     const docUrl = getTechDoc(tech);
                     if (docUrl) {
                       return (
-                        <Link
-                          href={docUrl || "#"}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          key={tech}
-                          className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5 hover:bg-white/10 transition-colors"
-                        >
-                          {iconPath && (
-                            <Image
-                              src={iconPath}
-                              alt={tech}
-                              width={14}
-                              height={14}
-                              className="object-contain"
-                              unoptimized
-                            />
-                          )}
-                          {tech}
-                        </Link>
+                        <Tooltip key={tech}>
+                        <TooltipTrigger>
+                          <Link
+                            href={docUrl || "#"}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            key={tech}
+                            className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5 hover:bg-white/10 transition-colors"
+                          >
+                            {iconPath && (
+                              <Image
+                                src={iconPath}
+                                alt={tech}
+                                width={14}
+                                height={14}
+                                className="object-contain"
+                                unoptimized
+                              />
+                            )}
+                            {tech}
+                          </Link>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          View {tech} Documentation
+                        </TooltipContent>
+                      </Tooltip>
                       );
                     } else {
                       return (
@@ -153,7 +165,7 @@ export default function ProjectsPage() {
                       className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
                     >
                       <ExternalLink size={16} />
-                      Visit Website
+                      Visit Live Demo
                     </Link>
                   )}
                   {project.gameUrl && (

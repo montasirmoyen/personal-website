@@ -14,6 +14,11 @@ import {
   AccordionContent,
 } from '@/components/animate-ui/components/radix/accordion';
 import AvailableForRoles from "@/components/AvailableForRoles"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 interface ProjectDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -35,7 +40,7 @@ function ProjectDetailContent({ project }: { project: any }) {
   return (
     <div className="pt-32 px-4 md:px-6">
       <div className="max-w-5xl mx-auto">
-        <TopBarBackground imageUrl={project.image} />
+        <TopBarBackground transparency={25} imageUrl={project.image} />
 
         {/* Header Section */}
         <div className="mb-12">
@@ -55,61 +60,10 @@ function ProjectDetailContent({ project }: { project: any }) {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-sm"
               >
-                Check it out
+                Visit {project.liveUrl ? "Live Demo" : "Game"}
                 <ExternalLink size={16} />
               </Link>
             )}
-          </div>
-
-          {/* Tech Stack Tags */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.technologies.map((tech: string) => {
-              const iconPath = getTechIcon(tech);
-              const docUrl = getTechDoc(tech);
-              if (docUrl) {
-                return (
-                  <Link
-                    href={docUrl || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    key={tech}
-                    className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5 hover:bg-white/10 transition-colors"
-                  >
-                    {iconPath && (
-                      <Image
-                        src={iconPath}
-                        alt={tech}
-                        width={14}
-                        height={14}
-                        className="object-contain"
-                        unoptimized
-                      />
-                    )}
-                    {tech}
-                  </Link>
-                );
-              } else {
-                return (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
-                  >
-                    {iconPath && (
-                      <Image
-                        src={iconPath}
-                        alt={tech}
-                        width={14}
-                        height={14}
-                        className="object-contain"
-                        unoptimized
-                      />
-                    )}
-                    {tech}
-                  </span>
-                );
-              }
-
-            })}
           </div>
 
           {/* Date and Links */}
@@ -161,7 +115,66 @@ function ProjectDetailContent({ project }: { project: any }) {
           </div>
         </div>
 
-        {/* Project Image */}
+        {/* Tech Stack Tags */}
+        <section id="tech-stack" className="mb-8">
+          <h2 className="text-2xl font-bold mb-4">Tech Stack</h2>
+          <div className="flex flex-wrap gap-2">
+            {project.technologies.map((tech: string) => {
+              const iconPath = getTechIcon(tech);
+              const docUrl = getTechDoc(tech);
+              if (docUrl) {
+                return (
+                  <Tooltip key={tech}>
+                    <TooltipTrigger>
+                      <Link
+                        href={docUrl || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5 hover:bg-white/10 transition-colors"
+                      >
+                        {iconPath && (
+                          <Image
+                            src={iconPath}
+                            alt={tech}
+                            width={14}
+                            height={14}
+                            className="object-contain"
+                            unoptimized
+                          />
+                        )}
+                        {tech}
+                      </Link>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      View {tech} Documentation
+                    </TooltipContent>
+                  </Tooltip>
+                );
+              } else {
+                return (
+                  <span
+                    key={tech}
+                    className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
+                  >
+                    {iconPath && (
+                      <Image
+                        src={iconPath}
+                        alt={tech}
+                        width={14}
+                        height={14}
+                        className="object-contain"
+                        unoptimized
+                      />
+                    )}
+                    {tech}
+                  </span>
+                );
+              }
+            })}
+          </div>
+        </section>
+
+        {/* Project Image 
         <div className="mb-16 rounded-lg overflow-hidden border border-white/10">
           <div className="relative aspect-video">
             <Image
@@ -172,7 +185,7 @@ function ProjectDetailContent({ project }: { project: any }) {
               unoptimized
             />
           </div>
-        </div>
+        </div> */}
 
         <div className="lg:col-span-2 space-y-12">
           {/* Overview or Blog Posts */}
@@ -251,35 +264,7 @@ function ProjectDetailContent({ project }: { project: any }) {
               </Accordion>
             </section>
           )}
-
-          {/* Tech Stack */}
-          <section id="tech-stack">
-            <h2 className="text-2xl font-bold mb-4">Tech Stack</h2>
-            <div className="flex flex-wrap gap-2">
-              {project.technologies.map((tech: string) => {
-                const iconPath = getTechIcon(tech);
-                return (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
-                  >
-                    {iconPath && (
-                      <Image
-                        src={iconPath}
-                        alt={tech}
-                        width={14}
-                        height={14}
-                        className="object-contain"
-                        unoptimized
-                      />
-                    )}
-                    {tech}
-                  </span>
-                );
-              })}
-            </div>
-          </section>
-
+          
           {/* Challenges & Learnings */}
           {project.challenges && (
             <section id="challenges">
