@@ -73,7 +73,9 @@ export default function About() {
                 You may also know me as Monty, I'm a Computer Science student at Suffolk University in Boston, MA.
               </p>
               <p>
-                My journey into tech started in early middle school with my first computer, and I've been captivated ever since.
+                My journey into tech started in early middle school with my first computer, and I've been captivated ever since, continuing my knowledge into high school and university.
+              </p>
+              <p>
                 In my free time, I channel my passion into creating software such as apps, games, and macOS tools.
                 Each project fuels my curiosity about the technologies behind them.
                 I never get tired or bored of coding.
