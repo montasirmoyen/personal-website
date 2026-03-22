@@ -42,21 +42,27 @@ export interface Project {
   colors?: [string, string];
   category: string;
   image: string;
+  carouselImages?: string[];
   date: string;
   status: "completed" | "in-progress";
   description: string;
-  bullets: string[];
+  bullets?: string[];
   technologies: string[];
   githubUrl?: string;
   blogUrl?: string;
   liveUrl?: string;
   gameUrl?: string;
   overview?: string;
+  problemItSolves?: string;
   keyFeatures?: {
     title: string;
     description: string;
   }[];
   challenges?: {
+    title: string;
+    description: string;
+  }[];
+  tradeoffs?: {
     title: string;
     description: string;
   }[];
@@ -117,26 +123,22 @@ export const projects: Project[] = [
     colors: ["#2e3ffa", "#1d46fd"],
     category: "AI & Full-Stack Development",
     image: "/ramai-home.png",
+    carouselImages: ["/ramai-chat.png", "/ramai-response.png", "/ramai-jl.png", "/ramai-ag.png"],
     date: "January 15, 2026 — Present",
     status: "completed",
-    description: "An application assisting Suffolk University students by providing tools such as an AI chatbot and a library of 1200+ professors.",
-    bullets: [
-      "AI-powered chatbot using models like XiaomiMiMo's MiMo-V2-Flash for fast and accurate responses.",
-      "Comprehensive professor discovery page with search and department filtering capabilities.",
-      "Detailed professor profiles displaying ratings, departments, and student reviews.",
-    ],
+    description: "An application assisting Suffolk University students by providing tools such as an AI chatbot and a library of 1200+ SU professors.",
     technologies: ["TypeScript", "React", "Python", "Data Engineering", "AI Integration", "Auditing"],
     blogUrl: "https://montasirmoyen.com/blog/ramai",
     liveUrl: "https://ram-ai.vercel.app/",
-    overview: "RamAI is an AI-integrated application designed specifically for Suffolk University students. It aggregates professor information and provides an intelligent chatbot interface to help students make informed decisions about their courses and instructors.",
+    problemItSolves: "When trying to find an answer to a question about professors at Suffolk University, scrolling through pages of professor information and reviews can be time consuming. Especially when time is limited, like when you're registering for classes and trying to decide between professors, it can be hard to find the information you need quickly.",
     keyFeatures: [
       {
         title: "AI Chatbot Integration",
         description: "Utilizes various models such as XiaomiMiMo's MiMo-V2-Flash model for fast, accurate, and cost-effective responses to student queries about professors and courses.",
       },
       {
-        title: "Advanced Search & Filtering",
-        description: "Comprehensive discovery page with search functionality and department filters including Computer Science, Mathematics, and Business.",
+        title: "Comprehensive Professor Discovery",
+        description: "Includes a comprehensive library with search functionality, keeping 1200+ professors easily discoverable.",
       },
       {
         title: "Detailed Professor Profiles",
@@ -149,8 +151,30 @@ export const projects: Project[] = [
         description: "Ensuring the AI chatbot provides accurate information was critical. Extensive auditing and prompt engineering was required to minimize hallucinations and maintain user trust. The backend implements strong filtering and constraints based on planner intents.",
       },
       {
+        title: "AI Scope and Limitations",
+        description: "Maximizing the usefulness of the AI and making sure a broad range of questions could be answered. This involved careful consideration of the training data and prompt design to ensure the AI could handle a wide variety of queries while staying within its knowledge base.",
+      },
+      {
         title: "Data Representation",
-        description: "Handling edge cases where users ask questions not well-represented in the dataset required careful consideration of how the AI should respond responsibly.",
+        description: "Handling edge cases where users ask questions not represented well in the dataset required careful consideration of how the AI should respond responsibly.",
+      },
+    ],
+    tradeoffs: [
+      {
+        title: "RAG vs Intent-Based Planning",
+        description: "I chose to implement an intent-based planning system in the backend instead of a traditional Retrieval-Augmented Generation (RAG) approach. This allows for more structured and controlled responses, but it also means that the AI's capabilities are limited to the defined intents and may not handle unexpected queries as gracefully as a RAG system might.",
+      },
+      {
+        title: "AI Model Selection",
+        description: "I chose AI models that balance performance, accuracy, and cost. Extensive testing and evaluation were conducted to select the most suitable model for the application's needs.",
+      },
+      {
+        title: "Sourcing Data",
+        description: "I chose RateMyProfessors as the primary data source for professor information due to its comprehensive coverage and user-generated reviews. However, this also means that the data may be subject to biases and may not always be up-to-date, which is a tradeoff I had to consider.",
+      },
+      {
+        title: "Storing Data in JSON vs Database",
+        description: "I chose JSON for data storage due to its simplicity and ease of use for the project's needs. While a database could offer more robust querying capabilities, JSON provided a lightweight and flexible solution that met the application's requirements.",
       },
     ],
     outcome: `
@@ -164,17 +188,13 @@ export const projects: Project[] = [
     colors: ["#2e3ffa", "#d70028"],
     category: "Game Development",
     image: "/mps.png",
+    carouselImages: ["/mps-6.webp", "/mps-4.png", "/mps-7.webp", "/mps-3.png", "/mps-8.webp", "/mps-5.png"],
     date: "Aug 2021 — Dec 2023",
     status: "completed",
     description: "A fast-paced multiplayer soccer game with 50+ real life teams.",
-    bullets: [
-      "Achieved over 3,500+ concurrent players and 500,000+ monthly active players.",
-      "Founded the growing parent company, gaining 160,000+ official members and producing more successful spin-offs of the game.",
-      "Generated over 6 figures in net revenue while still maintaining a generous passive income thanks to various methods of monetization and social media influencer partner deals.",
-    ],
+    problemItSolves: "There was a lack of fast-paced soccer games with realistic mechanics on Roblox at the time, and I wanted to create a fun and competitive soccer experience for players on the platform. I also wanted to build a community around the game where players could connect and compete with each other.",
     technologies: ["Lua", "JavaScript", "JSON", "RBLX Studio", "Entrepreneurship"],
     gameUrl: "https://www.roblox.com/games/13436905139/MPS-4-a-side",
-    overview: "This is a multiplayer soccer game where players compete against each other in two 4 player teams. The game goes on until 90 minutes (around 30 minutes in real life), if the score is tied, it goes onto 120 minutes. If it's still tied, whoever scores next wins the game.",
     keyFeatures: [
       {
         title: "High Skill Ceiling",
@@ -195,9 +215,27 @@ export const projects: Project[] = [
         description: "This was a small project I worked on in Sophomore year in high school, it unexpectedly gained attention from the soccer community and turned into a fan favorite. This also meant I had to optimize the game further, making it smoother for long-term gaming.",
       },
       {
+        title: "Nature of Sports Games: Limited Updates",
+        description: "Sports games often have limited opportunities for new content and updates, which can make it challenging to keep players engaged over time. This required careful planning and creativity to introduce meaningful updates that kept the game fresh and exciting.",
+      },
+      {
         title: "Staff Employment",
         description: "There was a need to grow the administration team when the player count grew and moderations for reports by users were needed. Initially, close friends accompanied me to help deal with moderations, but I eventually built it into a stable work enviornment.",
       },
+    ],
+    tradeoffs: [
+      {
+        title: "Solo Development vs Team",
+        description: "The game started as a solo project, and I continued to develop it mostly on my own. While this allowed for a consistent vision and faster decision-making, it also meant that the development process was more time-consuming and limited in terms of expertise. As the game grew, I had to bring on staff to help with moderation and community management, but the core development remained solo.",
+      },
+      {
+        title: "Monetization vs Player Experience",
+        description: "I chose to monetize the game through various methods, such as microtransactions. While this generated significant revenue, I had to be careful to balance monetization with player experience to avoid making the game feel pay-to-win or alienating players who didn't want to spend money. I focused on creating a fair and enjoyable experience for all players while still offering optional purchases for those who wanted to support the game.",
+      },
+      {
+        title: "Performance vs Visuals",
+        description: "Soccer is played on a large field with many players, which can lead to performance issues, especially on lower-end devices. I had to make tradeoffs between visual fidelity and performance to ensure the game ran smoothly for a wide range of players. This involved optimizing assets, simplifying certain visual effects, and making design choices that prioritized gameplay performance while still maintaining an engaging visual style.",
+      }
     ],
     outcome: `
     MPS has reached great heights, at times hitting around 500,000 monthly players and a few thousand concurrent users at peak hours.
@@ -214,9 +252,11 @@ export const projects: Project[] = [
     colors: ["#00ff8c", "#0ccaff"],
     category: "AI & Full-Stack Development",
     image: "/rxp-home.png",
+    carouselImages: ["/rxp-home.png","/rxp-dashboard.png","/rxp-analysis-1.png", "/rxp-analysis-2-1.png", "/rxp-analysis-3.png"],
     date: "January 29, 2026 — Present",
     status: "completed",
     description: "An AI-powered application to help users maximize their resume potential in seconds.",
+    problemItSolves: "Crafting a strong resume is crucial for job seekers, but it can be time consuming and challenging to know how to improve it effectively. Especially with all the ATS requirements and the need to tailor resumes for different job applications, it can be overwhelming for users to optimize their resumes and create compelling cover letters quickly.",
     technologies: ["TypeScript", "React", "Next", "AI Integration"],
     bullets: [
       "Provides honest feedback on resumes to help users improve and stand out to potential employers.",
@@ -226,7 +266,6 @@ export const projects: Project[] = [
     blogUrl: "https://montasirmoyen.com/blog/resumexp",
     liveUrl: "https://resumexp.vercel.app/",
     githubUrl: "https://github.com/montasirmoyen/resumexp",
-    overview: "ResumeXP is an AI-powered application that helps users maximize their resume potential in seconds.",
     keyFeatures: [
       {
         title: "Honest Feedback",
@@ -247,6 +286,12 @@ export const projects: Project[] = [
         description: "Knowing how Applicant Tracking Systems (ATS) work and ensuring the AI provides suggestions that help resumes pass these systems was a significant challenge. Research and prompt engineering were required to achieve this.",
       },
     ],
+    tradeoffs: [
+      {
+        title: "AI Model Selection",
+        description: "I chose AI models that balance performance, accuracy, and cost. Extensive testing and evaluation were conducted to select the most suitable model for the application's needs.",
+      },
+    ],
     outcome: `
     The application was deployed and has been used by friends in my university to give insights on their resumes, and the feedback has been positive so far.
     The project gave valuable experience in AI integration, data analysis, and building user-centric applications.
@@ -258,18 +303,14 @@ export const projects: Project[] = [
     title: "ScentDex",
     colors: ["#ff34b1", "#ff851b"],
     category: "AI & Full-Stack Development",
-    image: "/sd-home.png",
+    image: "/sd-home-1.png",
+    carouselImages: ["/sd-home-1.png", "/sd-home-3.png", "/sd-home-4.png", "/sd-ai.png", "/sd-compare-1.png", "/sd-compare-2.png", "/sd-compare-3.png"],
     githubUrl: "https://github.com/montasirmoyen/scentdex/",
     date: "Sep 2025 — Present",
     status: "completed",
     description: "Browse, study and filter the most popular fragrances from the most luxurious brands.",
-    bullets: [
-      "Sort and filter fragrances by various attributes such as seasons, gender, and more.",
-      "View detailed fragrance profiles including ideal wear times and scent notes.",
-    ],
     technologies: ["TypeScript", "React", "Next", "Node.js", "JSON", "AI Integration"],
     liveUrl: "https://scentdex.vercel.app",
-    overview: "A catalog of various different fragrances. Each fragrance has information on the ideal time to wear them, and there are various sorts and filters to find your favorite fragrance.",
     keyFeatures: [
       {
         title: "Advanced Filtering System",
@@ -290,60 +331,17 @@ export const projects: Project[] = [
         description: "I've only been really into fragrances since around 2023, when the trendiness was just starting to peak. I had decent knowledge on fragrances, but of course you can never know enough. I had to do extensive research on various fragrance notes to curate a decent dataset for the project.",
       }
     ],
+    tradeoffs: [
+      {
+        title: "Data Sourcing",
+        description: "I chose to source data from Fragella, a reputable fragrance database, to ensure the accuracy and reliability of the information presented. Limited quantity, but high quality.",
+      }
+    ],
     outcome: `
     The website has been deployed and is open source on GitHub.
     The project provided valuable experience in front-end development, handling large datasets, and building user-friendly interfaces.
     `,
-  },
-  {
-    slug: "uniweek",
-    title: "UniWeek",
-    colors: ["#b3fbff", "#23d3ff"],
-    category: "Full-Stack Development",
-    image: "/uw-home.png",
-    date: "January 21, 2026 — Present",
-    status: "completed",
-    description: "An application that visualizes university schedules from .xlsx files into clean, interactive layouts with live status updates.",
-    bullets: [
-      "Intelligently identifies gaps in university schedules to help students optimize their time, providing suggestions for nearby dining halls, cafes, and common areas during breaks.",
-      "Provides real-time updates on the user's current class status throughout the day, indicating whether they are in class, on a break, or have upcoming classes soon.",
-      "Provides info on professors if they exist in the database, including RateMyProfessors rating stars and difficulty, and links to their RamAI profile for more information.",
-    ],
-    technologies: ["Typescript", "React", "Next", "Python", "Firebase"],
-    blogUrl: "https://montasirmoyen.com/blog/uniweek",
-    liveUrl: "https://uni-week.vercel.app/",
-    githubUrl: "https://github.com/montasirmoyen/uniweek",
-    overview: "UniWeek is a small application that allows students to upload their university schedule in .xlsx format and visualizes it into a clean, interactive layout. The app also provides live status updates about the user's current class status.",
-    keyFeatures: [
-      {
-        title: "Gap Analysis",
-        description: "Intelligently identifies gaps in the university schedule to help students optimize their time. Provides suggestions for nearby dining halls, cafes, and common areas during breaks.",
-      },
-      {
-        title: "Live Status Updates",
-        description: "Provides real-time updates on the user's current class status throughout the day. Indicates whether the user is in class, on a break, or has upcoming classes soon. Also integrates emergency alerts from the university website.",
-      },
-      {
-        title: "Detailed Professor Profiles",
-        description: "If they exist in the data base, curated information on the professor would appear on the side panel including RateMyProfessors rating stars and difficulty. Links to their RamAI profile for more information and if they wanted to ask questions about the professor.",
-      },
-    ],
-    challenges: [
-      {
-        title: "University Support",
-        description: "The app only supports Suffolk University right now due to the unique format of their .xlsx schedule files. Expanding support to other universities would require creating additional parsers for each institution's specific format, as well as constructing a general dataset for the gap analysis.",
-      },
-      {
-        title: "Grid Layout",
-        description: "Creating the UI for the schedule grid layout was challenging, especially ensuring that class blocks were accurately positioned based on their start and end times. I had to calculate the correct row spans and placements dynamically to reflect the actual schedule.",
-      },
-    ],
-    outcome: `
-    The application has been deployed and was tested by friends.
-    The project provided valuable experience in file parsing, data visualization, and building user-centric applications.
-    The source code is available on GitHub for anyone interested in exploring or contributing to the project.
-    `,
-  },
+  }
 ];
 
 export const blogs: Blog[] = [
@@ -1589,7 +1587,7 @@ export const blogs: Blog[] = [
             content: `
             There are definitely more features I could add, but I want to keep the app light for now.
             I try to keep these projects small and organized so I can actually finish them and so they're easier to revisit in the future.
-            That's the same approach I took with RamAI and UniWeek.
+            That's the same approach I took with RamAI.
             I can always expand them later if I feel the need.
             `,
           },
@@ -1635,325 +1633,6 @@ export const blogs: Blog[] = [
             link: "https://github.com/montasirmoyen/resumexp",
           },
         ],
-      }
-    ]
-  },
-  {
-    slug: "uniweek",
-    title: "UniWeek",
-    category: "Full-Stack Development",
-    image: "/uniweek-home.png",
-    date: "January 21, 2026 — January 28, 2026",
-    status: "completed",
-    projectUrl: "https://montasirmoyen.com/projects/uniweek",
-    liveUrl: "https://uni-week.vercel.app/",
-    githubUrl: "https://github.com/montasirmoyen/uniweek",
-    description: "An application that visualizes university schedules from .xlsx files into clean, interactive layouts with live status updates.",
-    technologies: ["Typescript", "React", "Next", "Python", "Firebase"],
-    blogPosts: [
-      {
-        date: "January 21, 2026 - 8:23PM",
-        title: "Foundation",
-        borderColor: "#d2d2d2",
-        content: [
-          {
-            type: "paragraph",
-            content: `
-            I won't make the mistake of starting a project before creating the blog this time..
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            But after a fun time building RamAI, especially visualizing the data, I realized I wanted to work with data more.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            I was trying to think of times at college where I just wished a tool existed.
-            One of those times was when I was trying to create a visual schedule for the semester by looking back and forth at the blue text in Workday.
-            I didn't even realize that Workday had a calendar view until halfway through my college career.
-            Even so, their calendar view was not really user-friendly.
-            Conveniently enough, the Workday developers created a button not far from it to export the .xlsx file of your schedule.
-            I opened the file but it looked the exact same as on the website.
-            Maybe Workday added this feature so us developers could do something with it?
-            If so, I'm interested..
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            Yes, it's called UniWeek for now. I'm not sure if I'll keep that name, but my eye itches when my projects don't have names.
-            I'm probably going to choose Next.js and React to build this project just for UI flexibility and premium component usage.
-            The MVP steps for this project is pretty simple:
-            `,
-            marginBottom: 2
-          },
-          {
-            type: "bulletpoints",
-            content: [
-              "Let user upload the .xlsx schedule file exported from Workday.",
-              "Parse the .xlsx file and extract the data.",
-              "Create a visual representation of the schedule using the data.",
-              "Use the time I would have spent making my own clean schedule to do something more productive.",
-            ],
-          },
-          {
-            type: "paragraph",
-            content: `
-            That's all I had in mind for today, I have some quizzes to study for and lecture recordings to re-watch, so I'll leave it at that for now.
-            `,
-            marginBottom: 2
-          },
-          {
-            type: "image",
-            content: ["/tutorial.png"],
-            marginBottom: 2
-          },
-        ]
-      },
-      {
-        date: "January 24, 2026 - 1:37PM",
-        title: "Ideation",
-        borderColor: "#ffd438",
-        content: [
-          {
-            type: "paragraph",
-            content: `
-            If you haven't read my previous post, I started developing a schedule visualization app a few days ago.
-            I wanted to build something that takes an .xlsx file and turns it into a clean layout that shows the class blocks and actually reflects how students could move through their day.
-            After outlining and confirming the general architecture and tech stack for the project, I started working on a small prototype.
-            `,
-            marginBottom: 2
-          },
-          {
-            type: "bulletpoints",
-            content: [
-              "Parses the user's uploaded .xlsx file and extracts the data.",
-              "Creates a nice visual representation of the schedule using the data, laid out on a grid with time and days of the week.",
-              "Each class block opens up the side panel when clicked, showing more details about the class.",
-              "Gaps between class blocks opens up the side panel when clicked, showing where the nearest dining halls, cafes, and common areas are.",
-              "Gaps before the first and after the last class blocks open up the side panel when clicked, showing the nearest MBTA stations and parking garages. These two ideas are adopted so the app is less mundane.",
-              "TailwindCSS use variables in #globals.css of course, so I can support both light and dark mode in the future. This also makes it easier to change the color scheme later on.",
-            ],
-            marginBottom: 6
-          },
-          {
-            type: "paragraph",
-            content: `
-            One important thing to note is that the project has been planned and built with scalability in mind.
-            I've designed the architecture so that adding support for more universities in the future would be straightforward.
-            Right now, the project is able to support Suffolk University, each university would have its own parser module that knows exactly how to extract data from that specific university's schedule format.
-            The only thing that would need to be done for each university is constructing the general dataset needed to render this project's unique approach of showing what the student can do between class block gaps and etc.
-            The rest of the system would remain unchanged, making it easy to expand the project's reach over time if I ever decided to.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            That's all I wanted to share today, I'll continue working on the project when I have free time.
-            `,
-          },
-        ]
-      },
-      {
-        date: "January 25, 2026 - 11:14PM",
-        title: "Live",
-        borderColor: "#3cc0f0",
-        content: [
-          {
-            type: "paragraph",
-            content: `
-            In the middle of a snow storm here in Boston, but I'm cozy enough to continue working on this..
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            I've been coming up with ideas while working on some features for the app, and one of them is to add a live component to the schedule.
-            What I mean by that is that the app will have a status, telling you whether you're currently in class or not, on a break, or if your next class is starting soon.
-            Of course, it's better to be aware yourself of your schedule, but I think having this feature would be a nice touch.
-            Below, I'll outline how I did it.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            First, I built a LiveStatus component that updates every single second using setInterval.
-            The component calculates the current time in minutes since midnight and compares it against all classes scheduled for today.
-            It filters the schedule to only show classes for the current day, then sorts them chronologically to find what's happening right now.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            The logic was a bit intricate.
-            The component needs to detect six different states:
-            `,
-            marginBottom: 2
-          },
-          {
-            type: "bulletpoints",
-            content: [
-              "You're currently in class",
-              "Your next class starts in 5 minutes",
-              "You're on a break between classes",
-              "All your classes are done for the day",
-              "You have no classes today",
-            ],
-          },
-          {
-            type: "paragraph",
-            content: `
-            Each state displays a different message.
-            But what makes it feel alive is the dynamic color system.
-            The status text changes color based on urgency, for example, yellow when you're in class, orange when your next class is within 5 minutes, and green when your day is done. 
-            The component also displays a pulsing red dot labeled "Live" to emphasize that it's actively tracking your schedule in real time.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            I also had to make sure the component handles re-renders properly.
-            The setInterval updates the currentTime state every second which:
-            `,
-            marginBottom: 2
-          },
-          {
-            type: "bulletpoints",
-            content: [
-              "Handles all the calculations",
-              "Finds today's classes",
-              "Detects the current class",
-              "Calculates minutes until the next one",
-              "Determines remaining classes",
-            ],
-          },
-          {
-            type: "paragraph",
-            content: `
-            The secondary info line is context aware too. It shows "Today you have X classes, Y left" during the day, but switches to showing a countdown like "Next class in 45 minutes" when you're between classes.
-            If the next class is over an hour away, it formats it as "Next class in 2h 15m" for readability. 
-            Small details like pluralization ("1 class" vs "2 classes") and  12 hour time formatting keep the UI polished.
-            I try to do these small UI touches before I actually try hard to make the UI look good, which will come later.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            The hardest part was making sure everything recalculates on every render without causing performance issues.
-            I initially had bugs where the status wouldn't update until I re-uploaded the schedule.
-            The fix was making sure all derived values like statusColor, statusData, and secondaryInfo are computed inline during render rather than cached in useEffect or useMemo.
-            This way, when currentTime updates every second, React automatically recalculates everything.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            Overall, this makes the website feel at least a little more responsive and alive, exactly what I was trying to do.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            Congratulations if you made it this far. I know this was one of my longer posts.. but I really wanted to share the process thoroughly.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            That's all for now though, stay warm and safe if you're in the snow storm like me!
-            `,
-          },
-          {
-            type: "image",
-            content: ["/uniweek-live.png", "/uniweek-professor-stats.png"],
-          },
-        ]
-      },
-      {
-        date: "January 27, 2026 - 3:58PM",
-        title: "Live II",
-        borderColor: "#b4ebff",
-        content: [
-          {
-            type: "paragraph",
-            content: `
-            Continuing from my last post about adding live features to UniWeek... 
-            I've implemented real-time emergency alerts from Suffolk University's website.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            A Python script scrapes the university homepage for the #globalAlert element, parsing the date and message using HTMLParser.
-            A Next.js API route spawns the script and returns JSON to the frontend, which displays alerts above the schedule when active.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            It was a simple and quick implementation, but adds real value for students who many rely on UniWeek for their schedules.
-            `,
-          },
-          {
-            type: "image",
-            content: ["/uniweek-alert.png"],
-          },
-        ]
-      },
-      {
-        date: "January 28, 2026 - 10:13PM",
-        title: "Conclusion",
-        borderColor: "#ffb662",
-        content: [
-          {
-            type: "paragraph",
-            content: `
-            I had a lot of fun building UniWeek over the past week, but I think I'll be pausing active development for now.
-            It's reached a solid MVP state where users can upload their schedule and get a clean visual representation with live status updates and emergency alerts.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            It does seem like I'm burning through projects quickly lately, but I think that's okay as long as I'm learning and enjoying the process.
-            I've learned a lot about parsing .xlsx files and using Python for real time data scraping, which are skills I can apply to future projects.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            Honestly, I'm not even kidding when I say I'll actually use this app for the first few days whenever a new semester starts.
-            Even if it's just a few days of using it every semester, it's really helpful to know what my day would look like at a glance.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            View the site at:
-            `,
-            marginBottom: 0
-          },
-          {
-            type: "paragraph",
-            content: `https://uni-week.vercel.app/`,
-            link: "https://uni-week.vercel.app/",
-          },
-          {
-            type: "paragraph",
-            content: `
-            View the source code on GitHub:
-            `,
-            marginBottom: 0
-          },
-          {
-            type: "paragraph",
-            content: `https://github.com/montasirmoyen/uniweek`,
-            link: "https://github.com/montasirmoyen/uniweek",
-          }
-        ]
       }
     ]
   },
