@@ -3,7 +3,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { getProjectBySlug, getTechDoc, getTechIcon, projects } from "@/lib/projects";
+import { getProjectBySlug, projects } from "@/lib/projects";
 import { ArrowLeft, ArrowRight, ExternalLink, Github, Notebook } from "lucide-react";
 import { use } from "react";
 import TopBarBackground from "@/components/TopBarBackground"
@@ -14,11 +14,16 @@ import {
   AccordionContent,
 } from '@/components/animate-ui/components/radix/accordion';
 import AvailableForRoles from "@/components/AvailableForRoles"
+import * as React from "react"
+import { Card, CardContent } from "@/components/ui/card"
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import TechStack from "@/components/TechStack";
 
 interface ProjectDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -60,7 +65,7 @@ function ProjectDetailContent({
       <div className="max-w-5xl mx-auto">
         <TopBarBackground transparency={25} imageUrl={project.image} />
 
-        <div className="mb-8">
+        <div className="mb-12">
           <Link
             href="/projects"
             className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/15 bg-black/40 text-sm text-gray-200 hover:text-white hover:border-white/35 hover:bg-white/10 transition-colors"
@@ -144,121 +149,50 @@ function ProjectDetailContent({
         </div>
 
         {/* Tech Stack Tags */}
-        <section id="tech-stack" className="mb-8">
+        <section id="tech-stack" className="mb-12">
           <h2 className="text-2xl font-bold mb-4">Tech Stack</h2>
-          <div className="flex flex-wrap gap-2">
-            {project.technologies.map((tech: string) => {
-              const iconPath = getTechIcon(tech);
-              const docUrl = getTechDoc(tech);
-              if (docUrl) {
-                return (
-                  <Tooltip key={tech}>
-                    <TooltipTrigger>
-                      <Link
-                        href={docUrl || "#"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5 hover:bg-white/10 transition-colors"
-                      >
-                        {iconPath && (
-                          <Image
-                            src={iconPath}
-                            alt={tech}
-                            width={14}
-                            height={14}
-                            className="object-contain"
-                            unoptimized
-                          />
-                        )}
-                        {tech}
-                      </Link>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      View {tech} Documentation
-                    </TooltipContent>
-                  </Tooltip>
-                );
-              } else {
-                return (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
-                  >
-                    {iconPath && (
-                      <Image
-                        src={iconPath}
-                        alt={tech}
-                        width={14}
-                        height={14}
-                        className="object-contain"
-                        unoptimized
-                      />
-                    )}
-                    {tech}
-                  </span>
-                );
-              }
-            })}
-          </div>
+          <TechStack technologies={project.technologies} />
         </section>
 
-        {/* Project Image 
-        <div className="mb-16 rounded-lg overflow-hidden border border-white/10">
-          <div className="relative aspect-video">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover"
-              unoptimized
-            />
+        {/* Project Image */}
+        {project.carouselImages && project.carouselImages.length > 0 && (
+          <div className="mb-16">
+            <Carousel className="w-full">
+              <CarouselContent>
+                {project.carouselImages.map((image: string, index: number) => (
+                  <CarouselItem key={index}>
+                    <div className="p-1">
+                      <Card>
+                        <CardContent className="flex aspect-video items-center justify-center p-6 bg-black/40 rounded-lg overflow-hidden">
+                          <Image
+                            src={image}
+                            alt={`${project.title} screenshot ${index + 1}`}
+                            height={1920}
+                            width={1080}
+                            className="object-cover"
+                            unoptimized
+                          />
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           </div>
-        </div> */}
+        )}
 
         <div className="lg:col-span-2 space-y-12">
-          {/* Overview or Blog Posts */}
-          {project.blogPosts ? (
-            <section id="blog-posts">
-              <h2 className="text-2xl font-bold mb-6">Blog Posts</h2>
-              <div className="space-y-8">
-                {project.blogPosts.map((post: any, postIndex: number) => (
-                  <article key={postIndex} className="border-l-2 border-blue-500 pl-6">
-                    <div className="mb-4">
-                      <h3 className="text-xl font-semibold text-white mb-2">{post.title}</h3>
-                      <p className="text-sm text-gray-400">{post.date}</p>
-                    </div>
-                    <div className="space-y-0">
-                      {post.content.map((item: any, itemIndex: number) => {
-                        const marginClass = `mb-${item.marginBottom}`;
-                        if (item.type === "paragraph") {
-                          return (
-                            <p
-                              key={itemIndex}
-                              className={`text-gray-300 leading-relaxed ${marginClass}`}
-                            >
-                              {item.content}
-                            </p>
-                          );
-                        } else if (item.type === "bulletpoints") {
-                          return (
-                            <ul
-                              key={itemIndex}
-                              className={`list-disc list-inside space-y-2 text-gray-300 ${marginClass}`}
-                            >
-                              {item.content.map((bullet: string, bulletIndex: number) => (
-                                <li key={bulletIndex}>{bullet}</li>
-                              ))}
-                            </ul>
-                          );
-                        }
-                        return null;
-                      })}
-                    </div>
-                  </article>
-                ))}
-              </div>
+          {project.problemItSolves && (
+            <section id="problem">
+              <h2 className="text-2xl font-bold mb-4">Problem</h2>
+              <p className="text-gray-300 leading-relaxed">{project.problemItSolves}</p>
             </section>
-          ) : (
+          )}
+
+          {project.overview && (
             <section id="overview">
               <h2 className="text-2xl font-bold mb-4">Overview</h2>
               <p className="text-gray-300 leading-relaxed">{project.overview}</p>
@@ -293,10 +227,10 @@ function ProjectDetailContent({
             </section>
           )}
 
-          {/* Challenges & Learnings */}
+          {/* Challenges */}
           {project.challenges && (
             <section id="challenges">
-              <h2 className="text-2xl font-bold mb-6">Challenges & Learnings</h2>
+              <h2 className="text-2xl font-bold mb-6">Challenges</h2>
               <div className="space-y-6">
                 {project.challenges.map((challenge: any, index: number) => (
                   <div key={index} className="border-l-2 border-yellow-500 pl-4">
@@ -305,6 +239,25 @@ function ProjectDetailContent({
                     </h3>
                     <p className="text-gray-300 leading-relaxed">
                       {challenge.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Tradeoffs */}
+          {project.tradeoffs && (
+            <section id="tradeoffs">
+              <h2 className="text-2xl font-bold mb-6">Tradeoffs</h2>
+              <div className="space-y-6">
+                {project.tradeoffs.map((tradeoff: any, index: number) => (
+                  <div key={index} className="border-l-2 border-teal-500 pl-4">
+                    <h3 className="font-semibold text-white mb-2">
+                      {tradeoff.title}
+                    </h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      {tradeoff.description}
                     </p>
                   </div>
                 ))}
