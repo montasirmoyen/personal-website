@@ -3,8 +3,8 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { getProjectBySlug, getTechDoc, getTechIcon } from "@/lib/projects";
-import { ExternalLink, Github, Notebook } from "lucide-react";
+import { getProjectBySlug, getTechDoc, getTechIcon, projects } from "@/lib/projects";
+import { ArrowLeft, ArrowRight, ExternalLink, Github, Notebook } from "lucide-react";
 import { use } from "react";
 import TopBarBackground from "@/components/TopBarBackground"
 import {
@@ -32,15 +32,43 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
     notFound();
   }
 
-  return <ProjectDetailContent project={project} />;
+  const currentIndex = projects.findIndex((item) => item.slug === project.slug);
+  const previousProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
+  const nextProject = currentIndex >= 0 && currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+
+  return (
+    <ProjectDetailContent
+      project={project}
+      previousProject={previousProject}
+      nextProject={nextProject}
+    />
+  );
 }
 
-function ProjectDetailContent({ project }: { project: any }) {
+function ProjectDetailContent({
+  project,
+  previousProject,
+  nextProject,
+}: {
+  project: any;
+  previousProject: any | null;
+  nextProject: any | null;
+}) {
 
   return (
     <div className="pt-32 px-4 md:px-6">
       <div className="max-w-5xl mx-auto">
         <TopBarBackground transparency={25} imageUrl={project.image} />
+
+        <div className="mb-8">
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/15 bg-black/40 text-sm text-gray-200 hover:text-white hover:border-white/35 hover:bg-white/10 transition-colors"
+          >
+            <ArrowLeft size={16} />
+            Back to Projects
+          </Link>
+        </div>
 
         {/* Header Section */}
         <div className="mb-12">
@@ -264,7 +292,7 @@ function ProjectDetailContent({ project }: { project: any }) {
               </Accordion>
             </section>
           )}
-          
+
           {/* Challenges & Learnings */}
           {project.challenges && (
             <section id="challenges">
@@ -291,11 +319,67 @@ function ProjectDetailContent({ project }: { project: any }) {
               <p className="text-gray-300 leading-relaxed">{project.outcome}</p>
             </section>
           )}
-
-          <p className="text-sm text-white/50 italic mb-24">
-            — Montasir
-          </p>
         </div>
+
+        <p className="text-sm text-white/50 italic py-6">
+          — Montasir
+        </p>
+
+        {(previousProject || nextProject) && (
+          <div className="py-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+            {previousProject ? (
+              <Link
+                href={`/projects/${previousProject.slug}`}
+                className="group rounded-xl border border-white/15 bg-linear-to-br from-white/8 to-white/3 p-4 hover:border-white/35 hover:from-white/12 hover:to-white/6 transition-all"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <span className="mt-1 rounded-full border border-white/20 p-1.5 text-gray-200 group-hover:text-white group-hover:border-white/40 transition-colors">
+                    <ArrowLeft size={16} />
+                  </span>
+                  <div className="text-right">
+                    <p className="text-xs uppercase tracking-[0.2em] text-yellow-300/90 mb-1">Previous</p>
+                    <p className="text-base font-semibold text-white leading-tight">{previousProject.title}</p>
+                    <p className="text-sm text-gray-400 mt-1">{previousProject.date}</p>
+                  </div>
+                </div>
+              </Link>
+            ) : (
+              <div className="rounded-xl border border-dashed border-white/10 p-4 text-sm text-gray-500">
+                <div className="text-right">
+                  <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-1">End</p>
+                  <p className="text-base font-semibold text-white leading-tight">Latest</p>
+                  <p className="text-sm text-gray-400 mt-1">You are on the latest project</p>
+                </div>
+              </div>
+            )}
+
+            {nextProject ? (
+              <Link
+                href={`/projects/${nextProject.slug}`}
+                className="group rounded-xl border border-white/15 bg-linear-to-br from-white/8 to-white/3 p-4 hover:border-white/35 hover:from-white/12 hover:to-white/6 transition-all"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.2em] text-emerald-300/90 mb-1">Next</p>
+                    <p className="text-base font-semibold text-white leading-tight">{nextProject.title}</p>
+                    <p className="text-sm text-gray-400 mt-1">{nextProject.date}</p>
+                  </div>
+                  <span className="mt-1 rounded-full border border-white/20 p-1.5 text-gray-200 group-hover:text-white group-hover:border-white/40 transition-colors">
+                    <ArrowRight size={16} />
+                  </span>
+                </div>
+              </Link>
+            ) : (
+              <div className="rounded-xl border border-dashed border-white/10 p-4 text-sm text-gray-500">
+                <div className="text-right">
+                  <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-1">End</p>
+                  <p className="text-base font-semibold text-white leading-tight">Oldest</p>
+                  <p className="text-sm text-gray-400 mt-1">You are on the oldest project</p>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       <AvailableForRoles />
