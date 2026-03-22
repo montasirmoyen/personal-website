@@ -157,7 +157,7 @@ function ProjectDetailContent({
         </div>
 
         {/* Tech Stack Tags */}
-        <section id="tech-stack" className="mb-12">
+        <section id="tech-stack" className="mb-12 scroll-mt-32">
           <h2 className="text-2xl font-bold mb-4">Tech Stack</h2>
           <TechStack technologies={project.technologies} />
         </section>
@@ -192,234 +192,271 @@ function ProjectDetailContent({
           </div>
         )}
 
-        <div className="lg:col-span-2 space-y-12">
-          {project.problemItSolves && (
-            <section id="problem">
-              <h2 className="text-2xl font-bold mb-4">Problem</h2>
-              <p className="text-gray-300 leading-relaxed">{project.problemItSolves}</p>
-            </section>
-          )}
+        <div className="flex gap-8 relative">
+          {/* Main Content */}
+          <div className="flex-1 space-y-12 min-w-0">
+            {project.problemItSolves && (
+              <section id="problem" className="scroll-mt-32">
+                <h2 className="text-2xl font-bold mb-4">Problem</h2>
+                <p className="text-gray-300 leading-relaxed">{project.problemItSolves}</p>
+              </section>
+            )}
 
-          {project.overview && (
-            <section id="overview">
-              <h2 className="text-2xl font-bold mb-4">Overview</h2>
-              <p className="text-gray-300 leading-relaxed">{project.overview}</p>
-            </section>
-          )}
+            {project.overview && (
+              <section id="overview" className="scroll-mt-32">
+                <h2 className="text-2xl font-bold mb-4">Overview</h2>
+                <p className="text-gray-300 leading-relaxed">{project.overview}</p>
+              </section>
+            )}
 
-          {/* Key Features */}
-          {project.keyFeatures && (
-            <section id="key-features">
-              <h2 className="text-2xl font-bold mb-6">Key Features</h2>
-              <Accordion type="multiple">
-                {project.keyFeatures.map((feature: any, index: number) => (
-                  <AccordionItem
-                    key={index}
-                    value={`feature-${index}`}
-                    className="border-b border-white/10 overflow-hidden"
-                  >
-                    <AccordionTrigger
-                      className="w-full flex items-center
-                         justify-between p-4 
-                      hover:bg-white/5 transition-colors text-left">
-                      <h3 className="font-semibold text-white">{feature.title}</h3>
-                    </AccordionTrigger>
-                    <AccordionContent className="p-4 border-t border-white/10">
+            {/* Key Features */}
+            {project.keyFeatures && (
+              <section id="key-features" className="scroll-mt-32">
+                <h2 className="text-2xl font-bold mb-6">Key Features</h2>
+                <Accordion type="multiple">
+                  {project.keyFeatures.map((feature: any, index: number) => (
+                    <AccordionItem
+                      key={index}
+                      value={`feature-${index}`}
+                      className="border-b border-white/10 overflow-hidden"
+                    >
+                      <AccordionTrigger
+                        className="w-full flex items-center
+                           justify-between p-4 
+                        hover:bg-white/5 transition-colors text-left">
+                        <h3 className="font-semibold text-white">{feature.title}</h3>
+                      </AccordionTrigger>
+                      <AccordionContent className="p-4 border-t border-white/10">
+                        <p className="text-gray-300 leading-relaxed">
+                          {feature.description}
+                        </p>
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </section>
+            )}
+
+            {/* Challenges */}
+            {project.challenges && (
+              <section id="challenges" className="scroll-mt-32">
+                <h2 className="text-2xl font-bold mb-6">Challenges</h2>
+                <div className="space-y-6">
+                  {project.challenges.map((challenge: any, index: number) => (
+                    <div key={index} className="border-l-2 border-yellow-500 pl-4">
+                      <h3 className="font-semibold text-white mb-2">
+                        {challenge.title}
+                      </h3>
                       <p className="text-gray-300 leading-relaxed">
-                        {feature.description}
+                        {challenge.description}
                       </p>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </section>
-          )}
-
-          {/* Challenges */}
-          {project.challenges && (
-            <section id="challenges">
-              <h2 className="text-2xl font-bold mb-6">Challenges</h2>
-              <div className="space-y-6">
-                {project.challenges.map((challenge: any, index: number) => (
-                  <div key={index} className="border-l-2 border-yellow-500 pl-4">
-                    <h3 className="font-semibold text-white mb-2">
-                      {challenge.title}
-                    </h3>
-                    <p className="text-gray-300 leading-relaxed">
-                      {challenge.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {/* Tradeoffs */}
-          {project.tradeoffs && (
-            <section id="tradeoffs">
-              <h2 className="text-2xl font-bold mb-6">Tradeoffs</h2>
-              <div className="space-y-6">
-                {project.tradeoffs.map((tradeoff: any, index: number) => (
-                  <div key={index} className="border-l-2 border-teal-500 pl-4">
-                    <h3 className="font-semibold text-white mb-2">
-                      {tradeoff.title}
-                    </h3>
-                    <p className="text-gray-300 leading-relaxed">
-                      {tradeoff.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {/* Outcome */}
-          {project.outcome && (
-            <section id="outcome">
-              <h2 className="text-2xl font-bold mb-4">Outcome</h2>
-              <p className="text-gray-300 leading-relaxed">{project.outcome}</p>
-            </section>
-          )}
-
-          {/* Dev Blog Preview */}
-          {firstPost && (
-            <section id="dev-blog-preview">
-              <h2 className="text-2xl font-bold mb-4">Dev Blog</h2>
-              <div className="rounded-xl border border-white/10 bg-white/2 overflow-hidden">
-                <div
-                  className="border-l-2 px-6 pt-6 pb-0"
-                  style={{ borderLeftColor: firstPost.borderColor }}
-                >
-                  <p className="text-xs text-gray-500 mb-1">{firstPost.date}</p>
-                  <h3 className="text-lg font-semibold text-white mb-4">{firstPost.title}</h3>
-                  <div className="relative max-h-44 overflow-hidden">
-                    <div className="space-y-3">
-                      {firstPost.content
-                        .filter((c: any) => c.type === 'paragraph')
-                        .map((c: any, i: number) => (
-                          <p key={i} className="text-gray-300 leading-relaxed text-sm">
-                            {c.content.trim()}
-                          </p>
-                        ))
-                      }
                     </div>
-                    <div className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-black to-transparent pointer-events-none" />
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Tradeoffs */}
+            {project.tradeoffs && (
+              <section id="tradeoffs" className="scroll-mt-32">
+                <h2 className="text-2xl font-bold mb-6">Tradeoffs</h2>
+                <div className="space-y-6">
+                  {project.tradeoffs.map((tradeoff: any, index: number) => (
+                    <div key={index} className="border-l-2 border-teal-500 pl-4">
+                      <h3 className="font-semibold text-white mb-2">
+                        {tradeoff.title}
+                      </h3>
+                      <p className="text-gray-300 leading-relaxed">
+                        {tradeoff.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Outcome */}
+            {project.outcome && (
+              <section id="outcome" className="scroll-mt-32">
+                <h2 className="text-2xl font-bold mb-4">Outcome</h2>
+                <p className="text-gray-300 leading-relaxed">{project.outcome}</p>
+              </section>
+            )}
+
+            {/* Dev Blog Preview */}
+            {firstPost && (
+              <section id="dev-blog-preview" className="scroll-mt-32">
+                <h2 className="text-2xl font-bold mb-4">Dev Blog</h2>
+                <div className="rounded-xl border border-white/10 bg-white/2 overflow-hidden">
+                  <div
+                    className="border-l-2 px-6 pt-6 pb-0"
+                    style={{ borderLeftColor: firstPost.borderColor }}
+                  >
+                    <p className="text-xs text-gray-500 mb-1">{firstPost.date}</p>
+                    <h3 className="text-lg font-semibold text-white mb-4">{firstPost.title}</h3>
+                    <div className="relative max-h-44 overflow-hidden">
+                      <div className="space-y-3">
+                        {firstPost.content
+                          .filter((c: any) => c.type === 'paragraph')
+                          .map((c: any, i: number) => (
+                            <p key={i} className="text-gray-300 leading-relaxed text-sm">
+                              {c.content.trim()}
+                            </p>
+                          ))
+                        }
+                      </div>
+                      <div className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-black to-transparent pointer-events-none" />
+                    </div>
+                  </div>
+                  <div className="px-6 py-5">
+                    <Link
+                      href={getBlogPath(project.blogUrl)}
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-sm text-gray-200 hover:text-white hover:border-white/40 hover:bg-white/10 transition-colors"
+                    >
+                      <Notebook size={16} />
+                      Read Dev Blog
+                      <ArrowRight size={14} />
+                    </Link>
                   </div>
                 </div>
-                <div className="px-6 py-5">
-                  <Link
-                    href={getBlogPath(project.blogUrl)}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/20 bg-white/5 text-sm text-gray-200 hover:text-white hover:border-white/40 hover:bg-white/10 transition-colors"
-                  >
-                    <Notebook size={16} />
-                    Read Dev Blog
-                    <ArrowRight size={14} />
-                  </Link>
-                </div>
-              </div>
-            </section>
-          )}
+              </section>
+            )}
+          </div>
+
+          {/* Table of Contents */}
+          <aside className="hidden lg:block w-56 shrink-0">
+            <div className="sticky top-32">
+              <h3 className="text-sm font-semibold text-gray-400 uppercase mb-4">On this project</h3>
+              <nav className="space-y-2">
+                <a href="#tech-stack" className="block text-sm text-gray-400 hover:text-white transition-colors py-1">Tech Stack</a>
+                {project.problemItSolves && (
+                  <a href="#problem" className="block text-sm text-gray-400 hover:text-white transition-colors py-1">Problem</a>
+                )}
+                {project.overview && (
+                  <a href="#overview" className="block text-sm text-gray-400 hover:text-white transition-colors py-1">Overview</a>
+                )}
+                {project.keyFeatures && (
+                  <a href="#key-features" className="block text-sm text-gray-400 hover:text-white transition-colors py-1">Key Features</a>
+                )}
+                {project.challenges && (
+                  <a href="#challenges" className="block text-sm text-gray-400 hover:text-white transition-colors py-1">Challenges</a>
+                )}
+                {project.tradeoffs && (
+                  <a href="#tradeoffs" className="block text-sm text-gray-400 hover:text-white transition-colors py-1">Tradeoffs</a>
+                )}
+                {project.outcome && (
+                  <a href="#outcome" className="block text-sm text-gray-400 hover:text-white transition-colors py-1">Outcome</a>
+                )}
+                {firstPost && (
+                  <a href="#dev-blog-preview" className="block text-sm text-gray-400 hover:text-white transition-colors py-1">Dev Blog</a>
+                )}
+                {(previousProject || nextProject) && (
+                  <a href="#more" className="block text-sm text-gray-400 hover:text-white transition-colors py-1">More Projects</a>
+                )}
+              </nav>
+            </div>
+          </aside>
         </div>
 
         <p className="text-sm text-white/50 italic py-6">
           — Montasir
         </p>
 
-        <section id="more">
-                {(previousProject || nextProject) && (
-                  <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {previousProject ? (
-                      <HoverCard openDelay={10} closeDelay={100}>
-                        <HoverCardTrigger asChild>
-                          <Link
-                            href={`/projects/${previousProject.slug}`}
-                            className="group rounded-xl border border-white/15 bg-linear-to-br from-white/8 to-white/3 p-4 hover:border-white/35 hover:from-white/12 hover:to-white/6 transition-all"
-                          >
-                            <div className="flex items-start justify-between gap-3">
-                              <span className="mt-1 rounded-full border border-white/20 p-1.5 text-gray-200 group-hover:text-white group-hover:border-white/40 transition-colors">
-                                <ArrowLeft size={16} />
-                              </span>
-                              <div className="text-right">
-                                <p className="text-xs uppercase tracking-[0.2em] text-yellow-300/90 mb-1">Previous</p>
-                                <p className="text-base font-semibold text-white leading-tight">{previousProject.title}</p>
-                                <p className="text-sm text-gray-400 mt-1">{previousProject.date}</p>
-                              </div>
-                            </div>
-                          </Link>
-                        </HoverCardTrigger>
-                        <HoverCardContent side="left" sideOffset={30} className="flex w-64 flex-col gap-0.5">
-                          {previousProject.image && (
-                            <Image
-                              src={previousProject.image}
-                              alt={previousProject.title}
-                              width={256}
-                              height={144}
-                              className="rounded-md mb-2 w-full object-cover"
-                              unoptimized
-                            />
-                          )}
-                          <div className="font-semibold text-white">{previousProject.title}</div>
-                          <div className="text-sm text-gray-300">{previousProject.description}</div>
-                          <div className="text-xs text-gray-400 mt-2">{previousProject.date}</div>
-                        </HoverCardContent>
-                      </HoverCard>
-                    ) : (
-                      <div className="rounded-xl border border-dashed border-white/10 p-4 text-sm text-gray-500">
+        <section id="more" className="scroll-mt-32">
+          {(previousProject || nextProject) && (
+            <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-4">
+              {previousProject ? (
+                <HoverCard openDelay={10} closeDelay={100}>
+                  <HoverCardTrigger asChild>
+                    <Link
+                      href={`/projects/${previousProject.slug}`}
+                      className="group rounded-xl border border-white/15 bg-linear-to-br from-white/8 to-white/3 p-4 hover:border-white/35 hover:from-white/12 hover:to-white/6 transition-all"
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <span className="mt-1 rounded-full border border-white/20 p-1.5 text-gray-200 group-hover:text-white group-hover:border-white/40 transition-colors">
+                          <ArrowLeft size={16} />
+                        </span>
                         <div className="text-right">
-                          <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-1">End</p>
-                          <p className="text-base font-semibold text-white leading-tight">Latest</p>
-                          <p className="text-sm text-gray-400 mt-1">You are on the latest project</p>
+                          <p className="text-xs uppercase tracking-[0.2em] text-yellow-300/90 mb-1">Previous</p>
+                          <p className="text-base font-semibold text-white leading-tight">{previousProject.title}</p>
+                          <p className="text-sm text-gray-400 mt-1">{previousProject.date}</p>
                         </div>
                       </div>
+                    </Link>
+                  </HoverCardTrigger>
+                  <HoverCardContent side="left" sideOffset={30} className="flex w-64 flex-col gap-0.5">
+                    {previousProject.image && (
+                      <Image
+                        src={previousProject.image}
+                        alt={previousProject.title}
+                        width={256}
+                        height={144}
+                        className="rounded-md mb-2 w-full object-cover"
+                        unoptimized
+                      />
                     )}
-
-                    {nextProject ? (
-                      <HoverCard openDelay={10} closeDelay={100}>
-                        <HoverCardTrigger asChild>
-                          <Link
-                            href={`/projects/${nextProject.slug}`}
-                            className="group rounded-xl border border-white/15 bg-linear-to-br from-white/8 to-white/3 p-4 hover:border-white/35 hover:from-white/12 hover:to-white/6 transition-all"
-                          >
-                            <div className="flex items-start justify-between gap-3">
-                              <div>
-                                <p className="text-xs uppercase tracking-[0.2em] text-emerald-300/90 mb-1">Next</p>
-                                <p className="text-base font-semibold text-white leading-tight">{nextProject.title}</p>
-                                <p className="text-sm text-gray-400 mt-1">{nextProject.date}</p>
-                              </div>
-                              <span className="mt-1 rounded-full border border-white/20 p-1.5 text-gray-200 group-hover:text-white group-hover:border-white/40 transition-colors">
-                                <ArrowRight size={16} />
-                              </span>
-                            </div>
-                          </Link>
-                        </HoverCardTrigger>
-                        <HoverCardContent side="right" sideOffset={30} className="flex w-64 flex-col gap-0.5">
-                          {nextProject.image && (
-                            <Image
-                              src={nextProject.image}
-                              alt={nextProject.title}
-                              width={256}
-                              height={144}
-                              className="rounded-md mb-2 w-full object-cover"
-                              unoptimized
-                            />
-                          )}
-                          <div className="font-semibold text-white">{nextProject.title}</div>
-                          <div className="text-sm text-gray-300">{nextProject.description}</div>
-                          <div className="text-xs text-gray-400 mt-2">{nextProject.date}</div>
-                        </HoverCardContent>
-                      </HoverCard>
-                    ) : (
-                      <div className="rounded-xl border border-dashed border-white/10 p-4 text-sm text-gray-500">
-                        <div className="text-right">
-                          <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-1">End</p>
-                          <p className="text-base font-semibold text-white leading-tight">Oldest</p>
-                          <p className="text-sm text-gray-400 mt-1">You are on the oldest project</p>
-                        </div>
-                      </div>
-                    )}
+                    <div className="font-semibold text-white">{previousProject.title}</div>
+                    <div className="text-sm text-gray-300">{previousProject.description}</div>
+                    <div className="text-xs text-gray-400 mt-2">{previousProject.date}</div>
+                  </HoverCardContent>
+                </HoverCard>
+              ) : (
+                <div className="rounded-xl border border-dashed border-white/10 p-4 text-sm text-gray-500">
+                  <div className="text-right">
+                    <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-1">End</p>
+                    <p className="text-base font-semibold text-white leading-tight">Latest</p>
+                    <p className="text-sm text-gray-400 mt-1">You are on the latest project</p>
                   </div>
-                )}
-              </section>
+                </div>
+              )}
+
+              {nextProject ? (
+                <HoverCard openDelay={10} closeDelay={100}>
+                  <HoverCardTrigger asChild>
+                    <Link
+                      href={`/projects/${nextProject.slug}`}
+                      className="group rounded-xl border border-white/15 bg-linear-to-br from-white/8 to-white/3 p-4 hover:border-white/35 hover:from-white/12 hover:to-white/6 transition-all"
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div>
+                          <p className="text-xs uppercase tracking-[0.2em] text-emerald-300/90 mb-1">Next</p>
+                          <p className="text-base font-semibold text-white leading-tight">{nextProject.title}</p>
+                          <p className="text-sm text-gray-400 mt-1">{nextProject.date}</p>
+                        </div>
+                        <span className="mt-1 rounded-full border border-white/20 p-1.5 text-gray-200 group-hover:text-white group-hover:border-white/40 transition-colors">
+                          <ArrowRight size={16} />
+                        </span>
+                      </div>
+                    </Link>
+                  </HoverCardTrigger>
+                  <HoverCardContent side="right" sideOffset={30} className="flex w-64 flex-col gap-0.5">
+                    {nextProject.image && (
+                      <Image
+                        src={nextProject.image}
+                        alt={nextProject.title}
+                        width={256}
+                        height={144}
+                        className="rounded-md mb-2 w-full object-cover"
+                        unoptimized
+                      />
+                    )}
+                    <div className="font-semibold text-white">{nextProject.title}</div>
+                    <div className="text-sm text-gray-300">{nextProject.description}</div>
+                    <div className="text-xs text-gray-400 mt-2">{nextProject.date}</div>
+                  </HoverCardContent>
+                </HoverCard>
+              ) : (
+                <div className="rounded-xl border border-dashed border-white/10 p-4 text-sm text-gray-500">
+                  <div className="text-right">
+                    <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-1">End</p>
+                    <p className="text-base font-semibold text-white leading-tight">Oldest</p>
+                    <p className="text-sm text-gray-400 mt-1">You are on the oldest project</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+        </section>
       </div>
 
       <AvailableForRoles />
