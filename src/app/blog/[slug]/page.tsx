@@ -3,17 +3,13 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { blogs, getBlogBySlug, getTechIcon, getTechDoc } from "@/lib/projects";
+import { blogs, getBlogBySlug } from "@/lib/projects";
 import { ArrowLeft, ArrowRight, ExternalLink, Github, Computer } from "lucide-react";
 import { use } from "react";
 import TopBarBackground from "@/components/TopBarBackground"
 import AvailableForRoles from "@/components/AvailableForRoles"
 import { Separator } from "@/components/ui/separator";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
+import TechStack from "@/components/TechStack";
 
 interface BlogDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -145,62 +141,7 @@ function BlogDetailContent({
             {/* Tech Stack */}
             <section id="tech-stack">
               <h2 className="text-2xl font-bold mb-4">Tech Stack</h2>
-              <div className="flex flex-wrap gap-2">
-                {blog.technologies.map((tech: string) => {
-                  const iconPath = getTechIcon(tech);
-                  const docUrl = getTechDoc(tech);
-                  if (docUrl) {
-                    return (
-                      <Tooltip key={tech}>
-                        <TooltipTrigger>
-                          <Link
-                            href={docUrl || "#"}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            key={tech}
-                            className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5 hover:bg-white/10 transition-colors"
-                          >
-                            {iconPath && (
-                              <Image
-                                src={iconPath}
-                                alt={tech}
-                                width={14}
-                                height={14}
-                                className="object-contain"
-                                unoptimized
-                              />
-                            )}
-                            {tech}
-                          </Link>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          View {tech} Documentation
-                        </TooltipContent>
-                      </Tooltip>
-                    );
-                  } else {
-                    return (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
-                      >
-                        {iconPath && (
-                          <Image
-                            src={iconPath}
-                            alt={tech}
-                            width={14}
-                            height={14}
-                            className="object-contain"
-                            unoptimized
-                          />
-                        )}
-                        {tech}
-                      </span>
-                    );
-                  }
-
-                })}
-              </div>
+              <TechStack technologies={blog.technologies} />
             </section>
 
             {/* Blog Posts */}

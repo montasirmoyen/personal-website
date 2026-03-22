@@ -14,6 +14,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+import TechStack from "@/components/TechStack";
 
 export default function ProjectsPage() {
   return (
@@ -98,61 +99,8 @@ export default function ProjectsPage() {
                 </ul>*/}
 
                 {/* Technologies */}
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {project.technologies.map((tech: string) => {
-                    const iconPath = getTechIcon(tech);
-                    const docUrl = getTechDoc(tech);
-                    if (docUrl) {
-                      return (
-                        <Tooltip key={tech}>
-                        <TooltipTrigger>
-                          <Link
-                            href={docUrl || "#"}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            key={tech}
-                            className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5 hover:bg-white/10 transition-colors"
-                          >
-                            {iconPath && (
-                              <Image
-                                src={iconPath}
-                                alt={tech}
-                                width={14}
-                                height={14}
-                                className="object-contain"
-                                unoptimized
-                              />
-                            )}
-                            {tech}
-                          </Link>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          View {tech} Documentation
-                        </TooltipContent>
-                      </Tooltip>
-                      );
-                    } else {
-                      return (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
-                        >
-                          {iconPath && (
-                            <Image
-                              src={iconPath}
-                              alt={tech}
-                              width={14}
-                              height={14}
-                              className="object-contain"
-                              unoptimized
-                            />
-                          )}
-                          {tech}
-                        </span>
-                      );
-                    }
-
-                  })}
+                <div className="gap-2 pt-2">
+                  <TechStack technologies={project.technologies} hover={false} />
                 </div>
 
                 {/* Links */}
