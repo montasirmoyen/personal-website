@@ -70,25 +70,26 @@ export default function About() {
             {/* Paragraphs */}
             <div className="mt-2 space-y-4 text-base md:text-lg text-gray px-4 md:px-8 leading-relaxed">
               <p>
-                You may also know me as Monty, I'm a computer science student at Suffolk University in Boston, MA.
-                I enjoy building innovative software solutions.
-                I've developed a strong foundation in full-stack development, working with TypeScript, JavaScript, Python, Java, C++, and C.
+                You may also know me as Monty, I'm a Computer Science student at Suffolk University in Boston, MA.
               </p>
               <p>
-                My journey into tech started in middle school with my first computer, and I've been hooked ever since.
-                In my free time, I channel my passion into creating websites, mobile apps, games, and macOS tools, since each project fuels my curiosity about the technologies behind them.
-                I never get tired or bored of coding; the constant challenges and problem solving required keep me engaged.
+                My journey into tech started in early middle school with my first computer, and I've been captivated ever since.
+                In my free time, I channel my passion into creating software such as apps, games, and macOS tools.
+                Each project fuels my curiosity about the technologies behind them.
+                I never get tired or bored of coding.
+                The constant challenges, tradeoffs I have to make, and problem solving required keep me engaged.
               </p>
               <p>
-                Currently studying Operating Systems, Software Engineering, and Discrete Math II this semester, while exploring AI integration and data-driven solutions after classes.
+                I'm currently studying Operating Systems, Software Engineering, and Discrete Math II this semester, while exploring new technologies and frameworks in my free time.
                 I've used macOS, Windows, and Linux environments, growing comfortable across these platforms.
               </p>
               <p>
-                Beyond coding, you'll find me playing fútbol, listening to music, or catching up on anime.
+                Beyond coding, you'll find me playing fútbol or basketball, listening to music, or catching up on anime.
                 I strive to learn & grow as a developer and am open to collaborations and new challenges.
               </p>
               <p>
-                Thanks for reading; there is much more I have to share on here, so feel free to explore!
+                Thanks for reading!
+                There is much more I share on here, so feel free to explore.
               </p>
               <p className="text-sm text-white/75">
                 Let's connect:
