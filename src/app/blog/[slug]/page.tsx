@@ -3,8 +3,8 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { getBlogBySlug, getTechIcon, getTechDoc } from "@/lib/projects";
-import { ExternalLink, Github, Computer } from "lucide-react";
+import { blogs, getBlogBySlug, getTechIcon, getTechDoc } from "@/lib/projects";
+import { ArrowLeft, ArrowRight, ExternalLink, Github, Computer } from "lucide-react";
 import { use } from "react";
 import TopBarBackground from "@/components/TopBarBackground"
 import AvailableForRoles from "@/components/AvailableForRoles"
@@ -27,15 +27,43 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
     notFound();
   }
 
-  return <BlogDetailContent blog={blog} />;
+  const currentIndex = blogs.findIndex((item) => item.slug === blog.slug);
+  const previousBlog = currentIndex > 0 ? blogs[currentIndex - 1] : null;
+  const nextBlog = currentIndex >= 0 && currentIndex < blogs.length - 1 ? blogs[currentIndex + 1] : null;
+
+  return (
+    <BlogDetailContent
+      blog={blog}
+      previousBlog={previousBlog}
+      nextBlog={nextBlog}
+    />
+  );
 }
 
-function BlogDetailContent({ blog }: { blog: any }) {
+function BlogDetailContent({
+  blog,
+  previousBlog,
+  nextBlog,
+}: {
+  blog: any;
+  previousBlog: any | null;
+  nextBlog: any | null;
+}) {
 
   return (
     <div className="pt-32 px-4 md:px-6">
       <div className="max-w-5xl mx-auto mb-24">
         <TopBarBackground imageUrl={blog.image} transparency={25} />
+
+        <div className="mb-8">
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/15 bg-black/40 text-sm text-gray-200 hover:text-white hover:border-white/35 hover:bg-white/10 transition-colors"
+          >
+            <ArrowLeft size={16} />
+            Back to Blog
+          </Link>
+        </div>
 
         {/* Header Section */}
         <div className="mb-12">
@@ -258,6 +286,62 @@ function BlogDetailContent({ blog }: { blog: any }) {
                   </div>
                 ))}
               </div>
+
+              {(previousBlog || nextBlog) && (
+                <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {previousBlog ? (
+                    <Link
+                      href={`/blog/${previousBlog.slug}`}
+                      className="group rounded-xl border border-white/15 bg-linear-to-br from-white/8 to-white/3 p-4 hover:border-white/35 hover:from-white/12 hover:to-white/6 transition-all"
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <span className="mt-1 rounded-full border border-white/20 p-1.5 text-gray-200 group-hover:text-white group-hover:border-white/40 transition-colors">
+                          <ArrowLeft size={16} />
+                        </span>
+                        <div className="text-right">
+                          <p className="text-xs uppercase tracking-[0.2em] text-yellow-300/90 mb-1">Previous</p>
+                          <p className="text-base font-semibold text-white leading-tight">{previousBlog.title}</p>
+                          <p className="text-sm text-gray-400 mt-1">{previousBlog.date}</p>
+                        </div>
+                      </div>
+                    </Link>
+                  ) : (
+                    <div className="rounded-xl border border-dashed border-white/10 p-4 text-sm text-gray-500">
+                      <div className="text-right">
+                          <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-1">End</p>
+                          <p className="text-base font-semibold text-white leading-tight">Latest</p>
+                          <p className="text-sm text-gray-400 mt-1">You are on the latest blog</p>
+                        </div>
+                    </div>
+                  )}
+
+                  {nextBlog ? (
+                    <Link
+                      href={`/blog/${nextBlog.slug}`}
+                      className="group rounded-xl border border-white/15 bg-linear-to-br from-white/8 to-white/3 p-4 hover:border-white/35 hover:from-white/12 hover:to-white/6 transition-all"
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div>
+                          <p className="text-xs uppercase tracking-[0.2em] text-emerald-300/90 mb-1">Next</p>
+                          <p className="text-base font-semibold text-white leading-tight">{nextBlog.title}</p>
+                          <p className="text-sm text-gray-400 mt-1">{nextBlog.date}</p>
+                        </div>
+                        <span className="mt-1 rounded-full border border-white/20 p-1.5 text-gray-200 group-hover:text-white group-hover:border-white/40 transition-colors">
+                          <ArrowRight size={16} />
+                        </span>
+                      </div>
+                    </Link>
+                  ) : (
+                    <div className="rounded-xl border border-dashed border-white/10 p-4 text-sm text-gray-500">
+                      <div className="text-right">
+                          <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-1">End</p>
+                          <p className="text-base font-semibold text-white leading-tight">Oldest</p>
+                          <p className="text-sm text-gray-400 mt-1">You are on the oldest blog</p>
+                        </div>
+                    </div>
+                  )}
+                </div>
+              )}
             </section>
           </div>
 
