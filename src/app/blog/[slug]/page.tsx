@@ -10,6 +10,11 @@ import TopBarBackground from "@/components/TopBarBackground"
 import AvailableForRoles from "@/components/AvailableForRoles"
 import { Separator } from "@/components/ui/separator";
 import TechStack from "@/components/TechStack";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card"
 
 interface BlogDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -228,61 +233,101 @@ function BlogDetailContent({
                 ))}
               </div>
 
-              {(previousBlog || nextBlog) && (
-                <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {previousBlog ? (
-                    <Link
-                      href={`/blog/${previousBlog.slug}`}
-                      className="group rounded-xl border border-white/15 bg-linear-to-br from-white/8 to-white/3 p-4 hover:border-white/35 hover:from-white/12 hover:to-white/6 transition-all"
-                    >
-                      <div className="flex items-start justify-between gap-3">
-                        <span className="mt-1 rounded-full border border-white/20 p-1.5 text-gray-200 group-hover:text-white group-hover:border-white/40 transition-colors">
-                          <ArrowLeft size={16} />
-                        </span>
+              <section id="more">
+                {(previousBlog || nextBlog) && (
+                  <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {previousBlog ? (
+                      <HoverCard openDelay={10} closeDelay={100}>
+                        <HoverCardTrigger asChild>
+                          <Link
+                            href={`/blog/${previousBlog.slug}`}
+                            className="group rounded-xl border border-white/15 bg-linear-to-br from-white/8 to-white/3 p-4 hover:border-white/35 hover:from-white/12 hover:to-white/6 transition-all"
+                          >
+                            <div className="flex items-start justify-between gap-3">
+                              <span className="mt-1 rounded-full border border-white/20 p-1.5 text-gray-200 group-hover:text-white group-hover:border-white/40 transition-colors">
+                                <ArrowLeft size={16} />
+                              </span>
+                              <div className="text-right">
+                                <p className="text-xs uppercase tracking-[0.2em] text-yellow-300/90 mb-1">Previous</p>
+                                <p className="text-base font-semibold text-white leading-tight">{previousBlog.title}</p>
+                                <p className="text-sm text-gray-400 mt-1">{previousBlog.date}</p>
+                              </div>
+                            </div>
+                          </Link>
+                        </HoverCardTrigger>
+                        <HoverCardContent side="left" sideOffset={30} className="flex w-64 flex-col gap-0.5">
+                          {previousBlog.image && (
+                            <Image
+                              src={previousBlog.image}
+                              alt={previousBlog.title}
+                              width={256}
+                              height={144}
+                              className="rounded-md mb-2 w-full object-cover"
+                              unoptimized
+                            />
+                          )}
+                          <div className="font-semibold text-white">{previousBlog.title}</div>
+                          <div className="text-sm text-gray-300">{previousBlog.description}</div>
+                          <div className="text-xs text-gray-400 mt-2">{previousBlog.date}</div>
+                        </HoverCardContent>
+                      </HoverCard>
+                    ) : (
+                      <div className="rounded-xl border border-dashed border-white/10 p-4 text-sm text-gray-500">
                         <div className="text-right">
-                          <p className="text-xs uppercase tracking-[0.2em] text-yellow-300/90 mb-1">Previous</p>
-                          <p className="text-base font-semibold text-white leading-tight">{previousBlog.title}</p>
-                          <p className="text-sm text-gray-400 mt-1">{previousBlog.date}</p>
-                        </div>
-                      </div>
-                    </Link>
-                  ) : (
-                    <div className="rounded-xl border border-dashed border-white/10 p-4 text-sm text-gray-500">
-                      <div className="text-right">
                           <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-1">End</p>
                           <p className="text-base font-semibold text-white leading-tight">Latest</p>
                           <p className="text-sm text-gray-400 mt-1">You are on the latest blog</p>
                         </div>
-                    </div>
-                  )}
-
-                  {nextBlog ? (
-                    <Link
-                      href={`/blog/${nextBlog.slug}`}
-                      className="group rounded-xl border border-white/15 bg-linear-to-br from-white/8 to-white/3 p-4 hover:border-white/35 hover:from-white/12 hover:to-white/6 transition-all"
-                    >
-                      <div className="flex items-start justify-between gap-3">
-                        <div>
-                          <p className="text-xs uppercase tracking-[0.2em] text-emerald-300/90 mb-1">Next</p>
-                          <p className="text-base font-semibold text-white leading-tight">{nextBlog.title}</p>
-                          <p className="text-sm text-gray-400 mt-1">{nextBlog.date}</p>
-                        </div>
-                        <span className="mt-1 rounded-full border border-white/20 p-1.5 text-gray-200 group-hover:text-white group-hover:border-white/40 transition-colors">
-                          <ArrowRight size={16} />
-                        </span>
                       </div>
-                    </Link>
-                  ) : (
-                    <div className="rounded-xl border border-dashed border-white/10 p-4 text-sm text-gray-500">
-                      <div className="text-right">
+                    )}
+
+                    {nextBlog ? (
+                      <HoverCard openDelay={10} closeDelay={100}>
+                        <HoverCardTrigger asChild>
+                          <Link
+                            href={`/blog/${nextBlog.slug}`}
+                            className="group rounded-xl border border-white/15 bg-linear-to-br from-white/8 to-white/3 p-4 hover:border-white/35 hover:from-white/12 hover:to-white/6 transition-all"
+                          >
+                            <div className="flex items-start justify-between gap-3">
+                              <div>
+                                <p className="text-xs uppercase tracking-[0.2em] text-emerald-300/90 mb-1">Next</p>
+                                <p className="text-base font-semibold text-white leading-tight">{nextBlog.title}</p>
+                                <p className="text-sm text-gray-400 mt-1">{nextBlog.date}</p>
+                              </div>
+                              <span className="mt-1 rounded-full border border-white/20 p-1.5 text-gray-200 group-hover:text-white group-hover:border-white/40 transition-colors">
+                                <ArrowRight size={16} />
+                              </span>
+                            </div>
+                          </Link>
+                        </HoverCardTrigger>
+                        <HoverCardContent side="right" sideOffset={30} className="flex w-64 flex-col gap-0.5">
+                          {nextBlog.image && (
+                            <Image
+                              src={nextBlog.image}
+                              alt={nextBlog.title}
+                              width={256}
+                              height={144}
+                              className="rounded-md mb-2 w-full object-cover"
+                              unoptimized
+                            />
+                          )}
+                          <div className="font-semibold text-white">{nextBlog.title}</div>
+                          <div className="text-sm text-gray-300">{nextBlog.description}</div>
+                          <div className="text-xs text-gray-400 mt-2">{nextBlog.date}</div>
+                        </HoverCardContent>
+                      </HoverCard>
+                    ) : (
+                      <div className="rounded-xl border border-dashed border-white/10 p-4 text-sm text-gray-500">
+                        <div className="text-right">
                           <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-1">End</p>
                           <p className="text-base font-semibold text-white leading-tight">Oldest</p>
                           <p className="text-sm text-gray-400 mt-1">You are on the oldest blog</p>
                         </div>
-                    </div>
-                  )}
-                </div>
-              )}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </section>
             </section>
           </div>
 
@@ -300,6 +345,12 @@ function BlogDetailContent({
                     {post.title}
                   </a>
                 ))}
+                <a
+                  href="#more"
+                  className="block text-sm text-gray-400 hover:text-white transition-colors py-1"
+                >
+                  More Blogs
+                </a>
               </nav>
             </div>
           </aside>
