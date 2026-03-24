@@ -516,6 +516,10 @@ class App {
         image: `/chess.jpg`,
         text: 'chess'
       },
+      {
+        image: `/manga.jpg`,
+        text: 'manga'
+      },
     ];
     const galleryItems = items && items.length ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);
