@@ -2,18 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { projects, getTechIcon, getTechDoc } from "@/lib/projects";
+import { projects } from "@/lib/projects";
 import { ExternalLink, Github } from "lucide-react";
 import TopBarBackground from "@/components/TopBarBackground";
 import { TextAnimate } from "@/components/ui/text-animate"
 import { BackgroundGradient } from "@/components/ui/background-gradient"
 import AvailableForRoles from "@/components/AvailableForRoles"
 import { Separator } from "@/components/ui/separator";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
 import TechStack from "@/components/TechStack";
 
 export default function ProjectsPage() {

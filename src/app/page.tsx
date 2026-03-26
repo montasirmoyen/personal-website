@@ -13,8 +13,20 @@ import AnimatedContent from '@/components/AnimatedContent'
 import AvailableForRoles from "@/components/AvailableForRoles"
 import OrbitImages from '@/components/OrbitImages'
 import BorderGlow from '@/components/BorderGlow';
-import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaReact, FaLinkedin, FaCss3, FaCss3Alt, FaHashtag, FaGit, FaMarkdown } from "react-icons/fa";
+
+import React from 'react';
+import {
+  FileItem,
+  FolderItem,
+  FolderTrigger,
+  Files,
+  SubFiles,
+  FolderContent,
+} from '@/components/animate-ui/components/radix/files';
+import { FileJson, FileJsonIcon, Github, Star } from 'lucide-react';
+import { FlipButton, FlipButtonBack, FlipButtonFront } from "@/components/animate-ui/components/buttons/flip";
+import { InfoCircledIcon } from "@radix-ui/react-icons";
 
 const images = [
   "/s3.png",
@@ -213,6 +225,65 @@ export default function Home() {
               </Link>
             ))}
           </Marquee>
+        </BorderGlow>
+      </section>
+
+      <section className="flex flex-col md:flow-row items-center justify-center mb-50 gap-4 px-12">
+        <BorderGlow {...BORDER_GLOW_PROPS} className="size-full overflow-hidden max-h-130 min-h-130 max-w-250">
+          <div className="text-center mt-10 w-full mb-3">
+            <p className="text-3xl font-bold">Let's collaborate</p>
+            <AuroraText className="text-xl font-bold mt-1">Visit my GitHub</AuroraText>
+          </div>
+
+          <FlipButton>
+            <FlipButtonFront variant={"outline"}><FaGithub/></FlipButtonFront>
+            <FlipButtonBack onClick={() => window.open("https://github.com/montasirmoyen", "_blank")}> View Profile </FlipButtonBack>
+          </FlipButton>
+
+          <div className="p-6">
+            <Files className="w-full bg-white/5 border-white/25 border rounded-xl">
+              <FolderItem value="app">
+                <FolderTrigger
+                  gitStatus="modified"
+                  className="w-full flex items-center justify-between"
+                >
+                  app
+                </FolderTrigger>
+
+                <FolderContent>
+                  <SubFiles>
+                    <FolderItem value="/about-monty">
+                      <FolderTrigger gitStatus="untracked">/about-monty</FolderTrigger>
+
+                      <FolderContent>
+                        <FileItem icon={FaReact} gitStatus="untracked">page.tsx</FileItem>
+                      </FolderContent>
+                    </FolderItem>
+
+                    <FileItem icon={Star}>favicon.ico</FileItem>
+                    <FileItem icon={FaReact}>layout.tsx</FileItem>
+                    <FileItem icon={FaReact} gitStatus="modified">page.tsx</FileItem>
+                    <FileItem icon={FaHashtag}>globals.css</FileItem>
+                  </SubFiles>
+                </FolderContent>
+              </FolderItem>
+
+              <FolderItem value="components">
+                <FolderTrigger>components</FolderTrigger>
+
+                <FolderContent>
+                  <SubFiles>
+                    <FileItem icon={FaReact}>button.tsx</FileItem>
+                    <FileItem icon={FaReact}>card.tsx</FileItem>
+                    <FileItem icon={FaReact}>sonner.tsx</FileItem>
+                  </SubFiles>
+                </FolderContent>
+              </FolderItem>
+
+              <FileItem icon={FileJson}>package.json</FileItem>
+              <FileItem icon={InfoCircledIcon}>README.md</FileItem>
+            </Files>
+          </div>
         </BorderGlow>
       </section>
 

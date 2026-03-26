@@ -72,8 +72,13 @@ export interface Project {
 export interface Blog {
   slug: string;
   title: string;
+  heroBlog?: boolean;
   challenge?: boolean;
   collab?: boolean;
+  collaborators?: {
+    name: string;
+    avatarImgUrl?: string;
+  }[];
   mini?: boolean;
   category: string;
   image: string;
@@ -685,6 +690,43 @@ export const blogs: Blog[] = [
     ]
   },
   {
+    slug: "chess",
+    title: "Chess",
+    category: "Web Development",
+    image: "/chess-home.jpg",
+    date: "March 25, 2026 — Present",
+    status: "in-progress",
+    githubUrl: "https://github.com/montasirmoyen/chess",
+    description: "A classic chess game in Next.js featuring a sleek design and smooth gameplay.",
+    technologies: ["TypeScript", "React", "Next"],
+    collab: true,
+    heroBlog: true,
+    collaborators: [
+      {
+        name: "montasirmoyen",
+        avatarImgUrl: "https://avatars.githubusercontent.com/u/111202851?v=4",
+      },
+      {
+        name: "omaershah",
+        avatarImgUrl: "https://avatars.githubusercontent.com/u/267569221?v=4",
+      }
+    ],
+    blogPosts: [
+      {
+        date: "March 14, 2026",
+        title: "Alliance",
+        borderColor: "#00e1ff",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            `,
+          }
+        ],
+      }
+    ]
+  },
+  {
     slug: "domain-expansion",
     title: "Domain Expansion",
     category: "Computer Vision/ML Development",
@@ -695,6 +737,16 @@ export const blogs: Blog[] = [
     description: "A real-time computer vision application using hand tracking to identify Jujutsu Kaisen \"Domain Expansion\" gestures via webcam and trigger on-screen overlays.",
     technologies: ["Python", "OpenCV", "MediaPipe"],
     collab: true,
+    collaborators: [
+      {
+        name: "montasirmoyen",
+        avatarImgUrl: "https://avatars.githubusercontent.com/u/111202851?v=4",
+      },
+      {
+        name: "omaershah",
+        avatarImgUrl: "https://avatars.githubusercontent.com/u/267569221?v=4",
+      }
+    ],
     blogPosts: [
       {
         date: "March 14, 2026",

@@ -9,8 +9,9 @@ import { TextAnimate } from "@/components/ui/text-animate"
 import { getTechIcon } from "@/lib/projects";
 import TopBarBackground from "@/components/TopBarBackground";
 import { Separator } from "@/components/ui/separator";
-import { Bot, Zap, Handshake, Leaf } from "lucide-react";
+import { Bot, Zap, Handshake, Leaf, Star } from "lucide-react";
 import { JSX } from "react";
+import { BackgroundGradient } from "@/components/ui/background-gradient"
 
 type BlogSectionKey = "classic" | "challenge" | "collaboration" | "mini";
 
@@ -183,6 +184,99 @@ export default function BlogPage() {
                     </div>
                 </div>
 
+                {/* Hero */}
+                {(() => {
+                    const heroBlog = blogs.find((b) => b.heroBlog);
+                    if (!heroBlog) return null;
+                    return (
+                        <div className="mb-16">
+                            <div className="flex flex-col gap-2">
+                                <div className="flex items-center gap-2">
+                                    <Star className="text-purple-400" />
+                                    <h2 className="text-2xl md:text-3xl font-hero font-bold text-white">
+                                        Highlight
+                                    </h2>
+                                    <Badge
+                                        variant="outline"
+                                        className="border-white/20 bg-black/40 text-white"
+                                    >
+                                        Editor's Pick
+                                    </Badge>
+                                </div>
+                            </div>
+                            <p className="text-sm text-gray-400">
+                                Featured journey I'm writing about
+                            </p>
+                            <Separator className="mt-6 mb-8" />
+                            <BackgroundGradient colors={["#c5afff", "#ffd9a1"]}>
+                                <Link href={`/blog/${heroBlog.slug}`} className="group block">
+                                    <div className="rounded-3xl overflow-hidden">
+                                        <div className="relative w-full aspect-21/9 overflow-hidden">
+                                            <Image
+                                                src={heroBlog.image}
+                                                alt={heroBlog.title}
+                                                fill
+                                                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                                unoptimized
+                                            />
+                                            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/80 to-transparent" />
+                                            <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent" />
+                                            <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full">
+                                                <div className="flex flex-wrap gap-2 mb-4">
+                                                    {heroBlog.challenge && (
+                                                        <Badge variant="outline" className="border-orange-500 bg-orange-500/20 backdrop-blur-sm">Challenge</Badge>
+                                                    )}
+                                                    {heroBlog.collab && (
+                                                        <Badge variant="outline" className="border-blue-500 bg-blue-500/20 backdrop-blur-sm">Collaboration</Badge>
+                                                    )}
+                                                    {heroBlog.mini && (
+                                                        <Badge variant="outline" className="border-emerald-500 bg-emerald-500/20 backdrop-blur-sm">Mini</Badge>
+                                                    )}
+                                                    <Badge variant="outline" className="border-white/20 bg-black/40 text-white backdrop-blur-sm">
+                                                        {heroBlog.status === "in-progress" ? "In Progress" : "Completed"}
+                                                    </Badge>
+                                                </div>
+                                                <p className="text-sm text-gray-400 mb-2">{heroBlog.category}</p>
+                                                <h2 className="text-3xl md:text-5xl font-hero font-bold text-white mb-3">
+                                                    {heroBlog.title}
+                                                </h2>
+                                                <p className="text-gray-300 text-base md:text-lg max-w-2xl mb-4">
+                                                    {heroBlog.description}
+                                                </p>
+                                                <div className="flex flex-wrap gap-2">
+                                                    {heroBlog.technologies.map((tech) => {
+                                                        const iconPath = getTechIcon(tech);
+                                                        return (
+                                                            <span
+                                                                key={tech}
+                                                                className="px-3 py-1 text-xs rounded-full bg-white/10 border border-white/15 text-gray-300 flex items-center gap-1.5 backdrop-blur-sm"
+                                                            >
+                                                                {iconPath && (
+                                                                    <Image
+                                                                        src={iconPath}
+                                                                        alt={tech}
+                                                                        width={14}
+                                                                        height={14}
+                                                                        className="object-contain"
+                                                                        unoptimized
+                                                                    />
+                                                                )}
+                                                                {tech}
+                                                            </span>
+                                                        );
+                                                    })}
+                                                </div>
+                                                <p className="mt-4 text-sm text-gray-400">{heroBlog.date}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Link>
+                            </BackgroundGradient>
+                        </div>
+                    );
+                })()}
+
+                {/* Sections */}
                 {sectionOrder.map((sectionKey) => {
                     const sectionBlogs = groupedBlogs[sectionKey];
 

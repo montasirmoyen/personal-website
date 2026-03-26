@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { blogs, getBlogBySlug } from "@/lib/projects";
-import { ArrowLeft, ArrowRight, ExternalLink, Github, Computer } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, Github, Computer, Hammer } from "lucide-react";
 import { use } from "react";
 import TopBarBackground from "@/components/TopBarBackground"
 import AvailableForRoles from "@/components/AvailableForRoles"
@@ -15,6 +15,8 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card"
+import { AvatarGroup, AvatarGroupTooltip } from "@/components/animate-ui/components/animate/avatar-group";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/animate-ui/components/animate/avatar";
 
 interface BlogDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -68,7 +70,7 @@ function BlogDetailContent({
 
         {/* Header Section */}
         <div className="mb-12">
-          <div className="flex items-start justify-between gap-4 mb-6">
+          <div className="flex items-start justify-between gap-4 mb-2">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold font-hero mb-3">
                 {blog.title}
@@ -89,6 +91,25 @@ function BlogDetailContent({
               </Link>
             )}
           </div>
+
+          {/* Collaborators */}
+          {blog.collaborators && blog.collaborators.length > 0 && (
+            <div className="flex items-center gap-2 mb-4">
+              <Hammer size={16} className="text-gray-400" />
+              <p className="text-sm text-gray-400">
+                by
+              </p>
+              <AvatarGroup>
+                {blog.collaborators?.map((avatar: { name: string; avatarImgUrl?: string }, index: number) => (
+                  <Avatar key={index} className="border-black border-2">
+                    <AvatarImage src={avatar.avatarImgUrl} />
+                    <AvatarFallback>{avatar.name[0]}</AvatarFallback>
+                    <AvatarGroupTooltip>{avatar.name}</AvatarGroupTooltip>
+                  </Avatar>
+                ))}
+              </AvatarGroup>
+            </div>
+          )}
 
           {/* Date and Links */}
           <div className="flex items-center gap-4 flex-wrap">
@@ -143,7 +164,6 @@ function BlogDetailContent({
         <div className="flex gap-8 relative">
           {/* Main Content Area */}
           <div className="flex-1 space-y-12 min-w-0">
-            {/* Tech Stack */}
             <section id="tech-stack">
               <h2 className="text-2xl font-bold mb-4">Tech Stack</h2>
               <TechStack technologies={blog.technologies} />
