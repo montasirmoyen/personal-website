@@ -713,13 +713,30 @@ export const blogs: Blog[] = [
     ],
     blogPosts: [
       {
-        date: "March 14, 2026",
-        title: "Alliance",
-        borderColor: "#00e1ff",
+        date: "March 25, 2026",
+        title: "Endgame",
+        borderColor: "#ffffff",
         content: [
           {
             type: "paragraph",
             content: `
+            Chess is one of those timeless games that has captivated people for centuries.
+            It's a game of strategy, skill, and endless possibilities.
+            I've always been fascinated by chess, and I thought it would be a fun project to build a chess game from scratch on just the Next.js framework.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            Collaborating with my younger brother, we've created the base for a chess game that features a sleek design and smooth gameplay.
+            It'll be available on the web soon, and I'd be excited to share it.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            One of our ambitions with this project is to integrate AI as well.
+            More specifically, an AI coach that will help users improve their chess skills by providing real-time feedback and suggestions during gameplay.
             `,
           }
         ],
