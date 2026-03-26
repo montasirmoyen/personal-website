@@ -862,6 +862,45 @@ export const blogs: Blog[] = [
             scale: 0.25,
           }
         ],
+      },
+      {
+        date: "March 26, 2026",
+        title: "Foundation",
+        borderColor: "#ff5ddc",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            We have implemented 6 domain expansions so far:
+            `,
+          },
+          {
+            type: "bulletpoints",
+            content: [
+              "Satoru Gojo's \"Infinite Void\"",
+              "Ryomen Sukuna's \"Malevolent Shrine\"",
+              "Mahito's \"Self-Embodiment of Perfection\"",
+              "Yuji Itadori's Unnamed Domain Expansion",
+              "Kinji Hakari \"Idle Death Gamble\"",
+              "Yuta Okkotsu's \"Authentic Mutual Love\""
+            ],
+          },
+          {
+            type: "paragraph",
+            content: `
+            Of course, there are many more domain expansions in the series, and we plan to implement as many as we can.
+            But now, the foundation is there and the architecture is set up.
+            The app detects the specific hand gestures for each domain expansion and displays the text.
+            But it feels incomplete, we want to add some kind of visual effect or overlay that appears when the gesture is detected, to make it more immersive and fun to use.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            But it has been a fun project to work on, and it's been a great way to learn more about computer vision and gesture recognition.
+            `,
+          },
+        ],
       }
     ]
   },
