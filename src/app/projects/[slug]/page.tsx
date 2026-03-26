@@ -15,16 +15,9 @@ import {
 } from '@/components/animate-ui/components/radix/accordion';
 import AvailableForRoles from "@/components/AvailableForRoles"
 import * as React from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
 import TechStack from "@/components/TechStack";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { MotionCarousel } from '@/components/animate-ui/components/community/motion-carousel';
 
 interface ProjectDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -164,32 +157,12 @@ function ProjectDetailContent({
 
         {/* Project Image */}
         {project.carouselImages && project.carouselImages.length > 0 && (
-          <div className="mb-16">
-            <Carousel className="w-full">
-              <CarouselContent>
-                {project.carouselImages.map((image: string, index: number) => (
-                  <CarouselItem key={index}>
-                    <div className="p-1">
-                      <Card>
-                        <CardContent className="flex aspect-video items-center justify-center p-6 bg-black/40 rounded-lg overflow-hidden">
-                          <Image
-                            src={image}
-                            alt={`${project.title} screenshot ${index + 1}`}
-                            height={1920}
-                            width={1080}
-                            className="object-cover"
-                            unoptimized
-                          />
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
-          </div>
+          <section className="mb-16">
+            <MotionCarousel
+              slides={project.carouselImages}
+              options={{ loop: true }}
+            />
+          </section>
         )}
 
         <div className="flex gap-8 relative">
