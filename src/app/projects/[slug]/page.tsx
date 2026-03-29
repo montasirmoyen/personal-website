@@ -335,7 +335,7 @@ function ProjectDetailContent({
           — Montasir
         </p>
 
-        <section id="more" className="scroll-mt-32">
+        <section id="more" className="scroll-mt-32 mb-18">
           {(previousProject || nextProject) && (
             <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-4">
               {previousProject ? (
