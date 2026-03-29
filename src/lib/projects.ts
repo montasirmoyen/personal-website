@@ -134,6 +134,7 @@ export const projects: Project[] = [
     description: "An application providing endless coding practice powered by curated challenges and unprecedented AI-generated problems.",
     technologies: ["TypeScript", "Python", "PostgreSQL", "Supabase", "AI Integration"],
     blogUrl: "https://montasirmoyen.com/blog/infinitecode",
+    liveUrl: "https://infinitecodex.xyz",
     problemItSolves: "Practicing questions that appear in technical interviews is valuable. Platforms like LeetCode are great, I use it to learn common patterns, strengthen data structures and algorithms, and get comfortable with interview style problems. But interviews don't always give you something you've seen before. They test how you think, meaning they might not hand you a problem you've solved or memorized before.",
     keyFeatures: [
       {
@@ -420,6 +421,7 @@ export const blogs: Blog[] = [
     image: "/ic-grading.png",
     date: "February 8, 2026 — Present",
     status: "in-progress",
+    liveUrl: "https://infinitecodex.xyz",
     heroBlog: true,
     description: "Endless coding practice powered by curated challenges and unprecedented AI-generated problems.",
     technologies: ["TypeScript", "Python", "PostgreSQL", "Supabase", "AI Integration"],
@@ -690,7 +692,7 @@ export const blogs: Blog[] = [
       {
         date: "March 10, 2026 - 2:04AM",
         title: "Persistence II",
-        borderColor: "#0079cf",
+        borderColor: "#01548f",
         content: [
           {
             type: "paragraph",
@@ -748,7 +750,46 @@ export const blogs: Blog[] = [
           {
             type: "image",
             content: ["/ic-ql.png"],
+          }
+        ]
+      },
+      {
+        date: "March 29, 2026 - 5:14PM",
+        title: "Live",
+        borderColor: "#ffffff",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            InfiniteCode is now live!
+            `,
+            marginBottom: 1
           },
+          {
+            type: "paragraph",
+            content: `
+            https://infinitecodex.xyz
+            `,
+            link: "https://infinitecodex.xyz",
+          },
+          {
+            type: "paragraph",
+            content: `
+            After a few months of development, the core experience is ready for users.
+            I'm happy with how the core loop turned out, and I think the AI grading and generation features add a lot of value and versatility to the platform.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            This is just the beginning, there are plenty of features and improvements I want to add, but I'm excited to share it in its current state.
+            The database of classic problems will grow, and the AI grading and generation will continue to be refined based on user feedback and my own observations. 
+            `,
+          },
+          {
+            type: "image",
+            content: ["/ifc-med-ai.png"],
+          }
         ]
       }
     ]
