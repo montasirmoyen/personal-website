@@ -123,68 +123,66 @@ export interface Blog {
 
 export const projects: Project[] = [
   {
-    slug: "ramai",
-    title: "RamAI",
-    colors: ["#2e3ffa", "#1d46fd"],
+    slug: "infinitecode",
+    title: "InfiniteCode",
+    colors: ["#d1001c", "#ff1369"],
     category: "AI & Full-Stack Development",
-    image: "/ramai-home.png",
-    carouselImages: ["/ramai-chat.png", "/ramai-response.png", "/ramai-jl.png", "/ramai-ag.png"],
-    date: "January 15, 2026 — Present",
-    status: "completed",
-    description: "An application assisting Suffolk University students by providing tools such as an AI chatbot and a library of 1200+ SU professors.",
-    technologies: ["TypeScript", "React", "Python", "Data Engineering", "AI Integration", "Auditing"],
-    blogUrl: "https://montasirmoyen.com/blog/ramai",
-    liveUrl: "https://ram-ai.vercel.app/",
-    problemItSolves: "When trying to find an answer to a question about professors at Suffolk University, scrolling through pages of professor information and reviews can be time consuming. Especially when time is limited, like when you're registering for classes and trying to decide between professors, it can be hard to find the information you need quickly.",
+    image: "/ic-ai-gen.png",
+    carouselImages: ["/ic-ql.png", "/ic-grading.png", "/ic-db.png", "/ic-ai-grade.png", "/ic-ai-gen.png", "/ic-ai-gen-home.png"],
+    date: "February 8, 2026 — Present",
+    status: "in-progress",
+    description: "An application providing endless coding practice powered by curated challenges and unprecedented AI-generated problems.",
+    technologies: ["TypeScript", "Python", "PostgreSQL", "Supabase", "AI Integration"],
+    blogUrl: "https://montasirmoyen.com/blog/infinitecode",
+    problemItSolves: "Practicing questions that appear in technical interviews is valuable. Platforms like LeetCode are great, I use it to learn common patterns, strengthen data structures and algorithms, and get comfortable with interview style problems. But interviews don't always give you something you've seen before. They test how you think, meaning they might not hand you a problem you've solved or memorized before.",
     keyFeatures: [
       {
-        title: "AI Chatbot Integration",
-        description: "Utilizes various models such as XiaomiMiMo's MiMo-V2-Flash model for fast, accurate, and cost-effective responses to student queries about professors and courses.",
+        title: "Unprecedented Questions",
+        description: "Uses AI to generate unique coding questions, providing endless practice opportunities for users.",
       },
       {
-        title: "Comprehensive Professor Discovery",
-        description: "Includes a comprehensive library with search functionality, keeping 1200+ professors easily discoverable.",
+        title: "Custom Question Grader",
+        description: "Users can input their own questions and solutions, and the AI will grade their code and provide feedback, making it a versatile tool for learning and improvement.",
       },
       {
-        title: "Detailed Professor Profiles",
-        description: "View professor information including name, department, average ratings, and recent student reviews all in one place.",
+        title: "Intuitive Code Editor",
+        description: "Provides a user-friendly code editor with features like syntax highlighting.",
+      },
+      {
+        title: "Multi Language Support",
+        description: "Supports multiple programming languages such as Java, Python, and C++, allowing users to practice and improve their skills in various languages.",
+      },
+      {
+        title: "Cloud Persistence",
+        description: "Ensures that user progress and data are securely stored in the cloud, allowing for seamless access across devices and sessions.",
       },
     ],
     challenges: [
       {
-        title: "AI Accuracy and Trust",
-        description: "Ensuring the AI chatbot provides accurate information was critical. Extensive auditing and prompt engineering was required to minimize hallucinations and maintain user trust. The backend implements strong filtering and constraints based on planner intents.",
+        title: "Running Code",
+        description: "Running user code in a secure and efficient way is a major challenge. I had to consider various approaches, such as using containerization with Docker or leveraging serverless functions, to execute code safely without risking the stability of the platform. Ultimately, I took assistance from AI to ensure safe execution.",
       },
       {
-        title: "AI Scope and Limitations",
-        description: "Maximizing the usefulness of the AI and making sure a broad range of questions could be answered. This involved careful consideration of the training data and prompt design to ensure the AI could handle a wide variety of queries while staying within its knowledge base.",
-      },
-      {
-        title: "Data Representation",
-        description: "Handling edge cases where users ask questions not represented well in the dataset required careful consideration of how the AI should respond responsibly.",
+        title: "Grading Solutions",
+        description: "Ensuring accurate grading of user solutions was a significant challenge. I initially considered using deterministic test cases, but the sheer variety of coding problems and potential edge cases made this approach impractical. Implementing AI for grading introduced complexity, such as handling hallucinations and ensuring reliable feedback, but it ultimately provided a more flexible and scalable solution.",
       },
     ],
     tradeoffs: [
       {
-        title: "RAG vs Intent-Based Planning",
-        description: "I chose to implement an intent-based planning system in the backend instead of a traditional Retrieval-Augmented Generation (RAG) approach. This allows for more structured and controlled responses, but it also means that the AI's capabilities are limited to the defined intents and may not handle unexpected queries as gracefully as a RAG system might.",
+        title: "Sourcing Classic Problems",
+        description: "I chose to source classic coding problems from public websites to provide users with familiar and well-known challenges. This approach allowed me to quickly build a robust problem set without having to create all the content from scratch. However, it also meant that I had to rely on the quality and variety of problems available on those platforms, which may not cover every topic or difficulty level comprehensively.",
       },
       {
-        title: "AI Model Selection",
-        description: "I chose AI models that balance performance, accuracy, and cost. Extensive testing and evaluation were conducted to select the most suitable model for the application's needs.",
+        title: "AI Grading vs Deterministic Test Cases",
+        description: "Choosing AI for grading solutions introduced complexity, such as handling hallucinations and ensuring reliable feedback, but it ultimately provided a more flexible and scalable solution compared to deterministic test cases.",
       },
       {
-        title: "Sourcing Data",
-        description: "I chose RateMyProfessors as the primary data source for professor information due to its comprehensive coverage and user-generated reviews. However, this also means that the data may be subject to biases and may not always be up-to-date, which is a tradeoff I had to consider.",
-      },
-      {
-        title: "Storing Data in JSON vs Database",
-        description: "I chose JSON for data storage due to its simplicity and ease of use for the project's needs. While a database could offer more robust querying capabilities, JSON provided a lightweight and flexible solution that met the application's requirements.",
-      },
+        title: "Running In-House vs Third-Party Services vs AI Assistance",
+        description: "Deciding whether to run code in-house, use third-party services, or leverage AI assistance was a critical tradeoff. Each option had its pros and cons in terms of cost, scalability, and reliability. Ultimately, I chose the AI approach for the time being.",
+      }
     ],
     outcome: `
-    The application has been deployed and was tested and used by students with positive feedback since they found it useful.
-    The project provided valuable experience in AI integration, backend engineering, data engineering, and building user-centric applications.
+    To be determined, the project is still in progress.
     `,
   },
   {
@@ -249,6 +247,71 @@ export const projects: Project[] = [
     MPS became a starting point for a lot of the soccer titles that came after on Roblox, and seeing other developers build on the genre of soccer games was honestly one of the coolest parts of the whole experience.
     Working on the game taught me a lot, everything from gameplay design and scaling servers to handling feedback and managing a large player base.
     It was my first real exposure to building and maintaining a product that people around the world actually used, and it shaped a lot of how I approach projects today.
+    `,
+  },
+  {
+    slug: "ramai",
+    title: "RamAI",
+    colors: ["#2e3ffa", "#1d46fd"],
+    category: "AI & Full-Stack Development",
+    image: "/ramai-home.png",
+    carouselImages: ["/ramai-chat.png", "/ramai-response.png", "/ramai-jl.png", "/ramai-ag.png"],
+    date: "January 15, 2026 — Present",
+    status: "completed",
+    description: "An application assisting Suffolk University students by providing tools such as an AI chatbot and a library of 1200+ SU professors.",
+    technologies: ["TypeScript", "React", "Python", "Data Engineering", "AI Integration", "Auditing"],
+    blogUrl: "https://montasirmoyen.com/blog/ramai",
+    liveUrl: "https://ram-ai.vercel.app/",
+    problemItSolves: "When trying to find an answer to a question about professors at Suffolk University, scrolling through pages of professor information and reviews can be time consuming. Especially when time is limited, like when you're registering for classes and trying to decide between professors, it can be hard to find the information you need quickly.",
+    keyFeatures: [
+      {
+        title: "AI Chatbot Integration",
+        description: "Utilizes various models such as XiaomiMiMo's MiMo-V2-Flash model for fast, accurate, and cost-effective responses to student queries about professors and courses.",
+      },
+      {
+        title: "Comprehensive Professor Discovery",
+        description: "Includes a comprehensive library with search functionality, keeping 1200+ professors easily discoverable.",
+      },
+      {
+        title: "Detailed Professor Profiles",
+        description: "View professor information including name, department, average ratings, and recent student reviews all in one place.",
+      },
+    ],
+    challenges: [
+      {
+        title: "AI Accuracy and Trust",
+        description: "Ensuring the AI chatbot provides accurate information was critical. Extensive auditing and prompt engineering was required to minimize hallucinations and maintain user trust. The backend implements strong filtering and constraints based on planner intents.",
+      },
+      {
+        title: "AI Scope and Limitations",
+        description: "Maximizing the usefulness of the AI and making sure a broad range of questions could be answered. This involved careful consideration of the training data and prompt design to ensure the AI could handle a wide variety of queries while staying within its knowledge base.",
+      },
+      {
+        title: "Data Representation",
+        description: "Handling edge cases where users ask questions not represented well in the dataset required careful consideration of how the AI should respond responsibly.",
+      },
+    ],
+    tradeoffs: [
+      {
+        title: "RAG vs Intent-Based Planning",
+        description: "I chose to implement an intent-based planning system in the backend instead of a traditional Retrieval-Augmented Generation (RAG) approach. This allows for more structured and controlled responses, but it also means that the AI's capabilities are limited to the defined intents and may not handle unexpected queries as gracefully as a RAG system might.",
+      },
+      {
+        title: "AI Model Selection",
+        description: "I chose AI models that balance performance, accuracy, and cost. Extensive testing and evaluation were conducted to select the most suitable model for the application's needs.",
+      },
+      {
+        title: "Sourcing Data",
+        description: "I chose RateMyProfessors as the primary data source for professor information due to its comprehensive coverage and user-generated reviews. However, this also means that the data may be subject to biases and may not always be up-to-date, which is a tradeoff I had to consider.",
+      },
+      {
+        title: "Storing Data in JSON vs Database",
+        description: "I chose JSON for data storage due to its simplicity and ease of use for the project's needs. While a database could offer more robust querying capabilities, JSON provided a lightweight and flexible solution that met the application's requirements.",
+      },
+    ],
+    outcome: `
+    The application has been deployed and was tested and used by students with positive feedback since they found it useful.
+    The project provided valuable experience in AI integration, backend engineering, data engineering, and building user-centric applications.
     `,
   },
   {
@@ -354,9 +417,10 @@ export const blogs: Blog[] = [
     slug: "infinitecode",
     title: "InfiniteCode",
     category: "AI & Full-Stack Development",
-    image: "/ifc-home.webp",
+    image: "/ic-grading.png",
     date: "February 8, 2026 — Present",
     status: "in-progress",
+    heroBlog: true,
     description: "Endless coding practice powered by curated challenges and unprecedented AI-generated problems.",
     technologies: ["TypeScript", "Python", "PostgreSQL", "Supabase", "AI Integration"],
     blogPosts: [
@@ -700,7 +764,6 @@ export const blogs: Blog[] = [
     description: "A classic chess game in Next.js featuring a sleek design and smooth gameplay.",
     technologies: ["TypeScript", "React", "Next"],
     collab: true,
-    heroBlog: true,
     collaborators: [
       {
         name: "montasirmoyen",
@@ -1755,6 +1818,7 @@ export const blogs: Blog[] = [
     technologies: ["TypeScript", "React", "Python", "Data Engineering", "AI Integration", "Auditing"],
     projectUrl: "https://montasirmoyen.com/projects/ramai",
     liveUrl: "https://ram-ai.vercel.app/",
+    githubUrl: "https://github.com/montasirmoyen/ramai",
     blogPosts: [
       {
         date: "January 15, 2026",
