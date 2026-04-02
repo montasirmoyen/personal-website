@@ -1,10 +1,9 @@
 const songOfTheMonth = {
-    title: "AIZO",
-    artist: "King Gnu",
-    year: 2026,
-    albumCover: "https://i.ytimg.com/vi/wQiz17AKhjM/maxresdefault.jpg",
-    spotifyLink:
-        "https://open.spotify.com/track/65X2koe1LhDgQmRkNdJFv9?si=58c8c153d7ae4d48",
+    title: "T R A N S l a t e d",
+    artist: "Survive Said The Prophet",
+    year: 2018,
+    albumCover: "https://i.scdn.co/image/ab67616d00001e0242e77fb89c30792b3851960a",
+    spotifyLink: "https://open.spotify.com/track/4xUfn4ZGawJmOkaPBhLnE6?si=b536687897044d87",
 };
 
 const spotifyImage = "https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png";
@@ -18,7 +17,7 @@ export default function SOTM() {
             rel="noopener noreferrer"
             className="group block"
         >
-            <div className="relative h-[320px] w-full max-w-[720px] overflow-hidden rounded-2xl bg-black shadow-xl border border-white/25">
+            <div className="relative h-80 w-full max-w-160 overflow-hidden rounded-2xl bg-black shadow-xl border border-red-500/25">
                 {/* Background */}
                 <div
                     className="absolute inset-0 opacity-85 bg-cover bg-center blur-lg transition-all"
