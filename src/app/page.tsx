@@ -14,6 +14,7 @@ import AvailableForRoles from "@/components/AvailableForRoles"
 import OrbitImages from '@/components/OrbitImages'
 import BorderGlow from '@/components/BorderGlow';
 import { FaGithub, FaReact, FaLinkedin, FaCss3, FaCss3Alt, FaHashtag, FaGit, FaMarkdown } from "react-icons/fa";
+import { TypingText } from '@/components/ui/typing-text'
 
 import React from 'react';
 import {
@@ -85,20 +86,38 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 flex h-full flex-col items-center justify-center text-center px-4">
-          <TextAnimate
-            animation="blurInUp"
-            by="character"
-            className="text-3xl md:text-5xl font-bold font-hero"
-          >
-            Quietly building for the web...
-          </TextAnimate>
+          <TypingText
+            className="text-4xl font-bold"
+            text={[
+              "Hello",
+              "Hola",
+              "Bonjour",
+              "Hallo",
+              "Ciao",
+              "Olá",
+              "Привет",
+              "مرحبا",
+              "হ্যালো",
+              "नमस्ते",
+              "你好",
+              "こんにちは",
+              "안녕하세요",
+              "Selam",
+              "Hej",
+              "Hei",
+              "Sawubona",
+              "Habari",
+              "Xin chào",
+              "Kamusta",
+            ]}
+          />
 
           <TextAnimate
             animation="blurInUp"
             by="character"
             className="mt-4 text-base md:text-xl px-4"
           >
-            Hi, I'm Montasir Moyen, a software developer & engineer
+            I'm Montasir Moyen, a software developer & engineer
           </TextAnimate>
 
           <AnimatedContent
@@ -236,7 +255,7 @@ export default function Home() {
           </div>
 
           <FlipButton>
-            <FlipButtonFront variant={"outline"}><FaGithub/></FlipButtonFront>
+            <FlipButtonFront variant={"outline"}><FaGithub /></FlipButtonFront>
             <FlipButtonBack onClick={() => window.open("https://github.com/montasirmoyen", "_blank")}> View Profile </FlipButtonBack>
           </FlipButton>
 
