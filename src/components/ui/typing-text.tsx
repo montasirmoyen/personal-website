@@ -61,7 +61,10 @@ export const TypingText = ({
   const cursorRef = useRef<HTMLSpanElement>(null)
   const containerRef = useRef<HTMLElement>(null)
 
-  const textArray = useMemo(() => (Array.isArray(text) ? text : [text]), [text])
+  const textArray = useMemo(() => {
+    const arr = Array.isArray(text) ? text : [text]
+    return arr.sort(() => Math.random() - 0.5)
+  }, [text])
 
   const getRandomSpeed = useCallback(() => {
     if (!variableSpeed) {
