@@ -53,12 +53,6 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://www.montasirmoyen.com/og-image.png",
-        width: 1920,
-        height: 1080,
-        alt: "Montasir Moyen Portfolio Preview",
-      },
-      {
         url: "https://www.montasirmoyen.com/mm-logo.png",
         width: 512,
         height: 512,
