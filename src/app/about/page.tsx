@@ -63,7 +63,7 @@ export default function About() {
                bg-gradient-to-r from-blue-500 to-purple-500 
                bg-clip-text text-transparent animate-gradient 
                bg-[length:200%_auto]">
-                software developer
+                software engineer
               </TextAnimate>
             </div>
 

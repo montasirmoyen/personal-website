@@ -24,7 +24,7 @@ export default function Footer() {
               unoptimized
             />
             <p className="text-white text-sm leading-relaxed max-w-md">
-              I'm Montasir, a software developer & engineer based in Boston, Massachusetts, USA. Thanks for visiting my website.
+              I'm Montasir, a Software Engineer based in Boston, Massachusetts, USA. Thanks for visiting my website.
             </p>
           </div>
 

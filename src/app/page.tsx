@@ -117,7 +117,7 @@ export default function Home() {
             by="character"
             className="mt-4 text-base md:text-xl px-4"
           >
-            I'm Montasir Moyen, a software developer & engineer
+            I'm Montasir Moyen, a Software Engineer.
           </TextAnimate>
 
           <AnimatedContent
