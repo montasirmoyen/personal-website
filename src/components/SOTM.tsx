@@ -1,9 +1,9 @@
 const songOfTheMonth = {
-    title: "T R A N S l a t e d",
-    artist: "Survive Said The Prophet",
-    year: 2018,
-    albumCover: "https://i.scdn.co/image/ab67616d00001e0242e77fb89c30792b3851960a",
-    spotifyLink: "https://open.spotify.com/track/4xUfn4ZGawJmOkaPBhLnE6?si=b536687897044d87",
+    title: "ホログラム",
+    artist: "NICO Touches the Walls",
+    year: 2009,
+    albumCover: "https://m.media-amazon.com/images/I/51F0PNkAXxL._UF1000,1000_QL80_.jpg",
+    spotifyLink: "https://open.spotify.com/track/3yQACgMuy2G7EXCTeGtjlt?si=014dfedc767a4375",
 };
 
 const spotifyImage = "https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png";
@@ -17,7 +17,7 @@ export default function SOTM() {
             rel="noopener noreferrer"
             className="group block"
         >
-            <div className="relative h-80 w-full max-w-160 overflow-hidden rounded-2xl bg-black shadow-xl border border-red-500/25">
+            <div className="relative h-80 w-full max-w-160 overflow-hidden rounded-2xl bg-black shadow-xl border border-white/25">
                 {/* Background */}
                 <div
                     className="absolute inset-0 opacity-85 bg-cover bg-center blur-lg transition-all"
