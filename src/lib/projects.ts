@@ -321,7 +321,7 @@ export const projects: Project[] = [
     colors: ["#00ff8c", "#0ccaff"],
     category: "AI & Full-Stack Development",
     image: "/rxp-home.png",
-    carouselImages: ["/rxp-home.png","/rxp-dashboard.png","/rxp-analysis-1.png", "/rxp-analysis-2-1.png", "/rxp-analysis-3.png"],
+    carouselImages: ["/rxp-home.png", "/rxp-dashboard.png", "/rxp-analysis-1.png", "/rxp-analysis-2-1.png", "/rxp-analysis-3.png"],
     date: "January 2026",
     status: "completed",
     description: "An AI-powered application to help users maximize their resume potential in seconds.",
@@ -422,7 +422,6 @@ export const blogs: Blog[] = [
     date: "February 8, 2026 — Present",
     status: "in-progress",
     liveUrl: "https://infinitecodex.xyz",
-    heroBlog: true,
     description: "Endless coding practice powered by curated challenges and unprecedented AI-generated problems.",
     technologies: ["TypeScript", "Python", "PostgreSQL", "Supabase", "AI Integration"],
     blogPosts: [
@@ -1855,6 +1854,7 @@ export const blogs: Blog[] = [
     image: "/ramai-home.png",
     date: "January 15, 2026 — January 20, 2026",
     status: "completed",
+    heroBlog: true,
     description: "A specialized AI-powered assistant designed to provide Suffolk University students with grounded academic guidance and comparisons of professors based on data and review evidence.",
     technologies: ["TypeScript", "Python", "JSON", "Data Engineering", "AI Integration", "Auditing"],
     projectUrl: "https://montasirmoyen.com/projects/ramai",
@@ -2089,6 +2089,107 @@ export const blogs: Blog[] = [
             marginBottom: 1
           }
         ]
+      },
+      {
+        date: "April 16, 2026 — 11:03PM",
+        title: "Return",
+        borderColor: "#07ffb9",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            It's been a few months since I touched RamAI.
+            When I jumped back in to audit the performance, I realized the original architecture was just too stiff.
+            I'd built it around heavy intent classification and narrow pipelines, which worked fine for simple recommendations but completely fell apart as soon as a student asked something natural or messy.
+            I had to admit that the structure was actually making the AI narrow by forcing it into a box.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            The biggest wakeup call was realizing that searching for a professor and reasoning about one are two different things.
+            The old system felt like a rigid filter.
+            It could find a "low stress math teacher" easily but it would choke on simple questions like "Is Xinxin Jiang good?".
+            I was forcing every query through a tiny straw before the model even had a chance to think.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            I ended up scrapping the strict planner and moving toward an evidence first setup.
+            Now, instead of thin summaries, the AI digs directly into the JSON, pulling from raw review snippets, tags, and course metrics all at once.
+            The rule is simple, if the data is in the JSON, the AI should be able to find it, no more guessing.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            Getting there wasn't exactly smooth.
+            I spent a lot of time fighting context bleeding where the AI would remember a department or trait from three questions ago and accidentally use it to block a perfectly valid match in the current search.
+            I also had to overhaul name matching.
+            It turns out that a few stray spaces or weird punctuation were enough to make the AI claim a professor didn't exist when they were sitting right there in the data.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            I did make some tradeoffs.
+            The internals are definitely more complex now because the system has to manage much richer data retrieval before it even starts drafting an answer.
+            I also leaned hard into groundedness, I'd rather the AI be a little cautious than have it sound confident while hallucinating a professor's personality. 
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            The coolest part is that the evidence is now visible.
+            It's no longer a black box, you can see the supporting snippets and ratings right alongside the answer.
+            It makes the whole thing feel way more transparent, especially when you're trying to compare two professors teaching styles or grading habits.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            What's actually different now:
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "bulletpoints",
+            content: [
+              "Swapped the clunky planner for a fast router that knows when to look up data and when to just talk.",
+              "Fixed the brittle name matching so it handles typos and spacing issues without breaking.",
+              "Cleaned up the memory so old questions don't leak into new ones.",
+              "Built a knowledge layer that actually reads the individual reviews and tags in the JSON.",
+              "Added structured evidence so the AI can prove its claims with real data points.",
+              "Turned the bot from a basic recommendation tool into a proper QA system for Suffolk students.",
+              "Lowered AI response latency, now 2X faster."
+            ],
+          },
+          {
+            type: "paragraph",
+            content: `
+            The break I took from the project was actually really helpful.
+            I worked other projects, learned and improved, and now I have a different perspective on how to approach RamAI's problems.
+            `,
+          },
+          {
+            type: "image",
+            content: ["/ramai-chat.png"],
+          },
+          {
+            type: "paragraph",
+            content: `
+            I thought this response from the AI was really nice.
+            `,
+            marginBottom: 1
+          },
+          {
+            type: "paragraph",
+            content: `
+            But in my opinion Professor Jiang deserves a 5/5 rating, come on Suffolk students.. :p
+            `,
+          },
+        ],
       }
     ]
   }
