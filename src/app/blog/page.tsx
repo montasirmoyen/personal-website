@@ -192,7 +192,7 @@ export default function BlogPage() {
                         <div className="mb-16">
                             <div className="flex flex-col gap-2">
                                 <div className="flex items-center gap-2">
-                                    <Star className="text-red-400" />
+                                    <Star className="text-blue-600" />
                                     <h2 className="text-2xl md:text-3xl font-hero font-bold text-white">
                                         Highlight
                                     </h2>
@@ -205,10 +205,10 @@ export default function BlogPage() {
                                 </div>
                             </div>
                             <p className="text-sm text-gray-400">
-                                Featured journey I'm writing about
+                                Featured project I returned to
                             </p>
                             <Separator className="mt-6 mb-8" />
-                            <BackgroundGradient colors={["#900e0e", "#ff0084"]}>
+                            <BackgroundGradient colors={["#2e3ffa", "#1d46fd"]}>
                                 <Link href={`/blog/${heroBlog.slug}`} className="group block">
                                     <div className="rounded-3xl overflow-hidden">
                                         <div className="relative w-full aspect-21/9 overflow-hidden">
