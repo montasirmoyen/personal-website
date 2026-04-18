@@ -13,7 +13,8 @@ import AnimatedContent from '@/components/ui/animated-content'
 import AvailableForRoles from "@/components/ui/available-for-roles"
 import OrbitImages from '@/components/ui/orbit-images'
 import BorderGlow from '@/components/ui/border-glow';
-import { FaGithub, FaReact, FaLinkedin, FaHashtag } from "react-icons/fa";
+import { FaGithub, FaReact, FaHashtag } from "react-icons/fa";
+import { SocialLinks } from "@/components/ui/social-links";
 import { TypingText } from '@/components/ui/typing-text'
 
 import {
@@ -146,18 +147,7 @@ export default function Home() {
           <div className="text-center mt-10 w-full">
             <p className="text-3xl font-bold">Let's connect</p>
             <AuroraText className="text-xl font-bold mt-1">Visit my socials</AuroraText>
-            <div className="mt-3 gap-5 flex justify-center items-center">
-              <Link
-                href={"https://www.linkedin.com/in/montasirmoyen/"}
-                target="_blank">
-                <FaLinkedin className="hover:scale-120 transition size-6" />
-              </Link>
-              <Link
-                href={"https://www.github.com/montasirmoyen/"}
-                target="_blank">
-                <FaGithub className="hover:scale-120 transition size-6" />
-              </Link>
-            </div>
+            <SocialLinks className="mt-3 justify-center items-center" iconClassName="hover:scale-120" />
           </div>
 
           <div className="w-full mb-18">

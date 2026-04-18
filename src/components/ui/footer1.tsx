@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaLinkedin, FaGithub } from "react-icons/fa"
+import { SocialLinks } from "@/components/ui/social-links";
 
 export default function Footer() {
   return (
@@ -68,18 +68,7 @@ export default function Footer() {
             <p>Copyright © {new Date().getFullYear()} Montasir Moyen. All rights reserved.</p>
           </div>
 
-          <div className="gap-5 flex">
-              <Link
-                href={"https://www.linkedin.com/in/montasirmoyen/"}
-                target="_blank">
-                <FaLinkedin className="hover:text-white/50 transition size-6" />
-              </Link>
-              <Link
-                href={"https://www.github.com/montasirmoyen/"}
-                target="_blank">
-                <FaGithub className="hover:text-white/50 transition size-6" />
-              </Link>
-            </div>
+          <SocialLinks iconClassName="hover:text-white/50" />
         </div>
       </div>
     </footer>

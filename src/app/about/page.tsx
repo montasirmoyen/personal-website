@@ -6,7 +6,7 @@ import TopBarBackground from "@/components/ui/topbar-bg"
 import TiltedCard from "@/components/ui/titled-card"
 import CircularGallery from '@/components/ui/circular-gallery'
 import CardFlip from "@/components/ui/card-flip"
-import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { SocialLinks } from "@/components/ui/social-links";
 import AvailableForRoles from "@/components/ui/available-for-roles"
 import SOTM from "@/components/ui/sotm";
 import { LiquidButton } from "@/components/ui/liquid-button";
@@ -98,18 +98,7 @@ export default function About() {
               </p>
             </div>
 
-            <div className="mt-4 mb-2 gap-5 flex justify-left items-left px-4 md:px-8 sm:px-4">
-              <Link
-                href={"https://www.linkedin.com/in/montasirmoyen/"}
-                target="_blank">
-                <FaLinkedin className="hover:text-white/50 transition size-6" />
-              </Link>
-              <Link
-                href={"https://www.github.com/montasirmoyen/"}
-                target="_blank">
-                <FaGithub className="hover:text-white/50 transition size-6" />
-              </Link>
-            </div>
+            <SocialLinks className="mt-4 mb-2 justify-left items-left px-4 md:px-8 sm:px-4" iconClassName="hover:text-white/50" />
 
             <Link href="/blog"
               className="text-xl"
