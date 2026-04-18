@@ -50,7 +50,7 @@ export default function About() {
               <TextAnimate
                 animation="blurInUp"
                 by="character"
-                className="text-3xl md:text-5xl lg:text-6xl font-bold font-hero"
+                className="text-3xl md:text-4xl lg:text-4xl font-bold font-hero"
               >
                 I'm Montasir, a
               </TextAnimate>
@@ -59,7 +59,7 @@ export default function About() {
                 animation="slideLeft"
                 by="character"
                 once
-                className="text-3xl md:text-5xl lg:text-6xl font-bold font-hero 
+                className="text-3xl md:text-4xl lg:text-4xl font-bold font-hero 
                bg-gradient-to-r from-blue-500 to-purple-500 
                bg-clip-text text-transparent animate-gradient 
                bg-[length:200%_auto]">
