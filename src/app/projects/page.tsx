@@ -2,9 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { projects } from "@/lib/projects";
+
 import { ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
+
+import { projects } from "@/lib/projects";
+
 import TopBarBackground from "@/components/ui/topbar-bg";
 import { TextAnimate } from "@/components/ui/text-animate"
 import { BackgroundGradient } from "@/components/ui/background-gradient"

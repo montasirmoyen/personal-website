@@ -3,19 +3,18 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { blogs, getBlogBySlug } from "@/lib/projects";
+
+import { use } from "react";
+
 import { ArrowLeft, ExternalLink, Computer, Hammer } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
-import { use } from "react";
+
+import { blogs, getBlogBySlug } from "@/lib/projects";
+
 import TopBarBackground from "@/components/ui/topbar-bg"
 import AvailableForRoles from "@/components/ui/available-for-roles"
 import { Separator } from "@/components/ui/separator";
 import TechStack from "@/components/ui/tech-stack";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card"
 import { ContentNavigator } from "@/components/ui/content-navigator";
 import { AvatarGroup, AvatarGroupTooltip } from "@/components/animate-ui/components/animate/avatar-group";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/animate-ui/components/animate/avatar";
@@ -263,34 +262,33 @@ function BlogDetailContent({
                   itemLabel="blog"
                 />
               </section>
-              </section>
             </section>
           </div>
+        </div>
 
-          {/* Table of Contents */}
-          <aside className="hidden lg:block w-64 shrink-0">
-            <div className="sticky top-32">
-              <h3 className="text-sm font-semibold text-gray-400 uppercase mb-4">On this blog</h3>
-              <nav className="space-y-2">
-                {blog.blogPosts.map((post: any, postIndex: number) => (
-                  <a
-                    key={postIndex}
-                    href={`#post-${postIndex}`}
-                    className="block text-sm text-gray-400 hover:text-white transition-colors py-1"
-                  >
-                    {post.title}
-                  </a>
-                ))}
+        {/* Table of Contents */}
+        <aside className="hidden lg:block w-64 shrink-0">
+          <div className="sticky top-32">
+            <h3 className="text-sm font-semibold text-gray-400 uppercase mb-4">On this blog</h3>
+            <nav className="space-y-2">
+              {blog.blogPosts.map((post: any, postIndex: number) => (
                 <a
-                  href="#more"
+                  key={postIndex}
+                  href={`#post-${postIndex}`}
                   className="block text-sm text-gray-400 hover:text-white transition-colors py-1"
                 >
-                  More Blogs
+                  {post.title}
                 </a>
-              </nav>
-            </div>
-          </aside>
-        </div>
+              ))}
+              <a
+                href="#more"
+                className="block text-sm text-gray-400 hover:text-white transition-colors py-1"
+              >
+                More Blogs
+              </a>
+            </nav>
+          </div>
+        </aside>
       </div>
 
       <AvailableForRoles />

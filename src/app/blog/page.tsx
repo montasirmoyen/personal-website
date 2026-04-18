@@ -2,15 +2,19 @@
 
 import Link from "next/link";
 import Image from "next/image";
+
+import { JSX } from "react";
+
+import { Bot, Zap, Handshake, Leaf, Star } from "lucide-react";
+
 import { blogs } from "@/lib/projects";
+import { getTechIcon } from "@/lib/projects";
+
 import { Badge } from "@/components/ui/badge";
 import AvailableForRoles from "@/components/ui/available-for-roles";
 import { TextAnimate } from "@/components/ui/text-animate"
-import { getTechIcon } from "@/lib/projects";
 import TopBarBackground from "@/components/ui/topbar-bg";
 import { Separator } from "@/components/ui/separator";
-import { Bot, Zap, Handshake, Leaf, Star } from "lucide-react";
-import { JSX } from "react";
 import { BackgroundGradient } from "@/components/ui/background-gradient"
 
 type BlogSectionKey = "classic" | "challenge" | "collaboration" | "mini";
