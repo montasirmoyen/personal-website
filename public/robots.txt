@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /admin
-Disallow: /api/private
-
-Sitemap: https://www.montasirmoyen.com/sitemap.xml
-Host: https://www.montasirmoyen.com
