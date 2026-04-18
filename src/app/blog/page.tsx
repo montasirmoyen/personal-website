@@ -10,12 +10,12 @@ import { Bot, Zap, Handshake, Leaf, Star } from "lucide-react";
 import { blogs } from "@/lib/projects";
 import { getTechIcon } from "@/lib/projects";
 
-import { Badge } from "@/components/ui/badge";
 import AvailableForRoles from "@/components/ui/available-for-roles";
-import { TextAnimate } from "@/components/ui/text-animate"
 import TopBarBackground from "@/components/ui/topbar-bg";
 import { Separator } from "@/components/ui/separator";
 import { BackgroundGradient } from "@/components/ui/background-gradient"
+import { Badge } from "@/components/ui/badge";
+import { TextAnimate } from "@/components/ui/text-animate"
 
 type BlogSectionKey = "classic" | "challenge" | "collaboration" | "mini";
 

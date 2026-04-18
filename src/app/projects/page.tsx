@@ -8,12 +8,12 @@ import { FaGithub } from "react-icons/fa";
 
 import { projects } from "@/lib/projects";
 
+import TechStack from "@/components/ui/tech-stack";
+import AvailableForRoles from "@/components/ui/available-for-roles"
 import TopBarBackground from "@/components/ui/topbar-bg";
 import { TextAnimate } from "@/components/ui/text-animate"
 import { BackgroundGradient } from "@/components/ui/background-gradient"
-import AvailableForRoles from "@/components/ui/available-for-roles"
 import { Separator } from "@/components/ui/separator";
-import TechStack from "@/components/ui/tech-stack";
 
 export default function ProjectsPage() {
   return (

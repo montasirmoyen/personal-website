@@ -13,11 +13,11 @@ import { blogs, getBlogBySlug } from "@/lib/projects";
 
 import TopBarBackground from "@/components/ui/topbar-bg"
 import AvailableForRoles from "@/components/ui/available-for-roles"
-import { Separator } from "@/components/ui/separator";
 import TechStack from "@/components/ui/tech-stack";
 import { ContentNavigator } from "@/components/ui/content-navigator";
 import { AvatarGroup, AvatarGroupTooltip } from "@/components/animate-ui/components/animate/avatar-group";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/animate-ui/components/animate/avatar";
+import { Separator } from "@/components/ui/separator";
 
 interface BlogDetailPageProps {
   params: Promise<{ slug: string }>;

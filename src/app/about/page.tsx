@@ -1,15 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { TextAnimate } from "@/components/ui/text-animate"
+
 import TopBarBackground from "@/components/ui/topbar-bg"
 import TiltedCard from "@/components/ui/titled-card"
 import CircularGallery from '@/components/ui/circular-gallery'
 import CardFlip from "@/components/ui/card-flip"
-import { SocialLinks } from "@/components/ui/social-links";
 import AvailableForRoles from "@/components/ui/available-for-roles"
 import SOTM from "@/components/ui/sotm";
 import { LiquidButton } from "@/components/ui/liquid-button";
+import { TextAnimate } from "@/components/ui/text-animate"
+import { SocialLinks } from "@/components/ui/social-links";
 
 export default function About() {
   return (

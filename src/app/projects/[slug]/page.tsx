@@ -11,11 +11,11 @@ import { FaGithub } from "react-icons/fa";
 import { getProjectBySlug, projects, getBlogBySlug } from "@/lib/projects";
 
 import TopBarBackground from "@/components/ui/topbar-bg"
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/animate-ui/components/radix/accordion';
 import AvailableForRoles from "@/components/ui/available-for-roles"
 import TechStack from "@/components/ui/tech-stack";
 import { ContentNavigator } from "@/components/ui/content-navigator";
 import { MotionCarousel } from '@/components/animate-ui/components/community/motion-carousel';
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/animate-ui/components/radix/accordion';
 
 interface ProjectDetailPageProps {
   params: Promise<{ slug: string }>;

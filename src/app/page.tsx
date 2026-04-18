@@ -1,22 +1,26 @@
 "use client";
 
-import { TextAnimate } from "@/components/ui/text-animate"
-import DarkVeil from "@/components/ui/dark-veil"
-import { Globe } from "@/components/ui/globe"
-import { AnimatedBeamDemo } from '@/components/ui/animated-beam-demo'
 import Link from "next/link";
-import { AuroraText } from "@/components/ui/aurora-text"
-import { Marquee } from "@/components/ui/marquee"
+
+import { FileJson, Star } from 'lucide-react';
+import { FaGithub, FaReact, FaHashtag } from "react-icons/fa";
+
 import { cn } from "@/lib/utils";
-import { LiquidButton } from "@/components/ui/liquid-button"
+
+import DarkVeil from "@/components/ui/dark-veil"
 import AnimatedContent from '@/components/ui/animated-content'
 import AvailableForRoles from "@/components/ui/available-for-roles"
 import OrbitImages from '@/components/ui/orbit-images'
 import BorderGlow from '@/components/ui/border-glow';
-import { FaGithub, FaReact, FaHashtag } from "react-icons/fa";
+import { FlipButton, FlipButtonBack, FlipButtonFront } from "@/components/animate-ui/components/buttons/flip";
+import { TextAnimate } from "@/components/ui/text-animate"
+import { Globe } from "@/components/ui/globe"
+import { AnimatedBeamDemo } from '@/components/ui/animated-beam-demo'
+import { AuroraText } from "@/components/ui/aurora-text"
+import { Marquee } from "@/components/ui/marquee"
+import { LiquidButton } from "@/components/ui/liquid-button"
 import { SocialLinks } from "@/components/ui/social-links";
 import { TypingText } from '@/components/ui/typing-text'
-
 import {
   FileItem,
   FolderItem,
@@ -25,8 +29,6 @@ import {
   SubFiles,
   FolderContent,
 } from '@/components/animate-ui/components/radix/files';
-import { FileJson, Star } from 'lucide-react';
-import { FlipButton, FlipButtonBack, FlipButtonFront } from "@/components/animate-ui/components/buttons/flip";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 
 const images = [
