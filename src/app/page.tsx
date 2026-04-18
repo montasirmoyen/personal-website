@@ -48,10 +48,6 @@ const projects = [
     body: "A fast-paced soccer game created using Lua that has achieved many feats.",
   },
   {
-    name: "Luxury Transport",
-    body: "A full-stack luxury transportation booking website that handles reservations, cancellation and more.",
-  },
-  {
     name: "ScentDex",
     body: "Browse fragrances and sort over 25+ notes. Research about the specifics and find your most suitable scent.",
   },
