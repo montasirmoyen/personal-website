@@ -1,3 +1,6 @@
+/.github
+local
+
 # dependencies
 /node_modules
 /.pnp
@@ -28,8 +31,12 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# env files
+# local env files
 .env*.local
+.env
+
+# vercel
+.vercel
 
 # typescript
 *.tsbuildinfo
