@@ -102,12 +102,12 @@ export default function About() {
               <Link
                 href={"https://www.linkedin.com/in/montasirmoyen/"}
                 target="_blank">
-                <FaLinkedin className="hover:text-white/50 transition" height={24} width={24} />
+                <FaLinkedin className="hover:text-white/50 transition size-6" />
               </Link>
               <Link
                 href={"https://www.github.com/montasirmoyen/"}
                 target="_blank">
-                <FaGithub className="hover:text-white/50 transition" height={24} width={24} />
+                <FaGithub className="hover:text-white/50 transition size-6" />
               </Link>
             </div>
 

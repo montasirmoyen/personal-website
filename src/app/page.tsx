@@ -154,12 +154,12 @@ export default function Home() {
               <Link
                 href={"https://www.linkedin.com/in/montasirmoyen/"}
                 target="_blank">
-                <FaLinkedin className="hover:scale-120 transition" size={24} />
+                <FaLinkedin className="hover:scale-120 transition size-6" />
               </Link>
               <Link
                 href={"https://www.github.com/montasirmoyen/"}
                 target="_blank">
-                <FaGithub className="hover:scale-120 transition" size={24} />
+                <FaGithub className="hover:scale-120 transition size-6" />
               </Link>
             </div>
           </div>
