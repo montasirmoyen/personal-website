@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Linkedin, Github } from "lucide-react"
+import { FaLinkedin, FaGithub } from "react-icons/fa"
 
 export default function Footer() {
   return (
@@ -72,12 +72,12 @@ export default function Footer() {
               <Link
                 href={"https://www.linkedin.com/in/montasirmoyen/"}
                 target="_blank">
-                <Linkedin className="hover:text-white/50 transition" height={24} width={24} />
+                <FaLinkedin className="hover:text-white/50 transition size-6" />
               </Link>
               <Link
                 href={"https://www.github.com/montasirmoyen/"}
                 target="_blank">
-                <Github className="hover:text-white/50 transition" height={24} width={24} />
+                <FaGithub className="hover:text-white/50 transition size-6" />
               </Link>
             </div>
         </div>

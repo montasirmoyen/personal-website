@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { TextAnimate } from "@/components/ui/text-animate"
-import TopBarBackground from "@/components/TopBarBackground"
-import TiltedCard from "@/components/TiltedCard"
-import CircularGallery from '@/components/CircularGallery'
+import TopBarBackground from "@/components/ui/topbar-bg"
+import TiltedCard from "@/components/ui/titled-card"
+import CircularGallery from '@/components/ui/circular-gallery'
 import CardFlip from "@/components/ui/card-flip"
-import { Linkedin, Github } from "lucide-react";
-import AvailableForRoles from "@/components/AvailableForRoles"
-import SOTM from "@/components/SOTM";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
+import AvailableForRoles from "@/components/ui/available-for-roles"
+import SOTM from "@/components/ui/sotm";
 import { LiquidButton } from "@/components/ui/liquid-button";
 
 export default function About() {
@@ -50,7 +50,7 @@ export default function About() {
               <TextAnimate
                 animation="blurInUp"
                 by="character"
-                className="text-3xl md:text-5xl lg:text-6xl font-bold font-hero"
+                className="text-3xl md:text-4xl lg:text-4xl font-bold font-hero"
               >
                 I'm Montasir, a
               </TextAnimate>
@@ -59,7 +59,7 @@ export default function About() {
                 animation="slideLeft"
                 by="character"
                 once
-                className="text-3xl md:text-5xl lg:text-6xl font-bold font-hero 
+                className="text-3xl md:text-4xl lg:text-4xl font-bold font-hero 
                bg-gradient-to-r from-blue-500 to-purple-500 
                bg-clip-text text-transparent animate-gradient 
                bg-[length:200%_auto]">
@@ -102,12 +102,12 @@ export default function About() {
               <Link
                 href={"https://www.linkedin.com/in/montasirmoyen/"}
                 target="_blank">
-                <Linkedin className="hover:text-white/50 transition" height={24} width={24} />
+                <FaLinkedin className="hover:text-white/50 transition size-6" />
               </Link>
               <Link
                 href={"https://www.github.com/montasirmoyen/"}
                 target="_blank">
-                <Github className="hover:text-white/50 transition" height={24} width={24} />
+                <FaGithub className="hover:text-white/50 transition size-6" />
               </Link>
             </div>
 

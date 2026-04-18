@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { CopyButton } from "@/components/ui/copy";
-import ShinyText from '@/components/ShinyText';
+import ShinyText from '@/components/ui/shint-text';
 
 interface AvailableForRolesProps {
   email?: string;

@@ -3,13 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/lib/projects";
-import { ExternalLink, Github } from "lucide-react";
-import TopBarBackground from "@/components/TopBarBackground";
+import { ExternalLink } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+import TopBarBackground from "@/components/ui/topbar-bg";
 import { TextAnimate } from "@/components/ui/text-animate"
 import { BackgroundGradient } from "@/components/ui/background-gradient"
-import AvailableForRoles from "@/components/AvailableForRoles"
+import AvailableForRoles from "@/components/ui/available-for-roles"
 import { Separator } from "@/components/ui/separator";
-import TechStack from "@/components/TechStack";
+import TechStack from "@/components/ui/tech-stack";
 
 export default function ProjectsPage() {
   return (
@@ -129,7 +130,7 @@ export default function ProjectsPage() {
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
                     >
-                      <Github size={16} />
+                      <FaGithub size={16} />
                       View Source Code
                     </Link>
                   )}

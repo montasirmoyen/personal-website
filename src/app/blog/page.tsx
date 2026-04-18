@@ -4,10 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { blogs } from "@/lib/projects";
 import { Badge } from "@/components/ui/badge";
-import AvailableForRoles from "@/components/AvailableForRoles";
+import AvailableForRoles from "@/components/ui/available-for-roles";
 import { TextAnimate } from "@/components/ui/text-animate"
 import { getTechIcon } from "@/lib/projects";
-import TopBarBackground from "@/components/TopBarBackground";
+import TopBarBackground from "@/components/ui/topbar-bg";
 import { Separator } from "@/components/ui/separator";
 import { Bot, Zap, Handshake, Leaf, Star } from "lucide-react";
 import { JSX } from "react";
@@ -46,78 +46,78 @@ function getBlogSection(blog: (typeof blogs)[number]): BlogSectionKey {
 }
 
 function BlogCard({ blog }: { blog: (typeof blogs)[number] }) {
+    const typeBadges = [
+        blog.challenge ? { label: "Challenge", className: "border-orange-500/70 bg-orange-500/15 text-orange-100" } : null,
+        blog.collab ? { label: "Collaboration", className: "border-blue-500/70 bg-blue-500/15 text-blue-100" } : null,
+        blog.mini ? { label: "Mini", className: "border-emerald-500/70 bg-emerald-500/15 text-emerald-100" } : null,
+    ].filter(Boolean) as { label: string; className: string }[];
+
     return (
         <Link
             key={blog.slug}
             href={`/blog/${blog.slug}`}
-            className="group block"
+            className="group block h-full"
         >
-            <div className="bg-black border border-white/10 rounded-lg overflow-hidden transition-all duration-250 shadow-lg hover:scale-105 hover:border-white/35 h-full">
+            <article className="h-full overflow-hidden rounded-2xl border border-white/10 bg-linear-to-b from-white/[0.07] to-white/3 shadow-[0_10px_35px_-20px_rgba(0,0,0,0.9)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1 group-hover:border-white/25">
                 <div className="relative aspect-video overflow-hidden">
                     <Image
                         src={blog.image}
                         alt={blog.title}
                         fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-300"
+                        className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
                         unoptimized
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    <div className="absolute bottom-4 left-4">
-                        {blog.challenge && (
-                            <Badge
-                                variant="outline"
-                                className="border-orange-500 bg-orange-500/20 backdrop-blur-sm ml-2"
-                            >
-                                Challenge
-                            </Badge>
-                        )}
-                        {blog.collab && (
-                            <Badge
-                                variant="outline"
-                                className="border-blue-500 bg-blue-500/20 backdrop-blur-sm ml-2"
-                            >
-                                Collaboration
-                            </Badge>
-                        )}
-                        {blog.mini && (
-                            <Badge
-                                variant="outline"
-                                className="border-emerald-500 bg-emerald-500/20 backdrop-blur-sm ml-2"
-                            >
-                                Mini
-                            </Badge>
-                        )}
+                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/25 to-transparent" />
+
+                    <div className="absolute left-4 right-4 top-4 flex items-start justify-between gap-3">
                         <Badge
                             variant="outline"
-                            className="border-white/20 bg-black/40 text-white backdrop-blur-sm"
+                            className="border-white/25 bg-black/45 text-white backdrop-blur-md"
                         >
                             {blog.status === "in-progress" ? "In Progress" : "Completed"}
                         </Badge>
+
+                        <Badge
+                            variant="outline"
+                            className="border-white/20 bg-black/35 text-white/90 backdrop-blur-md"
+                        >
+                            {blog.category}
+                        </Badge>
+                    </div>
+
+                    <div className="absolute inset-x-4 bottom-4">
+                        <p className="text-sm text-white/70">{blog.date}</p>
                     </div>
                 </div>
 
-                <div className="p-6">
-                    <div className="flex items-center justify-between mb-3">
-                        <span className="text-sm text-gray-400 font-medium">
-                            {blog.category}
-                        </span>
+                <div className="p-6 md:p-7">
+                    <div className="mb-3 flex flex-wrap gap-2">
+                        {typeBadges.map((badge) => (
+                            <Badge
+                                key={badge.label}
+                                variant="outline"
+                                className={badge.className}
+                            >
+                                {badge.label}
+                            </Badge>
+                        ))}
                     </div>
 
-                    <h2 className={`text-2xl font-hero font-bold mb-3 transition-colors`}>
+                    <h2 className="mb-3 text-2xl font-hero font-bold tracking-tight text-white transition-colors duration-300">
                         {blog.title}
                     </h2>
 
-                    <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                    <p className="mb-5 line-clamp-3 text-sm leading-relaxed text-gray-300/95">
                         {blog.description}
                     </p>
 
-                    <div className="flex flex-wrap gap-2 pt-2">
+                    <div className="flex flex-wrap gap-2 pt-1">
                         {blog.technologies.map((tech) => {
                             const iconPath = getTechIcon(tech);
                             return (
                                 <span
                                     key={tech}
-                                    className="px-3 py-1 text-xs rounded-full bg-white/5 border border-white/10 text-gray-300 flex items-center gap-1.5"
+                                    className="flex items-center gap-1.5 rounded-full border border-white/12 bg-white/6 px-3 py-1 text-xs text-gray-200/90 transition-colors duration-300 group-hover:border-white/20"
                                 >
                                     {iconPath && (
                                         <Image
@@ -134,12 +134,8 @@ function BlogCard({ blog }: { blog: (typeof blogs)[number] }) {
                             );
                         })}
                     </div>
-
-                    <p className="mt-5 text-sm text-gray-400">
-                        {blog.date}
-                    </p>
                 </div>
-            </div>
+            </article>
         </Link>
     );
 }

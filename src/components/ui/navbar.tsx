@@ -3,10 +3,6 @@
 import React, { useState, useRef, useLayoutEffect, cloneElement } from 'react';
 import { cn } from '@/lib/utils';
 
-const DefaultHomeIcon = (props: React.SVGProps<SVGSVGElement>) => <svg {...(props as any)} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg>;
-const DefaultCompassIcon = (props: React.SVGProps<SVGSVGElement>) => <svg {...(props as any)} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z" /></svg>;
-const DefaultBellIcon = (props: React.SVGProps<SVGSVGElement>) => <svg {...(props as any)} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" /><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" /></svg>;
-
 export type NavItem = {
   id: string | number;
   icon?: React.ReactElement;
@@ -31,9 +27,7 @@ export type LimelightNavProps = {
   iconClassName?: string;
 };
 
-/**
- * An adaptive-width navigation bar with a "limelight" effect that highlights the active item.
- */
+// adaptive-width navigation
 export const LimelightNav = ({
   items = defaultNavItems,
   defaultActiveIndex = 0,
@@ -116,13 +110,13 @@ export const LimelightNav = ({
       <div
         ref={limelightRef}
         className={cn(
-          'absolute top-0 z-10 h-[3px] rounded-full bg-primary shadow-[0_0px_10px_var(--primary)]',
+          'absolute top-0 z-10 h-[3px] rounded-full bg-foreground shadow-[0_0px_10px_var(--foreground)]',
           isReady ? 'transition-[left,width] duration-400 ease-in-out' : '',
           limelightClassName
         )}
         style={{ left: '-999px', width: 'auto' }}
       >
-        <div className="absolute left-[-30%] top-[2px] w-[160%] h-[45px] [clip-path:polygon(5%_100%,25%_0,75%_0,95%_100%)] bg-gradient-to-b from-primary/30 to-transparent pointer-events-none" />
+        <div className="absolute left-[-30%] top-.5 w-[160%] h-[45px] [clip-path:polygon(5%_100%,25%_0,75%_0,95%_100%)] bg-gradient-to-b from-foreground/30 to-transparent pointer-events-none" />
       </div>
     </nav>
   );

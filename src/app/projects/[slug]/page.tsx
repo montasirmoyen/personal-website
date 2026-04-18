@@ -4,18 +4,18 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { getProjectBySlug, projects, getBlogBySlug } from "@/lib/projects";
-import { ArrowLeft, ArrowRight, ExternalLink, Github, Notebook } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, Notebook } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 import { use } from "react";
-import TopBarBackground from "@/components/TopBarBackground"
+import TopBarBackground from "@/components/ui/topbar-bg"
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
 } from '@/components/animate-ui/components/radix/accordion';
-import AvailableForRoles from "@/components/AvailableForRoles"
-import * as React from "react"
-import TechStack from "@/components/TechStack";
+import AvailableForRoles from "@/components/ui/available-for-roles"
+import TechStack from "@/components/ui/tech-stack";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { MotionCarousel } from '@/components/animate-ui/components/community/motion-carousel';
 
@@ -110,7 +110,7 @@ function ProjectDetailContent({
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
               >
-                <Github size={16} />
+                <FaGithub size={16} />
                 Source Code
               </Link>
             )}

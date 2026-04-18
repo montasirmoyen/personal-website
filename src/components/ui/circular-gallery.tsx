@@ -520,6 +520,10 @@ class App {
         image: `/manga.jpg`,
         text: 'manga'
       },
+      {
+        image: `/space.jpg`,
+        text: 'astronomy'
+      },
     ];
     const galleryItems = items && items.length ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);
@@ -643,12 +647,12 @@ interface CircularGalleryProps {
 
 export default function CircularGallery({
   items,
-  bend = 3,
+  bend = 1,
   textColor = '#ffffff',
   borderRadius = 0.05,
   font = 'bold 30px Figtree',
-  scrollSpeed = 2,
-  scrollEase = 0.05
+  scrollSpeed = 4,
+  scrollEase = 0.2
 }: CircularGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {

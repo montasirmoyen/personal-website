@@ -1,127 +1,8 @@
-export const techStack: Record<string, { src: string; doc?: string }> = {
-  ["c++"]: { src: "/cpp.png", doc: "https://en.cppreference.com/w/" },
-  cmake: { src: "/cmake.png", doc: "https://cmake.org/documentation/" },
-  python: { src: "/python.png", doc: "https://docs.python.org/3/" },
-  java: { src: "/java.webp", doc: "https://docs.oracle.com/en/java/" },
-  javascript: { src: "/javascript.png", doc: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
-  typescript: { src: "/typescript.png", doc: "https://www.typescriptlang.org/docs/" },
-  lua: { src: "/lua.png", doc: "https://www.lua.org/docs.html" },
-  json: { src: "/json.png", doc: "https://www.json.org/json-en.html" },
-  "postgresql": { src: "/postgresql.svg", doc: "https://www.postgresql.org/docs/" },
-  rust: { src: "/rust.png", doc: "https://doc.rust-lang.org/book/" },
+import { projectSummaries } from "./project-summaries";
+import { getTechDoc, getTechIcon, techStack } from "./techstack";
+import type { Blog, Project } from "./types";
 
-  opencv: { src: "/opencv.webp", doc: "https://docs.opencv.org/4.x/" },
-  mediapipe: { src: "/mediapipe.png", doc: "https://github.com/google-ai-edge/mediapipe" },
-  aws: { src: "/aws.png", doc: "https://aws.amazon.com/documentation/" },
-  amplify: { src: "/amplify.png", doc: "https://docs.amplify.aws/" },
-  lambda: { src: "/lambda.png", doc: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html" },
-  s3: { src: "/s3.png", doc: "https://docs.aws.amazon.com/s3/index.html" },
-  angular: { src: "/angular.png", doc: "https://angular.io/docs" },
-  dynamodb: { src: "/dynamodb.png", doc: "https://docs.aws.amazon.com/dynamodb/index.html" },
-  maven: { src: "/maven.png", doc: "https://maven.apache.org/index.html" },
-  docker: { src: "/docker.png", doc: "https://docs.docker.com/" },
-  ["spring boot"]: { src: "/spring-boot.webp", doc: "https://spring.io/projects/spring-boot" },
-  react: { src: "/react.png", doc: "https://react.dev/learn" },
-  firebase: { src: "/firebase.png", doc: "https://firebase.google.com/docs" },
-  "rblx studio": { src: "/rblxstudio.png", doc: "https://create.roblox.com/docs/creation" },
-  "node.js": { src: "/nodejs.png", doc: "https://nodejs.org/en/docs/" },
-  mongodb: { src: "/mongodb.png", doc: "https://www.mongodb.com/docs/" },
-  next: { src: "/next.webp", doc: "https://nextjs.org/docs" },
-  "supabase": { src: "/supabase.png", doc: "https://supabase.com/docs" },
-
-  "ai integration": { src: "/ai.png" },
-  auditing: { src: "/audit.png" },
-  entrepreneurship: { src: "/entrepreneurship.png" },
-  parsing: { src: "/xlsx.png" },
-  "data engineering": { src: "/data.png" },
-};
-
-export interface Project {
-  slug: string;
-  title: string;
-  colors?: [string, string];
-  category: string;
-  image: string;
-  carouselImages?: string[];
-  date: string;
-  status: "completed" | "in-progress";
-  description: string;
-  bullets?: string[];
-  technologies: string[];
-  githubUrl?: string;
-  blogUrl?: string;
-  liveUrl?: string;
-  gameUrl?: string;
-  overview?: string;
-  problemItSolves?: string;
-  keyFeatures?: {
-    title: string;
-    description: string;
-  }[];
-  challenges?: {
-    title: string;
-    description: string;
-  }[];
-  tradeoffs?: {
-    title: string;
-    description: string;
-  }[];
-  outcome?: string;
-}
-
-export interface Blog {
-  slug: string;
-  title: string;
-  heroBlog?: boolean;
-  challenge?: boolean;
-  collab?: boolean;
-  collaborators?: {
-    name: string;
-    avatarImgUrl?: string;
-  }[];
-  mini?: boolean;
-  category: string;
-  image: string;
-  date: string;
-  status: "completed" | "in-progress";
-  description: string;
-  technologies: string[];
-  githubUrl?: string;
-  liveUrl?: string;
-  gameUrl?: string;
-  projectUrl?: string;
-  blogPosts: {
-    date: string;
-    title: string;
-    borderColor: string;
-    content: ({
-      type: "paragraph";
-      content: string;
-      link?: string;
-      marginBottom?: number;
-    } | {
-      type: "bulletpoints";
-      content: string[];
-      marginBottom?: number;
-    } | {
-      type: "image";
-      content: string[];
-      scale?: number;
-      marginBottom?: number;
-    })[]
-  }[];
-  keyFeatures?: {
-    title: string;
-    description: string;
-  }[];
-  challenges?: {
-    title: string;
-    description: string;
-  }[];
-  outcome?: string;
-}
-
-export const projects: Project[] = [
+const rawProjects: Project[] = [
   {
     slug: "ramai",
     title: "RamAI",
@@ -413,7 +294,7 @@ export const projects: Project[] = [
   }
 ];
 
-export const blogs: Blog[] = [
+const rawBlogs: Blog[] = [
   {
     slug: "infinitecode",
     title: "InfiniteCode",
@@ -2195,6 +2076,26 @@ export const blogs: Blog[] = [
   }
 ];
 
+type SharedFields = Pick<
+  Project,
+  "title" | "category" | "description" | "technologies" | "status"
+>;
+
+function applySharedFields<T extends { slug: string } & SharedFields>(entry: T): T {
+  const summary = projectSummaries[entry.slug];
+  if (!summary) return entry;
+  return {
+    ...entry,
+    ...summary,
+  };
+}
+
+export const projects: Project[] = rawProjects.map((project) =>
+  applySharedFields(project),
+);
+
+export const blogs: Blog[] = rawBlogs.map((blog) => applySharedFields(blog));
+
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);
 }
@@ -2203,12 +2104,5 @@ export function getBlogBySlug(slug: string): Blog | undefined {
   return blogs.find((blog) => blog.slug === slug);
 }
 
-export function getTechIcon(tech: string): string | null {
-  const normalizedTech = tech.toLowerCase().trim();
-  return techStack[normalizedTech]?.src || null;
-}
-
-export function getTechDoc(tech: string): string | null {
-  const normalizedTech = tech.toLowerCase().trim();
-  return techStack[normalizedTech]?.doc || null;
-}
+export { getTechDoc, getTechIcon, techStack };
+export type { Blog, Project };

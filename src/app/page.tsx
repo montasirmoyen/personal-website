@@ -1,22 +1,21 @@
 "use client";
 
 import { TextAnimate } from "@/components/ui/text-animate"
-import DarkVeil from "@/components/DarkVeil"
+import DarkVeil from "@/components/ui/dark-veil"
 import { Globe } from "@/components/ui/globe"
-import { AnimatedBeamDemo } from '@/components/AnimatedBeamDemo'
+import { AnimatedBeamDemo } from '@/components/ui/animated-beam-demo'
 import Link from "next/link";
 import { AuroraText } from "@/components/ui/aurora-text"
 import { Marquee } from "@/components/ui/marquee"
 import { cn } from "@/lib/utils";
 import { LiquidButton } from "@/components/ui/liquid-button"
-import AnimatedContent from '@/components/AnimatedContent'
-import AvailableForRoles from "@/components/AvailableForRoles"
-import OrbitImages from '@/components/OrbitImages'
-import BorderGlow from '@/components/BorderGlow';
-import { FaGithub, FaReact, FaLinkedin, FaCss3, FaCss3Alt, FaHashtag, FaGit, FaMarkdown } from "react-icons/fa";
+import AnimatedContent from '@/components/ui/animated-content'
+import AvailableForRoles from "@/components/ui/available-for-roles"
+import OrbitImages from '@/components/ui/orbit-images'
+import BorderGlow from '@/components/ui/border-glow';
+import { FaGithub, FaReact, FaLinkedin, FaHashtag } from "react-icons/fa";
 import { TypingText } from '@/components/ui/typing-text'
 
-import React from 'react';
 import {
   FileItem,
   FolderItem,
@@ -25,7 +24,7 @@ import {
   SubFiles,
   FolderContent,
 } from '@/components/animate-ui/components/radix/files';
-import { FileJson, FileJsonIcon, Github, Star } from 'lucide-react';
+import { FileJson, Star } from 'lucide-react';
 import { FlipButton, FlipButtonBack, FlipButtonFront } from "@/components/animate-ui/components/buttons/flip";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 
@@ -47,10 +46,6 @@ const projects = [
   {
     name: "MPS",
     body: "A fast-paced soccer game created using Lua that has achieved many feats.",
-  },
-  {
-    name: "Luxury Transport",
-    body: "A full-stack luxury transportation booking website that handles reservations, cancellation and more.",
   },
   {
     name: "ScentDex",
@@ -155,12 +150,12 @@ export default function Home() {
               <Link
                 href={"https://www.linkedin.com/in/montasirmoyen/"}
                 target="_blank">
-                <FaLinkedin className="hover:scale-120 transition" size={24} />
+                <FaLinkedin className="hover:scale-120 transition size-6" />
               </Link>
               <Link
                 href={"https://www.github.com/montasirmoyen/"}
                 target="_blank">
-                <FaGithub className="hover:scale-120 transition" size={24} />
+                <FaGithub className="hover:scale-120 transition size-6" />
               </Link>
             </div>
           </div>
@@ -209,6 +204,7 @@ export default function Home() {
           </div>
         </BorderGlow>
 
+        
         <BorderGlow
           {...BORDER_GLOW_PROPS}
           className="size-full overflow-hidden max-h-130 min-h-130"
@@ -220,16 +216,15 @@ export default function Home() {
 
           <Marquee
             pauseOnHover
-            className="relative py-25.5 mask-[linear-gradient(to_top,transparent_20%,#000_100%)] [--duration:20s]"
+            className="relative py-25.5 [--duration:20s]"
           >
             {projects.map((f, idx) => (
               <Link href={"/projects"} key={idx}>
                 <figure
                   className={cn(
-                    "relative w-32 cursor-pointer overflow-hidden rounded-xl border p-4",
-                    "hover:bg-gray-950/[.05]",
-                    "border-card-foreground bg-card/[.10] hover:bg-card",
-                    "transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none"
+                    "relative w-48 cursor-pointer overflow-hidden rounded-xl border p-4",
+                    "bg-background hover:bg-card",
+                    "transform-gpu blur-[2px] transition-all duration-300 ease-out hover:blur-none"
                   )}
                 >
                   <div className="flex flex-row items-center gap-2">

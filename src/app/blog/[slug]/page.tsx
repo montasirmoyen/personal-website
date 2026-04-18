@@ -4,12 +4,13 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { blogs, getBlogBySlug } from "@/lib/projects";
-import { ArrowLeft, ArrowRight, ExternalLink, Github, Computer, Hammer } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, Computer, Hammer } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 import { use } from "react";
-import TopBarBackground from "@/components/TopBarBackground"
-import AvailableForRoles from "@/components/AvailableForRoles"
+import TopBarBackground from "@/components/ui/topbar-bg"
+import AvailableForRoles from "@/components/ui/available-for-roles"
 import { Separator } from "@/components/ui/separator";
-import TechStack from "@/components/TechStack";
+import TechStack from "@/components/ui/tech-stack";
 import {
   HoverCard,
   HoverCardContent,
@@ -121,7 +122,7 @@ function BlogDetailContent({
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
               >
-                <Github size={16} />
+                <FaGithub size={16} />
                 Source Code
               </Link>
             )}
@@ -310,7 +311,7 @@ function BlogDetailContent({
                           >
                             <div className="flex items-start justify-between gap-3">
                               <div>
-                                <p className="text-xs uppercase tracking-[0.2em] text-emerald-300/90 mb-1">Next</p>
+                                <p className="text-xs uppercase tracking-[0.2em] text-primary mb-1">Next</p>
                                 <p className="text-base font-semibold text-white leading-tight">{nextBlog.title}</p>
                                 <p className="text-sm text-gray-400 mt-1">{nextBlog.date}</p>
                               </div>

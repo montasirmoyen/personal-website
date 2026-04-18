@@ -54,14 +54,14 @@ export default function CardFlip({
                         "[backface-visibility:hidden] [transform:rotateY(0deg)]",
                         "overflow-hidden rounded-2xl",
                         "bg-black",
-                        "border border-white/15",
+                        "border border-border",
                         "shadow-lg",
                         "transition-all duration-700",
                         "group-hover:shadow-xl",
                         isFlipped ? "opacity-0" : "opacity-100"
                     )}
                 >
-                    <div className="relative h-full overflow-hidden bg-gradient-to-b from-card to-black flex items-center justify-center">
+                    <div className="relative h-full overflow-hidden bg-card/50 flex items-center justify-center">
                         {image ? (
                             <div className="">
                                 <Image
