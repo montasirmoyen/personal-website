@@ -311,7 +311,7 @@ function BlogDetailContent({
                           >
                             <div className="flex items-start justify-between gap-3">
                               <div>
-                                <p className="text-xs uppercase tracking-[0.2em] text-emerald-300/90 mb-1">Next</p>
+                                <p className="text-xs uppercase tracking-[0.2em] text-primary mb-1">Next</p>
                                 <p className="text-base font-semibold text-white leading-tight">{nextBlog.title}</p>
                                 <p className="text-sm text-gray-400 mt-1">{nextBlog.date}</p>
                               </div>
