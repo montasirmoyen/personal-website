@@ -208,7 +208,7 @@ export default function Home() {
           </div>
         </BorderGlow>
 
-        {/*
+        
         <BorderGlow
           {...BORDER_GLOW_PROPS}
           className="size-full overflow-hidden max-h-130 min-h-130"
@@ -220,16 +220,15 @@ export default function Home() {
 
           <Marquee
             pauseOnHover
-            className="relative py-25.5 mask-[linear-gradient(to_top,transparent_20%,#000_100%)] [--duration:20s]"
+            className="relative py-25.5 [--duration:20s]"
           >
             {projects.map((f, idx) => (
               <Link href={"/projects"} key={idx}>
                 <figure
                   className={cn(
-                    "relative w-32 cursor-pointer overflow-hidden rounded-xl border p-4",
-                    "hover:bg-gray-950/[.05]",
-                    "border-card-foreground bg-card/[.10] hover:bg-card",
-                    "transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none"
+                    "relative w-48 cursor-pointer overflow-hidden rounded-xl border p-4",
+                    "bg-background hover:bg-card",
+                    "transform-gpu blur-[2px] transition-all duration-300 ease-out hover:blur-none"
                   )}
                 >
                   <div className="flex flex-row items-center gap-2">
@@ -245,7 +244,6 @@ export default function Home() {
             ))}
           </Marquee>
         </BorderGlow>
-        */}
       </section>
 
       <section className="flex flex-col md:flow-row items-center justify-center mb-50 gap-4 px-12">
