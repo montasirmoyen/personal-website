@@ -1,9 +1,24 @@
-const mm_metadata = {
-  authors: [{ name: "Montasir Moyen", url: "https://www.montasirmoyen.com" }],
+import type { Metadata } from "next";
+
+const siteUrl = "https://www.montasirmoyen.com";
+const siteName = "Montasir Moyen";
+const defaultTitle = "Montasir Moyen - Software Engineer - Boston";
+const defaultDescription =
+  "Software engineer in Boston building web apps, AI integrations, and games. Explore projects, development blogs, and engineering case studies.";
+
+const mm_metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  applicationName: siteName,
+  authors: [{ name: "Montasir Moyen", url: siteUrl }],
   creator: "Montasir Moyen",
   publisher: "Montasir Moyen",
-  title: "Montasir Moyen - Software Engineer - Boston",
-  description: "A software engineer building web apps, AI integrations, and games. Based in Boston, MA, studying Computer Science at Suffolk University. Explore projects in Python, TypeScript, and more.",
+  category: "technology",
+  referrer: "origin-when-cross-origin",
+  title: {
+    default: defaultTitle,
+    template: "%s | Montasir Moyen",
+  },
+  description: defaultDescription,
   keywords: [
     "Montasir Moyen",
     "Montasir",
@@ -23,23 +38,54 @@ const mm_metadata = {
     "web developer portfolio"
   ],
   alternates: {
-    canonical: "https://www.montasirmoyen.com",
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
   openGraph: {
-    title: "Montasir Moyen - Software Engineer - Boston",
-    description: "A software engineer building web apps, AI integrations, and games. Based in Boston, MA, studying Computer Science at Suffolk University. Explore projects in Python, TypeScript, and more.",
-    url: "https://www.montasirmoyen.com",
-    siteName: "Montasir Moyen",
+    title: defaultTitle,
+    description: defaultDescription,
+    url: siteUrl,
+    siteName,
+    locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://www.montasirmoyen.com/mm-logo.png",
+        url: "/mm-logo.png",
         width: 512,
         height: 512,
         alt: "Montasir Moyen Logo",
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: defaultTitle,
+    description: defaultDescription,
+    creator: "@montasirmoyen",
+    images: ["/mm-logo.png"],
+  },
+  icons: {
+    icon: [{ url: "/favicon.ico" }],
+    shortcut: [{ url: "/favicon.ico" }],
+    apple: [{ url: "/favicon.ico" }],
+  },
+  manifest: "/manifest.webmanifest",
 };
 
 export default mm_metadata;
