@@ -1,7 +1,12 @@
+import React from "react";
+import { Star, Moon } from "lucide-react";
 import type { ProjectStatus } from "./types";
 
 export type SharedProjectSummary = {
   title: string;
+  logo?: string;
+  icon?: React.ElementType;
+  iconClassName?: string;
   category: string;
   date: string;
   description: string;
@@ -17,6 +22,7 @@ export type SharedProjectSummary = {
 export const projectSummaries: Record<string, SharedProjectSummary> = {
   ramai: {
     title: "RamAI",
+    logo: "/ramai-logo.png",
     category: "AI & Full-Stack Development",
     date: "January 2026",
     description:
@@ -29,6 +35,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
   },
   mps: {
     title: "MPS",
+    logo: "/mps-logo.png",
     category: "Game Development",
     date: "August 2021 — December 2023",
     description: "A fast-paced multiplayer soccer game with 50+ real life teams.",
@@ -38,6 +45,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
   },
   infinitecode: {
     title: "InfiniteCode",
+    logo: "/ic-logo.png",
     category: "AI & Full-Stack Development",
     date: "February 2026",
     description: "An application providing endless coding practice powered by curated challenges and unprecedented AI-generated problems.",
@@ -48,6 +56,8 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
   },
   resumexp: {
     title: "ResumeXP",
+    icon: Star,
+    iconClassName: "text-green-400",
     category: "AI & Full-Stack Development",
     date: "January 2026",
     description: "An AI-powered application to help users maximize their resume potential in seconds.",
@@ -60,6 +70,8 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
   },
   scentdex: {
     title: "ScentDex",
+    icon: Moon,
+    iconClassName: "text-white",
     category: "AI & Full-Stack Development",
     date: "September 2025",
     description: "Browse, study and filter the most popular fragrances from the most luxurious brands.",
