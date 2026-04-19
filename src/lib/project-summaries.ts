@@ -12,7 +12,7 @@ export type SharedProjectSummary = {
   date: string;
   description: string;
   technologies: string[];
-  status: ProjectStatus;
+  status?: ProjectStatus;
   blogUrl?: string;
   liveUrl?: string;
   githubUrl?: string;
@@ -142,5 +142,12 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
     technologies: ["Java", "Spring Boot", "PostgreSQL", "Maven", "Docker"],
     status: "completed",
     githubUrl: "https://github.com/montasirmoyen/urb",
+  },
+  "summer-2026": {
+    title: "Summer 2026",
+    category: "Personal",
+    date: "April 2026",
+    description: "Looking ahead to my summer.",
+    technologies: [],
   },
 };
