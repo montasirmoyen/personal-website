@@ -113,10 +113,10 @@ export default function About() {
       </div>
 
       <p className="mt-10 text-center text-sm text-white/50 uppercase">
-        BEYOND THE CODE
+        Beyond the code
       </p>
-      <p className="text-center text-3xl uppercase">
-        INTERESTS
+      <p className="text-center text-3xl uppercase font-bold">
+        Interests
       </p>
 
       <section className="overflow-visible w-full h-64 md:h-80 lg:h-96">
@@ -128,9 +128,9 @@ export default function About() {
       </section>
 
       <p className="mt-10 text-center text-sm text-white/50 uppercase">
-        THE JOURNEY SO FAR
+        The journey so far
       </p>
-      <p className="text-center text-3xl uppercase">
+      <p className="text-center text-3xl uppercase font-bold">
         Experience
       </p>
 
@@ -172,9 +172,9 @@ export default function About() {
       </section>
 
       <p className="mt-2 text-center text-sm text-white/50 uppercase">
-        THE BUILDING BLOCKS
+        The building blocks
       </p>
-      <p className="text-center text-3xl uppercase">
+      <p className="text-center text-3xl uppercase font-bold">
         Education
       </p>
 
