@@ -27,7 +27,7 @@ type RawBlog = Omit<Blog, keyof SharedFields>;
 function applySharedFields<T extends { slug: string }>(entry: T): T & SharedFields {
   const summary = projectSummaries[entry.slug];
   if (!summary) {
-    throw new Error(`Missing shared summary for slug: ${entry.slug}`);
+    throw new Error(`Missing shared project/blog summary for slug: ${entry.slug}`);
   }
 
   return {
@@ -2094,33 +2094,6 @@ const rawBlogs: RawBlog[] = [
             type: "paragraph",
             content: `
             This project is an opportunity to work on applied AI in an educational setting, collaborate closely with peers, and contribute to something that could meaningfully improve how students understand complex material.
-            `,
-          }
-        ],
-      },
-      {
-        date: "April 18, 2026",
-        title: "Presidency",
-        borderColor: "#4b23ff",
-        content: [
-          {
-            type: "paragraph",
-            content: `
-            I've been selected as the 2026-2027 President of the Suffolk Programming, AI & Research Club (SPARC).
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            This role will push me beyond just building software and into leadership, organization, and community-building.
-            My focus will be on creating meaningful opportunities for members, whether through technical workshops, collaborative projects, or industry exposure.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            Over the summer, I'll be working closely with the founder & current president, who's done a brilliant job, to understand what's been successful and how to continue growing the club.
-            From there, I'll begin planning initiatives for the fall that provide real value to members.
             `,
           }
         ],
