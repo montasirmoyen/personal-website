@@ -331,14 +331,14 @@ export default function BlogPage() {
                 {personalWritings.length > 0 && (
                     <section className="mb-16">
                         <div className="flex items-center gap-3 mb-1">
-                            <BookOpen className="text-purple-400" size={22} />
+                            <BookOpen size={22} />
                             <h2 className="text-2xl md:text-3xl font-hero font-bold text-white">Personal</h2>
                             <span className="ml-1 rounded-full border border-white/15 bg-white/8 px-2.5 py-0.5 text-xs text-gray-400">
                                 {personalWritings.length}
                             </span>
                         </div>
                         <p className="text-sm text-gray-400 mb-6">
-                            Internships, career reflections, and thoughts beyond the terminal
+                            Career reflections, plans, and thoughts beyond the terminal
                         </p>
                         <Separator className="mb-8" />
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
