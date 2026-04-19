@@ -687,6 +687,574 @@ const rawBlogs: RawBlog[] = [
     ]
   },
   {
+    slug: "ramai",
+    image: "/ramai-home.png",
+    heroBlog: true,
+    blogPosts: [
+      {
+        date: "January 15, 2026",
+        title: "Inception",
+        borderColor: "#1aca75",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            Actually, this is the start of the blog for this project.
+            I started planning the actual project a few days ago. 
+            I suppose the reason for starting this app in particular was because I was interested in creating my first AI integrated application.
+            But I also wanted something that Suffolk University students could potentially use.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            Right now, I've already started building the app, after a day or two of planning the architecture and determining the tech stack.
+            I've always had the bad habit of creating the name and logo of applications early, but wow, that part is really fun.
+            `,
+            marginBottom: 8
+          },
+          {
+            type: "paragraph",
+            content: `
+            But enough of that, here's what I've done so far:
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "bulletpoints",
+            content: [
+              "Prototype AI chatbot. I've decided to use XiaomiMiMo's MiMo-V2-Flash. I like this model because it's quite fast despite being inexpensive. But also because anything above this is overkill for this project.",
+              "Discover page, along with the search bar feature, which is the main component of the page. You can search for professors by their name, and it also has a filters button with department filters such as Computer Science, Mathematics, and Business.",
+              "Professor profile page, which displays the professor's information such as their name, department, average rating, and recent reviews from students.",
+            ],
+            marginBottom: 8
+          },
+          {
+            type: "paragraph",
+            content: `
+            I'll continue working on this in my free time, and I'll post updates here as I make more progress.
+            `,
+            marginBottom: 2
+          },
+        ],
+      },
+      {
+        date: "January 16, 2026",
+        title: "Motive",
+        borderColor: "#553adc",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            One of my friends told me this project didn't make sense to create because Google's AI search results or ChatGPT "does the same thing and better.”
+            I agreed, they had a point, but I also had one:
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "paragraph",
+            content: `
+            The existence of similar projects by billion dollar companies shouldn't deter you from working on your own.
+            The goal, or my goal at least, isn't to compete with them.
+            It's to learn, build, and ultimately have fun in my free time because it's been my passion to do so.
+            It's the kind of mentality that I have when planning and building all of my projects, and it's what has allowed me to actually enjoy working on them and not get demotivated by the fact that there are similar projects out there.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            For me, this project was always about growing as a software developer & engineer.
+            Designing a system, integrating AI and working with real data, while also creating a general usage for students.
+            And honestly, if even one person uses and benefits from it, that's good enough for me.
+            Every project teaches you something, and for me, that's far more valuable than trying to measure yourself against tech giants.
+            `,
+          }
+        ],
+      },
+      {
+        date: "January 17, 2026",
+        title: "Audit",
+        borderColor: "#ff1285",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            This border color is nice.. anyways, lately I've been auditing my AI's backend instead of adding new features.
+            I decided to halt feature work because I know that accuracy and trust matter a lot when it comes to RamAI's chatbot.
+            If the AI gives messy information or is unable to respond to certain questions, users will quickly lose trust and stop using it.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            I have an opinion that you may or may not agree with: an AI that confidently says incorrect stuff is worse than one that says "I don't know".
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            So, I researched and came up with questions that real users would realistically ask the chatbot.
+            Then I asked those questions, recorded the responses, and analyzed them alongside a rating based on how well the AI responded.
+            I wanted to see where the system actually breaks under real questions.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            What surprised me most is how good the AI responded to many of the questions when the intent was clear.
+            It's surreal to witness something you created work in a way like this.
+            You honestly have to experience it if you haven't.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            Of course, it wasn't all perfect.
+            There were small bugs, like case sensitivity and prompt boundary issues, that caused some big perception problems.
+            I also noticed I was asking the AI questions that aren't really represented in the data, and I'm still not sure how I want to handle those yet.
+            There were also weird bracket artifacts leaking into responses, along with a JSON/syntax error tied to a specific (or maybe unspecific) intent.
+            One response in particular was amusing to me, where the AI tried to be safe and helpful at the same time, then ended up contradicting itself.
+            You can find that response at the end of this blog post in the promptAccuracy.md file, question 5, where I asked about student reviews on a professor.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            Overall, there are strong protections against AI hallucinations in the backend.
+            Department scoping is mostly working as intended.
+            My ranking logic is producing genuinely useful results.
+            Auditing all of this has also made debugging way easier than blindly guessing what to fix.
+            `,
+            marginBottom: 8
+          },
+          {
+            type: "paragraph",
+            content: `
+            If you're looking to build a similiar AI system, let half the work be done by the prompt engineering for the planner and answer.
+            The backend filters and constraints do the rest, based on the intents from the planner.
+            `,
+            marginBottom: 8
+          },
+          {
+            type: "paragraph",
+            content: `
+            Below are the audit files in markdown which contain stuff like questions asked to the AI, notes and detailed analyses.
+            `,
+            marginBottom: 1
+          },
+          {
+            type: "paragraph",
+            content: `
+            promptAccuracy.md
+            `,
+            link: "https://drive.google.com/file/d/1sVkUzfep1-FFfIDjQXQkW4monR5i5TO3/view?usp=drive_link",
+            marginBottom: 1
+          },
+          {
+            type: "paragraph",
+            content: `
+            promptAccuracyFollowUp.md
+            `,
+            link: "https://drive.google.com/file/d/15gJhxOkPVPc-JQceWjUJw0fEup5Wi218/view?usp=drive_link",
+            marginBottom: 2
+          },
+        ]
+      },
+      {
+        date: "January 20, 2026",
+        title: "Reflection",
+        borderColor: "#ffffff",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            It's been a few days since my last post.
+            Reason being is that I was wrapping the project up.
+            Working on this has taught me a lot about building AI-integrated applications, with this project acting as the catalyst.
+            From designing the architecture and UI layout, to backend filtering, auditing, and refining the AI's responses, each step ended up being a meaningful learning experience.
+            It just made me realize how complex the actual AI apps we use daily are.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            I also had a few friends try out the app.
+            They liked it and said they genuinely found it useful.
+            That feedback mattered more than I expected, because it helped me see the project from a user's perspective instead of just my own as the builder.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            What stood out to me the most is how much trust and accuracy matter when working with AI. 
+            It's easy to make something that looks smart, but much harder to build something that users can actually rely on, which I'm still trying to achieve. 
+            That shift in mentality is something I'll carry forward.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            I'm stepping away from active development of major features for now.
+            I'll focus on maintenance and polishing it here and there instead. 
+            It's not because there's nothing left to improve, but I feel like this is a good stopping point. 
+            The system works, I've learned lessons, and I'm happy with what is is right now.`,
+          },
+          {
+            type: "paragraph",
+            content: `
+            The live demo for the project is public if you're interested in checking it out.
+            The UI is different because I migrated from React Native to a web app, which gave me more flexibility and easier deployment.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            Visit it here:
+            `,
+            marginBottom: 1
+          },
+          {
+            type: "paragraph",
+            content: `https://ram-ai.xyz/`,
+            link: "https://ram-ai.xyz/",
+            marginBottom: 1
+          }
+        ]
+      },
+      {
+        date: "April 16, 2026 — 11:03PM",
+        title: "Return",
+        borderColor: "#07ffb9",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            It's been a few months since I touched RamAI.
+            When I jumped back in to audit the performance, I realized the original architecture was just too stiff.
+            I'd built it around heavy intent classification and narrow pipelines, which worked fine for simple recommendations but completely fell apart as soon as a student asked something natural or messy.
+            I had to admit that the structure was actually making the AI narrow by forcing it into a box.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            The biggest wakeup call was realizing that searching for a professor and reasoning about one are two different things.
+            The old system felt like a rigid filter.
+            It could find a "low stress math teacher" easily but it would choke on simple questions like "Is Xinxin Jiang good?".
+            I was forcing every query through a tiny straw before the model even had a chance to think.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            I ended up scrapping the strict planner and moving toward an evidence first setup.
+            Now, instead of thin summaries, the AI digs directly into the JSON, pulling from raw review snippets, tags, and course metrics all at once.
+            The rule is simple, if the data is in the JSON, the AI should be able to find it, no more guessing.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            Getting there wasn't exactly smooth.
+            I spent a lot of time fighting context bleeding where the AI would remember a department or trait from three questions ago and accidentally use it to block a perfectly valid match in the current search.
+            I also had to overhaul name matching.
+            It turns out that a few stray spaces or weird punctuation were enough to make the AI claim a professor didn't exist when they were sitting right there in the data.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            I did make some tradeoffs.
+            The internals are definitely more complex now because the system has to manage much richer data retrieval before it even starts drafting an answer.
+            I also leaned hard into groundedness, I'd rather the AI be a little cautious than have it sound confident while hallucinating a professor's personality. 
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            The coolest part is that the evidence is now visible.
+            It's no longer a black box, you can see the supporting snippets and ratings right alongside the answer.
+            It makes the whole thing feel way more transparent, especially when you're trying to compare two professors teaching styles or grading habits.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            What's actually different now:
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "bulletpoints",
+            content: [
+              "Swapped the clunky planner for a fast router that knows when to look up data and when to just talk.",
+              "Fixed the brittle name matching so it handles typos and spacing issues without breaking.",
+              "Cleaned up the memory so old questions don't leak into new ones.",
+              "Built a knowledge layer that actually reads the individual reviews and tags in the JSON.",
+              "Added structured evidence so the AI can prove its claims with real data points.",
+              "Turned the bot from a basic recommendation tool into a proper QA system for Suffolk students.",
+              "Lowered AI response latency, now 2X faster."
+            ],
+          },
+          {
+            type: "paragraph",
+            content: `
+            The break I took from the project was actually really helpful.
+            I worked other projects, learned and improved, and now I have a different perspective on how to approach RamAI's problems.
+            `,
+          },
+          {
+            type: "image",
+            content: ["/ramai-chat.png"],
+          },
+          {
+            type: "paragraph",
+            content: `
+            I thought this response from the AI was really nice.
+            `,
+            marginBottom: 1
+          },
+          {
+            type: "paragraph",
+            content: `
+            But in my opinion Professor Jiang deserves a 5/5 rating, come on Suffolk students.. :p
+            `,
+          },
+        ],
+      }
+    ]
+  },
+  {
+    slug: "resumexp",
+    image: "/rxp-analysis-2.png",
+    blogPosts: [
+      {
+        date: "January 29, 2026 - 7:12PM",
+        title: "Curiosity",
+        borderColor: "#7cdad5",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            I realized I have an AI API key lying around and I've been thinking about applications that could leverage AI to provide real value to users.
+            There are a few resume analyzer applications out there that I have used, but I'm really interested in how it actually works.
+            I suspect it's simpler than it sounds, so I want to have a go at it.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            Right off the bat, I already see how the architecture of this project would look like:
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "bulletpoints",
+            content: [
+              "User uploads their resume, clicks a button to analyze it",
+              "The file is sent to the file parsing API",
+              "The API extracts the text from the resume and sends it to the AI analysis API",
+              "Using careful prompt engineering, the AI analyzes the resume and provides suggestions for improvement",
+              "The suggestions are sent back to the frontend and displayed to the user",
+            ],
+          },
+          {
+            type: "paragraph",
+            content: `
+            Looking ahead, I presume the main challenge would be making sure the resume passes the Applicant Tracking System (ATS).
+            From what I've read, many companies use ATS to filter resumes before a human even sees them.
+            So making sure the resume is optimized for ATS would be crucial.
+            I'll have to do some research on how ATS systems work and what they look for in resumes.
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "paragraph",
+            content: `
+            That's all I had in mind for today, I'll continue working on this in my free time.
+            Also, it felt like January flew by really quickly.. just me?
+            `,
+            marginBottom: 2
+          },
+        ],
+      },
+      {
+        date: "January 31, 2026 - 1:57AM",
+        title: "Pipeline",
+        borderColor: "#d24d8b",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            I spent a day finishing the MVP for ResumeXP.
+            I finally have the full flow working from uploading a resume, to parsing the text, to sending it through the AI pipeline and then visualizing the results in a clean UI.
+            Once I started working on it, I could not stop until it was done. It felt exhilarating to see everything come together.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            The upload and parsing flow was pretty straightforward.
+            Users can drop in a PDF, DOCX or TXT file and the analysis service would handle it.
+            What I used for each file type:
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "bulletpoints",
+            content: [
+              "'react-pdftotext' library for PDF files, which takes the file object directly and returns the extracted text",
+              "'mammoth' library for DOCX files, by converting the file into to an ArrayBuffer, pass it to Mammoth itself, and grab the value field from the result",
+              "TXT files or other plain texts, you can just call file.text() which is convenient",
+            ],
+            marginBottom: 10
+          },
+          {
+            type: "image",
+            content: ["/rxp-uploading.png"],
+            marginBottom: 10
+          },
+          {
+            type: "paragraph",
+            content: `
+            Why did I parse the files on the client instead of the server?
+            I chose client side parsing because the text extraction requirements were straightforward and supported by lightweight browser libraries like above.
+            Parsing on the client reduced backend complexity and made the upload experience feel more responsive.
+            If the parsing logic became more complex or needed stricter validation, the server is always there.
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "paragraph",
+            content: `
+            Once the text is parsed and ready, it's sent to the AI pipeline.
+            This part was straightforward, and having some experience from RamAI doing something similiar helped a lot.
+            I built a dedicated API route that handles the entire process of:
+            `,
+            marginBottom: 2
+          },
+          {
+            type: "bulletpoints",
+            content: [
+              "Validating the input",
+              "Constructing a strict system prompt",
+              "Sending the request to the AI model",
+              "Cleaning up the AI's response"
+            ],
+          },
+          {
+            type: "paragraph",
+            content: `
+            I designed the analysis pipeline so the AI is constrained to return a strictly defined JSON structure.
+            Returning unstructured text would make it difficult to reliably render results on the frontend, so a structured response was necessary.
+            By enforcing a schema, the frontend can confidently parse and visualize sections like ratings, strengths, weaknesses, and suggestions without hesitation.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            To make this robust, I added a JSON extraction and validation step.
+            If the model includes extra text outside the expected structure, the parser strips it out and keeps only the valid JSON.
+            I also added defensive error handling for missing or malformed fields, ensuring the UI never renders partial or inconsistent data.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            On the frontend, this structured output made it straightforward to design a clean, readable interface that visualizes the analysis clearly.
+            With the MVP complete, the focus now shifts to refining prompt quality, tightening formatting, and improving ATS checks to make the overall experience more polished.
+            `,
+            marginBottom: 10
+          },
+          {
+            type: "image",
+            content: ["/rxp-analysis.png"],
+            marginBottom: 8
+          },
+          {
+            type: "paragraph",
+            content: `
+            7.8 out of 10? Guess I know what I'm fixing next.. :p
+            `,
+            marginBottom: 2
+          },
+        ],
+      },
+      {
+        date: "February, 3, 2026 - 12:08PM",
+        title: "Flow",
+        borderColor: "#1d4eff",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            I've been working on wrapping ResumeXP for the past couple of days.
+            The few components I've been finishing up are:
+            `,
+          },
+          {
+            type: "bulletpoints",
+            content: [
+              "Job matching based on the user's job description input",
+              "Past analysis history for authenticated users",
+              "Cover letter generation",
+            ],
+          },
+          {
+            type: "paragraph",
+            content: `
+            There are definitely more features I could add, but I want to keep the app light for now.
+            I try to keep these projects small and organized so I can actually finish them and so they're easier to revisit in the future.
+            That's the same approach I took with RamAI.
+            I can always expand them later if I feel the need.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            Beyond the technical work, I'm also practicing my flow: ideation, planning, building the MVP, then refining and polishing it.
+            Each project teaches me something new about how to approach the next one, and that's been the most valuable part of this whole process.
+            `,
+          },
+          {
+            type: "image",
+            content: [
+              "/rxp-upload-page.png",
+            ],
+          },
+          {
+            type: "paragraph",
+            content: `
+            Visit the site here:
+            `,
+            marginBottom: 0
+          },
+          {
+            type: "paragraph",
+            content: `
+            https://resumexp.vercel.app
+            `,
+            link: "https://resumexp.vercel.app",
+          },
+          {
+            type: "paragraph",
+            content: `
+            View the source code here:
+            `,
+            marginBottom: 0
+          },
+          {
+            type: "paragraph",
+            content: `
+            https://github.com/montasirmoyen/resumexp
+            `,
+            link: "https://github.com/montasirmoyen/resumexp",
+          },
+        ],
+      }
+    ]
+  },
+  {
     slug: "chess",
     image: "/chess-home.jpg",
     collab: true,
@@ -1458,574 +2026,6 @@ const rawBlogs: RawBlog[] = [
       }
     ]
   },
-  {
-    slug: "resumexp",
-    image: "/rxp-analysis-2.png",
-    blogPosts: [
-      {
-        date: "January 29, 2026 - 7:12PM",
-        title: "Curiosity",
-        borderColor: "#7cdad5",
-        content: [
-          {
-            type: "paragraph",
-            content: `
-            I realized I have an AI API key lying around and I've been thinking about applications that could leverage AI to provide real value to users.
-            There are a few resume analyzer applications out there that I have used, but I'm really interested in how it actually works.
-            I suspect it's simpler than it sounds, so I want to have a go at it.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            Right off the bat, I already see how the architecture of this project would look like:
-            `,
-            marginBottom: 2
-          },
-          {
-            type: "bulletpoints",
-            content: [
-              "User uploads their resume, clicks a button to analyze it",
-              "The file is sent to the file parsing API",
-              "The API extracts the text from the resume and sends it to the AI analysis API",
-              "Using careful prompt engineering, the AI analyzes the resume and provides suggestions for improvement",
-              "The suggestions are sent back to the frontend and displayed to the user",
-            ],
-          },
-          {
-            type: "paragraph",
-            content: `
-            Looking ahead, I presume the main challenge would be making sure the resume passes the Applicant Tracking System (ATS).
-            From what I've read, many companies use ATS to filter resumes before a human even sees them.
-            So making sure the resume is optimized for ATS would be crucial.
-            I'll have to do some research on how ATS systems work and what they look for in resumes.
-            `,
-            marginBottom: 2
-          },
-          {
-            type: "paragraph",
-            content: `
-            That's all I had in mind for today, I'll continue working on this in my free time.
-            Also, it felt like January flew by really quickly.. just me?
-            `,
-            marginBottom: 2
-          },
-        ],
-      },
-      {
-        date: "January 31, 2026 - 1:57AM",
-        title: "Pipeline",
-        borderColor: "#d24d8b",
-        content: [
-          {
-            type: "paragraph",
-            content: `
-            I spent a day finishing the MVP for ResumeXP.
-            I finally have the full flow working from uploading a resume, to parsing the text, to sending it through the AI pipeline and then visualizing the results in a clean UI.
-            Once I started working on it, I could not stop until it was done. It felt exhilarating to see everything come together.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            The upload and parsing flow was pretty straightforward.
-            Users can drop in a PDF, DOCX or TXT file and the analysis service would handle it.
-            What I used for each file type:
-            `,
-            marginBottom: 2
-          },
-          {
-            type: "bulletpoints",
-            content: [
-              "'react-pdftotext' library for PDF files, which takes the file object directly and returns the extracted text",
-              "'mammoth' library for DOCX files, by converting the file into to an ArrayBuffer, pass it to Mammoth itself, and grab the value field from the result",
-              "TXT files or other plain texts, you can just call file.text() which is convenient",
-            ],
-            marginBottom: 10
-          },
-          {
-            type: "image",
-            content: ["/rxp-uploading.png"],
-            marginBottom: 10
-          },
-          {
-            type: "paragraph",
-            content: `
-            Why did I parse the files on the client instead of the server?
-            I chose client side parsing because the text extraction requirements were straightforward and supported by lightweight browser libraries like above.
-            Parsing on the client reduced backend complexity and made the upload experience feel more responsive.
-            If the parsing logic became more complex or needed stricter validation, the server is always there.
-            `,
-            marginBottom: 2
-          },
-          {
-            type: "paragraph",
-            content: `
-            Once the text is parsed and ready, it's sent to the AI pipeline.
-            This part was straightforward, and having some experience from RamAI doing something similiar helped a lot.
-            I built a dedicated API route that handles the entire process of:
-            `,
-            marginBottom: 2
-          },
-          {
-            type: "bulletpoints",
-            content: [
-              "Validating the input",
-              "Constructing a strict system prompt",
-              "Sending the request to the AI model",
-              "Cleaning up the AI's response"
-            ],
-          },
-          {
-            type: "paragraph",
-            content: `
-            I designed the analysis pipeline so the AI is constrained to return a strictly defined JSON structure.
-            Returning unstructured text would make it difficult to reliably render results on the frontend, so a structured response was necessary.
-            By enforcing a schema, the frontend can confidently parse and visualize sections like ratings, strengths, weaknesses, and suggestions without hesitation.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            To make this robust, I added a JSON extraction and validation step.
-            If the model includes extra text outside the expected structure, the parser strips it out and keeps only the valid JSON.
-            I also added defensive error handling for missing or malformed fields, ensuring the UI never renders partial or inconsistent data.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            On the frontend, this structured output made it straightforward to design a clean, readable interface that visualizes the analysis clearly.
-            With the MVP complete, the focus now shifts to refining prompt quality, tightening formatting, and improving ATS checks to make the overall experience more polished.
-            `,
-            marginBottom: 10
-          },
-          {
-            type: "image",
-            content: ["/rxp-analysis.png"],
-            marginBottom: 8
-          },
-          {
-            type: "paragraph",
-            content: `
-            7.8 out of 10? Guess I know what I'm fixing next.. :p
-            `,
-            marginBottom: 2
-          },
-        ],
-      },
-      {
-        date: "February, 3, 2026 - 12:08PM",
-        title: "Flow",
-        borderColor: "#1d4eff",
-        content: [
-          {
-            type: "paragraph",
-            content: `
-            I've been working on wrapping ResumeXP for the past couple of days.
-            The few components I've been finishing up are:
-            `,
-          },
-          {
-            type: "bulletpoints",
-            content: [
-              "Job matching based on the user's job description input",
-              "Past analysis history for authenticated users",
-              "Cover letter generation",
-            ],
-          },
-          {
-            type: "paragraph",
-            content: `
-            There are definitely more features I could add, but I want to keep the app light for now.
-            I try to keep these projects small and organized so I can actually finish them and so they're easier to revisit in the future.
-            That's the same approach I took with RamAI.
-            I can always expand them later if I feel the need.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            Beyond the technical work, I'm also practicing my flow: ideation, planning, building the MVP, then refining and polishing it.
-            Each project teaches me something new about how to approach the next one, and that's been the most valuable part of this whole process.
-            `,
-          },
-          {
-            type: "image",
-            content: [
-              "/rxp-upload-page.png",
-            ],
-          },
-          {
-            type: "paragraph",
-            content: `
-            Visit the site here:
-            `,
-            marginBottom: 0
-          },
-          {
-            type: "paragraph",
-            content: `
-            https://resumexp.vercel.app
-            `,
-            link: "https://resumexp.vercel.app",
-          },
-          {
-            type: "paragraph",
-            content: `
-            View the source code here:
-            `,
-            marginBottom: 0
-          },
-          {
-            type: "paragraph",
-            content: `
-            https://github.com/montasirmoyen/resumexp
-            `,
-            link: "https://github.com/montasirmoyen/resumexp",
-          },
-        ],
-      }
-    ]
-  },
-  {
-    slug: "ramai",
-    image: "/ramai-home.png",
-    heroBlog: true,
-    blogPosts: [
-      {
-        date: "January 15, 2026",
-        title: "Inception",
-        borderColor: "#1aca75",
-        content: [
-          {
-            type: "paragraph",
-            content: `
-            Actually, this is the start of the blog for this project.
-            I started planning the actual project a few days ago. 
-            I suppose the reason for starting this app in particular was because I was interested in creating my first AI integrated application.
-            But I also wanted something that Suffolk University students could potentially use.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            Right now, I've already started building the app, after a day or two of planning the architecture and determining the tech stack.
-            I've always had the bad habit of creating the name and logo of applications early, but wow, that part is really fun.
-            `,
-            marginBottom: 8
-          },
-          {
-            type: "paragraph",
-            content: `
-            But enough of that, here's what I've done so far:
-            `,
-            marginBottom: 2
-          },
-          {
-            type: "bulletpoints",
-            content: [
-              "Prototype AI chatbot. I've decided to use XiaomiMiMo's MiMo-V2-Flash. I like this model because it's quite fast despite being inexpensive. But also because anything above this is overkill for this project.",
-              "Discover page, along with the search bar feature, which is the main component of the page. You can search for professors by their name, and it also has a filters button with department filters such as Computer Science, Mathematics, and Business.",
-              "Professor profile page, which displays the professor's information such as their name, department, average rating, and recent reviews from students.",
-            ],
-            marginBottom: 8
-          },
-          {
-            type: "paragraph",
-            content: `
-            I'll continue working on this in my free time, and I'll post updates here as I make more progress.
-            `,
-            marginBottom: 2
-          },
-        ],
-      },
-      {
-        date: "January 16, 2026",
-        title: "Motive",
-        borderColor: "#553adc",
-        content: [
-          {
-            type: "paragraph",
-            content: `
-            One of my friends told me this project didn't make sense to create because Google's AI search results or ChatGPT "does the same thing and better.”
-            I agreed, they had a point, but I also had one:
-            `,
-            marginBottom: 2
-          },
-          {
-            type: "paragraph",
-            content: `
-            The existence of similar projects by billion dollar companies shouldn't deter you from working on your own.
-            The goal, or my goal at least, isn't to compete with them.
-            It's to learn, build, and ultimately have fun in my free time because it's been my passion to do so.
-            It's the kind of mentality that I have when planning and building all of my projects, and it's what has allowed me to actually enjoy working on them and not get demotivated by the fact that there are similar projects out there.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            For me, this project was always about growing as a software developer & engineer.
-            Designing a system, integrating AI and working with real data, while also creating a general usage for students.
-            And honestly, if even one person uses and benefits from it, that's good enough for me.
-            Every project teaches you something, and for me, that's far more valuable than trying to measure yourself against tech giants.
-            `,
-          }
-        ],
-      },
-      {
-        date: "January 17, 2026",
-        title: "Audit",
-        borderColor: "#ff1285",
-        content: [
-          {
-            type: "paragraph",
-            content: `
-            This border color is nice.. anyways, lately I've been auditing my AI's backend instead of adding new features.
-            I decided to halt feature work because I know that accuracy and trust matter a lot when it comes to RamAI's chatbot.
-            If the AI gives messy information or is unable to respond to certain questions, users will quickly lose trust and stop using it.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            I have an opinion that you may or may not agree with: an AI that confidently says incorrect stuff is worse than one that says "I don't know".
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            So, I researched and came up with questions that real users would realistically ask the chatbot.
-            Then I asked those questions, recorded the responses, and analyzed them alongside a rating based on how well the AI responded.
-            I wanted to see where the system actually breaks under real questions.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            What surprised me most is how good the AI responded to many of the questions when the intent was clear.
-            It's surreal to witness something you created work in a way like this.
-            You honestly have to experience it if you haven't.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            Of course, it wasn't all perfect.
-            There were small bugs, like case sensitivity and prompt boundary issues, that caused some big perception problems.
-            I also noticed I was asking the AI questions that aren't really represented in the data, and I'm still not sure how I want to handle those yet.
-            There were also weird bracket artifacts leaking into responses, along with a JSON/syntax error tied to a specific (or maybe unspecific) intent.
-            One response in particular was amusing to me, where the AI tried to be safe and helpful at the same time, then ended up contradicting itself.
-            You can find that response at the end of this blog post in the promptAccuracy.md file, question 5, where I asked about student reviews on a professor.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            Overall, there are strong protections against AI hallucinations in the backend.
-            Department scoping is mostly working as intended.
-            My ranking logic is producing genuinely useful results.
-            Auditing all of this has also made debugging way easier than blindly guessing what to fix.
-            `,
-            marginBottom: 8
-          },
-          {
-            type: "paragraph",
-            content: `
-            If you're looking to build a similiar AI system, let half the work be done by the prompt engineering for the planner and answer.
-            The backend filters and constraints do the rest, based on the intents from the planner.
-            `,
-            marginBottom: 8
-          },
-          {
-            type: "paragraph",
-            content: `
-            Below are the audit files in markdown which contain stuff like questions asked to the AI, notes and detailed analyses.
-            `,
-            marginBottom: 1
-          },
-          {
-            type: "paragraph",
-            content: `
-            promptAccuracy.md
-            `,
-            link: "https://drive.google.com/file/d/1sVkUzfep1-FFfIDjQXQkW4monR5i5TO3/view?usp=drive_link",
-            marginBottom: 1
-          },
-          {
-            type: "paragraph",
-            content: `
-            promptAccuracyFollowUp.md
-            `,
-            link: "https://drive.google.com/file/d/15gJhxOkPVPc-JQceWjUJw0fEup5Wi218/view?usp=drive_link",
-            marginBottom: 2
-          },
-        ]
-      },
-      {
-        date: "January 20, 2026",
-        title: "Reflection",
-        borderColor: "#ffffff",
-        content: [
-          {
-            type: "paragraph",
-            content: `
-            It's been a few days since my last post.
-            Reason being is that I was wrapping the project up.
-            Working on this has taught me a lot about building AI-integrated applications, with this project acting as the catalyst.
-            From designing the architecture and UI layout, to backend filtering, auditing, and refining the AI's responses, each step ended up being a meaningful learning experience.
-            It just made me realize how complex the actual AI apps we use daily are.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            I also had a few friends try out the app.
-            They liked it and said they genuinely found it useful.
-            That feedback mattered more than I expected, because it helped me see the project from a user's perspective instead of just my own as the builder.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            What stood out to me the most is how much trust and accuracy matter when working with AI. 
-            It's easy to make something that looks smart, but much harder to build something that users can actually rely on, which I'm still trying to achieve. 
-            That shift in mentality is something I'll carry forward.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            I'm stepping away from active development of major features for now.
-            I'll focus on maintenance and polishing it here and there instead. 
-            It's not because there's nothing left to improve, but I feel like this is a good stopping point. 
-            The system works, I've learned lessons, and I'm happy with what is is right now.`,
-          },
-          {
-            type: "paragraph",
-            content: `
-            The live demo for the project is public if you're interested in checking it out.
-            The UI is different because I migrated from React Native to a web app, which gave me more flexibility and easier deployment.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            Visit it here:
-            `,
-            marginBottom: 1
-          },
-          {
-            type: "paragraph",
-            content: `https://ram-ai.xyz/`,
-            link: "https://ram-ai.xyz/",
-            marginBottom: 1
-          }
-        ]
-      },
-      {
-        date: "April 16, 2026 — 11:03PM",
-        title: "Return",
-        borderColor: "#07ffb9",
-        content: [
-          {
-            type: "paragraph",
-            content: `
-            It's been a few months since I touched RamAI.
-            When I jumped back in to audit the performance, I realized the original architecture was just too stiff.
-            I'd built it around heavy intent classification and narrow pipelines, which worked fine for simple recommendations but completely fell apart as soon as a student asked something natural or messy.
-            I had to admit that the structure was actually making the AI narrow by forcing it into a box.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            The biggest wakeup call was realizing that searching for a professor and reasoning about one are two different things.
-            The old system felt like a rigid filter.
-            It could find a "low stress math teacher" easily but it would choke on simple questions like "Is Xinxin Jiang good?".
-            I was forcing every query through a tiny straw before the model even had a chance to think.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            I ended up scrapping the strict planner and moving toward an evidence first setup.
-            Now, instead of thin summaries, the AI digs directly into the JSON, pulling from raw review snippets, tags, and course metrics all at once.
-            The rule is simple, if the data is in the JSON, the AI should be able to find it, no more guessing.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            Getting there wasn't exactly smooth.
-            I spent a lot of time fighting context bleeding where the AI would remember a department or trait from three questions ago and accidentally use it to block a perfectly valid match in the current search.
-            I also had to overhaul name matching.
-            It turns out that a few stray spaces or weird punctuation were enough to make the AI claim a professor didn't exist when they were sitting right there in the data.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            I did make some tradeoffs.
-            The internals are definitely more complex now because the system has to manage much richer data retrieval before it even starts drafting an answer.
-            I also leaned hard into groundedness, I'd rather the AI be a little cautious than have it sound confident while hallucinating a professor's personality. 
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            The coolest part is that the evidence is now visible.
-            It's no longer a black box, you can see the supporting snippets and ratings right alongside the answer.
-            It makes the whole thing feel way more transparent, especially when you're trying to compare two professors teaching styles or grading habits.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            What's actually different now:
-            `,
-            marginBottom: 2
-          },
-          {
-            type: "bulletpoints",
-            content: [
-              "Swapped the clunky planner for a fast router that knows when to look up data and when to just talk.",
-              "Fixed the brittle name matching so it handles typos and spacing issues without breaking.",
-              "Cleaned up the memory so old questions don't leak into new ones.",
-              "Built a knowledge layer that actually reads the individual reviews and tags in the JSON.",
-              "Added structured evidence so the AI can prove its claims with real data points.",
-              "Turned the bot from a basic recommendation tool into a proper QA system for Suffolk students.",
-              "Lowered AI response latency, now 2X faster."
-            ],
-          },
-          {
-            type: "paragraph",
-            content: `
-            The break I took from the project was actually really helpful.
-            I worked other projects, learned and improved, and now I have a different perspective on how to approach RamAI's problems.
-            `,
-          },
-          {
-            type: "image",
-            content: ["/ramai-chat.png"],
-          },
-          {
-            type: "paragraph",
-            content: `
-            I thought this response from the AI was really nice.
-            `,
-            marginBottom: 1
-          },
-          {
-            type: "paragraph",
-            content: `
-            But in my opinion Professor Jiang deserves a 5/5 rating, come on Suffolk students.. :p
-            `,
-          },
-        ],
-      }
-    ]
-  }
 ];
 
 export const projects: Project[] = rawProjects.map((project) =>
