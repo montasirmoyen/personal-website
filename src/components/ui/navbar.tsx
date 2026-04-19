@@ -97,7 +97,7 @@ export const LimelightNav = ({
             })
           ) : (
             <span className={cn(
-              'text-sm transition-opacity duration-100 ease-in-out',
+              'text-sm transition-all duration-100 ease-in-out',
               activeIndex === index ? 'opacity-100 font-bold scale-110' : 'opacity-50 font-medium hover:opacity-75 hover:scale-110',
               iconClassName || ''
             )}>
