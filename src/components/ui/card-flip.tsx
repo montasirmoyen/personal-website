@@ -61,7 +61,7 @@ export default function CardFlip({
                         isFlipped ? "opacity-0" : "opacity-100"
                     )}
                 >
-                    <div className="relative h-full overflow-hidden bg-card/50 flex items-center justify-center">
+                    <div className="relative h-full overflow-hidden bg-linear-to-br from-card/50 via-card/10 to-card/50 flex items-center justify-center">
                         {image ? (
                             <div className="">
                                 <Image
