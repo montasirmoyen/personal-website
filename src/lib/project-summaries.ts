@@ -38,6 +38,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
   mps: {
     title: "MPS",
     logo: "/mps-logo.png",
+    primaryColor: "#ffffff",
     category: "Game Development",
     date: "August 2021 — December 2023",
     description: "A fast-paced multiplayer soccer game with 50+ real life teams.",
@@ -47,6 +48,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
   },
   infinitecode: {
     title: "InfiniteCode",
+    primaryColor: "#fc0037",
     logo: "/ic-logo.png",
     category: "AI & Full-Stack Development",
     date: "February 2026",
@@ -60,6 +62,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
     title: "ResumeXP",
     icon: Star,
     iconClassName: "text-green-400",
+    primaryColor: "#1ee25c",
     category: "AI & Full-Stack Development",
     date: "January 2026",
     description: "An AI-powered application to help users maximize their resume potential in seconds.",
@@ -74,6 +77,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
     title: "ScentDex",
     icon: Moon,
     iconClassName: "text-white",
+    primaryColor: "#ffffff",
     category: "AI & Full-Stack Development",
     date: "September 2025",
     description: "Browse, study and filter the most popular fragrances from the most luxurious brands.",
