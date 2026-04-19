@@ -16,6 +16,7 @@ import { Separator } from "@/components/ui/separator";
 import { BackgroundGradient } from "@/components/ui/background-gradient"
 import { Badge } from "@/components/ui/badge";
 import { TextAnimate } from "@/components/ui/text-animate"
+import TitleMark from "@/components/ui/title-mark";
 
 type BlogSectionKey = "classic" | "challenge" | "collaboration" | "mini";
 
@@ -107,9 +108,18 @@ function BlogCard({ blog }: { blog: (typeof blogs)[number] }) {
                         ))}
                     </div>
 
-                    <h2 className="mb-3 text-2xl font-hero font-bold tracking-tight text-white transition-colors duration-300">
-                        {blog.title}
-                    </h2>
+                    <div className="mb-3 flex items-center gap-2.5">
+                        <TitleMark
+                            logo={blog.logo}
+                            title={blog.title}
+                            icon={blog.icon}
+                            iconClassName={blog.iconClassName}
+                            size="card"
+                        />
+                        <h2 className="text-2xl font-hero font-bold tracking-tight text-white transition-colors duration-300">
+                            {blog.title}
+                        </h2>
+                    </div>
 
                     <p className="mb-5 line-clamp-3 text-sm leading-relaxed text-gray-300/95">
                         {blog.description}
@@ -237,9 +247,18 @@ export default function BlogPage() {
                                                     </Badge>
                                                 </div>
                                                 <p className="text-sm text-gray-400 mb-2">{heroBlog.category}</p>
-                                                <h2 className="text-3xl md:text-5xl font-hero font-bold text-white mb-3">
-                                                    {heroBlog.title}
-                                                </h2>
+                                                <div className="mb-3 flex items-center gap-3">
+                                                    <TitleMark
+                                                        logo={heroBlog.logo}
+                                                        title={heroBlog.title}
+                                                        icon={heroBlog.icon}
+                                                        iconClassName={heroBlog.iconClassName}
+                                                        size="hero"
+                                                    />
+                                                    <h2 className="text-3xl md:text-5xl font-hero font-bold text-white">
+                                                        {heroBlog.title}
+                                                    </h2>
+                                                </div>
                                                 <p className="text-gray-300 text-base md:text-lg max-w-2xl mb-4">
                                                     {heroBlog.description}
                                                 </p>

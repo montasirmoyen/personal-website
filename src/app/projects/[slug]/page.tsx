@@ -14,6 +14,7 @@ import TopBarBackground from "@/components/ui/topbar-bg"
 import AvailableForRoles from "@/components/ui/available-for-roles"
 import TechStack from "@/components/ui/tech-stack";
 import { ContentNavigator } from "@/components/ui/content-navigator";
+import TitleMark from "@/components/ui/title-mark";
 import { MotionCarousel } from '@/components/animate-ui/components/community/motion-carousel';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/animate-ui/components/radix/accordion';
 
@@ -78,9 +79,18 @@ function ProjectDetailContent({
         <div className="mb-12">
           <div className="flex items-start justify-between gap-4 mb-6">
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold font-hero mb-3">
-                {project.title}
-              </h1>
+              <div className="mb-3 flex items-center gap-3">
+                <TitleMark
+                  logo={project.logo}
+                  title={project.title}
+                  icon={project.icon}
+                  iconClassName={project.iconClassName}
+                  size="detail"
+                />
+                <h1 className="text-4xl md:text-5xl font-bold font-hero">
+                  {project.title}
+                </h1>
+              </div>
               <p className="text-lg text-gray-300 leading-relaxed max-w-3xl">
                 {project.description}
               </p>

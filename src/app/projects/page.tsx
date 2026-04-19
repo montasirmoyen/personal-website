@@ -14,6 +14,7 @@ import TopBarBackground from "@/components/ui/topbar-bg";
 import { TextAnimate } from "@/components/ui/text-animate"
 import { BackgroundGradient } from "@/components/ui/background-gradient"
 import { Separator } from "@/components/ui/separator";
+import TitleMark from "@/components/ui/title-mark";
 
 export default function ProjectsPage() {
   return (
@@ -76,9 +77,18 @@ export default function ProjectsPage() {
                   <p className="text-sm text-gray-400 uppercase mb-2">
                     {project.category}
                   </p>
-                  <h2 className="text-4xl md:text-5xl font-hero font-bold">
-                    {project.title}
-                  </h2>
+                  <div className="flex items-center gap-3">
+                    <TitleMark
+                      logo={project.logo}
+                      title={project.title}
+                      icon={project.icon}
+                      iconClassName={project.iconClassName}
+                      size="card"
+                    />
+                    <h2 className="text-4xl md:text-5xl font-hero font-bold">
+                      {project.title}
+                    </h2>
+                  </div>
                   <Separator className="my-4 bg-white/20" />
                   <p className="text-gray-300">
                     {project.description}

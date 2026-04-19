@@ -15,6 +15,7 @@ import TopBarBackground from "@/components/ui/topbar-bg"
 import AvailableForRoles from "@/components/ui/available-for-roles"
 import TechStack from "@/components/ui/tech-stack";
 import { ContentNavigator } from "@/components/ui/content-navigator";
+import TitleMark from "@/components/ui/title-mark";
 import { AvatarGroup, AvatarGroupTooltip } from "@/components/animate-ui/components/animate/avatar-group";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/animate-ui/components/animate/avatar";
 import { Separator } from "@/components/ui/separator";
@@ -73,9 +74,18 @@ function BlogDetailContent({
         <div className="mb-12">
           <div className="flex items-start justify-between gap-4 mb-2">
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold font-hero mb-3">
-                {blog.title}
-              </h1>
+              <div className="mb-3 flex items-center gap-3">
+                <TitleMark
+                  logo={blog.logo}
+                  title={blog.title}
+                  icon={blog.icon}
+                  iconClassName={blog.iconClassName}
+                  size="detail"
+                />
+                <h1 className="text-4xl md:text-5xl font-bold font-hero">
+                  {blog.title}
+                </h1>
+              </div>
               <p className="text-lg text-gray-300 leading-relaxed max-w-3xl">
                 {blog.description}
               </p>
