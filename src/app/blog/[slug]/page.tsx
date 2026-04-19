@@ -264,31 +264,31 @@ function BlogDetailContent({
               </section>
             </section>
           </div>
-        </div>
 
-        {/* Table of Contents */}
-        <aside className="hidden lg:block w-64 shrink-0">
-          <div className="sticky top-32">
-            <h3 className="text-sm font-semibold text-gray-400 uppercase mb-4">On this blog</h3>
-            <nav className="space-y-2">
-              {blog.blogPosts.map((post: any, postIndex: number) => (
+          {/* Table of Contents */}
+          <aside className="hidden lg:block w-64 shrink-0">
+            <div className="sticky top-32">
+              <h3 className="text-sm font-semibold text-gray-400 uppercase mb-4">On this blog</h3>
+              <nav className="space-y-2">
+                {blog.blogPosts.map((post: any, postIndex: number) => (
+                  <a
+                    key={postIndex}
+                    href={`#post-${postIndex}`}
+                    className="block text-sm text-gray-400 hover:text-white transition-colors py-1"
+                  >
+                    {post.title}
+                  </a>
+                ))}
                 <a
-                  key={postIndex}
-                  href={`#post-${postIndex}`}
+                  href="#more"
                   className="block text-sm text-gray-400 hover:text-white transition-colors py-1"
                 >
-                  {post.title}
+                  More Blogs
                 </a>
-              ))}
-              <a
-                href="#more"
-                className="block text-sm text-gray-400 hover:text-white transition-colors py-1"
-              >
-                More Blogs
-              </a>
-            </nav>
-          </div>
-        </aside>
+              </nav>
+            </div>
+          </aside>
+        </div>
       </div>
 
       <AvailableForRoles />
