@@ -147,7 +147,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
     title: "Summer 2026",
     category: "Personal",
     date: "April 2026",
-    description: "Looking ahead to my summer.",
+    description: "Looking forward to my summer.",
     technologies: [],
   },
 };

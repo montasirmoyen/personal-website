@@ -47,7 +47,7 @@ const rawProjects: RawProject[] = [
       {
         title: "Smart Chat Router",
         description:
-          "A lightweight router classifies each message and decides whether to answer directly, ask a clarifying question, or trigger a grounded data lookup — keeping responses fast and on-topic without forcing every query through a rigid pipeline.",
+          "A lightweight router classifies each message and decides whether to answer directly, ask a clarifying question, or trigger a grounded data lookup, keeping responses fast and on-topic without forcing every query through a rigid pipeline.",
       },
       {
         title: "Evidence-First AI Answers",
@@ -2026,6 +2026,148 @@ const rawBlogs: RawBlog[] = [
       }
     ]
   },
+  {
+    slug: "summer-2026",
+    image: "/background.jpg",
+    writingType: "personal",
+    tags: ["Internship", "Research"],
+    blogPosts: [
+      {
+        date: "April 18, 2026",
+        title: "Sunny",
+        borderColor: "#fff020",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            This summer is going to be pretty eventful for me.
+            I'll be focusing on gaining real-world software engineering experience, contributing to AI research, and continuing to build and scale my own systems.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            Rather than treating the summer as a break, I'm approaching it as an opportunity to accelerate my growth and deepen my understanding of how software is built, used, and scaled in real environments.
+            `,
+          }
+        ],
+      },
+      {
+        date: "April 18, 2026",
+        title: "Intern",
+        borderColor: "#0569ff",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            This summer, I'll be interning at Cambridge Associates as a Software Engineering Intern in their Boston office.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            My focus is to understand how production-level financial systems are designed, maintained, and scaled.
+            I want to strengthen my ability to write reliable, maintainable code while learning how engineering decisions are made in a real-world business context.
+            `,
+          }
+        ],
+      },
+      {
+        date: "April 18, 2026",
+        title: "Research",
+        borderColor: "#4ff760",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            In parallel, I'll be contributing to AI research and development with Professor Jiang at Suffolk, focused on building an AI agent to support students in probability and statistics.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            The goal is to create a system that can not only answer questions, but also generate clear explanations, examples, and visualizations.
+            One of the key challenges we're addressing is improving how AI handles graphing and visual reasoning, areas where current large language models like ChatGPT often fall short.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            This project is an opportunity to work on applied AI in an educational setting, collaborate closely with peers, and contribute to something that could meaningfully improve how students understand complex material.
+            `,
+          }
+        ],
+      },
+      {
+        date: "April 18, 2026",
+        title: "Presidency",
+        borderColor: "#4b23ff",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            I've been selected as the 2026-2027 President of the Suffolk Programming, AI & Research Club (SPARC).
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            This role will push me beyond just building software and into leadership, organization, and community-building.
+            My focus will be on creating meaningful opportunities for members, whether through technical workshops, collaborative projects, or industry exposure.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            Over the summer, I'll be working closely with the founder & current president, who's done a brilliant job, to understand what's been successful and how to continue growing the club.
+            From there, I'll begin planning initiatives for the fall that provide real value to members.
+            `,
+          }
+        ],
+      },
+      {
+        date: "April 18, 2026",
+        title: "Infra",
+        borderColor: "#ff214a",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            Alongside my internship and research, I'll continue developing infrastructure for my virtual soccer league, which currently maintains around 1,000+ active players.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            I've appointed league operations to two chairmen, allowing me to focus on the technical side, building systems and automation tools to manage logistics, contracts, and player interactions more efficiently.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            This includes expanding a Discord bot I built to handle core league functionality, as well as improving the overall system to support scale and reliability as the player base grows.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            Last summer, I created the successor to MPS called "Pure Soccer".
+            The league is built around that game, which has grown into a large and active community:
+            `,
+          },
+          {
+            type: "bulletpoints",
+            content: [
+              "25M+ plays",
+              "450,000+ favorites",
+              "Peak concurrent player count of 3,600+",
+              "50K+ group members"
+            ]
+          }
+        ],
+      },
+    ],
+  }
 ];
 
 export const projects: Project[] = rawProjects.map((project) =>
