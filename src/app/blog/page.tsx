@@ -333,9 +333,9 @@ export default function BlogPage() {
                         <div className="flex items-center gap-3 mb-1">
                             <BookOpen size={22} />
                             <h2 className="text-2xl md:text-3xl font-hero font-bold text-white">Personal</h2>
-                            <span className="ml-1 rounded-full border border-white/15 bg-white/8 px-2.5 py-0.5 text-xs text-gray-400">
+                            <Badge variant="secondary" className="ml-1 rounded-full px-2.5 py-0.5">
                                 {personalWritings.length}
-                            </span>
+                            </Badge>
                         </div>
                         <p className="text-sm text-gray-400 mb-6">
                             Career reflections, plans, and thoughts beyond the terminal
