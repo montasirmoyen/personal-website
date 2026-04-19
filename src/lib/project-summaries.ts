@@ -3,6 +3,7 @@ import type { ProjectStatus } from "./types";
 export type SharedProjectSummary = {
   title: string;
   category: string;
+  date: string;
   description: string;
   technologies: string[];
   status: ProjectStatus;
@@ -12,6 +13,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
   ramai: {
     title: "RamAI",
     category: "AI & Full-Stack Development",
+    date: "January 2026",
     description:
       "A specialized AI-powered assistant designed to provide Suffolk University students with grounded academic guidance and comparisons of professors based on data and review evidence.",
     technologies: ["TypeScript", "Python", "JSON", "Data Engineering", "AI Integration", "Auditing"],
@@ -20,6 +22,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
   mps: {
     title: "MPS",
     category: "Game Development",
+    date: "August 2021 — December 2023",
     description: "A fast-paced multiplayer soccer game with 50+ real life teams.",
     technologies: ["Lua", "JavaScript", "JSON", "RBLX Studio", "Entrepreneurship"],
     status: "completed",
@@ -27,6 +30,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
   infinitecode: {
     title: "InfiniteCode",
     category: "AI & Full-Stack Development",
+    date: "February 2026",
     description: "An application providing endless coding practice powered by curated challenges and unprecedented AI-generated problems.",
     technologies: ["TypeScript", "Python", "PostgreSQL", "Supabase", "AI Integration"],
     status: "in-progress",
@@ -34,6 +38,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
   resumexp: {
     title: "ResumeXP",
     category: "AI & Full-Stack Development",
+    date: "January 2026",
     description: "An AI-powered application to help users maximize their resume potential in seconds.",
     technologies: ["TypeScript", "React", "Next", "Firebase", "AI Integration"],
     status: "completed",
@@ -41,6 +46,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
   scentdex: {
     title: "ScentDex",
     category: "AI & Full-Stack Development",
+    date: "September 2025",
     description: "Browse, study and filter the most popular fragrances from the most luxurious brands.",
     technologies: ["TypeScript", "React", "Next", "Node.js", "JSON", "AI Integration"],
     status: "completed",
@@ -48,6 +54,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
   chess: {
     title: "Chess",
     category: "Web Development",
+    date: "March 25, 2026",
     description: "A classic chess game in Next.js featuring a sleek design and smooth gameplay.",
     technologies: ["TypeScript", "React", "Next"],
     status: "in-progress",
@@ -55,6 +62,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
   "domain-expansion": {
     title: "Domain Expansion",
     category: "Computer Vision/ML Development",
+    date: "March 15, 2026",
     description: "A real-time computer vision application using hand tracking to identify Jujutsu Kaisen \"Domain Expansion\" gestures via webcam and trigger on-screen overlays.",
     technologies: ["Python", "OpenCV", "MediaPipe"],
     status: "in-progress",
@@ -62,6 +70,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
   "ask-cli": {
     title: "Ask CLI",
     category: "CLI Development",
+    date: "March 21, 2026",
     description: "A CLI tool that lets you ask questions about your code directly from the terminal.",
     technologies: ["Rust"],
     status: "in-progress",
@@ -69,6 +78,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
   aiflash: {
     title: "AIFlash",
     category: "Full-Stack Cloud Development",
+    date: "Mar 18, 2026",
     description:
       "Serverless app utilizing generative AI to transform raw study notes into interactive flashcards. Built with an Angular frontend and a scalable AWS backend, it features 3D card animations and real time AI processing via OpenRouter.",
     technologies: ["Angular", "AWS", "Amplify", "Lambda", "Node.js", "S3", "AI Integration"],
@@ -77,6 +87,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
   crawler: {
     title: "Crawler",
     category: "Systems Development",
+    date: "March 13, 2026",
     description:
       "A high-performance application designed to recursively traverse the web by leveraging a multi-threaded architecture and robust synchronization primitives for concurrency and resource management.",
     technologies: ["C++", "CMake"],
@@ -85,6 +96,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
   urb: {
     title: "URB",
     category: "Backend Development",
+    date: "February 26, 2026",
     description: "Universal Room Booker: a scalable backend system for managing reservable rooms with safe and concurrent booking logic.",
     technologies: ["Java", "Spring Boot", "PostgreSQL", "Maven", "Docker"],
     status: "completed",
