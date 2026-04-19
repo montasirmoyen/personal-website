@@ -293,15 +293,15 @@ export default function BlogPage() {
                     </div>
                 )}
 
-                {/* Dev Logs Section */}
+                {/* Dev Section */}
                 {devLogs.length > 0 && (
                     <section className="mb-16">
                         <div className="flex items-center gap-3 mb-1">
-                            <Bot className="text-blue-400" size={22} />
-                            <h2 className="text-2xl md:text-3xl font-hero font-bold text-white">Dev Logs</h2>
-                            <span className="ml-1 rounded-full border border-white/15 bg-white/8 px-2.5 py-0.5 text-xs text-gray-400">
+                            <Bot size={24} />
+                            <h2 className="text-2xl md:text-3xl font-hero font-bold text-white">Dev Blogs</h2>
+                            <Badge variant="secondary" className="ml-1 rounded-full px-2.5 py-0.5">
                                 {devLogs.length}
-                            </span>
+                            </Badge>
                         </div>
                         <p className="text-sm text-gray-400 mb-6">
                             Engineering progress, architecture decisions, and development chronicles
