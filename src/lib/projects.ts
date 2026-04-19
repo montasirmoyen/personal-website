@@ -41,48 +41,73 @@ const rawProjects: RawProject[] = [
     problemItSolves: "When trying to find an answer to a question about professors at Suffolk University, scrolling through pages of professor information and reviews can be time consuming. Especially when time is limited, like when you're registering for classes and trying to decide between professors, it can be hard to find the information you need quickly.",
     keyFeatures: [
       {
-        title: "AI Chatbot Integration",
-        description: "Utilizes various models such as XiaomiMiMo's MiMo-V2-Flash model for fast, accurate, and cost-effective responses to student queries about professors and courses.",
+        title: "Smart Chat Router",
+        description:
+          "A lightweight router classifies each message and decides whether to answer directly, ask a clarifying question, or trigger a grounded data lookup — keeping responses fast and on-topic without forcing every query through a rigid pipeline.",
+      },
+      {
+        title: "Evidence-First AI Answers",
+        description:
+          "Instead of thin summaries, the AI reads directly from raw review snippets, tags, and course metrics before drafting a response. Supporting evidence is surfaced alongside the answer, making the system transparent rather than a black box.",
       },
       {
         title: "Comprehensive Professor Discovery",
-        description: "Includes a comprehensive library with search functionality, keeping 1200+ professors easily discoverable.",
+        description:
+          "Includes a comprehensive library with search functionality, keeping 1200+ professors easily discoverable.",
       },
       {
         title: "Detailed Professor Profiles",
-        description: "View professor information including name, department, average ratings, and recent student reviews all in one place.",
+        description:
+          "View professor information including name, department, average ratings, and recent student reviews all in one place.",
       },
     ],
     challenges: [
       {
-        title: "AI Accuracy and Trust",
-        description: "Ensuring the AI chatbot provides accurate information was critical. Extensive auditing and prompt engineering was required to minimize hallucinations and maintain user trust. The backend implements strong filtering and constraints based on planner intents.",
+        title: "Context Bleeding",
+        description:
+          "The AI would carry over department or trait context from earlier messages and use it to silently block valid matches in the current query. Fixing this required carefully scoping what state persists across turns and what gets reset per message.",
       },
       {
-        title: "AI Scope and Limitations",
-        description: "Maximizing the usefulness of the AI and making sure a broad range of questions could be answered. This involved careful consideration of the training data and prompt design to ensure the AI could handle a wide variety of queries while staying within its knowledge base.",
+        title: "Brittle Name Matching",
+        description:
+          "Stray spaces, punctuation differences, and partial names were enough to make the AI claim a professor didn't exist when they were right there in the data. Robust fuzzy matching and text normalization had to be built into the retrieval layer.",
+      },
+      {
+        title: "Groundedness vs. Helpfulness",
+        description:
+          "Balancing a cautious, evidence-bound AI against one that feels genuinely useful required careful prompt engineering. The AI needs to acknowledge thin or missing evidence without becoming unhelpfully evasive.",
       },
       {
         title: "Data Representation",
-        description: "Handling edge cases where users ask questions not represented well in the dataset required careful consideration of how the AI should respond responsibly.",
+        description:
+          "Handling edge cases where users ask questions not well-represented in the dataset required careful consideration of how the AI should respond responsibly.",
       },
     ],
     tradeoffs: [
       {
-        title: "RAG vs Intent-Based Planning",
-        description: "I chose to implement an intent-based planning system in the backend instead of a traditional Retrieval-Augmented Generation (RAG) approach. This allows for more structured and controlled responses, but it also means that the AI's capabilities are limited to the defined intents and may not handle unexpected queries as gracefully as a RAG system might.",
+        title: "Router vs. Strict Intent Planner",
+        description:
+          "The original strict intent classifier was replaced with a lightweight router that decides between direct answers and grounded lookups. This is far more flexible for natural queries, but requires the system to manage much richer data retrieval before a response is drafted.",
       },
       {
-        title: "AI Model Selection",
-        description: "I chose AI models that balance performance, accuracy, and cost. Extensive testing and evaluation were conducted to select the most suitable model for the application's needs.",
+        title: "Richer Retrieval, More Complexity",
+        description:
+          "Feeding the AI individual review snippets, course aggregates, and tags gives it real grounding but makes the retrieval pipeline significantly more complex than the original thin-summary approach.",
+      },
+      {
+        title: "Caution Over Confidence",
+        description:
+          "The AI is tuned to be explicit when evidence is thin or contradictory rather than filling gaps with inference. This prioritizes trust and accuracy at the cost of occasionally less decisive answers.",
       },
       {
         title: "Sourcing Data",
-        description: "I chose RateMyProfessors as the primary data source for professor information due to its comprehensive coverage and user-generated reviews. However, this also means that the data may be subject to biases and may not always be up-to-date, which is a tradeoff I had to consider.",
+        description:
+          "RateMyProfessors remains the primary data source due to its comprehensive coverage and user-generated reviews. This means the data may carry biases and may not always be current, which is a known tradeoff.",
       },
       {
         title: "Storing Data in JSON vs Database",
-        description: "I chose JSON for data storage due to its simplicity and ease of use for the project's needs. While a database could offer more robust querying capabilities, JSON provided a lightweight and flexible solution that met the application's requirements.",
+        description:
+          "JSON was chosen for its simplicity and flexibility for this project's scale. While a database would offer more robust querying, JSON remains a lightweight solution that meets the application's current requirements.",
       },
     ],
     outcome: `
