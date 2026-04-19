@@ -2,18 +2,32 @@ import { projectSummaries } from "./project-summaries";
 import { getTechDoc, getTechIcon, techStack } from "./techstack";
 import type { Blog, Project } from "./types";
 
-const rawProjects: Project[] = [
+type SharedFields = Pick<
+  Project,
+  "title" | "category" | "date" | "description" | "technologies" | "status"
+>;
+
+type RawProject = Omit<Project, keyof SharedFields>;
+type RawBlog = Omit<Blog, keyof SharedFields>;
+
+function applySharedFields<T extends { slug: string }>(entry: T): T & SharedFields {
+  const summary = projectSummaries[entry.slug];
+  if (!summary) {
+    throw new Error(`Missing shared summary for slug: ${entry.slug}`);
+  }
+
+  return {
+    ...entry,
+    ...summary,
+  };
+}
+
+const rawProjects: RawProject[] = [
   {
     slug: "ramai",
-    title: "RamAI",
     colors: ["#2e3ffa", "#1d46fd"],
-    category: "AI & Full-Stack Development",
     image: "/ramai-home.png",
     carouselImages: ["/ramai-chat.png", "/ramai-ag.png", "/ramai-search.png", "/ramai-ranks.png"],
-    date: "January 2026",
-    status: "completed",
-    description: "A specialized AI-powered assistant designed to provide Suffolk University students with grounded academic guidance and comparisons of professors based on data and review evidence.",
-    technologies: ["TypeScript", "Python", "JSON", "Data Engineering", "AI Integration", "Auditing"],
     blogUrl: "https://montasirmoyen.com/blog/ramai",
     liveUrl: "https://ram-ai.xyz/",
     problemItSolves: "When trying to find an answer to a question about professors at Suffolk University, scrolling through pages of professor information and reviews can be time consuming. Especially when time is limited, like when you're registering for classes and trying to decide between professors, it can be hard to find the information you need quickly.",
@@ -70,16 +84,10 @@ const rawProjects: Project[] = [
   },
   {
     slug: "mps",
-    title: "MPS",
     colors: ["#2e3ffa", "#d70028"],
-    category: "Game Development",
     image: "/mps.png",
     carouselImages: ["/mps-6.webp", "/mps-4.png", "/mps-7.webp", "/mps-3.png", "/mps-8.webp", "/mps-5.png"],
-    date: "August 2021 — December 2023",
-    status: "completed",
-    description: "A fast-paced multiplayer soccer game with 50+ real life teams.",
     problemItSolves: "There was a lack of fast-paced soccer games with realistic mechanics on Roblox at the time, and I wanted to create a fun and competitive soccer experience for players on the platform. I also wanted to build a community around the game where players could connect and compete with each other.",
-    technologies: ["Lua", "JavaScript", "JSON", "RBLX Studio", "Entrepreneurship"],
     gameUrl: "https://www.roblox.com/games/13436905139/MPS-4-a-side",
     keyFeatures: [
       {
@@ -134,15 +142,9 @@ const rawProjects: Project[] = [
   },
   {
     slug: "infinitecode",
-    title: "InfiniteCode",
     colors: ["#d1001c", "#ff1369"],
-    category: "AI & Full-Stack Development",
     image: "/ic-ai-gen.png",
     carouselImages: ["/ic-ql.png", "/ic-grading.png", "/ic-db.png", "/ic-ai-grade.png", "/ic-ai-gen.png", "/ic-ai-gen-home.png"],
-    date: "February 2026",
-    status: "in-progress",
-    description: "An application providing endless coding practice powered by curated challenges and unprecedented AI-generated problems.",
-    technologies: ["TypeScript", "Python", "PostgreSQL", "Supabase", "AI Integration"],
     blogUrl: "https://montasirmoyen.com/blog/infinitecode",
     liveUrl: "https://infinitecodex.xyz",
     problemItSolves: "Practicing questions that appear in technical interviews is valuable. Platforms like LeetCode are great, I use it to learn common patterns, strengthen data structures and algorithms, and get comfortable with interview style problems. But interviews don't always give you something you've seen before. They test how you think, meaning they might not hand you a problem you've solved or memorized before.",
@@ -198,16 +200,10 @@ const rawProjects: Project[] = [
   },
   {
     slug: "resumexp",
-    title: "ResumeXP",
     colors: ["#00ff8c", "#0ccaff"],
-    category: "AI & Full-Stack Development",
     image: "/rxp-home.png",
     carouselImages: ["/rxp-home.png", "/rxp-dashboard.png", "/rxp-analysis-1.png", "/rxp-analysis-2-1.png", "/rxp-analysis-3.png"],
-    date: "January 2026",
-    status: "completed",
-    description: "An AI-powered application to help users maximize their resume potential in seconds.",
     problemItSolves: "Crafting a strong resume is crucial for job seekers, but it can be time consuming and challenging to know how to improve it effectively. Especially with all the ATS requirements and the need to tailor resumes for different job applications, it can be overwhelming for users to optimize their resumes and create compelling cover letters quickly.",
-    technologies: ["TypeScript", "React", "Next", "AI Integration"],
     bullets: [
       "Provides honest feedback on resumes to help users improve and stand out to potential employers.",
       "Offers a job match score feature that aligns resumes with job descriptions and suggests improvements.",
@@ -250,16 +246,10 @@ const rawProjects: Project[] = [
   },
   {
     slug: "scentdex",
-    title: "ScentDex",
     colors: ["#ff34b1", "#ff851b"],
-    category: "AI & Full-Stack Development",
     image: "/sd-home-1.png",
     carouselImages: ["/sd-home-1.png", "/sd-home-3.png", "/sd-home-4.png", "/sd-ai.png", "/sd-compare-1.png", "/sd-compare-2.png", "/sd-compare-3.png"],
     githubUrl: "https://github.com/montasirmoyen/scentdex/",
-    date: "September 2025",
-    status: "completed",
-    description: "Browse, study and filter the most popular fragrances from the most luxurious brands.",
-    technologies: ["TypeScript", "React", "Next", "Node.js", "JSON", "AI Integration"],
     liveUrl: "https://scentdex.vercel.app",
     keyFeatures: [
       {
@@ -294,17 +284,11 @@ const rawProjects: Project[] = [
   }
 ];
 
-const rawBlogs: Blog[] = [
+const rawBlogs: RawBlog[] = [
   {
     slug: "infinitecode",
-    title: "InfiniteCode",
-    category: "AI & Full-Stack Development",
     image: "/ic-grading.png",
-    date: "February 8, 2026 — Present",
-    status: "in-progress",
     liveUrl: "https://infinitecodex.xyz",
-    description: "Endless coding practice powered by curated challenges and unprecedented AI-generated problems.",
-    technologies: ["TypeScript", "Python", "PostgreSQL", "Supabase", "AI Integration"],
     blogPosts: [
       {
         date: "February 8, 2026 - 6:16PM",
@@ -676,14 +660,8 @@ const rawBlogs: Blog[] = [
   },
   {
     slug: "chess",
-    title: "Chess",
-    category: "Web Development",
     image: "/chess-home.jpg",
-    date: "March 25, 2026 — Present",
-    status: "in-progress",
     githubUrl: "https://github.com/montasirmoyen/chess",
-    description: "A classic chess game in Next.js featuring a sleek design and smooth gameplay.",
-    technologies: ["TypeScript", "React", "Next"],
     collab: true,
     collaborators: [
       {
@@ -729,14 +707,8 @@ const rawBlogs: Blog[] = [
   },
   {
     slug: "domain-expansion",
-    title: "Domain Expansion",
-    category: "Computer Vision/ML Development",
     image: "/de-home.webp",
-    date: "March 15, 2026 — Present",
-    status: "in-progress",
     githubUrl: "https://github.com/montasirmoyen/domain-expansion",
-    description: "A real-time computer vision application using hand tracking to identify Jujutsu Kaisen \"Domain Expansion\" gestures via webcam and trigger on-screen overlays.",
-    technologies: ["Python", "OpenCV", "MediaPipe"],
     collab: true,
     collaborators: [
       {
@@ -890,14 +862,8 @@ const rawBlogs: Blog[] = [
   },
   {
     slug: "ask-cli",
-    title: "Ask CLI",
-    category: "CLI Development",
     image: "/ask-home.png",
-    date: "March 21, 2026",
-    status: "in-progress",
     githubUrl: "https://github.com/montasirmoyen/ask-cli",
-    description: "A CLI tool that lets you ask questions about your code directly from the terminal.",
-    technologies: ["Rust"],
     mini: true,
     blogPosts: [
       {
@@ -938,15 +904,9 @@ const rawBlogs: Blog[] = [
   },
   {
     slug: "aiflash",
-    title: "AIFlash",
-    category: "Full-Stack Cloud Development",
     image: "/aif-flashcards.png",
-    date: "Mar 18, 2026",
-    status: "completed",
     githubUrl: "https://github.com/montasirmoyen/aiflash",
     liveUrl: "https://staging.d1gk5r8nqlxue7.amplifyapp.com/",
-    description: "Serverless app utilizing generative AI to transform raw study notes into interactive flashcards. Built with an Angular frontend and a scalable AWS backend, it features 3D card animations and real time AI processing via OpenRouter.",
-    technologies: ["Angular", "AWS", "Amplify", "Lambda", "Node.js", "S3", "AI Integration"],
     challenge: true,
     blogPosts: [
       {
@@ -1129,14 +1089,8 @@ const rawBlogs: Blog[] = [
   },
   {
     slug: "crawler",
-    title: "Crawler",
-    category: "Systems Development",
     image: "/crawler-home.jpg",
-    date: "March 13, 2026",
-    status: "completed",
     githubUrl: "https://github.com/montasirmoyen/crawler",
-    description: "A high-performance application designed to recursively traverse the web by leveraging a multi-threaded architecture and robust synchronization primitives for concurrency and resource management.",
-    technologies: ["C++", "CMake"],
     challenge: true,
     blogPosts: [
       {
@@ -1307,14 +1261,8 @@ const rawBlogs: Blog[] = [
   },
   {
     slug: "urb",
-    title: "URB",
-    category: "Backend Development",
     image: "/urb-home.jpg",
-    date: "February 26, 2026",
-    status: "completed",
     githubUrl: "https://github.com/montasirmoyen/urb",
-    description: "Universal Room Booker: a scalable backend system for managing reservable rooms with safe and concurrent booking logic.",
-    technologies: ["Java", "Spring Boot", "PostgreSQL", "Maven", "Docker"],
     challenge: true,
     blogPosts: [
       {
@@ -1491,16 +1439,10 @@ const rawBlogs: Blog[] = [
   },
   {
     slug: "resumexp",
-    title: "ResumeXP",
-    category: "AI & Full-Stack Development",
     image: "/rxp-analysis-2.png",
-    date: "January 29, 2026 — February 3, 2026",
-    status: "completed",
     projectUrl: "https://montasirmoyen.com/projects/resumexp",
     liveUrl: "https://resumexp.vercel.app/",
     githubUrl: "https://github.com/montasirmoyen/resumexp",
-    description: "An AI-powered application to help users maximize their resume potential in seconds.",
-    technologies: ["TypeScript", "React", "Next", "Firebase", "AI Integration"],
     blogPosts: [
       {
         date: "January 29, 2026 - 7:12PM",
@@ -1730,14 +1672,8 @@ const rawBlogs: Blog[] = [
   },
   {
     slug: "ramai",
-    title: "RamAI",
-    category: "AI & Full-Stack Development",
     image: "/ramai-home.png",
-    date: "January 15, 2026 — January 20, 2026",
-    status: "completed",
     heroBlog: true,
-    description: "A specialized AI-powered assistant designed to provide Suffolk University students with grounded academic guidance and comparisons of professors based on data and review evidence.",
-    technologies: ["TypeScript", "Python", "JSON", "Data Engineering", "AI Integration", "Auditing"],
     projectUrl: "https://montasirmoyen.com/projects/ramai",
     liveUrl: "https://ram-ai.xyz/",
     blogPosts: [
@@ -2075,20 +2011,6 @@ const rawBlogs: Blog[] = [
     ]
   }
 ];
-
-type SharedFields = Pick<
-  Project,
-  "title" | "category" | "description" | "technologies" | "status"
->;
-
-function applySharedFields<T extends { slug: string } & SharedFields>(entry: T): T {
-  const summary = projectSummaries[entry.slug];
-  if (!summary) return entry;
-  return {
-    ...entry,
-    ...summary,
-  };
-}
 
 export const projects: Project[] = rawProjects.map((project) =>
   applySharedFields(project),
