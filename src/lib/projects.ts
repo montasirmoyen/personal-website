@@ -6,6 +6,7 @@ type SharedFields = Pick<
   Project,
   | "title"
   | "logo"
+  | "primaryColor"
   | "icon"
   | "iconClassName"
   | "category"
