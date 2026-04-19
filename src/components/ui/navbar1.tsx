@@ -44,21 +44,20 @@ export default function NavBar() {
         <>
             <div className="bg-black/25 backdrop-blur-lg pointer-events-none fixed left-0 z-40 w-full select-none from-transparent to-[#0a0a0aa4] bg-gradient-to-t" style={{
                 top: 0,
-                height: 150,
-                maskImage: 'linear-gradient(to bottom, black 50%, transparent)',
+                height: 100,
+                maskImage: 'linear-gradient(to bottom, black 25%, transparent)',
                 WebkitBackdropFilter: 'blur(2px)',
                 backdropFilter: 'blur(2px)',
             }}></div>
             <nav className="fixed inset-x-0 top-4 z-50 px-4 md:px-6">
                 <div className="max-w-7xl mx-auto flex items-center justify-center gap-6">
                     {/* Logo */}
-                    <Link href="/" className="flex-shrink-0">
+                    <Link href="/" className="flex-shrink-0 hover:scale-110 transition-all">
                         <Image
                             src="/mm-logo.png"
                             alt="Montasir Moyen Logo"
-                            width={40}
-                            height={40}
-                            className="w-10 h-10"
+                            width={48}
+                            height={48}
                         />
                     </Link>
 
