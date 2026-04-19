@@ -6,6 +6,7 @@ export interface Project {
   slug: string;
   title: string;
   logo?: string;
+  primaryColor?: string;
   icon?: ElementType;
   iconClassName?: string;
   colors?: [string, string];
@@ -42,6 +43,7 @@ export interface Blog {
   slug: string;
   title: string;
   logo?: string;
+  primaryColor?: string;
   icon?: ElementType;
   iconClassName?: string;
   heroBlog?: boolean;
