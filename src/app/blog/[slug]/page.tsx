@@ -125,6 +125,11 @@ function BlogDetailContent({
           {/* Date and Links */}
           <div className="flex items-center gap-4 flex-wrap">
             <p className="text-sm text-gray-500">{blog.date}</p>
+            {blog.tags && blog.tags.length > 0 && blog.tags.map((tag: string) => (
+              <span key={tag} className="rounded-full border border-white/15 bg-white/8 px-3 py-1 text-xs text-gray-400 capitalize">
+                {tag}
+              </span>
+            ))}
             {blog.githubUrl && (
               <Link
                 href={blog.githubUrl}
@@ -175,14 +180,18 @@ function BlogDetailContent({
         <div className="flex gap-8 relative">
           {/* Main Content Area */}
           <div className="flex-1 space-y-12 min-w-0">
-            <section id="tech-stack">
-              <h2 className="text-2xl font-bold mb-4">Tech Stack</h2>
-              <TechStack technologies={blog.technologies} />
-            </section>
+            {blog.technologies && blog.technologies.length > 0 && (
+              <section id="tech-stack">
+                <h2 className="text-2xl font-bold mb-4">Tech Stack</h2>
+                <TechStack technologies={blog.technologies} />
+              </section>
+            )}
 
             {/* Blog Posts */}
             <section id="blog-posts">
-              <h2 className="text-2xl font-bold mb-6">Development Blog Posts</h2>
+              <h2 className="text-2xl font-bold mb-6">
+                {blog.writingType === "personal" ? "Posts" : "Development Blog Posts"}
+              </h2>
               <div className="space-y-12">
                 {blog.blogPosts.map((post: any, postIndex: number) => (
                   <div key={postIndex}>
@@ -278,7 +287,9 @@ function BlogDetailContent({
           {/* Table of Contents */}
           <aside className="hidden lg:block w-64 shrink-0">
             <div className="sticky top-32">
-              <h3 className="text-sm font-semibold text-gray-400 uppercase mb-4">On this blog</h3>
+              <h3 className="text-sm font-semibold text-gray-400 uppercase mb-4">
+                {blog.writingType === "personal" ? "On this post" : "On this blog"}
+              </h3>
               <nav className="space-y-2">
                 {blog.blogPosts.map((post: any, postIndex: number) => (
                   <a

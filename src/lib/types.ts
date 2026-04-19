@@ -14,7 +14,7 @@ export interface Project {
   image: string;
   carouselImages?: string[];
   date: string;
-  status: ProjectStatus;
+  status?: ProjectStatus;
   description: string;
   bullets?: string[];
   technologies: string[];
@@ -54,10 +54,12 @@ export interface Blog {
     avatarImgUrl?: string;
   }[];
   mini?: boolean;
+  writingType?: "devlog" | "personal";
+  tags?: string[];
   category: string;
   image: string;
   date: string;
-  status: ProjectStatus;
+  status?: ProjectStatus;
   description: string;
   technologies: string[];
   githubUrl?: string;

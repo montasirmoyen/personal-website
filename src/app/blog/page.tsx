@@ -3,9 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import type { CSSProperties, JSX } from "react";
+import { useState, type CSSProperties } from "react";
 
-import { Bot, Zap, Handshake, Leaf, Star } from "lucide-react";
+import { Bot, BookOpen, Star } from "lucide-react";
 
 import { blogs } from "@/lib/projects";
 import { getTechIcon } from "@/lib/projects";
@@ -17,45 +17,18 @@ import { BackgroundGradient } from "@/components/ui/background-gradient"
 import { Badge } from "@/components/ui/badge";
 import { TextAnimate } from "@/components/ui/text-animate"
 import TitleMark from "@/components/ui/title-mark";
-
-type BlogSectionKey = "classic" | "challenge" | "collaboration" | "mini";
-
-const sectionLabels: Record<BlogSectionKey, string> = {
-    classic: "Classic",
-    challenge: "Challenge",
-    collaboration: "Collaboration",
-    mini: "Mini",
-};
-
-const sectionDesc: Record<BlogSectionKey, string> = {
-    classic: "More long term projects that are meant to be polished and comprehensive",
-    challenge: "Done as part of a challenge, usually with a time constraint",
-    collaboration: "Developed in collaboration with others",
-    mini: "Smaller projects that are more experimental",
-};
-
-const sectionIcon: Record<BlogSectionKey, JSX.Element> = {
-    classic: <Bot />,
-    challenge: <Zap />,
-    collaboration: <Handshake />,
-    mini: <Leaf />,
-};
-
-const sectionOrder: BlogSectionKey[] = ["classic", "challenge", "collaboration", "mini"];
-
-function getBlogSection(blog: (typeof blogs)[number]): BlogSectionKey {
-    if (blog.mini) return "mini";
-    if (blog.challenge) return "challenge";
-    if (blog.collab) return "collaboration";
-    return "classic";
-}
+import { Button } from "@/components/ui/button";
 
 function BlogCard({ blog }: { blog: (typeof blogs)[number] }) {
-    const typeBadges = [
-        blog.challenge ? { label: "Challenge", className: "border-orange-500/70 bg-orange-500/15 text-orange-100" } : null,
-        blog.collab ? { label: "Collaboration", className: "border-blue-500/70 bg-blue-500/15 text-blue-100" } : null,
-        blog.mini ? { label: "Mini", className: "border-emerald-500/70 bg-emerald-500/15 text-emerald-100" } : null,
-    ].filter(Boolean) as { label: string; className: string }[];
+    const isDevLog = !blog.writingType || blog.writingType === "devlog";
+
+    const typeBadges = isDevLog
+        ? [
+            blog.challenge ? { label: "Challenge", className: "border-orange-500/70 bg-orange-500/15 text-orange-100" } : null,
+            blog.collab ? { label: "Collaboration", className: "border-blue-500/70 bg-blue-500/15 text-blue-100" } : null,
+            blog.mini ? { label: "Mini", className: "border-emerald-500/70 bg-emerald-500/15 text-emerald-100" } : null,
+        ].filter(Boolean) as { label: string; className: string }[]
+        : [];
 
     const cardStyle = {
         "--blog-border": blog.primaryColor ? `${blog.primaryColor}66` : "rgb(255 255 255 / 0.12)",
@@ -83,12 +56,11 @@ function BlogCard({ blog }: { blog: (typeof blogs)[number] }) {
                     <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/25 to-transparent" />
 
                     <div className="absolute left-4 right-4 top-4 flex items-start justify-between gap-3">
-                        <Badge
-                            variant="outline"
-                            className="border-white/25 bg-black/45 text-white backdrop-blur-md"
-                        >
-                            {blog.status === "in-progress" ? "In Progress" : "Completed"}
-                        </Badge>
+                        {blog.status && (
+                            <Badge variant="outline" className="border-white/20 bg-black/40 text-white backdrop-blur-sm">
+                                {blog.status === "in-progress" ? "In Progress" : "Completed"}
+                            </Badge>
+                        )}
 
                         <Badge
                             variant="outline"
@@ -104,17 +76,19 @@ function BlogCard({ blog }: { blog: (typeof blogs)[number] }) {
                 </div>
 
                 <div className="p-6 md:p-7">
-                    <div className="mb-3 flex flex-wrap gap-2">
-                        {typeBadges.map((badge) => (
-                            <Badge
-                                key={badge.label}
-                                variant="outline"
-                                className={badge.className}
-                            >
-                                {badge.label}
-                            </Badge>
-                        ))}
-                    </div>
+                    {typeBadges.length > 0 && (
+                        <div className="mb-3 flex flex-wrap gap-2">
+                            {typeBadges.map((badge) => (
+                                <Badge
+                                    key={badge.label}
+                                    variant="outline"
+                                    className={badge.className}
+                                >
+                                    {badge.label}
+                                </Badge>
+                            ))}
+                        </div>
+                    )}
 
                     <div className="mb-3 flex items-center gap-2.5">
                         <TitleMark
@@ -133,29 +107,44 @@ function BlogCard({ blog }: { blog: (typeof blogs)[number] }) {
                         {blog.description}
                     </p>
 
-                    <div className="flex flex-wrap gap-2 pt-1">
-                        {blog.technologies.map((tech) => {
-                            const iconPath = getTechIcon(tech);
-                            return (
+                    {isDevLog && blog.technologies.length > 0 && (
+                        <div className="flex flex-wrap gap-2 pt-1">
+                            {blog.technologies.map((tech) => {
+                                const iconPath = getTechIcon(tech);
+                                return (
+                                    <span
+                                        key={tech}
+                                        className="flex items-center gap-1.5 rounded-full border border-white/12 bg-white/6 px-3 py-1 text-xs text-gray-200/90 transition-colors duration-300 group-hover:border-white/20"
+                                    >
+                                        {iconPath && (
+                                            <Image
+                                                src={iconPath}
+                                                alt={tech}
+                                                width={14}
+                                                height={14}
+                                                className="object-contain"
+                                                unoptimized
+                                            />
+                                        )}
+                                        {tech}
+                                    </span>
+                                );
+                            })}
+                        </div>
+                    )}
+
+                    {!isDevLog && blog.tags && blog.tags.length > 0 && (
+                        <div className="flex flex-wrap gap-2 pt-1">
+                            {blog.tags.map((tag) => (
                                 <span
-                                    key={tech}
-                                    className="flex items-center gap-1.5 rounded-full border border-white/12 bg-white/6 px-3 py-1 text-xs text-gray-200/90 transition-colors duration-300 group-hover:border-white/20"
+                                    key={tag}
+                                    className="rounded-full border border-white/12 bg-white/6 px-3 py-1 text-xs text-gray-200/90 capitalize"
                                 >
-                                    {iconPath && (
-                                        <Image
-                                            src={iconPath}
-                                            alt={tech}
-                                            width={14}
-                                            height={14}
-                                            className="object-contain"
-                                            unoptimized
-                                        />
-                                    )}
-                                    {tech}
+                                    {tag}
                                 </span>
-                            );
-                        })}
-                    </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </article>
         </Link>
@@ -163,13 +152,14 @@ function BlogCard({ blog }: { blog: (typeof blogs)[number] }) {
 }
 
 export default function BlogPage() {
-    const groupedBlogs = blogs.reduce<Record<BlogSectionKey, (typeof blogs)[number][]>>(
-        (acc, blog) => {
-            acc[getBlogSection(blog)].push(blog);
-            return acc;
-        },
-        { classic: [], collaboration: [], challenge: [], mini: [] }
-    );
+    const devLogs = blogs.filter((b) => !b.writingType || b.writingType === "devlog");
+    const personalWritings = blogs.filter((b) => b.writingType === "personal");
+    const heroBlog = blogs.find((b) => b.heroBlog);
+    const [visibleDevLogs, setVisibleDevLogs] = useState(3);
+    const [visiblePersonalWritings, setVisiblePersonalWritings] = useState(3);
+
+    const shownDevLogs = devLogs.slice(0, visibleDevLogs);
+    const shownPersonalWritings = personalWritings.slice(0, visiblePersonalWritings);
 
     return (
         <div className="pt-32 px-4 md:px-6">
@@ -178,7 +168,7 @@ export default function BlogPage() {
                 {/* Header */}
                 <div className="mb-10">
                     <p className="text-sm text-white/50 uppercase mb-2">
-                        FEATURED WRITING & INSIGHTS
+                        WRITING & INSIGHTS
                     </p>
                     <div className="flex flex-col items-start">
                         <TextAnimate
@@ -186,14 +176,14 @@ export default function BlogPage() {
                             by="character"
                             className="text-5xl md:text-6xl font-bold font-hero"
                         >
-                            Curated project
+                            Curated
                         </TextAnimate>
 
                         <TextAnimate
                             animation="slideLeft"
                             once
                             by="character"
-                                     className="text-5xl md:text-6xl font-bold font-hero 
+                            className="text-5xl md:text-6xl font-bold font-hero 
                                          bg-linear-to-r from-blue-500 to-purple-500 
                                bg-clip-text text-transparent animate-gradient 
                                          bg-size-[200%_auto]">
@@ -203,73 +193,73 @@ export default function BlogPage() {
                 </div>
 
                 {/* Hero */}
-                {(() => {
-                    const heroBlog = blogs.find((b) => b.heroBlog);
-                    if (!heroBlog) return null;
-                    return (
-                        <div className="mb-16">
-                            <div className="flex flex-col gap-2">
-                                <div className="flex items-center gap-2">
-                                    <Star className="text-blue-600" />
-                                    <h2 className="text-2xl md:text-3xl font-hero font-bold text-white">
-                                        Highlight
-                                    </h2>
-                                    <Badge
-                                        variant="outline"
-                                        className="border-white/20 bg-black/40 text-white"
-                                    >
-                                        Editor's Pick
-                                    </Badge>
-                                </div>
+                {heroBlog && (
+                    <div className="mb-16">
+                        <div className="flex flex-col gap-2">
+                            <div className="flex items-center gap-2">
+                                <Star className="text-blue-600" />
+                                <h2 className="text-2xl md:text-3xl font-hero font-bold text-white">
+                                    Highlight
+                                </h2>
+                                <Badge
+                                    variant="outline"
+                                    className="border-white/20 bg-black/40 text-white"
+                                >
+                                    Editor's Pick
+                                </Badge>
                             </div>
-                            <p className="text-sm text-gray-400">
-                                Featured project I returned to
-                            </p>
-                            <Separator className="mt-6 mb-8" />
-                            <BackgroundGradient colors={["#2e3ffa", "#1d46fd"]}>
-                                <Link href={`/blog/${heroBlog.slug}`} className="group block">
-                                    <div className="rounded-3xl overflow-hidden">
-                                        <div className="relative w-full aspect-21/9 overflow-hidden">
-                                            <Image
-                                                src={heroBlog.image}
-                                                alt={heroBlog.title}
-                                                fill
-                                                className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                                unoptimized
-                                            />
-                                            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/80 to-transparent" />
-                                            <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent" />
-                                            <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full">
-                                                <div className="flex flex-wrap gap-2 mb-4">
-                                                    {heroBlog.challenge && (
-                                                        <Badge variant="outline" className="border-orange-500 bg-orange-500/20 backdrop-blur-sm">Challenge</Badge>
-                                                    )}
-                                                    {heroBlog.collab && (
-                                                        <Badge variant="outline" className="border-blue-500 bg-blue-500/20 backdrop-blur-sm">Collaboration</Badge>
-                                                    )}
-                                                    {heroBlog.mini && (
-                                                        <Badge variant="outline" className="border-emerald-500 bg-emerald-500/20 backdrop-blur-sm">Mini</Badge>
-                                                    )}
+                        </div>
+                        <p className="text-sm text-gray-400">
+                            Featured post I returned to
+                        </p>
+                        <Separator className="mt-6 mb-8" />
+                        <BackgroundGradient colors={["#2e3ffa", "#1d46fd"]}>
+                            <Link href={`/blog/${heroBlog.slug}`} className="group block">
+                                <div className="rounded-3xl overflow-hidden">
+                                    <div className="relative w-full aspect-21/9 overflow-hidden">
+                                        <Image
+                                            src={heroBlog.image}
+                                            alt={heroBlog.title}
+                                            fill
+                                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                            unoptimized
+                                        />
+                                        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/80 to-transparent" />
+                                        <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent" />
+                                        <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full">
+                                            <div className="flex flex-wrap gap-2 mb-4">
+                                                {heroBlog.challenge && (
+                                                    <Badge variant="outline" className="border-orange-500 bg-orange-500/20 backdrop-blur-sm">Challenge</Badge>
+                                                )}
+                                                {heroBlog.collab && (
+                                                    <Badge variant="outline" className="border-blue-500 bg-blue-500/20 backdrop-blur-sm">Collaboration</Badge>
+                                                )}
+                                                {heroBlog.mini && (
+                                                    <Badge variant="outline" className="border-emerald-500 bg-emerald-500/20 backdrop-blur-sm">Mini</Badge>
+                                                )}
+                                                {heroBlog.status && (
                                                     <Badge variant="outline" className="border-white/20 bg-black/40 text-white backdrop-blur-sm">
                                                         {heroBlog.status === "in-progress" ? "In Progress" : "Completed"}
                                                     </Badge>
-                                                </div>
-                                                <p className="text-sm text-gray-400 mb-2">{heroBlog.category}</p>
-                                                <div className="mb-3 flex items-center gap-3">
-                                                    <TitleMark
-                                                        logo={heroBlog.logo}
-                                                        title={heroBlog.title}
-                                                        icon={heroBlog.icon}
-                                                        iconClassName={heroBlog.iconClassName}
-                                                        size="hero"
-                                                    />
-                                                    <h2 className="text-3xl md:text-5xl font-hero font-bold text-white">
-                                                        {heroBlog.title}
-                                                    </h2>
-                                                </div>
-                                                <p className="text-gray-300 text-base md:text-lg max-w-2xl mb-4">
-                                                    {heroBlog.description}
-                                                </p>
+                                                )}
+                                            </div>
+                                            <p className="text-sm text-gray-400 mb-2">{heroBlog.category}</p>
+                                            <div className="mb-3 flex items-center gap-3">
+                                                <TitleMark
+                                                    logo={heroBlog.logo}
+                                                    title={heroBlog.title}
+                                                    icon={heroBlog.icon}
+                                                    iconClassName={heroBlog.iconClassName}
+                                                    size="hero"
+                                                />
+                                                <h2 className="text-3xl md:text-5xl font-hero font-bold text-white">
+                                                    {heroBlog.title}
+                                                </h2>
+                                            </div>
+                                            <p className="text-gray-300 text-base md:text-lg max-w-2xl mb-4">
+                                                {heroBlog.description}
+                                            </p>
+                                            {heroBlog.technologies.length > 0 && (
                                                 <div className="flex flex-wrap gap-2">
                                                     {heroBlog.technologies.map((tech) => {
                                                         const iconPath = getTechIcon(tech);
@@ -293,59 +283,87 @@ export default function BlogPage() {
                                                         );
                                                     })}
                                                 </div>
-                                                <p className="mt-4 text-sm text-gray-400">{heroBlog.date}</p>
-                                            </div>
+                                            )}
+                                            <p className="mt-4 text-sm text-gray-400">{heroBlog.date}</p>
                                         </div>
                                     </div>
-                                </Link>
-                            </BackgroundGradient>
+                                </div>
+                            </Link>
+                        </BackgroundGradient>
+                    </div>
+                )}
+
+                {/* Dev Section */}
+                {devLogs.length > 0 && (
+                    <section className="mb-16">
+                        <div className="flex items-center gap-3 mb-1">
+                            <Bot size={24} />
+                            <h2 className="text-2xl md:text-3xl font-hero font-bold text-white">Dev Blogs</h2>
+                            <Badge variant="secondary" className="ml-1 rounded-full px-2.5 py-0.5">
+                                {devLogs.length}
+                            </Badge>
                         </div>
-                    );
-                })()}
-
-                {/* Sections */}
-                {sectionOrder.map((sectionKey) => {
-                    const sectionBlogs = groupedBlogs[sectionKey];
-
-                    return (
-                        <section key={sectionKey} className="mb-16">
-                            <div className="flex flex-col gap-2">
-                                <div className="flex items-center gap-2">
-                                    {sectionIcon[sectionKey]}
-                                    <h2 className="text-2xl md:text-3xl font-hero font-bold text-white">
-                                        {sectionLabels[sectionKey]}
-                                    </h2>
-                                    <Badge
-                                        variant="outline"
-                                        className="border-white/20 bg-black/40 text-white"
-                                    >
-                                        {sectionBlogs.length}
-                                    </Badge>
-                                </div>
+                        <p className="text-sm text-gray-400 mb-6">
+                            Engineering progress, architecture decisions, and development chronicles
+                        </p>
+                        <Separator className="mb-8" />
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {shownDevLogs.map((blog) => (
+                                <BlogCard key={blog.slug} blog={blog} />
+                            ))}
+                        </div>
+                        {visibleDevLogs < devLogs.length && (
+                            <div className="mt-8 flex justify-center">
+                                <Button
+                                    type="button"
+                                    variant="default"
+                                    onClick={() => setVisibleDevLogs((count) => count + 3)}
+                                    className="rounded-full border px-5 py-2.5 text-sm font-medium"
+                                >
+                                    Load More
+                                </Button>
                             </div>
-                            <p className="text-sm text-gray-400">
-                                {sectionDesc[sectionKey]}
-                            </p>
+                        )}
+                    </section>
+                )}
 
-                            <Separator className="mt-6 mb-8" />
-
-                            {sectionBlogs.length > 0 ? (
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                    {sectionBlogs.map((blog) => (
-                                        <BlogCard key={blog.slug} blog={blog} />
-                                    ))}
-                                </div>
-                            ) : (
-                                <p className="text-sm text-white/55">
-                                    No posts in this section yet.
-                                </p>
-                            )}
-                        </section>
-                    );
-                })}
+                {/* Personal Writing Section */}
+                {personalWritings.length > 0 && (
+                    <section className="mb-16">
+                        <div className="flex items-center gap-3 mb-1">
+                            <BookOpen className="text-purple-400" size={22} />
+                            <h2 className="text-2xl md:text-3xl font-hero font-bold text-white">Personal</h2>
+                            <span className="ml-1 rounded-full border border-white/15 bg-white/8 px-2.5 py-0.5 text-xs text-gray-400">
+                                {personalWritings.length}
+                            </span>
+                        </div>
+                        <p className="text-sm text-gray-400 mb-6">
+                            Internships, career reflections, and thoughts beyond the terminal
+                        </p>
+                        <Separator className="mb-8" />
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {shownPersonalWritings.map((blog) => (
+                                <BlogCard key={blog.slug} blog={blog} />
+                            ))}
+                        </div>
+                        {visiblePersonalWritings < personalWritings.length && (
+                            <div className="mt-8 flex justify-center">
+                                <Button
+                                    type="button"
+                                    variant="default"
+                                    onClick={() => setVisiblePersonalWritings((count) => count + 3)}
+                                    className="rounded-full border px-5 py-2.5 text-sm font-medium"
+                                >
+                                    Load More
+                                </Button>
+                            </div>
+                        )}
+                    </section>
+                )}
             </div>
 
             <AvailableForRoles />
         </div>
     );
 }
+
