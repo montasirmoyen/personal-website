@@ -5,6 +5,7 @@ import type { ProjectStatus } from "./types";
 export type SharedProjectSummary = {
   title: string;
   logo?: string;
+  primaryColor?: string;
   icon?: React.ElementType;
   iconClassName?: string;
   category: string;
@@ -23,6 +24,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
   ramai: {
     title: "RamAI",
     logo: "/ramai-logo.png",
+    primaryColor: "#533cff",
     category: "AI & Full-Stack Development",
     date: "January 2026",
     description:
