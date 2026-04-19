@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { JSX } from "react";
+import type { CSSProperties, JSX } from "react";
 
 import { Bot, Zap, Handshake, Leaf, Star } from "lucide-react";
 
@@ -57,13 +57,21 @@ function BlogCard({ blog }: { blog: (typeof blogs)[number] }) {
         blog.mini ? { label: "Mini", className: "border-emerald-500/70 bg-emerald-500/15 text-emerald-100" } : null,
     ].filter(Boolean) as { label: string; className: string }[];
 
+    const cardStyle = {
+        "--blog-border": blog.primaryColor ? `${blog.primaryColor}66` : "rgb(255 255 255 / 0.12)",
+        "--blog-border-hover": blog.primaryColor ? `${blog.primaryColor}aa` : "rgb(255 255 255 / 0.25)",
+    } as CSSProperties;
+
     return (
         <Link
             key={blog.slug}
             href={`/blog/${blog.slug}`}
             className="group block h-full"
         >
-            <article className="h-full overflow-hidden rounded-2xl border border-white/10 bg-linear-to-b from-white/[0.07] to-white/3 shadow-[0_10px_35px_-20px_rgba(0,0,0,0.9)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1 group-hover:border-white/25">
+            <article
+                style={cardStyle}
+                className="h-full overflow-hidden rounded-2xl border border-(--blog-border) bg-linear-to-b from-white/7 to-white/3 shadow-[0_10px_35px_-20px_rgba(0,0,0,0.9)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1 group-hover:border-(--blog-border-hover)"
+            >
                 <div className="relative aspect-video overflow-hidden">
                     <Image
                         src={blog.image}
@@ -185,10 +193,10 @@ export default function BlogPage() {
                             animation="slideLeft"
                             once
                             by="character"
-                            className="text-5xl md:text-6xl font-bold font-hero 
-                               bg-gradient-to-r from-blue-500 to-purple-500 
+                                     className="text-5xl md:text-6xl font-bold font-hero 
+                                         bg-linear-to-r from-blue-500 to-purple-500 
                                bg-clip-text text-transparent animate-gradient 
-                               bg-[length:200%_auto]">
+                                         bg-size-[200%_auto]">
                             narratives
                         </TextAnimate>
                     </div>
