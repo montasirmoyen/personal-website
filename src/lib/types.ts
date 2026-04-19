@@ -1,8 +1,13 @@
+import { type ElementType } from "react";
+
 export type ProjectStatus = "completed" | "in-progress";
 
 export interface Project {
   slug: string;
   title: string;
+  logo?: string;
+  icon?: ElementType;
+  iconClassName?: string;
   colors?: [string, string];
   category: string;
   image: string;
@@ -36,6 +41,9 @@ export interface Project {
 export interface Blog {
   slug: string;
   title: string;
+  logo?: string;
+  icon?: ElementType;
+  iconClassName?: string;
   heroBlog?: boolean;
   challenge?: boolean;
   collab?: boolean;
