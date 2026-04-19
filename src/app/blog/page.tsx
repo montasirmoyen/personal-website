@@ -55,27 +55,27 @@ function BlogCard({ blog }: { blog: (typeof blogs)[number] }) {
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/25 to-transparent" />
 
-                    <div className="absolute left-4 right-4 top-4 flex items-start justify-between gap-3">
+                    <div className="absolute left-3 right-3 top-3 flex items-start justify-between gap-2 sm:left-4 sm:right-4 sm:top-4 sm:gap-3">
                         {blog.status && (
-                            <Badge variant="outline" className="border-white/20 bg-black/40 text-white backdrop-blur-sm">
+                            <Badge variant="outline" className="border-white/20 bg-black/40 text-[10px] text-white backdrop-blur-sm sm:text-xs">
                                 {blog.status === "in-progress" ? "In Progress" : "Completed"}
                             </Badge>
                         )}
 
                         <Badge
                             variant="outline"
-                            className="border-white/20 bg-black/35 text-white/90 backdrop-blur-md"
+                            className="max-w-[58%] truncate border-white/20 bg-black/35 text-[10px] text-white/90 backdrop-blur-md sm:max-w-none sm:text-xs"
                         >
                             {blog.category}
                         </Badge>
                     </div>
 
-                    <div className="absolute inset-x-4 bottom-4">
-                        <p className="text-sm text-white/70">{blog.date}</p>
+                    <div className="absolute inset-x-3 bottom-3 sm:inset-x-4 sm:bottom-4">
+                        <p className="text-xs text-white/70 sm:text-sm">{blog.date}</p>
                     </div>
                 </div>
 
-                <div className="p-6 md:p-7">
+                <div className="p-5 md:p-7">
                     {typeBadges.length > 0 && (
                         <div className="mb-3 flex flex-wrap gap-2">
                             {typeBadges.map((badge) => (
@@ -90,7 +90,7 @@ function BlogCard({ blog }: { blog: (typeof blogs)[number] }) {
                         </div>
                     )}
 
-                    <div className="mb-3 flex items-center gap-2.5">
+                    <div className="mb-3 flex items-center gap-2">
                         <TitleMark
                             logo={blog.logo}
                             title={blog.title}
@@ -98,7 +98,7 @@ function BlogCard({ blog }: { blog: (typeof blogs)[number] }) {
                             iconClassName={blog.iconClassName}
                             size="card"
                         />
-                        <h2 className="text-2xl font-hero font-bold tracking-tight text-white transition-colors duration-300">
+                        <h2 className="text-xl font-hero font-bold tracking-tight text-white transition-colors duration-300 sm:text-2xl">
                             {blog.title}
                         </h2>
                     </div>
@@ -162,7 +162,7 @@ export default function BlogPage() {
     const shownPersonalWritings = personalWritings.slice(0, visiblePersonalWritings);
 
     return (
-        <div className="pt-32 px-4 md:px-6">
+        <div className="px-4 pt-24 md:px-6 md:pt-32">
             <TopBarBackground transparency={10} imageUrl="cones.jpeg" />
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
@@ -174,7 +174,7 @@ export default function BlogPage() {
                         <TextAnimate
                             animation="blurInUp"
                             by="character"
-                            className="text-5xl md:text-6xl font-bold font-hero"
+                            className="text-4xl font-bold font-hero sm:text-5xl md:text-6xl"
                         >
                             Curated
                         </TextAnimate>
@@ -183,7 +183,7 @@ export default function BlogPage() {
                             animation="slideLeft"
                             once
                             by="character"
-                            className="text-5xl md:text-6xl font-bold font-hero 
+                            className="text-4xl font-bold font-hero sm:text-5xl md:text-6xl 
                                          bg-linear-to-r from-blue-500 to-purple-500 
                                bg-clip-text text-transparent animate-gradient 
                                          bg-size-[200%_auto]">
@@ -194,16 +194,16 @@ export default function BlogPage() {
 
                 {/* Hero */}
                 {heroBlog && (
-                    <div className="mb-16">
+                    <div className="mb-12 md:mb-16">
                         <div className="flex flex-col gap-2">
-                            <div className="flex items-center gap-2">
-                                <Star className="text-blue-600" />
-                                <h2 className="text-2xl md:text-3xl font-hero font-bold text-white">
+                            <div className="flex flex-wrap items-center gap-2">
+                                <Star className="size-4 text-blue-600 md:size-5" />
+                                <h2 className="text-xl font-hero font-bold text-white md:text-3xl">
                                     Highlight
                                 </h2>
                                 <Badge
                                     variant="outline"
-                                    className="border-white/20 bg-black/40 text-white"
+                                    className="border-white/20 bg-black/40 text-xs text-white"
                                 >
                                     Editor's Pick
                                 </Badge>
@@ -216,7 +216,7 @@ export default function BlogPage() {
                         <BackgroundGradient colors={["#2e3ffa", "#1d46fd"]}>
                             <Link href={`/blog/${heroBlog.slug}`} className="group block">
                                 <div className="rounded-3xl overflow-hidden">
-                                    <div className="relative w-full aspect-21/9 overflow-hidden">
+                                    <div className="relative w-full aspect-4/5 overflow-hidden sm:aspect-16/10 lg:aspect-21/9">
                                         <Image
                                             src={heroBlog.image}
                                             alt={heroBlog.title}
@@ -226,25 +226,25 @@ export default function BlogPage() {
                                         />
                                         <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/80 to-transparent" />
                                         <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent" />
-                                        <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full">
-                                            <div className="flex flex-wrap gap-2 mb-4">
+                                        <div className="absolute bottom-0 left-0 w-full p-4 sm:p-6 md:p-12">
+                                            <div className="mb-3 flex flex-wrap gap-2 sm:mb-4">
                                                 {heroBlog.challenge && (
-                                                    <Badge variant="outline" className="border-orange-500 bg-orange-500/20 backdrop-blur-sm">Challenge</Badge>
+                                                    <Badge variant="outline" className="border-orange-500 bg-orange-500/20 text-[10px] backdrop-blur-sm sm:text-xs">Challenge</Badge>
                                                 )}
                                                 {heroBlog.collab && (
-                                                    <Badge variant="outline" className="border-blue-500 bg-blue-500/20 backdrop-blur-sm">Collaboration</Badge>
+                                                    <Badge variant="outline" className="border-blue-500 bg-blue-500/20 text-[10px] backdrop-blur-sm sm:text-xs">Collaboration</Badge>
                                                 )}
                                                 {heroBlog.mini && (
-                                                    <Badge variant="outline" className="border-emerald-500 bg-emerald-500/20 backdrop-blur-sm">Mini</Badge>
+                                                    <Badge variant="outline" className="border-emerald-500 bg-emerald-500/20 text-[10px] backdrop-blur-sm sm:text-xs">Mini</Badge>
                                                 )}
                                                 {heroBlog.status && (
-                                                    <Badge variant="outline" className="border-white/20 bg-black/40 text-white backdrop-blur-sm">
+                                                    <Badge variant="outline" className="border-white/20 bg-black/40 text-[10px] text-white backdrop-blur-sm sm:text-xs">
                                                         {heroBlog.status === "in-progress" ? "In Progress" : "Completed"}
                                                     </Badge>
                                                 )}
                                             </div>
-                                            <p className="text-sm text-gray-400 mb-2">{heroBlog.category}</p>
-                                            <div className="mb-3 flex items-center gap-3">
+                                            <p className="mb-2 text-xs text-gray-400 sm:text-sm">{heroBlog.category}</p>
+                                            <div className="mb-2 flex items-center gap-2 sm:mb-3 sm:gap-3">
                                                 <TitleMark
                                                     logo={heroBlog.logo}
                                                     title={heroBlog.title}
@@ -252,28 +252,28 @@ export default function BlogPage() {
                                                     iconClassName={heroBlog.iconClassName}
                                                     size="hero"
                                                 />
-                                                <h2 className="text-3xl md:text-5xl font-hero font-bold text-white">
+                                                <h2 className="text-2xl font-hero font-bold text-white sm:text-3xl md:text-5xl">
                                                     {heroBlog.title}
                                                 </h2>
                                             </div>
-                                            <p className="text-gray-300 text-base md:text-lg max-w-2xl mb-4">
+                                            <p className="mb-3 max-w-2xl text-sm text-gray-300 sm:mb-4 sm:text-base md:text-lg">
                                                 {heroBlog.description}
                                             </p>
                                             {heroBlog.technologies.length > 0 && (
-                                                <div className="flex flex-wrap gap-2">
+                                                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                                                     {heroBlog.technologies.map((tech) => {
                                                         const iconPath = getTechIcon(tech);
                                                         return (
                                                             <span
                                                                 key={tech}
-                                                                className="px-3 py-1 text-xs rounded-full bg-white/10 border border-white/15 text-gray-300 flex items-center gap-1.5 backdrop-blur-sm"
+                                                                className="flex items-center gap-1 rounded-full border border-white/15 bg-white/10 px-2 py-0.5 text-[10px] text-gray-300 backdrop-blur-sm sm:gap-1.5 sm:px-3 sm:py-1 sm:text-xs"
                                                             >
                                                                 {iconPath && (
                                                                     <Image
                                                                         src={iconPath}
                                                                         alt={tech}
-                                                                        width={14}
-                                                                        height={14}
+                                                                        width={12}
+                                                                        height={12}
                                                                         className="object-contain"
                                                                         unoptimized
                                                                     />
@@ -284,7 +284,7 @@ export default function BlogPage() {
                                                     })}
                                                 </div>
                                             )}
-                                            <p className="mt-4 text-sm text-gray-400">{heroBlog.date}</p>
+                                            <p className="mt-3 text-xs text-gray-400 sm:mt-4 sm:text-sm">{heroBlog.date}</p>
                                         </div>
                                     </div>
                                 </div>
