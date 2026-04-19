@@ -4,8 +4,18 @@ import type { Blog, Project } from "./types";
 
 type SharedFields = Pick<
   Project,
-  "title" | "category" | "date" | "description" | "technologies" | "status"
->;
+  | "title"
+  | "category"
+  | "date"
+  | "description"
+  | "technologies"
+  | "status"
+  | "blogUrl"
+  | "liveUrl"
+  | "githubUrl"
+  | "gameUrl"
+> &
+  Pick<Blog, "projectUrl">;
 
 type RawProject = Omit<Project, keyof SharedFields>;
 type RawBlog = Omit<Blog, keyof SharedFields>;
@@ -28,8 +38,6 @@ const rawProjects: RawProject[] = [
     colors: ["#2e3ffa", "#1d46fd"],
     image: "/ramai-home.png",
     carouselImages: ["/ramai-chat.png", "/ramai-ag.png", "/ramai-search.png", "/ramai-ranks.png"],
-    blogUrl: "https://montasirmoyen.com/blog/ramai",
-    liveUrl: "https://ram-ai.xyz/",
     problemItSolves: "When trying to find an answer to a question about professors at Suffolk University, scrolling through pages of professor information and reviews can be time consuming. Especially when time is limited, like when you're registering for classes and trying to decide between professors, it can be hard to find the information you need quickly.",
     keyFeatures: [
       {
@@ -88,7 +96,6 @@ const rawProjects: RawProject[] = [
     image: "/mps.png",
     carouselImages: ["/mps-6.webp", "/mps-4.png", "/mps-7.webp", "/mps-3.png", "/mps-8.webp", "/mps-5.png"],
     problemItSolves: "There was a lack of fast-paced soccer games with realistic mechanics on Roblox at the time, and I wanted to create a fun and competitive soccer experience for players on the platform. I also wanted to build a community around the game where players could connect and compete with each other.",
-    gameUrl: "https://www.roblox.com/games/13436905139/MPS-4-a-side",
     keyFeatures: [
       {
         title: "High Skill Ceiling",
@@ -145,8 +152,6 @@ const rawProjects: RawProject[] = [
     colors: ["#d1001c", "#ff1369"],
     image: "/ic-ai-gen.png",
     carouselImages: ["/ic-ql.png", "/ic-grading.png", "/ic-db.png", "/ic-ai-grade.png", "/ic-ai-gen.png", "/ic-ai-gen-home.png"],
-    blogUrl: "https://montasirmoyen.com/blog/infinitecode",
-    liveUrl: "https://infinitecodex.xyz",
     problemItSolves: "Practicing questions that appear in technical interviews is valuable. Platforms like LeetCode are great, I use it to learn common patterns, strengthen data structures and algorithms, and get comfortable with interview style problems. But interviews don't always give you something you've seen before. They test how you think, meaning they might not hand you a problem you've solved or memorized before.",
     keyFeatures: [
       {
@@ -209,9 +214,6 @@ const rawProjects: RawProject[] = [
       "Offers a job match score feature that aligns resumes with job descriptions and suggests improvements.",
       "Generates personalized cover letters based on the user's resume for quick and efficient applications.",
     ],
-    blogUrl: "https://montasirmoyen.com/blog/resumexp",
-    liveUrl: "https://resumexp.vercel.app/",
-    githubUrl: "https://github.com/montasirmoyen/resumexp",
     keyFeatures: [
       {
         title: "Honest Feedback",
@@ -249,8 +251,6 @@ const rawProjects: RawProject[] = [
     colors: ["#ff34b1", "#ff851b"],
     image: "/sd-home-1.png",
     carouselImages: ["/sd-home-1.png", "/sd-home-3.png", "/sd-home-4.png", "/sd-ai.png", "/sd-compare-1.png", "/sd-compare-2.png", "/sd-compare-3.png"],
-    githubUrl: "https://github.com/montasirmoyen/scentdex/",
-    liveUrl: "https://scentdex.vercel.app",
     keyFeatures: [
       {
         title: "Advanced Filtering System",
@@ -288,7 +288,6 @@ const rawBlogs: RawBlog[] = [
   {
     slug: "infinitecode",
     image: "/ic-grading.png",
-    liveUrl: "https://infinitecodex.xyz",
     blogPosts: [
       {
         date: "February 8, 2026 - 6:16PM",
@@ -661,7 +660,6 @@ const rawBlogs: RawBlog[] = [
   {
     slug: "chess",
     image: "/chess-home.jpg",
-    githubUrl: "https://github.com/montasirmoyen/chess",
     collab: true,
     collaborators: [
       {
@@ -708,7 +706,6 @@ const rawBlogs: RawBlog[] = [
   {
     slug: "domain-expansion",
     image: "/de-home.webp",
-    githubUrl: "https://github.com/montasirmoyen/domain-expansion",
     collab: true,
     collaborators: [
       {
@@ -863,7 +860,6 @@ const rawBlogs: RawBlog[] = [
   {
     slug: "ask-cli",
     image: "/ask-home.png",
-    githubUrl: "https://github.com/montasirmoyen/ask-cli",
     mini: true,
     blogPosts: [
       {
@@ -905,8 +901,6 @@ const rawBlogs: RawBlog[] = [
   {
     slug: "aiflash",
     image: "/aif-flashcards.png",
-    githubUrl: "https://github.com/montasirmoyen/aiflash",
-    liveUrl: "https://staging.d1gk5r8nqlxue7.amplifyapp.com/",
     challenge: true,
     blogPosts: [
       {
@@ -1090,7 +1084,6 @@ const rawBlogs: RawBlog[] = [
   {
     slug: "crawler",
     image: "/crawler-home.jpg",
-    githubUrl: "https://github.com/montasirmoyen/crawler",
     challenge: true,
     blogPosts: [
       {
@@ -1262,7 +1255,6 @@ const rawBlogs: RawBlog[] = [
   {
     slug: "urb",
     image: "/urb-home.jpg",
-    githubUrl: "https://github.com/montasirmoyen/urb",
     challenge: true,
     blogPosts: [
       {
@@ -1440,9 +1432,6 @@ const rawBlogs: RawBlog[] = [
   {
     slug: "resumexp",
     image: "/rxp-analysis-2.png",
-    projectUrl: "https://montasirmoyen.com/projects/resumexp",
-    liveUrl: "https://resumexp.vercel.app/",
-    githubUrl: "https://github.com/montasirmoyen/resumexp",
     blogPosts: [
       {
         date: "January 29, 2026 - 7:12PM",
@@ -1674,8 +1663,6 @@ const rawBlogs: RawBlog[] = [
     slug: "ramai",
     image: "/ramai-home.png",
     heroBlog: true,
-    projectUrl: "https://montasirmoyen.com/projects/ramai",
-    liveUrl: "https://ram-ai.xyz/",
     blogPosts: [
       {
         date: "January 15, 2026",
