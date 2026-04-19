@@ -7,6 +7,11 @@ export type SharedProjectSummary = {
   description: string;
   technologies: string[];
   status: ProjectStatus;
+  blogUrl?: string;
+  liveUrl?: string;
+  githubUrl?: string;
+  gameUrl?: string;
+  projectUrl?: string;
 };
 
 export const projectSummaries: Record<string, SharedProjectSummary> = {
@@ -18,6 +23,9 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
       "A specialized AI-powered assistant designed to provide Suffolk University students with grounded academic guidance and comparisons of professors based on data and review evidence.",
     technologies: ["TypeScript", "Python", "JSON", "Data Engineering", "AI Integration", "Auditing"],
     status: "completed",
+    blogUrl: "https://montasirmoyen.com/blog/ramai",
+    liveUrl: "https://ram-ai.xyz/",
+    projectUrl: "https://montasirmoyen.com/projects/ramai",
   },
   mps: {
     title: "MPS",
@@ -26,6 +34,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
     description: "A fast-paced multiplayer soccer game with 50+ real life teams.",
     technologies: ["Lua", "JavaScript", "JSON", "RBLX Studio", "Entrepreneurship"],
     status: "completed",
+    gameUrl: "https://www.roblox.com/games/13436905139/MPS-4-a-side",
   },
   infinitecode: {
     title: "InfiniteCode",
@@ -34,6 +43,8 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
     description: "An application providing endless coding practice powered by curated challenges and unprecedented AI-generated problems.",
     technologies: ["TypeScript", "Python", "PostgreSQL", "Supabase", "AI Integration"],
     status: "in-progress",
+    blogUrl: "https://montasirmoyen.com/blog/infinitecode",
+    liveUrl: "https://infinitecodex.xyz",
   },
   resumexp: {
     title: "ResumeXP",
@@ -42,6 +53,10 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
     description: "An AI-powered application to help users maximize their resume potential in seconds.",
     technologies: ["TypeScript", "React", "Next", "Firebase", "AI Integration"],
     status: "completed",
+    blogUrl: "https://montasirmoyen.com/blog/resumexp",
+    liveUrl: "https://resumexp.vercel.app/",
+    githubUrl: "https://github.com/montasirmoyen/resumexp",
+    projectUrl: "https://montasirmoyen.com/projects/resumexp",
   },
   scentdex: {
     title: "ScentDex",
@@ -50,6 +65,8 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
     description: "Browse, study and filter the most popular fragrances from the most luxurious brands.",
     technologies: ["TypeScript", "React", "Next", "Node.js", "JSON", "AI Integration"],
     status: "completed",
+    liveUrl: "https://scentdex.vercel.app",
+    githubUrl: "https://github.com/montasirmoyen/scentdex/",
   },
   chess: {
     title: "Chess",
@@ -58,6 +75,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
     description: "A classic chess game in Next.js featuring a sleek design and smooth gameplay.",
     technologies: ["TypeScript", "React", "Next"],
     status: "in-progress",
+    githubUrl: "https://github.com/montasirmoyen/chess",
   },
   "domain-expansion": {
     title: "Domain Expansion",
@@ -66,6 +84,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
     description: "A real-time computer vision application using hand tracking to identify Jujutsu Kaisen \"Domain Expansion\" gestures via webcam and trigger on-screen overlays.",
     technologies: ["Python", "OpenCV", "MediaPipe"],
     status: "in-progress",
+    githubUrl: "https://github.com/montasirmoyen/domain-expansion",
   },
   "ask-cli": {
     title: "Ask CLI",
@@ -74,6 +93,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
     description: "A CLI tool that lets you ask questions about your code directly from the terminal.",
     technologies: ["Rust"],
     status: "in-progress",
+    githubUrl: "https://github.com/montasirmoyen/ask-cli",
   },
   aiflash: {
     title: "AIFlash",
@@ -83,6 +103,8 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
       "Serverless app utilizing generative AI to transform raw study notes into interactive flashcards. Built with an Angular frontend and a scalable AWS backend, it features 3D card animations and real time AI processing via OpenRouter.",
     technologies: ["Angular", "AWS", "Amplify", "Lambda", "Node.js", "S3", "AI Integration"],
     status: "completed",
+    liveUrl: "https://staging.d1gk5r8nqlxue7.amplifyapp.com/",
+    githubUrl: "https://github.com/montasirmoyen/aiflash",
   },
   crawler: {
     title: "Crawler",
@@ -92,6 +114,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
       "A high-performance application designed to recursively traverse the web by leveraging a multi-threaded architecture and robust synchronization primitives for concurrency and resource management.",
     technologies: ["C++", "CMake"],
     status: "completed",
+    githubUrl: "https://github.com/montasirmoyen/crawler",
   },
   urb: {
     title: "URB",
@@ -100,5 +123,6 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
     description: "Universal Room Booker: a scalable backend system for managing reservable rooms with safe and concurrent booking logic.",
     technologies: ["Java", "Spring Boot", "PostgreSQL", "Maven", "Docker"],
     status: "completed",
+    githubUrl: "https://github.com/montasirmoyen/urb",
   },
 };
