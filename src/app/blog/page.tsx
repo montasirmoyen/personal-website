@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import type { CSSProperties } from "react";
+import { useState, type CSSProperties } from "react";
 
 import { Bot, BookOpen, Star } from "lucide-react";
 
@@ -17,6 +17,7 @@ import { BackgroundGradient } from "@/components/ui/background-gradient"
 import { Badge } from "@/components/ui/badge";
 import { TextAnimate } from "@/components/ui/text-animate"
 import TitleMark from "@/components/ui/title-mark";
+import { Button } from "@/components/ui/button";
 
 function BlogCard({ blog }: { blog: (typeof blogs)[number] }) {
     const isDevLog = !blog.writingType || blog.writingType === "devlog";
@@ -154,6 +155,11 @@ export default function BlogPage() {
     const devLogs = blogs.filter((b) => !b.writingType || b.writingType === "devlog");
     const personalWritings = blogs.filter((b) => b.writingType === "personal");
     const heroBlog = blogs.find((b) => b.heroBlog);
+    const [visibleDevLogs, setVisibleDevLogs] = useState(3);
+    const [visiblePersonalWritings, setVisiblePersonalWritings] = useState(3);
+
+    const shownDevLogs = devLogs.slice(0, visibleDevLogs);
+    const shownPersonalWritings = personalWritings.slice(0, visiblePersonalWritings);
 
     return (
         <div className="pt-32 px-4 md:px-6">
@@ -302,10 +308,22 @@ export default function BlogPage() {
                         </p>
                         <Separator className="mb-8" />
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {devLogs.map((blog) => (
+                            {shownDevLogs.map((blog) => (
                                 <BlogCard key={blog.slug} blog={blog} />
                             ))}
                         </div>
+                        {visibleDevLogs < devLogs.length && (
+                            <div className="mt-8 flex justify-center">
+                                <Button
+                                    type="button"
+                                    variant="default"
+                                    onClick={() => setVisibleDevLogs((count) => count + 3)}
+                                    className="rounded-full border px-5 py-2.5 text-sm font-medium"
+                                >
+                                    Load More
+                                </Button>
+                            </div>
+                        )}
                     </section>
                 )}
 
@@ -324,10 +342,22 @@ export default function BlogPage() {
                         </p>
                         <Separator className="mb-8" />
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {personalWritings.map((blog) => (
+                            {shownPersonalWritings.map((blog) => (
                                 <BlogCard key={blog.slug} blog={blog} />
                             ))}
                         </div>
+                        {visiblePersonalWritings < personalWritings.length && (
+                            <div className="mt-8 flex justify-center">
+                                <Button
+                                    type="button"
+                                    variant="default"
+                                    onClick={() => setVisiblePersonalWritings((count) => count + 3)}
+                                    className="rounded-full border px-5 py-2.5 text-sm font-medium"
+                                >
+                                    Load More
+                                </Button>
+                            </div>
+                        )}
                     </section>
                 )}
             </div>
