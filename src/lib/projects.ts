@@ -5,6 +5,9 @@ import type { Blog, Project } from "./types";
 type SharedFields = Pick<
   Project,
   | "title"
+  | "logo"
+  | "icon"
+  | "iconClassName"
   | "category"
   | "date"
   | "description"
