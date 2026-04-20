@@ -60,7 +60,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
   },
   resumexp: {
     title: "ResumeXP",
-    icon: Star,
+    logo: "/rxp-logo.png",
     iconClassName: "text-green-400",
     primaryColor: "#1ee25c",
     category: "AI & Full-Stack Development",
@@ -69,7 +69,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
     technologies: ["TypeScript", "React", "Next", "Firebase", "AI Integration"],
     status: "completed",
     blogUrl: "https://montasirmoyen.com/blog/resumexp",
-    liveUrl: "https://resumexp.vercel.app/",
+    liveUrl: "https://resumexp.xyz/",
     githubUrl: "https://github.com/montasirmoyen/resumexp",
     projectUrl: "https://montasirmoyen.com/projects/resumexp",
   },
