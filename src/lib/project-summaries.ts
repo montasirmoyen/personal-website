@@ -1,5 +1,5 @@
 import React from "react";
-import { Star, Moon } from "lucide-react";
+import { Moon } from "lucide-react";
 import type { ProjectStatus } from "./types";
 
 export type SharedProjectSummary = {
