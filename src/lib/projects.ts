@@ -236,7 +236,7 @@ const rawProjects: RawProject[] = [
     slug: "resumexp",
     colors: ["#00ff8c", "#0ccaff"],
     image: "/rxp-home.png",
-    carouselImages: ["/rxp-home.png", "/rxp-dashboard.png", "/rxp-analysis-1.png", "/rxp-analysis-2-1.png", "/rxp-analysis-3.png"],
+    carouselImages: ["/rxp-home.png", "/rxp-1.png", "/rxp-2.png", "/rxp-3.png", "/rxp-4.png", "/rxp-5.png", "/rxp-6.png"],
     problemItSolves: "Crafting a strong resume is crucial for job seekers, but it can be time consuming and challenging to know how to improve it effectively. Especially with all the ATS requirements and the need to tailor resumes for different job applications, it can be overwhelming for users to optimize their resumes and create compelling cover letters quickly.",
     bullets: [
       "Provides honest feedback on resumes to help users improve and stand out to potential employers.",
@@ -1232,9 +1232,9 @@ const rawBlogs: RawBlog[] = [
           {
             type: "paragraph",
             content: `
-            https://resumexp.vercel.app
+            https://resumexp.xyz
             `,
-            link: "https://resumexp.vercel.app",
+            link: "https://resumexp.xyz",
           },
           {
             type: "paragraph",
