@@ -179,7 +179,7 @@ const rawProjects: RawProject[] = [
   {
     slug: "infinitecode",
     colors: ["#d1001c", "#ff1369"],
-    image: "/ic-ai-gen.png",
+    image: "/ic-home.png",
     carouselImages: ["/ic-ql.png", "/ic-grading.png", "/ic-db.png", "/ic-ai-grade.png", "/ic-ai-gen.png", "/ic-ai-gen-home.png"],
     problemItSolves: "Practicing questions that appear in technical interviews is valuable. Platforms like LeetCode are great, I use it to learn common patterns, strengthen data structures and algorithms, and get comfortable with interview style problems. But interviews don't always give you something you've seen before. They test how you think, meaning they might not hand you a problem you've solved or memorized before.",
     keyFeatures: [
@@ -316,7 +316,7 @@ const rawProjects: RawProject[] = [
 const rawBlogs: RawBlog[] = [
   {
     slug: "infinitecode",
-    image: "/ic-grading.png",
+    image: "/ic-home.png",
     blogPosts: [
       {
         date: "February 8, 2026 - 6:16PM",
