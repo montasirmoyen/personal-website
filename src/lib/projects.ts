@@ -278,8 +278,8 @@ const rawProjects: RawProject[] = [
   {
     slug: "scentdex",
     colors: ["#ff34b1", "#ff851b"],
-    image: "/sd-home-1.png",
-    carouselImages: ["/sd-home-1.png", "/sd-home-3.png", "/sd-home-4.png", "/sd-ai.png", "/sd-compare-1.png", "/sd-compare-2.png", "/sd-compare-3.png"],
+    image: "/sd-home.png",
+    carouselImages: ["/sd-home.png", "/sd-1.png", "/sd-2.png", "/sd-3.png"],
     keyFeatures: [
       {
         title: "Advanced Filtering System",
