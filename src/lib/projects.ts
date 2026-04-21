@@ -2139,6 +2139,33 @@ const rawBlogs: RawBlog[] = [
           }
         ],
       },
+      {
+        date: "April 21, 2026",
+        title: "Presidency",
+        borderColor: "#4b23ff",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            I've been selected as the 2026-2027 Vice President of the Suffolk Programming, AI & Research Club (SPARC).
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            This role will push me beyond just building software and into leadership, organization, and community-building.
+            My focus will be on creating meaningful opportunities for members, whether through technical workshops, collaborative projects, or industry exposure.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            Over the summer, I'll be working closely with the President & previous President (who's done a brilliant job) to understand what's been successful and how to continue growing the club.
+            From there, I'll begin planning initiatives with the e-board for the fall that provide real value to members.
+            `,
+          }
+        ],
+      },
     ],
   }
 ];
