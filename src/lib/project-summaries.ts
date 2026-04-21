@@ -75,7 +75,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
   },
   scentdex: {
     title: "ScentDex",
-    icon: Moon,
+    logo: "/sd-logo.png",
     iconClassName: "text-white",
     primaryColor: "#ffffff",
     category: "AI & Full-Stack Development",
