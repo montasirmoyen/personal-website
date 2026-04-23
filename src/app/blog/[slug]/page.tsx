@@ -243,6 +243,13 @@ function BlogDetailContent({
                                   ))}
                                 </div>
                               )}
+                              {item.type === "code" && (
+                                <pre className={`rounded-lg bg-white/5 border border-white/10 px-4 py-3 overflow-x-auto font-mono text-sm text-gray-200 ${marginClass}`}>
+                                  <code>
+                                    {(item.content as string[]).join("\n")}
+                                  </code>
+                                </pre>
+                              )}
                             </>
                           );
 
