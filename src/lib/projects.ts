@@ -315,6 +315,54 @@ const rawProjects: RawProject[] = [
 
 const rawBlogs: RawBlog[] = [
   {
+    slug: "engba",
+    image: "/engba-home.jpg",
+    heroBlog: true,
+    blogPosts: [
+      {
+        date: "April 22, 2026 - 8:54PM",
+        title: "Nostalgia",
+        borderColor: "#3df2ff",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            Tomodachi Life: Living the Dream recently released and I've been seeing everyone play it.
+            It brought back so many memories of playing the original Tomodachi Life on the Nintendo 3DS back in the day.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            Revisiting that nostalgia made me remember that I was also curious about how these games worked.
+            I've never used a Game Boy Advance, but how does a system as limited as the GBA handle everything from sprite rendering to input to game logic so seamlessly?
+            What's really happening behind the scenes when a game feels this responsive and alive?
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            Even besides that, how is it possible that something that isn't a GBA can run GBA games at all?
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            After doing some research, most of the concepts behind how emulators work were familiar to me.
+            Memory management, hardware interrupts, I/O & DMA, and much more were all concepts I had learned recently while studying computer architecture and operating systems.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            So, that was enough for me to decide to build the GBA emulator, it'll be fun of course, but challenging enough to keep me learning and engaged for a while, and I can document the process along the way.
+            `,
+          }
+        ],
+      },
+    ]
+  },
+  {
     slug: "infinitecode",
     image: "/ic-home.png",
     blogPosts: [
@@ -689,7 +737,6 @@ const rawBlogs: RawBlog[] = [
   {
     slug: "ramai",
     image: "/ramai-home.png",
-    heroBlog: true,
     blogPosts: [
       {
         date: "January 15, 2026",
