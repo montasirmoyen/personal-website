@@ -197,23 +197,17 @@ export default function BlogPage() {
                     <div className="mb-12 md:mb-16">
                         <div className="flex flex-col gap-2">
                             <div className="flex flex-wrap items-center gap-2">
-                                <Star className="size-4 text-blue-600 md:size-5" />
+                                <Star className="size-4 text-sky-500 md:size-5" />
                                 <h2 className="text-xl font-hero font-bold text-white md:text-3xl">
                                     Highlight
                                 </h2>
-                                <Badge
-                                    variant="outline"
-                                    className="border-white/20 bg-black/40 text-xs text-white"
-                                >
-                                    Editor's Pick
-                                </Badge>
                             </div>
                         </div>
                         <p className="text-sm text-gray-400">
-                            Featured post I returned to
+                            Featured project I'm starting 
                         </p>
                         <Separator className="mt-6 mb-8" />
-                        <BackgroundGradient colors={["#2e3ffa", "#1d46fd"]}>
+                        <BackgroundGradient colors={["#1bf4ff", "#0ea7ff"]}>
                             <Link href={`/blog/${heroBlog.slug}`} className="group block">
                                 <div className="rounded-3xl overflow-hidden">
                                     <div className="relative w-full aspect-4/5 overflow-hidden sm:aspect-16/10 lg:aspect-21/9">
