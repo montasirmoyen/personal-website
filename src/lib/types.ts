@@ -80,6 +80,10 @@ export interface Blog {
       content: string[];
       marginBottom?: number;
     } | {
+      type: "code";
+      content: string[];
+      marginBottom?: number;
+    } | {
       type: "image";
       content: string[];
       scale?: number;
