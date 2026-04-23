@@ -322,7 +322,7 @@ const rawBlogs: RawBlog[] = [
       {
         date: "April 22, 2026 - 8:54PM",
         title: "Nostalgia",
-        borderColor: "#3df2ff",
+        borderColor: "#17f0ff",
         content: [
           {
             type: "paragraph",
@@ -358,6 +358,95 @@ const rawBlogs: RawBlog[] = [
             So, that was enough for me to decide to build the GBA emulator, it'll be fun of course, but challenging enough to keep me learning and engaged for a while, and I can document the process along the way.
             `,
           }
+        ],
+      },
+      {
+        date: "April 22, 2026 - 10:15PM",
+        title: "Skeleton",
+        borderColor: "#eaeaea",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            I started coding the emulator by setting up the part that everything else depends on per the architecture, memory.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            The GBA has a pretty strict memory layout, so I built a Bus class that knows how to route reads and writes to the right place.
+            The CPU doesn't care about “RAM” or “ROM”, it just throws addresses around, so the Bus has to translate those into actual storage.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            I added the main regions I need for now:
+            `
+          },
+          {
+            type: "bulletpoints",
+            content: ["External RAM", "Internal RAM", "Game Cartridge"]
+          },
+          {
+            type: "paragraph",
+            content: `
+            Each one is just a vector of bytes, but the Bus handles the offsets and boundaries.
+            It already feels like a real system once you can load a ROM file into memory and read from it.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            After that, I set up the CPU state.
+            All the registers, the CPSR, and the starting PC at 0x08000000.
+            The CPU can step, even though the step function barely does anything yet.
+            But the structure is there.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            From there, I wired everything together in main.cpp.
+            It loads the ROM, initializes the Bus and CPU, and runs a loop that calls cpu.step() a bunch of times.
+            I also added a basic PPU stub with a 240x160 framebuffer, plus a small SDL2 window layer so I can actually see something on screen.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            Right now the PPU isn't rendering tiles or sprites.
+            Instead, I'm filling the framebuffer with a simple color gradient each frame just to confirm the loop, timing, and window are all working.
+            It's the first time EnGBA has produced any kind of visual output, even if it's just a shifting pattern.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            It's not a real emulator yet, but it's a skeleton that boots, ticks forward, and draws pixels.
+            That's enough to move on to the fun part next: implementing data processing instructions.
+            `
+          },
+          {
+            type: "image",
+            content: ["/engba-1.png"],
+          },
+          {
+            type: "paragraph",
+            content: `
+            Tiny demo of the pattern after running:
+            `
+          },
+          {
+            type: "code",
+            content: [
+              "cd EnGBA",
+              "mkdir -p build && cd build",
+              "cmake ..",
+              "make",
+              "./EnGBA <my-rom-path>"
+            ]
+          },
         ],
       },
     ]
@@ -1300,53 +1389,7 @@ const rawBlogs: RawBlog[] = [
         ],
       }
     ]
-  },
-  {
-    slug: "chess",
-    image: "/chess-home.jpg",
-    collab: true,
-    collaborators: [
-      {
-        name: "montasirmoyen",
-        avatarImgUrl: "https://avatars.githubusercontent.com/u/111202851?v=4",
-      },
-      {
-        name: "omaershah",
-        avatarImgUrl: "https://avatars.githubusercontent.com/u/267569221?v=4",
-      }
-    ],
-    blogPosts: [
-      {
-        date: "March 25, 2026",
-        title: "Endgame",
-        borderColor: "#ffffff",
-        content: [
-          {
-            type: "paragraph",
-            content: `
-            Chess is one of those timeless games that has captivated people for centuries.
-            It's a game of strategy, skill, and endless possibilities.
-            I've always been fascinated by chess, and I thought it would be a fun project to build a chess game from scratch on just the Next.js framework.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            Collaborating with my younger brother, we've created the base for a chess game that features a sleek design and smooth gameplay.
-            It'll be available on the web soon, and I'd be excited to share it.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            One of our ambitions with this project is to integrate AI as well.
-            More specifically, an AI coach that will help users improve their chess skills by providing real-time feedback and suggestions during gameplay.
-            `,
-          }
-        ],
-      }
-    ]
-  },
+  }, 
   {
     slug: "domain-expansion",
     image: "/de-home.webp",
@@ -1497,47 +1540,6 @@ const rawBlogs: RawBlog[] = [
             But it has been a fun project to work on, and it's been a great way to learn more about computer vision and gesture recognition.
             `,
           },
-        ],
-      }
-    ]
-  },
-  {
-    slug: "ask-cli",
-    image: "/ask-home.png",
-    mini: true,
-    blogPosts: [
-      {
-        date: "March 13, 2026 - 4:17PM",
-        title: "Rationale",
-        borderColor: "#f48734",
-        content: [
-          {
-            type: "paragraph",
-            content: `Before you read, learn what a "CLI" is, if you don't already know.`,
-            link: "https://aws.amazon.com/what-is/cli/"
-          },
-          {
-            type: "paragraph",
-            content: `
-            I've been using the terminal a lot more recently, and I've been thinking about how powerful it would be to have a tool that could answer questions about my code directly from the command line.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            With advancements in AI, it's becoming increasingly common to have a local language model that can understand and analyze code.
-            So why not build a CLI tool that leverages a AI or a local language model to answer questions about your codebase?
-            You could have a simple command and the tool would analyze the relevant code and provide an answer right in the terminal.
-            `,
-          },
-          {
-            type: "paragraph",
-            content: `
-            Rust is perfect for this project because it's great for building fast and efficient CLI tools, and it has a growing ecosystem of libraries.
-            I've already created the base, you can view it in the source code.
-            I've been wanting to add more features and polish it up, so I thought it would be a fun mini project to work on in my free time.
-            `,
-          }
         ],
       }
     ]
