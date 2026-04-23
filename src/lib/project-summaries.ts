@@ -1,5 +1,5 @@
 import React from "react";
-import { Moon } from "lucide-react";
+import { FaDice } from "react-icons/fa";
 import type { ProjectStatus } from "./types";
 
 export type SharedProjectSummary = {
@@ -21,6 +21,17 @@ export type SharedProjectSummary = {
 };
 
 export const projectSummaries: Record<string, SharedProjectSummary> = {
+  engba: {
+    title: "EnGBA",
+    icon: FaDice,
+    primaryColor: "#1dbbff",
+    category: "Systems Development",
+    date: "April 2026",
+    description: "A Game Boy Advance emulator built from scratch, focusing on accurate emulation and performance.",
+    technologies: ["C++", "CMake"],
+    status: "in-progress",
+    blogUrl: "https://montasirmoyen.com/blog/engba",
+  },
   ramai: {
     title: "RamAI",
     logo: "/ramai-logo.png",
