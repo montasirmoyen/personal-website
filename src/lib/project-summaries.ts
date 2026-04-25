@@ -27,7 +27,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
     primaryColor: "#1dbbff",
     category: "Systems Development",
     date: "April 2026",
-    description: "A Game Boy Advance emulator built from scratch, focusing on accurate emulation and performance.",
+    description: "A Game Boy Advance emulator built from scratch, focusing on accurate emulation and performance of Pokémon FireRed.",
     technologies: ["C++", "CMake"],
     status: "in-progress",
     blogUrl: "https://montasirmoyen.com/blog/engba",
