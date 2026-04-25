@@ -449,6 +449,71 @@ const rawBlogs: RawBlog[] = [
           },
         ],
       },
+      {
+        date: "April 24, 2026 - 9:51PM",
+        title: "Pivot",
+        borderColor: "#b2ff17",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            I spent the last couple days getting the basic pieces of the emulator running,
+            and somewhere in the middle of wiring up the CPU loop and the framebuffer,
+            I finally stepped back and looked at the full scope of what a real GBA emulator actually needs.
+            And of course, it's a lot, much more than I originally pictured.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            Between:
+            `,
+          },
+          {
+            type: "bulletpoints",
+            content: [
+              "ARM & THUMB decoding",
+              "the tile engine",
+              "sprites",
+              "DMA",
+              "timers",
+              "interrupts",
+              "audio",
+              "BIOS behavior"
+            ]
+          },
+          {
+            type: "paragraph",
+            content: `
+            and all the weird timing rules the hardware expects, it's basically a year's worth of systems work packed into one device.
+            I'm not dropping the project for something as trivial as this, but I also don't want to pretend I'm building an mGBA competitor from scratch in a month.
+            So I'm narrowing the goal.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            Instead of trying to emulate the entire GBA perfectly, I'm focusing on running one game, Pokémon FireRed, smoothly and accurately.
+            FireRed uses Mode 0 backgrounds, sprites, THUMB-heavy code, and 128KB Flash, so that's the path I'm taking.
+            If a feature isn't needed for FireRed, it's not a priority right now.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            This makes the project feel way more realistic.
+            I still get to learn everything I wanted to learn, but with a direction that isn't implement the entire console.
+            It's more like understanding the exact parts of the hardware that one real game depends on, and building those properly.
+            `,
+          },
+          {
+            type: "paragraph",
+            content: `
+            EnGBA is still an emulator, but now it has a clear mission, and that makes it a lot more exciting to work on.
+            `,
+          },
+        ],
+      }
     ]
   },
   {
@@ -1389,7 +1454,7 @@ const rawBlogs: RawBlog[] = [
         ],
       }
     ]
-  }, 
+  },
   {
     slug: "domain-expansion",
     image: "/de-home.webp",
