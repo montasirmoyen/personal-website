@@ -3,7 +3,10 @@ export type TechStackEntry = { src: string; doc?: string };
 export const techStack: Record<string, TechStackEntry> = {
   ["c++"]: { src: "/cpp.png", doc: "https://en.cppreference.com/w/" },
   ["c"]: { src: "/c.png", doc: "https://en.cppreference.com/w/c" },
+  bash: { src: "/bash.png", doc: "https://www.gnu.org/software/bash/manual/bash.html" },
   cmake: { src: "/cmake.png", doc: "https://cmake.org/documentation/" },
+  ffmpeg: { src: "/ffmpeg.png", doc: "https://ffmpeg.org/documentation.html" },
+  sdl2: { src: "/sdl2.png", doc: "https://wiki.libsdl.org/FrontPage" },
   python: { src: "/python.png", doc: "https://docs.python.org/3/" },
   java: { src: "/java.webp", doc: "https://docs.oracle.com/en/java/" },
   javascript: { src: "/javascript.png", doc: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },

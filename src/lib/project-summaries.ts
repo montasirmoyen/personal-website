@@ -23,12 +23,12 @@ export type SharedProjectSummary = {
 export const projectSummaries: Record<string, SharedProjectSummary> = {
   engba: {
     title: "EnGBA",
-    icon: FaDice,
+    logo: "/engba-logo-3.png",
     primaryColor: "#1dbbff",
-    category: "Systems Development",
+    category: "Emulator Development",
     date: "April 2026",
-    description: "A Game Boy Advance emulator focusing on accurate emulation and performance.",
-    technologies: ["C++", "C", "CMake"],
+    description: "An open-source C++ Game Boy Advance emulator focusing on accurate emulation and modern architecture.",
+    technologies: ["C++", "C", "Python", "Bash", "CMake", "SDL2", "FFmpeg"],
     status: "in-progress",
     blogUrl: "https://montasirmoyen.com/blog/engba",
     githubUrl: "https://github.com/montasirmoyen/engba"
