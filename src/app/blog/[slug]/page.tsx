@@ -294,22 +294,33 @@ function BlogDetailContent({
           {/* Table of Contents */}
           <aside className="hidden lg:block w-64 shrink-0">
             <div className="sticky top-32">
-              <h3 className="text-sm font-semibold text-gray-400 uppercase mb-4">
-                {blog.writingType === "personal" ? "On this post" : "On this blog"}
-              </h3>
+              <div className="flex items-center gap-2 mb-4">
+                {blog.logo && (
+                  <Image
+                    src={blog.logo}
+                    alt={blog.title}
+                    width={24}
+                    height={24}
+                    className="rounded"
+                  />
+                )}
+                <h3 className="text-sm font-semibold text-gray-400 uppercase">
+                  {blog.writingType !== "personal" && blog.title + " - "} {blog.writingType === "personal" ? "On this post" : "On this blog"}
+                </h3>
+              </div>
               <nav className="space-y-2">
                 {blog.blogPosts.map((post: any, postIndex: number) => (
                   <a
                     key={postIndex}
                     href={`#post-${postIndex}`}
-                    className="block text-sm text-gray-400 hover:text-white transition-colors py-1"
+                    className="block text-sm text-white/60 hover:text-white transition-colors py-1"
                   >
                     {post.title}
                   </a>
                 ))}
                 <a
                   href="#more"
-                  className="block text-sm text-gray-400 hover:text-white transition-colors py-1"
+                  className="block text-sm text-white/30 hover:text-white transition-colors py-1"
                 >
                   More Blogs
                 </a>
