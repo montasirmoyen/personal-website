@@ -320,9 +320,9 @@ const rawBlogs: RawBlog[] = [
     heroBlog: true,
     blogPosts: [
       {
-        date: "April 22, 2026 - 8:54PM",
+        date: "April 22, 2026",
         title: "Nostalgia",
-        borderColor: "#17f0ff",
+        borderColor: "#00ffea",
         content: [
           {
             type: "paragraph",
@@ -361,9 +361,9 @@ const rawBlogs: RawBlog[] = [
         ],
       },
       {
-        date: "April 22, 2026 - 10:15PM",
+        date: "April 22, 2026",
         title: "Skeleton",
-        borderColor: "#eaeaea",
+        borderColor: "#353cff",
         content: [
           {
             type: "paragraph",
@@ -447,6 +447,350 @@ const rawBlogs: RawBlog[] = [
               "./EnGBA <my-rom-path>"
             ]
           },
+        ],
+      },
+      {
+        date: "April 23, 2026",
+        title: "Instructions",
+        borderColor: "#ffbf1c",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            The GBA's CPU is an ARM7TDMI, which means it can run instruction sets ARM (32-bit) and THUMB (16-bit).
+            I started with ARM since most of the boot sequence uses it.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            Data processing instructions are the core of the CPU.
+            MOV, ADD, SUB, AND, ORR, all the basic operations that every program relies on.
+            I spent today implementing the decoder and executor for these.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            The tricky part is handling all the condition codes and flags.
+            ARM instructions can execute conditionally based on CPSR flags, so I had to write a function that checks if an instruction should actually run.
+            Then there's the barrel shifter that can apply shifts or rotates to operands before the operation happens.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            I added support for the main operations:
+            `
+          },
+          {
+            type: "bulletpoints",
+            content: ["MOV and MVN", "ADD, ADC, SUB, and RSB", "AND, ORR, EOR, and BIC", "CMP, CMN, TST, and TEQ"]
+          },
+          {
+            type: "paragraph",
+            content: `
+            Each one updates flags when needed, handles the shifter operand, and writes results back to the correct register.
+            I wrote a few test cases to verify MOV and ADD were working, but the real test will be when I load an actual ROM.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            Tomorrow I'll try to tackle branches and memory instructions so the CPU can actually jump around and load data.
+            `
+          }
+        ],
+      },
+      {
+        date: "April 24, 2026",
+        title: "Branching",
+        borderColor: "#ff24af",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            Today was all about control flow.
+            Without branch instructions, the CPU just marches forward linearly through memory, which isn't useful for running real code.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            I implemented B and BL (branch and branch with link).
+            B just changes the program counter to jump somewhere else.
+            BL does the same thing but also saves the return address in the link register (R14), which is how function calls work.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            The offset is encoded in the instruction as a signed 24-bit value, and you have to shift it left by 2 and sign-extend it to get the actual jump distance.
+            I got the math wrong the first time and the CPU started jumping to garbage addresses, but after fixing the sign extension it worked.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            I also added BX (branch and exchange), which lets the CPU switch between ARM and THUMB mode.
+            The GBA uses THUMB mode for code density, so this instruction is essential.
+            When the lowest bit of target address is 1, the CPU switches to THUMB mode.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            After that, I started on load and store instructions.
+            LDR and STR for single words, LDRB and STRB for bytes, LDRH and STRH for halfwords.
+            These are what let the CPU actually read and write memory through the Bus.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            I haven't tested everything yet, but the structure is in place.
+            Tomorrow I'll try to implement the THUMB instruction set so the emulator can handle both modes.
+            `
+          }
+        ],
+      },
+      {
+        date: "April 25, 2026",
+        title: "THUMB",
+        borderColor: "#6fff21",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            THUMB instructions are 16 bits instead of 32, which makes them more compact but also more restrictive.
+            They can only access the lower 8 registers (R0-R7) in most cases, and they don't have conditional execution like ARM instructions do.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            I added a separate decoder for THUMB mode.
+            It checks the CPSR's T bit to figure out which mode the CPU is in, then decodes accordingly.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            THUMB has its own versions of the data processing instructions, but they're simpler.
+            ADD, SUB, MOV, CMP, and all the logical operations are there, just with less flexibility.
+            Branch instructions in THUMB are similar to ARM, but with shorter offsets.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            The annoying part was handling the different instruction formats.
+            THUMB has like freaking 19 different formats, and each one encodes operands differently.
+            Some use 3-bit register fields, some use 8-bit immediates, some use offsets.
+            I spent most of the day making sure I was extracting the right bits for each format.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            By the end of the day, I had most of THUMB working.
+            I tested it with a few handwritten instruction sequences and confirmed that mode switching was happening correctly.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            Tomorrow I may finally work on the PPU so I can see something more than a gradient on screen.
+            `
+          }
+        ],
+      },
+      {
+        date: "April 26, 2026",
+        title: "Rendering",
+        borderColor: "#1a89ff",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            The PPU (Picture Processing Unit) is what turns memory into pixels.
+            The GBA's PPU supports multiple background layers, sprites, and different graphics modes.
+            I had to reference mGBA because they had perfected the timing and rendering details, which are pretty complex.
+            Today I focused on getting Mode 3 working, which is the simplest: just a 240x160 bitmap in VRAM.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            First, I had to map VRAM correctly in the Bus.
+            VRAM starts at 0x06000000 and is 96KB.
+            In Mode 3, the framebuffer is stored as 16-bit RGB values (5 bits per channel), so I updated the PPU to read from VRAM and convert those values to 32-bit RGBA for SDL.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            Then I had to implement the LCD control register (DISPCNT) at 0x04000000.
+            This register tells the PPU which mode to use, which layers are enabled, and other display settings.
+            I added code to read this register and adjust rendering behavior accordingly.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            After that, I updated the main loop to call the PPU at the right time.
+            The GBA renders at 60 FPS, with 160 visible scanlines and 68 for VBlank.
+            I added basic timing so the PPU renders one scanline at a time and triggers VBlank at the right moment.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            I tested it by loading a ROM that uses Mode 3, and for the first time, I saw actual graphics on screen.
+            They were glitchy and flickering, but they were there.
+            The colors were right, the resolution was right, and it was clearly rendering something intentional.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            Tomorrow I'll work on cleaning up the timing and implementing interrupts so the CPU can sync with the display properly.
+            `
+          }
+        ],
+      },
+      {
+        date: "April 27, 2026",
+        title: "Timing",
+        borderColor: "#fff200",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            The CPU and PPU need to stay in sync, and that requires proper timing.
+            The GBA's CPU runs at 16.78 MHz, and the PPU renders at 60 Hz.
+            If the CPU runs too fast or too slow, everything breaks.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            I added cycle counting to the CPU.
+            Each instruction now tracks how many cycles it took to execute, and the main loop uses that to throttle the emulation.
+            Different instructions take different amounts of time.
+            Memory access is slower than register operations, for example.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            Then I implemented basic interrupt support.
+            The GBA uses interrupts for VBlank, HBlank, timers, and other events.
+            I added the interrupt registers (IE, IF, IME) and wired them into the CPU so it can jump to the interrupt handler when an interrupt fires.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            The VBlank interrupt is the most important one for games so to speak.
+            It fires every 1/60th of a second, right after the visible scanlines finish rendering.
+            Games use this to update graphics and logic without tearing.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            After getting interrupts working, the glitchy flickering from yesterday went away.
+            The ROM I was testing now renders smoothly, and the frame rate is stable.
+            It's still not perfect, some graphics are missing, and there's no audio.
+            But it's starting to look like a real C++ GBA emulator.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            I also spent some time debugging why certain instructions weren't working.
+            Turns out I had a bug in my barrel shifter implementation that was corrupting operands in some cases.
+            Fixed that and a few other small issues.
+            `
+          }
+        ],
+      },
+      {
+        date: "April 28, 2026",
+        title: "Reflection",
+        borderColor: "#04e800",
+        content: [
+          {
+            type: "paragraph",
+            content: `
+            It's been around a week since I started EnGBA, and it's wild how much progress happened in such a short time.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            The core is solid now.
+            The CPU handles ARM and THUMB instructions, branches, memory access, and interrupts.
+            The PPU can render Mode 3 graphics at 60 FPS.
+            The timing is accurate enough that things don't break immediately.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            But there's some stuff missing.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            Next I should probably focus on building out the user-facing features.
+            Things like customizable controls, audio volume settings, and visual options (filters, scaling, etc.).
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            I'm thinking of adding a simple settings menu that lets you:
+            `
+          },
+          {
+            type: "bulletpoints",
+            content: ["Remap controls", "Adjust audio volume and sample rate", "Choose display filters and scaling modes", "Configure save file locations"]
+          },
+          {
+            type: "paragraph",
+            content: `
+            It'll probably take a while to get all of that working, but it feels like the right next step.
+            The emulator is functional, but it needs polish to be used seriously.
+            `
+          },
+          {
+            type: "paragraph",
+            content: `
+            For now, I'm happy with where things are.
+            I learned a ton, and I can't wait for more.
+            `
+          },
+          {
+            type: "image",
+            content: ["/engba-gameplay.jpeg"],
+            scale: 0.25
+          },
+          {
+            type: "paragraph",
+            content: `
+            Friends trying out EnGBA for the first time and playing Super Mario Advance 2.
+            `,
+            marginBottom: 1
+          },
+          {
+            type: "paragraph",
+            content: `
+            We literally couldn't get passed the second level..
+            `
+          }
         ],
       }
     ]
@@ -1058,7 +1402,7 @@ const rawBlogs: RawBlog[] = [
         ]
       },
       {
-        date: "April 16, 2026 — 11:03PM",
+        date: "April 16, 2026 - 11:03PM",
         title: "Return",
         borderColor: "#07ffb9",
         content: [

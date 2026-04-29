@@ -31,7 +31,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
     technologies: ["C++", "C", "Python", "Bash", "CMake", "SDL2", "FFmpeg"],
     status: "in-progress",
     blogUrl: "https://montasirmoyen.com/blog/engba",
-    githubUrl: "https://github.com/montasirmoyen/engba"
+    // githubUrl: "https://github.com/montasirmoyen/engba"
   },
   ramai: {
     title: "RamAI",
