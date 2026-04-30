@@ -23,7 +23,7 @@ export type SharedProjectSummary = {
 export const projectSummaries: Record<string, SharedProjectSummary> = {
   engba: {
     title: "EnGBA",
-    logo: "/engba-logo-3.png",
+    logo: "/engba-logo-4.png",
     primaryColor: "#1dbbff",
     category: "Emulator Development",
     date: "April 2026",
