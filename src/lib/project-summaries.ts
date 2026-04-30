@@ -27,11 +27,11 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
     primaryColor: "#1dbbff",
     category: "Emulator Development",
     date: "April 2026",
-    description: "Game Boy Advance emulator focusing on accurate emulation and modern architecture.",
+    description: "A C++ Game Boy Advance emulator focusing on accurate emulation and modern architecture.",
     technologies: ["C++", "C", "Python", "Bash", "CMake", "SDL2", "FFmpeg"],
     status: "in-progress",
     blogUrl: "https://montasirmoyen.com/blog/engba",
-    // githubUrl: "https://github.com/montasirmoyen/engba"
+    githubUrl: "https://github.com/montasirmoyen/engba"
   },
   ramai: {
     title: "RamAI",
