@@ -314,6 +314,11 @@ const rawProjects: RawProject[] = [
 ];
 
 const rawBlogs: RawBlog[] = [
+  // {
+    // slug: "uninext",
+    // image: "/uninext-home.png",
+    // blogPosts: []
+  // },
   {
     slug: "engba",
     image: "/engba-home.jpg",
@@ -2540,7 +2545,7 @@ const rawBlogs: RawBlog[] = [
           {
             type: "paragraph",
             content: `
-            I've been selected as the 2026-2027 Vice President of the Suffolk Programming, AI & Research Club (SPARC).
+            I've been elected as the 2026-2027 Vice President of the Suffolk Programming, AI & Research Club (SPARC).
             `,
           },
           {
