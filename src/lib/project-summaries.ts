@@ -66,7 +66,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
     date: "February 2026",
     description: "An application providing endless coding practice powered by curated challenges and unprecedented AI-generated problems.",
     technologies: ["TypeScript", "Python", "PostgreSQL", "Supabase", "AI Integration"],
-    status: "in-progress",
+    status: "completed",
     blogUrl: "https://montasirmoyen.com/blog/infinitecode",
     liveUrl: "https://infinitecodex.xyz",
   },
