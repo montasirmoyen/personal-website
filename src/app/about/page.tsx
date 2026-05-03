@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 
 import TopBarBackground from "@/components/ui/topbar-bg"
@@ -7,10 +8,63 @@ import TiltedCard from "@/components/ui/titled-card"
 import CircularGallery from '@/components/ui/circular-gallery'
 import CardFlip from "@/components/ui/card-flip"
 import AvailableForRoles from "@/components/ui/available-for-roles"
-import SOTM from "@/components/ui/sotm";
+import SOTM, { pastSongs } from "@/components/ui/sotm";
 import { LiquidButton } from "@/components/ui/liquid-button";
 import { TextAnimate } from "@/components/ui/text-animate"
 import { SocialLinks } from "@/components/ui/social-links";
+import Image from "next/image";
+
+function SOTMSection() {
+  const [showPast, setShowPast] = useState(false);
+
+  return (
+    <section className="my-16 flex flex-col items-center gap-6 px-4">
+      <SOTM />
+      <LiquidButton
+        className="scale-75 font-bold text-xl"
+        onClick={() => setShowPast((v) => !v)}
+      >
+        {showPast ? "Hide Past" : "View Past"}
+      </LiquidButton>
+      {showPast && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-4xl">
+          {pastSongs.map((song: typeof pastSongs[number]) => (
+            <a
+              key={song.month}
+              href={song.spotifyLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative overflow-hidden rounded-2xl border border-white/25 bg-black hover:bg-white/25 transition-all shadow-xl h-28 flex items-center gap-4 px-4"
+            >
+              <Image
+                src={song.albumCover}
+                alt="Album cover"
+                className="absolute inset-0 h-full w-full object-cover opacity-40 blur-sm"
+                width={400}
+                height={400}
+              />
+              <div className="absolute inset-0 bg-background/60" />
+              <div className="relative z-10 flex items-center gap-4">
+                <Image
+                  src={song.albumCover}
+                  alt={song.title}
+                  className="rounded-md object-cover shadow-lg flex-shrink-0"
+                  width={64}
+                  height={64}
+                />
+                <div className="min-w-0">
+                  <p className="text-xs text-white/50 uppercase tracking-wide">{song.month}</p>
+                  <p className="font-semibold text-sm truncate">{song.title}</p>
+                  <p className="text-xs text-white/75 truncate">{song.artist}</p>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}
 
 export default function About() {
   return (
@@ -123,9 +177,7 @@ export default function About() {
         <CircularGallery bend={2} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02} />
       </section>
 
-      <section className="my-16 flex justify-center items-center">
-        <SOTM />
-      </section>
+      <SOTMSection />
 
       <p className="mt-10 text-center text-sm text-white/50 uppercase">
         The journey so far
