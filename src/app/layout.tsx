@@ -4,10 +4,9 @@ import "./globals.css"
 import { cn } from "@/lib/utils";
 import mm_metadata from "@/lib/metadata"
 
-import NavBar from "@/components/ui/navbar1";
-import Footer from "@/components/ui/footer1";
 import { Toaster } from "@/components/ui/sonner"
 import { TooltipProvider } from "@/components/ui/tooltip"
+import Shell from "@/components/ui/shell"
 
 export const metadata = mm_metadata;
 
@@ -31,9 +30,9 @@ export default function RootLayout({
     >
       <body>
         <TooltipProvider>
-          <NavBar />
-          {children}
-          <Footer />
+          <Shell>
+            {children}
+          </Shell>
         </TooltipProvider>
         <Toaster />
       </body>
