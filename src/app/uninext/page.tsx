@@ -106,7 +106,7 @@ export default function UniNextPage() {
             Plan Your Degree,
           </h1>
           <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tight mb-6">
-            <AuroraText colors={BLUE_COLORS}>Your Way.</AuroraText>
+            <AuroraText colors={BLUE_COLORS}>Your Way</AuroraText>
           </h1>
           <p className="text-lg md:text-xl text-white/60 max-w-xl mx-auto leading-relaxed mb-10">
             UniNext helps university students plan their entire degree from start to finish — all in one place.
