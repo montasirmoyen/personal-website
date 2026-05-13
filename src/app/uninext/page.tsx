@@ -308,12 +308,22 @@ export default function UniNextPage() {
           </nav>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/25">
+        <div className="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/75">
           <p>© 2026 UniNext. All rights reserved.</p>
+          <a
+            href="https://montasirmoyen.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 group hover:text-white transition-colors"
+          >
+            <div className="relative size-5 shrink-0">
+              <Image src="/mm-logo.png" alt="Montasir Moyen" fill className="rounded object-cover" unoptimized />
+            </div>
+            <span>montasirmoyen.com</span>
+          </a>
           <p>Not affiliated with any university or institution.</p>
         </div>
       </footer>
-
     </div>
   );
 }
