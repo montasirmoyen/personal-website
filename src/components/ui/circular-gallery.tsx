@@ -521,9 +521,9 @@ class App {
         text: 'manga'
       },
       {
-        image: `/space.jpg`,
-        text: 'astronomy'
-      },
+        image: `/mma.jpg`,
+        text: 'mma'
+      }
     ];
     const galleryItems = items && items.length ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);
