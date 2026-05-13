@@ -40,7 +40,7 @@ const features = [
   {
     icon: TrendingUp,
     title: "GPA Monitoring",
-    desc: "Monitor your cumulative GPA across your entire degree as you add and complete courses — always up to date.",
+    desc: "Monitor your cumulative GPA across your entire degree as you add and complete courses, always up to date.",
     screen: "/uninext/dashboard.png",
     screenAlt: "Dashboard screen",
   },
@@ -71,7 +71,7 @@ const stats = [
   { value: "Free", label: "No cost, no ads" },
   { value: "iOS", label: "iPhone & iPad" },
   { value: "Offline", label: "Works without internet" },
-  { value: "Secure", label: "Firebase-backed sync" },
+  { value: "Secure", label: "Cloud-backed sync" },
 ];
 
 export default function UniNextPage() {
@@ -109,7 +109,7 @@ export default function UniNextPage() {
             <AuroraText colors={BLUE_COLORS}>Your Way</AuroraText>
           </h1>
           <p className="text-lg md:text-xl text-white/60 max-w-xl mx-auto leading-relaxed mb-10">
-            UniNext helps university students plan their entire degree from start to finish — all in one place.
+            UniNext helps university students plan their entire degree from start to finish, all in one place.
           </p>
         </AnimatedContent>
 
@@ -224,11 +224,11 @@ export default function UniNextPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {[
                 { label: "Framework", value: "React Native (Expo)" },
-                { label: "Storage", value: "Firebase Firestore" },
-                { label: "Auth", value: "Firebase Authentication" },
+                { label: "Storage", value: "Google Firebase Firestore" },
+                { label: "Auth", value: "Google Firebase Authentication" },
                 { label: "Platform", value: "iPhone & iPad (iOS)" },
                 { label: "Sync", value: "Cross-device via account login" },
-                { label: "Offline", value: "AsyncStorage — works without internet" },
+                { label: "Offline", value: "AsyncStorage, works without internet" },
               ].map(({ label, value }) => (
                 <div key={label} className="flex items-start gap-3">
                   <span className="size-1.5 rounded-full bg-blue-400 shrink-0 mt-2" />
