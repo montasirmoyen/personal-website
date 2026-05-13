@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { use } from "react";
 
-import { ArrowLeft, ArrowRight, ExternalLink, Notebook } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, Notebook, Star } from "lucide-react";
 import { FaGithub, FaApple } from "react-icons/fa";
 
 import { getProjectBySlug, projects, getBlogBySlug } from "@/lib/projects";
@@ -163,6 +163,17 @@ function ProjectDetailContent({
               >
                 <FaApple size={16} />
                 Download on App Store
+              </Link>
+            )}
+            {project.promotionalUrl && (
+              <Link
+                href={project.promotionalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
+              >
+                <Star size={16} fill="currentColor" />
+                View Promotional Page
               </Link>
             )}
           </div>
