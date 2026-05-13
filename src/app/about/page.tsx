@@ -72,9 +72,10 @@ export default function About() {
       <TopBarBackground imageUrl="/sea-wave.jpg" transparency={50} />
 
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-6 items-center">
-          {/* Headshot */}
-          <div className="mx-auto">
+        <div className="items-center">
+          {/* Headshot
+          
+                    <div className="mx-auto">
             <TiltedCard
               imageSrc="/montasirmoyen.png"
               altText="Author"
@@ -94,14 +95,18 @@ export default function About() {
               }
             />
           </div>
+          
+          */}
+
+
 
           {/* Text Content */}
           <div className="mx-auto">
-            <p className="text-sm text-white/50 uppercase md:px-8 sm:px-4 px-4">
+            <p className="text-sm text-white/50 uppercase md:px-8 sm:px-4 px-4 text-center">
               WHO AM I?
             </p>
 
-            <div className="mt-2 flex flex-col items-start md:px-8 sm:px-4 px-4">
+            <div className="mt-2 mb-10 flex flex-col md:px-8 sm:px-4 px-4 items-center">
               <TextAnimate
                 animation="blurInUp"
                 by="character"
