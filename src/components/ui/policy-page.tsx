@@ -119,15 +119,18 @@ export default function PolicyPage({
       </div>
 
       {/* Footer */}
-      <div className="max-w-4xl mx-auto px-6 py-10 border-t border-white/10 mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/40">
+      <div className="max-w-4xl mx-auto px-6 py-10 border-t border-white/10 mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/75">
         <div className="flex items-center gap-3">
           <div className="relative size-7 shrink-0">
             <Image src="/uninext.png" alt="UniNext" fill className="rounded-lg object-cover" />
           </div>
           <span>© 2026 UniNext. All rights reserved.</span>
         </div>
-        <Link href="/" className="hover:text-white/70 transition-colors">
+        <Link href="/" className="hover:text-white transition-colors flex items-center gap-2">
           montasirmoyen.com
+          <div className="relative size-7 shrink-0">
+            <Image src="/mm-logo.png" alt="montasirmoyen" fill className="rounded object-cover" />
+          </div>
         </Link>
       </div>
     </div>
