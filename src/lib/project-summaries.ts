@@ -18,6 +18,7 @@ export type SharedProjectSummary = {
   githubUrl?: string;
   gameUrl?: string;
   projectUrl?: string;
+  appStoreUrl?: string;
 };
 
 export const projectSummaries: Record<string, SharedProjectSummary> = {
@@ -97,6 +98,17 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
     status: "completed",
     liveUrl: "https://scentdex.vercel.app",
     githubUrl: "https://github.com/montasirmoyen/scentdex/",
+  },
+  uninext: {
+    title: "UniNext",
+    logo: "/uninext.png",
+    primaryColor: "#00c8ff",
+    category: "iOS Development",
+    date: "May 2026",
+    description: "An iOS app designed to help students plan their academic journey with a structured, data-driven approach to course selection and scheduling.",
+    technologies: ["TypeScript"],
+    status: "completed",
+    appStoreUrl: "https://apps.apple.com/us/app/uninext/id6767950128",
   },
   chess: {
     title: "Chess",

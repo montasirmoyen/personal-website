@@ -177,6 +177,42 @@ const rawProjects: RawProject[] = [
     `,
   },
   {
+    slug: "uninext",
+    colors: ["#3493ff", "#ffffff"],
+    image: "/uninext-home.png",
+    carouselImages: ["/uninext-home.png", "/uninext-dashboard.png", "/uninext-courses.png", "/uninext-planner.png"],
+    keyFeatures: [
+      {
+        title: "Degree Progress Tracking",
+        description: "Visualizes completed, in-progress, and planned courses against degree requirements, giving students a clear picture of where they stand.",
+      },
+      {
+        title: "Term-Based Course Planner",
+        description: "Organizes courses by academic term, allowing students to map out their full degree timeline semester by semester.",
+      },
+      {
+        title: "GPA Calculator",
+        description: "Tracks GPA in real time with support for multiple grading scales including standard 4.0, 4.3, and no plus/minus variants.",
+      },
+    ],
+    challenges: [
+      {
+        title: "Degree Requirement Modeling",
+        description: "Modeling the variety of degree structures across institutions, with nested requirement categories, credit thresholds, and elective flexibility, required careful data design to stay generic enough to be broadly useful.",
+      },
+    ],
+    tradeoffs: [
+      {
+        title: "Frontend-First Approach",
+        description: "I chose to build the full UI with placeholder data before introducing a backend. This let me validate the experience quickly, at the cost of deferring real persistence and multi-device sync to a later phase.",
+      },
+    ],
+    outcome: `
+    The application is currently on the Apple App Store.
+    The project has deepened my experience in mobile UI design, academic data modeling, and building structured planning tools from the ground up.
+    `,
+  },
+  {
     slug: "infinitecode",
     colors: ["#d1001c", "#ff1369"],
     image: "/ic-home.png",
@@ -315,14 +351,13 @@ const rawProjects: RawProject[] = [
 
 const rawBlogs: RawBlog[] = [
   // {
-    // slug: "uninext",
-    // image: "/uninext-home.png",
-    // blogPosts: []
+  // slug: "uninext",
+  // image: "/uninext-home.png",
+  // blogPosts: []
   // },
   {
     slug: "engba",
     image: "/engba-home.jpg",
-    heroBlog: true,
     blogPosts: [
       {
         date: "April 22, 2026",
