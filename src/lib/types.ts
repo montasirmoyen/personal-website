@@ -22,6 +22,7 @@ export interface Project {
   blogUrl?: string;
   liveUrl?: string;
   gameUrl?: string;
+  promotionalUrl?: string;
   appStoreUrl?: string;
   overview?: string;
   problemItSolves?: string;
@@ -68,6 +69,7 @@ export interface Blog {
   gameUrl?: string;
   projectUrl?: string;
   appStoreUrl?: string;
+  promotionalUrl?: string;
   blogPosts: {
     date: string;
     title: string;

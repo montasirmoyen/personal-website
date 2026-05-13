@@ -1,5 +1,4 @@
 import React from "react";
-import { FaDice } from "react-icons/fa";
 import type { ProjectStatus } from "./types";
 
 export type SharedProjectSummary = {
@@ -19,6 +18,7 @@ export type SharedProjectSummary = {
   gameUrl?: string;
   projectUrl?: string;
   appStoreUrl?: string;
+  promotionalUrl?: string;
 };
 
 export const projectSummaries: Record<string, SharedProjectSummary> = {
@@ -109,6 +109,7 @@ export const projectSummaries: Record<string, SharedProjectSummary> = {
     technologies: ["TypeScript"],
     status: "completed",
     appStoreUrl: "https://apps.apple.com/us/app/uninext/id6767950128",
+    promotionalUrl: "https://montasirmoyen.com/uninext"
   },
   chess: {
     title: "Chess",
