@@ -171,7 +171,7 @@ export default function UniNextTermsOfUse() {
       effective="May 5, 2026"
       intro="Please read these Terms of Use carefully before using the UniNext mobile application. By downloading, installing, or using the App, you agree to be bound by these Terms. If you do not agree, do not use the App."
       sections={sections}
-      contactEmail="montasirmoyen@gmail.com"
+      contactEmail="uninextsupport@gmail.com"
       contactSectionNumber={15}
     />
   );

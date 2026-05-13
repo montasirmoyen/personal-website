@@ -256,7 +256,7 @@ export default function UniNextPrivacyPolicy() {
       effective="May 5, 2026"
       intro="This Privacy Policy describes how UniNext collects, uses, stores, and protects your information when you use the UniNext mobile application. By using the App, you agree to the practices described in this policy."
       sections={sections}
-      contactEmail="montasirmoyen@gmail.com"
+      contactEmail="uninextsupport@gmail.com"
       contactSectionNumber={13}
     />
   );
