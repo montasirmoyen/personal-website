@@ -6,7 +6,7 @@ import Link from "next/link";
 import { use } from "react";
 
 import { ArrowLeft, ArrowRight, ExternalLink, Notebook } from "lucide-react";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaApple } from "react-icons/fa";
 
 import { getProjectBySlug, projects, getBlogBySlug } from "@/lib/projects";
 
@@ -152,6 +152,17 @@ function ProjectDetailContent({
               >
                 <ExternalLink size={16} />
                 View Game
+              </Link>
+            )}
+            {project.appStoreUrl && (
+              <Link
+                href={project.appStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
+              >
+                <FaApple size={16} />
+                Download on App Store
               </Link>
             )}
           </div>

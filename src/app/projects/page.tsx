@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { ExternalLink } from "lucide-react";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaApple } from "react-icons/fa";
 
 import { projects } from "@/lib/projects";
 
@@ -123,6 +123,17 @@ export default function ProjectsPage() {
                     >
                       <ExternalLink size={16} />
                       Visit Live Demo
+                    </Link>
+                  )}
+                  {project.appStoreUrl && (
+                    <Link
+                      href={project.appStoreUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
+                    >
+                      <FaApple size={16} />
+                      Download on App Store 
                     </Link>
                   )}
                   {project.gameUrl && (

@@ -7,7 +7,7 @@ import Link from "next/link";
 import { use } from "react";
 
 import { ArrowLeft, ExternalLink, Computer, Hammer } from "lucide-react";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaApple } from "react-icons/fa";
 
 import { blogs, getBlogBySlug } from "@/lib/projects";
 
@@ -160,6 +160,17 @@ function BlogDetailContent({
               >
                 <ExternalLink size={16} />
                 Live Demo
+              </Link>
+            )}
+            {blog.appStoreUrl && (
+              <Link
+                href={blog.appStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
+              >
+                <FaApple size={16} />
+                Download on App Store
               </Link>
             )}
             {blog.gameUrl && (
