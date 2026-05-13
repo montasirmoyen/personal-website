@@ -116,7 +116,7 @@ export default function UniNextPage() {
         <AnimatedContent distance={20} duration={0.7} delay={0.25} animateOpacity initialOpacity={0} threshold={0.1}>
           <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
             <a
-              href="https://apps.apple.com"
+              href="https://apps.apple.com/us/app/uninext/id6767950128"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 bg-white text-black font-semibold px-6 py-3.5 rounded-2xl hover:bg-white/90 transition-all shadow-lg shadow-white/10 text-sm"
@@ -256,7 +256,7 @@ export default function UniNextPage() {
             </h2>
             <p className="text-white/50 text-lg">Free to use. No ads. Just your degree, organized.</p>
             <a
-              href="https://apps.apple.com"
+              href="https://apps.apple.com/us/app/uninext/id6767950128"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-2xl transition-all shadow-lg shadow-blue-900/30 text-sm"
